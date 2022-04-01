@@ -1,0 +1,2034 @@
+[
+  {
+    "EntryType": 1,
+    "Country": "US",
+    "Rating": "G",
+    "Meaning": "All ages admitted. There is no content that would be objectionable to most parents. This is one of only two ratings dating back to 1968 that still exists today.",
+    "US_Equivalent": "G",
+    "Rank": 1
+  },
+  {
+    "EntryType": 1,
+    "Country": "US",
+    "Rating": "PG-13",
+    "Meaning": "Some material may be inappropriate for children under 13. Films given this rating may contain sexual content, brief or partial nudity, some strong language and innuendo, humor, mature themes, political themes, terror and/or intense action violence. However, bloodshed is rarely present. This is the minimum rating at which drug content is present.",
+    "US_Equivalent": "PG-13",
+    "Rank": 1
+  },
+  {
+    "EntryType": 1,
+    "Country": "US",
+    "Rating": "R",
+    "Meaning": "Under 17 requires accompanying parent or adult guardian 21 or older. The parent/guardian is required to stay with the child under 17 through the entire movie, even if the parent gives the child/teenager permission to see the film alone. These films may contain strong profanity, graphic sexuality, nudity, strong violence, horror, gore, and strong drug use. A movie rated R for profanity often has more severe or frequent language than the PG-13 rating would permit. An R-rated movie may have more blood, gore, drug use, nudity, or graphic sexuality than a PG-13 movie would admit.",
+    "US_Equivalent": "R",
+    "Rank": 1
+  },
+  {
+    "EntryType": 1,
+    "Country": "US",
+    "Rating": "NC-17",
+    "Meaning": "These films contain excessive graphic violence, intense or explicit sex, depraved, abhorrent behavior, explicit drug abuse, strong language, explicit nudity, or any other elements which, at present, most parents would consider too strong and therefore off-limits for viewing by their children and teens. NC-17 does not necessarily mean obscene or pornographic in the oft-accepted or legal meaning of those words.",
+    "US_Equivalent": "NC-17",
+    "Rank": 1
+  },
+  {
+    "EntryType": 1,
+    "Country": "US",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 1
+  },
+  {
+    "EntryType": 1,
+    "Country": "US",
+    "Rating": "PG",
+    "Meaning": "Some material may not be suitable for children under 10. These films may contain some mild language, crude/suggestive humor, scary moments and/or violence. No drug content is present. There are a few exceptions to this rule. A few racial insults may also be heard.",
+    "US_Equivalent": "PG",
+    "Rank": 1
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA",
+    "Rating": "18A",
+    "Meaning": "Persons under 18 years of age must be accompanied by an adult. In the Maritimes & Manitoba, children under the age of 14 are prohibited from viewing the film.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "E",
+    "Meaning": "Exempt from classification. Films that are exempt from classification must not contain contentious material (i.e. material that would ordinarily be rated M or higher).",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "M",
+    "Meaning": "Recommended for mature audiences. There are no age restrictions. The content is moderate in impact.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA",
+    "Rating": "14A",
+    "Meaning": "Persons under 14 years of age must be accompanied by an adult.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA",
+    "Rating": "A",
+    "Meaning": "Admittance restricted to people 18 years of age or older. Sole purpose of the film is the portrayal of sexually explicit activity and/or explicit violence.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "PG",
+    "Meaning": "Parental guidance recommended. There are no age restrictions. The content is mild in impact.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "RC",
+    "Meaning": "Refused Classification. Banned from sale or hire in Australia; also generally applies to importation (if inspected by and suspicious to Customs). Private Internet viewing is unenforced and attempts to legally censor such online material has resulted in controversy. Films are rated RC if their content exceeds the guidelines. The content is very high in impact.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "R18+",
+    "Meaning": "Restricted to 18 years and over. Adults only. The content is high in impact.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "G",
+    "Meaning": "General. The content is very mild in impact.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA",
+    "Rating": "G",
+    "Meaning": "All ages.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA",
+    "Rating": "PG",
+    "Meaning": "Parental guidance advised. There is no age restriction but some material may not be suitable for all children.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "MA15+",
+    "Meaning": "Mature Accompanied. Unsuitable for children younger than 15. Children younger than 15 years must be accompanied by a parent or guardian. The content is strong in impact.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FR",
+    "Rating": "10",
+    "Meaning": "(Déconseillé aux moins de 10 ans) unsuitable for children younger than 10 (this rating is only used for TV); equivalent in theatres : \"avertissement\" (warning), some scenes may be disturbing to young children and sensitive people; equivalent on video : \"accord parental\" (parental guidance).",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DE",
+    "Rating": "18",
+    "Meaning": "No youth admitted, only adults.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DE",
+    "Rating": "16",
+    "Meaning": "Children 16 or older admitted, nobody under this age admitted.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DE",
+    "Rating": "12",
+    "Meaning": "Children 12 or older admitted, children between 6 and 11 only when accompanied by parent or a legal guardian.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DE",
+    "Rating": "6",
+    "Meaning": "No children younger than 6 years admitted.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DE",
+    "Rating": "0",
+    "Meaning": "No age restriction.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FR",
+    "Rating": "18",
+    "Meaning": "(Interdit aux mineurs) unsuitable for children younger than 18 or forbidden in cinemas for under 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "G",
+    "Meaning": "Suitable for general audiences.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "AU",
+    "Rating": "X18+",
+    "Meaning": "Restricted to 18 years and over. Films with this rating have pornographic content. Films classified as X18+ are banned from being sold or rented in all Australian states and are only legally available in the Australian Capital Territory and the Northern Territory. However, importing X18+ material from the two territories to any of the Australian states is legal.The content is sexually explicit in impact.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FR",
+    "Rating": "12",
+    "Meaning": "(Interdit aux moins de 12 ans) unsuitable for children younger than 12 or forbidden in cinemas for under 12.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FR",
+    "Rating": "U",
+    "Meaning": "(Tous publics) valid for all audiences.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "R",
+    "Meaning": "Restricted to a particular class of persons, or for particular purposes, or both.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "18",
+    "Meaning": "Restricted to persons 18 years of age and over.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "16",
+    "Meaning": "Restricted to persons 16 years of age and over.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "PG",
+    "Meaning": "Parental guidance recommended for younger viewers.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FR",
+    "Rating": "16",
+    "Meaning": "(Interdit aux moins de 16 ans) unsuitable for children younger than 16 or forbidden in cinemas for under 16.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "ES",
+    "Rating": "X",
+    "Meaning": "Prohibited for audiences under 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "ES",
+    "Rating": "18",
+    "Meaning": "Not recommended for audiences under 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "M",
+    "Meaning": "Suitable for (but not restricted to) mature audiences 16 years and up.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "IN",
+    "Rating": "A",
+    "Meaning": "Restricted to adult audiences (18 years or over). Nobody below the age of 18 may buy/rent an A-rated DVD, VHS, UMD or watch a film in the cinema with this rating. Films under this category may contain adult/disturbing themes, frequent crude language, brutal violence with blood and gore, strong sex scenes and/or scenes of drug abuse which is considered unsuitable for minors.",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "IN",
+    "Rating": "UA",
+    "Meaning": "All ages admitted, but it is advised that children below 12 be accompanied by a parent as the theme or content may be considered intense or inappropriate for young children. Films under this category may contain mature themes, sexual references, mild sex scenes, violence with brief gory images and/or infrequent use of crude language.",
+    "US_Equivalent": "PG-13",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "IN",
+    "Rating": "U",
+    "Meaning": "Unrestricted Public Exhibition throughout India, suitable for all age groups. Films under this category should not upset children over 4. Such films may contain educational, social or family-oriented themes. Films under this category may also contain fantasy violence and/or mild bad language.",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "18",
+    "Meaning": "Only adults are admitted. Nobody younger than 18 can rent or buy an 18-rated VHS, DVD, Blu-ray Disc, UMD or game, or watch a film in the cinema with this rating. Films under this category do not have limitation on the bad language that is used. Hard drugs are generally allowed, and explicit sex references along with detailed sexual activity are also allowed. Scenes of strong real sex may be permitted if justified by the context. Very strong, gory, and/or sadistic violence is usually permitted. Strong sexual violence is permitted unless it is eroticised or excessively graphic.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "12",
+    "Meaning": "Home media only since 2002. 12A-rated films are usually given a 12 certificate for the VHS/DVD version unless extra material has been added that requires a higher rating. Nobody younger than 12 can rent or buy a 12-rated VHS, DVD, Blu-ray Disc, UMD or game. The content guidelines are identical to those used for the 12A certificate.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "12A",
+    "Meaning": "Films under this category are considered to be unsuitable for very young people. Those aged under 12 years are only admitted if accompanied by an adult, aged at least 18 years, at all times during the motion picture. However, it is generally not recommended that children under 12 years should watch the film. Films under this category can contain mature themes, discrimination, soft drugs, moderate swear words, infrequent strong language and moderate violence, sex references and nudity. Sexual activity may be briefly and discreetly portrayed. Sexual violence may be implied or briefly indicated.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NL",
+    "Rating": "AL",
+    "Meaning": "All ages.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BR",
+    "Rating": "18",
+    "Meaning": "Not recommended for minors under eighteen. Scenes featuring explicit sex, incest, pedophilia, praising of the use of illegal drugs and violence of a strong imagery impact.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "R18",
+    "Meaning": "Can only be shown at licensed adult cinemas or sold at licensed sex shops, and only to adults, those aged 18 or over. Films under this category are always hard-core pornography, defined as material intended for sexual stimulation and containing clear images of real sexual activity, strong fetish material, explicit animated images, or sight of certain acts such as triple simultaneous penetration and snowballing. There remains a range of material that is often cut from the R18 rating: strong images of injury in BDSM or spanking works, urolagnia, scenes suggesting incest even if staged, references to underage sex or childhood sexual development and aggressive behaviour such as hair-pulling or spitting on a performer are not permitted. More cuts are demanded in this category than any other category.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "15",
+    "Meaning": "Only those over 15 years are admitted. Nobody younger than 15 can rent or buy a 15-rated VHS, DVD, Blu-ray Disc, UMD or game, or watch a film in the cinema with this rating. Films under this category can contain adult themes, hard drugs, frequent strong language and limited use of very strong language, strong violence and strong sex references, and nudity without graphic detail. Sexual activity may be portrayed but without any strong detail. Sexual violence may be shown if discreet and justified by context.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NL",
+    "Rating": "16",
+    "Meaning": "Potentially harmful to children under 16 years; broadcasting is not allowed before 10:00 pm.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NL",
+    "Rating": "12",
+    "Meaning": "Potentially harmful to children under 12 years; broadcasting is not allowed before 8:00 pm.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NL",
+    "Rating": "9",
+    "Meaning": "Potentially harmful to children under 9 years.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NL",
+    "Rating": "6",
+    "Meaning": "Potentially harmful to children under 6 years.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "PG",
+    "Meaning": "All ages admitted, but certain scenes may be unsuitable for young children. May contain mild language and sex/drugs references. May contain moderate violence if justified by context (e.g. fantasy).",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "15",
+    "Meaning": "Restricted to persons 15 years of age and over.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BR",
+    "Rating": "16",
+    "Meaning": "Not recommended for minors under sixteen. Scenes featuring production, trafficking and/or use of illegal drugs, hyper-realistic sex, sexual violence, abortion, torture, mutilation, suicide, trivialization of violence and death penalty.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FI",
+    "Rating": "K-7",
+    "Meaning": "Over 7 years.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BR",
+    "Rating": "12",
+    "Meaning": "Not recommended for minors under twelve. Scenes can include physical aggression, use of legal drugs and sexual innuendo.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BR",
+    "Rating": "10",
+    "Meaning": "Not recommended for minors under ten. Violent content or inappropriate language to children, even if of a less intensity.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BR",
+    "Rating": "L",
+    "Meaning": "General Audiences. Do not expose children to potentially harmful content.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FI",
+    "Rating": "KK",
+    "Meaning": "Banned from commercial distribution.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FI",
+    "Rating": "K-18",
+    "Meaning": "Adults only.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FI",
+    "Rating": "K-16",
+    "Meaning": "Over 16 years.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NZ",
+    "Rating": "13",
+    "Meaning": "Restricted to persons 13 years of age and over.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BR",
+    "Rating": "14",
+    "Meaning": "Not recommended for minors under fourteen. More violent material, stronger sex references and/or nudity.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FI",
+    "Rating": "S",
+    "Meaning": "For all ages.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BG",
+    "Rating": "X",
+    "Meaning": "Prohibited for persons under 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BG",
+    "Rating": "D",
+    "Meaning": "Prohibited for persons under 16.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BG",
+    "Rating": "C",
+    "Meaning": "Not recommended for children under 12.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BG",
+    "Rating": "B",
+    "Meaning": "Without age restrictions.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "BG",
+    "Rating": "A",
+    "Meaning": "Recommended for children.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "FI",
+    "Rating": "K-12",
+    "Meaning": "Over 12 years.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "GB",
+    "Rating": "U",
+    "Meaning": "All ages admitted, there is nothing unsuitable for children.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "ES",
+    "Rating": "16",
+    "Meaning": "Not recommended for audiences under 16.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "12",
+    "Meaning": "Not recommended below age of 12.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "ES",
+    "Rating": "7",
+    "Meaning": "Not recommended for audiences under 7.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "ES",
+    "Rating": "APTA",
+    "Meaning": "General admission.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "P",
+    "Meaning": "Special rating supplementary to the M/18 age rating denoting pornography.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "M/18",
+    "Meaning": "Passed for viewers aged 18 and older.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "M/16",
+    "Meaning": "Passed for viewers aged 16 and older.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "M/14",
+    "Meaning": "Passed for viewers aged 14 and older.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "P13",
+    "Meaning": "(Penjaga 13 : \"Parental Guidance 13\") - Children under 13 not admitted unless accompanied by an adult. (Introduced in 2006, this became the official Malaysian motion picture rating system in 2008. The \"PG-13\" rating was revised to \"P13\" from April 2012 onwards to emphasize the use of Malay language instead of English.) Passionate kissing scenes are not allowed under a P13 rating.",
+    "US_Equivalent": "PG-13",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "U",
+    "Meaning": "(Umum: \"General Audiences\") - For general audiences. (Used by the majority of films screened in Malaysia until 2008 but it continues only for television, notably for RTM.)",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "M/3",
+    "Meaning": "Passed for viewers aged 3 and older.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "Públicos",
+    "Meaning": "For all the public (especially designed for children under 3 years of age).",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "18PL",
+    "Meaning": "(Pelbagai: \"Various\") - Film may contain strong violence, gore, horror/terror, sex scenes, nudity, sexual dialogues/references, religious, social or political aspects people may find objectionable. The majority of the 18+ movies use this rating. For example, a film with sex scenes and strong violence will be classified as 18PL, despite scenes of sex and nudity being strictly censored off by the LPF.",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "18PA",
+    "Meaning": "(Politik, Agama: \"Strong Religious or Political Elements\") - Film may contain elements which include religious, social or political aspects people may find objectionable. Rarely used.",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "18SX",
+    "Meaning": "(Seks: \"Sexual Content\") - Film may contain sex scenes, nudity or sexual dialogue/references people may find objectionable (despite scenes of sex and nudity being strictly censored off by the LPF.)",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "18SG",
+    "Meaning": "(Seram, Ganas: \"Graphic Violence and Horror/Terror\") - Film may contain strong violence, gore or horror/terror people may find objectionable.",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "M/12",
+    "Meaning": "Passed for viewers aged 12 and older.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PT",
+    "Rating": "M/6",
+    "Meaning": "Passed for viewers aged 6 and older.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "MY",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SE",
+    "Rating": "Btl",
+    "Meaning": "All ages.",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA-QC",
+    "Rating": "16+",
+    "Meaning": "16 years and over – May be viewed, rented or purchased only by children 16 years of age or over.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA-QC",
+    "Rating": "13+",
+    "Meaning": "13 years and over – May be viewed, rented or purchased only by children 13 years of age or over. Children under 13 may be admitted only if accompanied by an adult.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA-QC",
+    "Rating": "G",
+    "Meaning": "General Rating – May be viewed, rented or purchased by persons of all ages. If a film carrying a \"G\" rating might offend the sensibilities of a child under 8 years of age, \"Not suitable for young children\" is appended to the classification.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA-QC",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "SE",
+    "Rating": "15",
+    "Meaning": "Children over the age of 7, who are accompanied by an adult, are admitted to films that have been passed for children from the age of 11. Updated on March 1, 2017.",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SE",
+    "Rating": "11",
+    "Meaning": "Children over the age of 7, who are accompanied by an adult, are admitted to films that have been passed for children from the age of 11.",
+    "US_Equivalent": "PG-13",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "DK",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "CA-QC",
+    "Rating": "18+",
+    "Meaning": "18 years and over – May be viewed, rented or purchased only by adults 18 years of age or over. If a film contains real and explicit sexual activity \"Explicit sexuality\" is appended to the classification, and in the retail video industry storeowners are required to place the film in a room reserved for adults.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "SE",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "DK",
+    "Rating": "F",
+    "Meaning": "Exempt from classification.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DK",
+    "Rating": "15",
+    "Meaning": "For ages 15 and up.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DK",
+    "Rating": "11",
+    "Meaning": "For ages 11 and up.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DK",
+    "Rating": "7",
+    "Meaning": "Not recommended for children under 7.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "DK",
+    "Rating": "A",
+    "Meaning": "Suitable for a general audience.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "SE",
+    "Rating": "7",
+    "Meaning": "Children under the age of 7, who are accompanied by an adult (a person aged 18 or over), are admitted to films that have been passed for children from the age of 7.",
+    "US_Equivalent": "PG",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "IT",
+    "Rating": "T",
+    "Meaning": "All ages admitted.",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "ES",
+    "Rating": "12",
+    "Meaning": "Not recommended for audiences under 12.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "12",
+    "Meaning": "12 years (children down to 9 years accompanied by an adult).",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "9",
+    "Meaning": "9 years (children down to 6 years accompanied by an adult).",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "6",
+    "Meaning": "6 years (no restriction for children accompanied by an adult).",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "A",
+    "Meaning": "Suitable for all.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "X",
+    "Meaning": "Restricted below 18, for adults only.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "18",
+    "Meaning": "Not recommended below age of 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "LT",
+    "Rating": "N-7",
+    "Meaning": "Movies for viewers from 7 years old. Younger than 7 years of age, viewers of this index have been featured only together with accompanying adult persons.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "LT",
+    "Rating": "V",
+    "Meaning": "Movies for the audience of all ages.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "6",
+    "Meaning": "Not recommended below age of 6.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "KN",
+    "Meaning": "Without age restriction.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "LT",
+    "Rating": "N-18",
+    "Meaning": "Movies for viewers from 18 years of age.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "LT",
+    "Rating": "N-16",
+    "Meaning": "Movies for viewers from 16 years of age.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "LT",
+    "Rating": "N-13",
+    "Meaning": "Movies for viewers from 13 years of age. The viewers from 7 to 13 years of age are allowed to enter this index only together with accompanying adult persons.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "HU",
+    "Rating": "16",
+    "Meaning": "Not recommended below age of 16.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "18",
+    "Meaning": " 18 years (absolute lower limit).",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "LT",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "R-16",
+    "Meaning": "Only viewers who are 16 years old and above can be admitted.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "RU",
+    "Rating": "16+",
+    "Meaning": "(For children above 16) – Unsuitable for children under 16.",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "RU",
+    "Rating": "12+",
+    "Meaning": "(For children above 12) – Unsuitable for children under 12.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "RU",
+    "Rating": "6+",
+    "Meaning": "(For children above 6) – Unsuitable for children under 6.",
+    "US_Equivalent": "PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "RU",
+    "Rating": "0+",
+    "Meaning": "All ages are admitted.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "RU",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "X",
+    "Meaning": "“X-rated” films are not suitable for public exhibition.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "NO",
+    "Rating": "15",
+    "Meaning": "15 years (young down to 12 years accompanied by an adult).",
+    "US_Equivalent": "R",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "RU",
+    "Rating": "18+",
+    "Meaning": "(Prohibited for children) – Prohibited for children under 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "R-13",
+    "Meaning": "Only viewers who are 13 years old and above can be admitted.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "PG",
+    "Meaning": "Viewers below 13 years old must be accompanied by a parent or supervising adult.",
+    "US_Equivalent": "PG-13",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "G",
+    "Meaning": "Viewers of all ages are admitted.",
+    "US_Equivalent": "G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "IT",
+    "Rating": "VM18",
+    "Meaning": "No admittance for children under 18.",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "IT",
+    "Rating": "VM14",
+    "Meaning": "No admittance for children under 14.",
+    "US_Equivalent": "PG-13",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "PH",
+    "Rating": "R-18",
+    "Meaning": "Only viewers who are 18 years old and above can be admitted.",
+    "US_Equivalent": "NC-17",
+    "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "IT",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "TV-Y",
+    "Meaning": "This program is designed to be appropriate for all children.",
+    "US_Equivalent": "TV-Y",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "TV-Y7",
+    "Meaning": "This program is designed for children age 7 and above.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "TV-G",
+    "Meaning": "Most parents would find this program suitable for all ages.",
+    "US_Equivalent": "TV-G",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "TV-PG",
+    "Meaning": "This program contains material that parents may find unsuitable for younger children.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "TV-14",
+    "Meaning": "This program contains some material that many parents would find unsuitable for children under 14 years of age.",
+    "US_Equivalent": "TV-14",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "US",
+    "Rating": "TV-MA",
+    "Meaning": "This program is specifically designed to be viewed by adults and therefore may be unsuitable for children under 17.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 1
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "P",
+    "Meaning": "Programming is intended for younger children 2–11; commercial stations must show at least 30 minutes of P-rated content each weekday and weekends at all times. No advertisements may be shown during P-rated programs.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "C",
+    "Meaning": "Programming intended for older children 5–14; commercial stations must show at least 30 minutes of C-rated content each weekday between 7 a.m. and 8 a.m. or between 4 p.m. and 8:30 p.m. A further 2 and a half ours a week must also be shown either within these time bands or between 7 a.m. and 8:30 p.m. on weekends and school holidays, for a total of five hours a week (averaged as 260 hours over the course of a year). C-rated content is subject to certain restrictions and limitations on advertising (typically five minutes maximum per 30-minute period or seven minutes including promotions and community announcements).",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "G",
+    "Meaning": "For general exhibition; all ages are permitted to watch programming with this rating.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "PG",
+    "Meaning": "Parental guidance is recommended for young viewers; PG-rated content may air at any time on digital-only channels, otherwise, it should only be broadcast between 8:30 a.m. and 4:00 p.m. and between 7:00 p.m. and 6:00 a.m. on weekdays, and between 10:00 a.m. and 6:00 a.m. on weekends.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "M",
+    "Meaning": "Recommended for mature audiences; M-rated content may only be broadcast between 8:30 p.m. and 5:00 a.m. on any day, and additionally between 12:00 p.m. and 3:00 p.m. on schooldays.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "MA15+",
+    "Meaning": "Not suitable for children and teens under 15; MA15+-rated programming may only be broadcast between 9:00 p.m. and 5:00 a.m. on any given day. Consumer advice is mandatory. Some R18+ rated movies on DVD/Blu-ray are often re-edited on free TV/cable channels to secure a more \"appropriate\" MA15+ rating. Some movies that were rated R18 on DVD have since been aired in Australian TV with MA15+ rating.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "AV15+",
+    "Meaning": "Not suitable for children and teens under 15; this is the same as the MA15+ rating, except the \"AV\" stands for \"Adult Violence\" meaning that anything that is Classified \"MA15+\" with the consumer advice \"Frequent Violence\" or \"Strong Violence\" will automatically become AV15+ (with that same consumer advice.) The AV rating is still allowed to exceed any MA15+ content, in particular – 'Violence'. AV15+ content may only be broadcast between 9:30 p.m. and 5:00 a.m. on any day. Consumer advice is mandatory.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "AU",
+    "Rating": "R18+",
+    "Meaning": "Not for children under 18; this is limited to Adult \"Pay Per View\" VC 196 and 197. Content may include graphic violence, sexual situations, coarse language and explicit drug use.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "BR",
+    "Rating": "L",
+    "Meaning": "Content is suitable for all audiences.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "BR",
+    "Rating": "10",
+    "Meaning": "Content suitable for viewers over the age of 10.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "BR",
+    "Rating": "12",
+    "Meaning": "Content suitable for viewers over the age of 12.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "BR",
+    "Rating": "14",
+    "Meaning": "Content suitable for viewers over the age of 14.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "BR",
+    "Rating": "16",
+    "Meaning": "Content suitable for viewers over the age of 16.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "BR",
+    "Rating": "18",
+    "Meaning": "Content suitable for viewers over the age of 18.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "Exempt",
+    "Meaning": "Shows which are exempt from ratings (such as news and sports programming) will not display an on-screen rating at all.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "C",
+    "Meaning": "Programming suitable for children ages of 2–7 years. No profanity or sexual content of any level allowed. Contains little violence.",
+    "US_Equivalent": "TV-Y",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "C8",
+    "Meaning": "Suitable for children ages 8+. Low level violence and fantasy horror is allowed. No foul language is allowed, but occasional \"socially offensive and discriminatory\" language is allowed if in the context of the story. No sexual content of any level allowed.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "G",
+    "Meaning": "Suitable for general audiences. Programming suitable for the entire family with mild violence, and mild profanity and/or censored language.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "PG",
+    "Meaning": "Parental guidance. Moderate violence and moderate profanity is allowed, as is brief nudity and sexual references if important to the context of the story.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "14+",
+    "Meaning": "Programming intended for viewers ages 14 and older. May contain strong violence and strong profanity, and depictions of sexual activity as long as they are within the context of a story.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA",
+    "Rating": "18+",
+    "Meaning": "Programming intended for viewers ages 18 and older. May contain explicit violence and sexual activity. Programming with this rating cannot air before the watershed (9:00 p.m. to 6:00 a.m.).",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA-QC",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA-QC",
+    "Rating": "G",
+    "Meaning": "Appropriate for all ages and must contain little or no violence and little to no sexual content.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA-QC",
+    "Rating": "8+",
+    "Meaning": "Appropriate for children 8 and up may contain with little violence, language, and little to no sexual situations.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA-QC",
+    "Rating": "13+",
+    "Meaning": "Appropriate – suitable for children 13 and up and may contain with moderate violence, language, and some sexual situations.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA-QC",
+    "Rating": "16+",
+    "Meaning": "Recommended for children over the age of 16 and may contain with strong violence, strong language, and strong sexual content.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "CA-QC",
+    "Rating": "18+",
+    "Meaning": "Only to be viewed by adults and may contain extreme violence and graphic sexual content. It is mostly used for 18+ movies and pornography.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "DE",
+    "Rating": "0",
+    "Meaning": "Can be aired at any time.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "DE",
+    "Rating": "6",
+    "Meaning": "Can be aired at any time.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "DE",
+    "Rating": "12",
+    "Meaning": "The broadcaster must take the decision about the air time by taking in consideration the impact on young children in the timeframe from 6:00am to 8:00pm.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "DE",
+    "Rating": "16",
+    "Meaning": "Can be aired only from 10:00pm Uhr to 6:00am.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "DE",
+    "Rating": "18",
+    "Meaning": "Can be aired only from 11:00pm Uhr to 6:00am.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "Infantil",
+    "Meaning": "Specially recommended for younger children.",
+    "US_Equivalent": "TV-Y",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "TP",
+    "Meaning": "For general viewing.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "7",
+    "Meaning": "Not recommended for viewers under the age of 7.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "10",
+    "Meaning": "Not recommended for viewers under the age of 10.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "12",
+    "Meaning": "Not recommended for viewers under the age of 12.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "13",
+    "Meaning": "Not recommended for viewers under the age of 13.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "16",
+    "Meaning": "Not recommended for viewers under the age of 16.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "ES",
+    "Rating": "18",
+    "Meaning": "Not recommended for viewers under the age of 18.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "FR",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "FR",
+    "Rating": "10",
+    "Meaning": "Not recommended for children under 10. Not allowed in children's television series.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "FR",
+    "Rating": "12",
+    "Meaning": "Not recommended for children under 12. Not allowed air before 10:00 p.m. Some channels and programs are subject to exception.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "FR",
+    "Rating": "16",
+    "Meaning": "Not recommended for children under 16. Not allowed air before 10:30 p.m. Some channels and programs are subject to exception.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "FR",
+    "Rating": "18",
+    "Meaning": "Not recommended for persons under 18. Allowed between midnight and 5 a.m. and only in some channels, access to these programs is locked by a personal password.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "U",
+    "Meaning": "The U symbol stands for Universal. A U film should be suitable for audiences aged four years and over.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "PG",
+    "Meaning": "PG stands for Parental Guidance. This means a film is suitable for general viewing, but some scenes may be unsuitable for young children. A PG film should not unsettle a child aged around eight or older.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "12A",
+    "Meaning": "Films classified 12A and video works classified 12 contain material that is not generally suitable for children aged under 12. 12A requires an adult to accompany any child under 12 seeing a 12A film at the cinema.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "12",
+    "Meaning": "Films classified 12A and video works classified 12 contain material that is not generally suitable for children aged under 12.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "15",
+    "Meaning": "No-one under 15 is allowed to see a 15 film at the cinema or buy/rent a 15 rated video. 15 rated works are not suitable for children under 15 years of age.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "18",
+    "Meaning": "Films rated 18 are for adults. No-one under 18 is allowed to see an 18 film at the cinema or buy / rent an 18 rated video. No 18 rated works are suitable for children.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "GB",
+    "Rating": "R18",
+    "Meaning": "The R18 category is a special and legally-restricted classification primarily for explicit works of consenting sex or strong fetish material involving adults.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "Unrated",
+    "Meaning": "Without age restriction.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "Children",
+    "Meaning": "Programs recommended for children. It is an optional rating, there is no obligation for broadcasters to indicate it.",
+    "US_Equivalent": "TV-Y",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "6",
+    "Meaning": "Programs not recommended for children below the age of 6, may not contain any violence or sexual content. A yellow circle with the number 6 written inside is used for this rating.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "12",
+    "Meaning": "Programs not recommended for children below the age of 12, may contain light sexual content or explicit language. Most films without serious violence or sexual content fit into this category as well. A yellow circle with the number 12 written inside is used for this rating.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "16",
+    "Meaning": "Programs not recommended for teens and children below the age of 16, may contain more intensive violence and sexual content. A yellow circle with the number 16 written inside is used for this rating.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "HU",
+    "Rating": "18",
+    "Meaning": "The program is recommended only for adult viewers (for ages 18 and up), may contain explicit violence and explicit sexual content. A red circle with the number 18 written inside is used for this rating (the red circle was also used until 2002, but it did not contain any number in it).",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "KR",
+    "Rating": "Exempt",
+    "Meaning": "This rating is only for knowledge based game shows; lifestyle shows; documentary shows; news; current topic discussion shows; education/culture shows; sports that excludes MMA or other violent sports; and other programs that Korea Communications Standards Commission recognizes.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "KR",
+    "Rating": "ALL",
+    "Meaning": "This rating is for programming that is appropriate for all ages. This program usually involves programs designed for children or families.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "KR",
+    "Rating": "7",
+    "Meaning": "This rating is for programming that may contain material inappropriate for children younger than 7, and parental discretion should be used. Some cartoon programming not deemed strictly as \"educational\", and films rated \"G\" or \"PG\" in North America may fall into the 7 category.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "KR",
+    "Rating": "12",
+    "Meaning": "This rating is for programs that may deemed inappropriate for those younger than 12, and parental discretion should be used. Usually used for animations that have stronger themes or violence then those designed for children, or for reality shows that have mild violence, themes, or language.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "KR",
+    "Rating": "15",
+    "Meaning": "This rating is for programs that contain material that may be inappropriate for children under 15, and that parental discretion should be used. Examples include most dramas, and talk shows on OTA (over-the-air) TV (KBS, MBC, SBS), and many American TV shows/dramas on Cable TV channels like OCN and OnStyle. The programs that have this rating may include moderate or strong adult themes, language, sexual inference, and violence. As with the TV-MA rating in North America, this rating is commonly applied to live events where the occurrence of inappropriate dialogue is unpredictable. Since 2007, this rating is the most used rating for TV.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "KR",
+    "Rating": "19",
+    "Meaning": "This rating is for programs that are intended for adults only. 19-rated programming cannot air during the hours of 7:00AM to 9:00AM, and 1:00PM to 10:00PM. Programmes that receive this rating will almost certainly have adult themes, sexual situations, frequent use of strong language and disturbing scenes of violence.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "LT",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "LT",
+    "Rating": "N-7",
+    "Meaning": "Intended for viewers from 7 years old.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "LT",
+    "Rating": "N-14",
+    "Meaning": "Intended for viewers from 14 years of age and broadcast from 21 (9pm) to 6 (6am) hours.",
+    "US_Equivalent": "TV-14",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "LT",
+    "Rating": "S",
+    "Meaning": "Intended for adult viewers from the age of 18 (corresponding to the age-appropriate index N-18) and broadcast between 23 (11pm) and 6 (6am) hours; Limited to minors and intended for adult audiences.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "NL",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "NL",
+    "Rating": "AL",
+    "Meaning": "Not harmful / All Ages.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "NL",
+    "Rating": "6",
+    "Meaning": "Take care with children under 6.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "NL",
+    "Rating": "9",
+    "Meaning": "Take care with children under 9.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "NL",
+    "Rating": "12",
+    "Meaning": "Take care with children under 12.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "NL",
+    "Rating": "16",
+    "Meaning": "Take care with children under 16.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "PH",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "PH",
+    "Rating": "G",
+    "Meaning": "Suitable for all ages. Material for television, which in the judgment of the Board does not contain anything unsuitable for children.",
+    "US_Equivalent": "TV-G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "PH",
+    "Rating": "PG",
+    "Meaning": "Parental guidance suggested. Material for television, which, in the judgment of the Board, may contain some adult material that may be permissible for children to watch but only under the guidance and supervision of a parent or adult.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "PH",
+    "Rating": "SPG",
+    "Meaning": "Stronger and more vigilant parental guidance is suggested. Programs classified as “SPG” may contain more serious topic and theme, which may not be advisable for children to watch except under the very vigilant guidance and presence of a parent or an adult.",
+    "US_Equivalent": "TV-14",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "PH",
+    "Rating": "X",
+    "Meaning": "Any television program that does not conform to the “G”, “PG”, and “SPG” classification shall be disapproved for television broadcast.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 3
+  },
+  {
+    "EntryType": 2,
+    "Country": "PT",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "PT",
+    "Rating": "T",
+    "Meaning": "Todos (suitable for all).",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "PT",
+    "Rating": "10AP",
+    "Meaning": "Acompanhamento Parental (may not be suitable for children under 10, parental guidance advised).",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "PT",
+    "Rating": "12AP",
+    "Meaning": "Acompanhamento Parental (may not be suitable for children under 12, parental guidance advised).",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "PT",
+    "Rating": "16",
+    "Meaning": "Not suitable for children under 16, access to these programs is locked by a personal password.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "PT",
+    "Rating": "18",
+    "Meaning": "Not suitable for children under 18.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "RU",
+    "Rating": "0+",
+    "Meaning": "Can be watched by Any Age.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "RU",
+    "Rating": "6+",
+    "Meaning": "Only kids the age of 6 or older can watch.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "RU",
+    "Rating": "12+",
+    "Meaning": "Only kids the age of 12 or older can watch.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "RU",
+    "Rating": "16+",
+    "Meaning": "Only teens the age of 16 or older can watch.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "RU",
+    "Rating": "18+",
+    "Meaning": "Restricted to People 18 or Older.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "SK",
+    "Rating": "NR",
+    "Meaning": "No rating information.",
+    "US_Equivalent": "NR",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "SK",
+    "Rating": "7",
+    "Meaning": "Content suitable for children over 6 years.",
+    "US_Equivalent": "TV-Y7",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "SK",
+    "Rating": "12",
+    "Meaning": "Content suitable for children over 12 years.",
+    "US_Equivalent": "TV-PG",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "SK",
+    "Rating": "15",
+    "Meaning": "Content suitable for teens over 15 years.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "SK",
+    "Rating": "18",
+    "Meaning": "Content exclusively for adults.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "ส",
+    "Meaning": "Sor - Educational movies which the public should be encouraged to see.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "ท",
+    "Meaning": "Tor - G Movies appropriate for the general public. No sex, abusive language or violence.",
+    "US_Equivalent": "TV-G",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "น 13+",
+    "Meaning": "Nor 13+ Movies appropriate for audiences aged 13 and older.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "น 15+",
+    "Meaning": "Nor 15+ Movies appropriate for audiences aged 15 and older. Some violence, brutality, inhumanity, bad language or indecent gestures allowed.",
+    "US_Equivalent": "TV-14",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "น 18+",
+    "Meaning": "Nor 18+ Movies appropriate for audiences aged 18 and older.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "ฉ 20-",
+    "Meaning": "Chor 20 - Movies prohibited for audiences aged below 20.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  },
+  {
+    "EntryType": 2,
+    "Country": "TH",
+    "Rating": "-",
+    "Meaning": "Banned.",
+    "US_Equivalent": "TV-MA",
+    "Rank": 2
+  }
+]

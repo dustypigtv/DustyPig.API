@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustyPig.API", "DustyPig.API\DustyPig.API.csproj", "{FC03241B-85DC-42B0-8A73-25FF2A894E47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96C5F235-0C46-4377-8C49-06C548A5C3E1}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{64FB6C07-EF1A-4EA9-98C9-15DCB715F07F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{266EF426-B43A-4A54-BCFB-E903538B0765}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\auto_build.yml = .github\workflows\auto_build.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC03241B-85DC-42B0-8A73-25FF2A894E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC03241B-85DC-42B0-8A73-25FF2A894E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC03241B-85DC-42B0-8A73-25FF2A894E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC03241B-85DC-42B0-8A73-25FF2A894E47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64FB6C07-EF1A-4EA9-98C9-15DCB715F07F} = {96C5F235-0C46-4377-8C49-06C548A5C3E1}
+		{266EF426-B43A-4A54-BCFB-E903538B0765} = {64FB6C07-EF1A-4EA9-98C9-15DCB715F07F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7072E16B-A4FB-4CC2-8E51-E6315F0CE2D2}
+	EndGlobalSection
+EndGlobal
