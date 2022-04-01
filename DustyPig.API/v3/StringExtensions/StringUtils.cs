@@ -229,7 +229,7 @@ namespace System
             // Remove movie year
             int pos = str.LastIndexOf("(");
             if (pos > 0)
-                str = str[..pos].Trim();
+                str = str.Substring(0, pos).Trim();
 
             if (string.IsNullOrWhiteSpace(str))
                 return new List<string>();
