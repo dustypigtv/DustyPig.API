@@ -26,6 +26,9 @@ namespace DustyPig.API.v3
         }
 
 
+        public static Version APIVersion => typeof(Client).Assembly.GetName().Version;
+            
+
         public string Token { get; set; }
 
         public AccountClient Account => new AccountClient(this);
