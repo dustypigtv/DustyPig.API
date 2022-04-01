@@ -27,11 +27,11 @@ namespace DustyPig.API.v3.Clients
             _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", new SimpleValue<string>(code), cancellationToken);
 
 
-        /// <summary>
-        /// Logs into the account using a Firebase OAuth refresh token, and returns an account level bearer token
-        /// </summary>
-        public Task<Response<string>> OAuthLoginAsync(string refreshToken, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<string>(false, PREFIX + "OAuthLogin", new SimpleValue<string>(refreshToken), cancellationToken);
+        ///// <summary>
+        ///// Logs into the account using a Firebase OAuth refresh token, and returns an account level bearer token
+        ///// </summary>
+        //public Task<Response<string>> OAuthLoginAsync(string refreshToken, CancellationToken cancellationToken = default) =>
+        //    _client.PostWithSimpleResponseDataAsync<string>(false, PREFIX + "OAuthLogin", new SimpleValue<string>(refreshToken), cancellationToken);
 
 
         /// <summary>
