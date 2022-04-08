@@ -26,7 +26,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<List<Notification>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<Notification>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<Notification>>(true, PREFIX + "List", cancellationToken);
 
 
         /// <summary>

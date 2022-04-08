@@ -18,13 +18,13 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedTMDB>> GetMovieAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedTMDB>(true, PREFIX + $"GetMovie/{id}", cancellationToken);
+            _client.GetAsync<DetailedTMDB>(true, PREFIX + $"GetMovie/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedTMDB>> GetSeriesAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedTMDB>(true, PREFIX + $"GetSeries/{id}", cancellationToken);
+            _client.GetAsync<DetailedTMDB>(true, PREFIX + $"GetSeries/{id}", cancellationToken);
     }
 }

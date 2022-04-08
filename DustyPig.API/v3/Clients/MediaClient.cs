@@ -18,35 +18,35 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<HomeScreen>> GetHomeScreenAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<HomeScreen>(true, PREFIX + "HomeScreen", cancellationToken);
+            _client.GetAsync<HomeScreen>(true, PREFIX + "HomeScreen", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> ListGenreItemsAsync(GenreListRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + "ListGenreItems", data, cancellationToken);
+            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "ListGenreItems", data, cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> ListLibraryItemsAsync(LibraryListRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + "ListLibraryItems", data, cancellationToken);
+            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "ListLibraryItems", data, cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(IDListRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + "LoadMoreHomeScreenItems", data, cancellationToken);
+            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "LoadMoreHomeScreenItems", data, cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<SearchResults>> SearchAsync(string query, CancellationToken cancellationToken = default) =>
-            _client.PostWithResponseDataAsync<SearchResults>(true, PREFIX + "Search", new SimpleValue<string>(query), cancellationToken);
+            _client.PostAsync<SearchResults>(true, PREFIX + "Search", new SimpleValue<string>(query), cancellationToken);
 
 
         /// <summary>

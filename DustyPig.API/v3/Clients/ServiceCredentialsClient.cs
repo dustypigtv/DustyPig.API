@@ -19,14 +19,14 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateGoogleDriveCredential data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "CreateGoogleDrive", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "CreateGoogleDrive", data, cancellationToken);
 
 
         /// <summary>
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateS3Credential data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "CreateS3", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "CreateS3", data, cancellationToken);
 
 
         /// <summary>
@@ -40,28 +40,28 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<GoogleDriveCredential>> GetGoogleDriveDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<GoogleDriveCredential>(true, PREFIX + $"GetGoogleDriveDetails/{id}", cancellationToken);
+            _client.GetAsync<GoogleDriveCredential>(true, PREFIX + $"GetGoogleDriveDetails/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<GoogleDriveToken>> GetGoogleDriveTokenAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<GoogleDriveToken>(true, PREFIX + $"GetGoogleDriveToken/{id}", cancellationToken);
+            _client.GetAsync<GoogleDriveToken>(true, PREFIX + $"GetGoogleDriveToken/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires main profile
         /// </summary>
         public Task<Response<S3Credential>> GetS3DetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<S3Credential>(true, PREFIX + $"GetS3Details/{id}", cancellationToken);
+            _client.GetAsync<S3Credential>(true, PREFIX + $"GetS3Details/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires main profile
         /// </summary>
         public Task<Response<List<ServiceCredential>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<ServiceCredential>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<ServiceCredential>>(true, PREFIX + "List", cancellationToken);
 
 
         /// <summary>

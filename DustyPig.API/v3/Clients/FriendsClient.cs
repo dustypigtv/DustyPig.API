@@ -18,7 +18,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<DetailedFriend>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedFriend>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedFriend>(true, PREFIX + $"Details/{id}", cancellationToken);
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<List<BasicFriend>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicFriend>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<BasicFriend>>(true, PREFIX + "List", cancellationToken);
 
 
         /// <summary>

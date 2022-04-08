@@ -19,21 +19,21 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicPlaylist>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicPlaylist>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<BasicPlaylist>>(true, PREFIX + "List", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedPlaylist>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedPlaylist>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedPlaylist>(true, PREFIX + $"Details/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreatePlaylist data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<int>> AddItemAsync(AddPlaylistItem data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "AddItem", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "AddItem", data, cancellationToken);
 
 
 

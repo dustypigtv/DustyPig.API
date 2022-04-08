@@ -18,7 +18,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateEpisode data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
         /// <summary>
         /// Requires main profile
@@ -31,14 +31,14 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedEpisode>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedEpisode>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedEpisode>(true, PREFIX + $"Details/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all mvoies owned by the account
         /// </summary>
         public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+            _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
         
         
         /// <summary>

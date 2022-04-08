@@ -18,7 +18,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateMovie data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -32,28 +32,28 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedMovie>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedMovie>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedMovie>(true, PREFIX + $"Details/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires main profile. Designed for admin tools, this will return info on any movie owned by the account
         /// </summary>
         public Task<Response<DetailedMovie>> GetAdminDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
+            _client.GetAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> ListAsync(ListRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + "List", data, cancellationToken);
+            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "List", data, cancellationToken);
 
 
         /// <summary>
         /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
         /// </summary>
         public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+            _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
 
 
         /// <summary>

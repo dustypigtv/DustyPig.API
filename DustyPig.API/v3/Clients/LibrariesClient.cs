@@ -19,7 +19,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateLibrary data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<DetailedLibrary>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedLibrary>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedLibrary>(true, PREFIX + $"Details/{id}", cancellationToken);
 
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicLibrary>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicLibrary>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<BasicLibrary>>(true, PREFIX + "List", cancellationToken);
 
 
         /// <summary>

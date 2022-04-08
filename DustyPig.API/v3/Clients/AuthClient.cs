@@ -17,7 +17,7 @@ namespace DustyPig.API.v3.Clients
         /// Returns a code that can be used to login to a device with no keyboard (streaming devices, smart tvs, etc)
         /// </summary>
         public Task<Response<string>> GenerateDeviceLoginCodeAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithSimpleResponseDataAsync<string>(false, PREFIX + "GenerateDeviceLoginCode", cancellationToken);
+            _client.GetSimpleAsync<string>(false, PREFIX + "GenerateDeviceLoginCode", cancellationToken);
 
 
         /// <summary>
@@ -38,14 +38,14 @@ namespace DustyPig.API.v3.Clients
         /// Returns an account level bearer token
         /// </summary>
         public Task<Response<string>> PasswordLoginAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<string>(false, PREFIX + "PasswordLogin", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<string>(false, PREFIX + "PasswordLogin", data, cancellationToken);
 
 
         /// <summary>
         /// Requires logged in account. Returns a profile level bearer token
         /// </summary>
         public Task<Response<string>> ProfileLoginAsync(ProfileCredentials data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<string>(true, PREFIX + "ProfileLogin", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<string>(true, PREFIX + "ProfileLogin", data, cancellationToken);
 
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace DustyPig.API.v3.Clients
         /// Check the generated code to see if it has been authorized, and if so returns an account level bearer token. Once this returns true, the generated code will be deleted
         /// </summary>
         public Task<Response<DeviceCodeStatus>> VerifyDeviceLoginCodeAsync(string code, CancellationToken cancellationToken = default) =>
-            _client.PostWithResponseDataAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new SimpleValue<string>(code), cancellationToken);
+            _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new SimpleValue<string>(code), cancellationToken);
 
     }
 }

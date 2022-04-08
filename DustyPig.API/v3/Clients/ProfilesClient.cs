@@ -18,7 +18,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateProfile data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedProfile>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedProfile>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedProfile>(true, PREFIX + $"Details/{id}", cancellationToken);
 
 
         /// <summary>
@@ -60,6 +60,6 @@ namespace DustyPig.API.v3.Clients
         /// Requires account
         /// </summary>
         public Task<Response<List<BasicProfile>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
     }
 }

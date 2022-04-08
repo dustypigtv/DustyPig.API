@@ -19,7 +19,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateSeries data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseDataAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -33,28 +33,28 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<DetailedSeries>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedSeries>(true, PREFIX + $"Details/{id}", cancellationToken);
+            _client.GetAsync<DetailedSeries>(true, PREFIX + $"Details/{id}", cancellationToken);
 
         
         /// <summary>
         /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account
         /// </summary>
         public Task<Response<DetailedMovie>> GetAdminDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
+            _client.GetAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + "List", cancellationToken);
+            _client.GetAsync<List<BasicMedia>>(true, PREFIX + "List", cancellationToken);
 
 
         /// <summary>
         /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
         /// </summary>
         public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+            _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
 
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> ListSubscriptionsAsync(CancellationToken cancellationToken = default) =>
-            _client.GetWithResponseDataAsync<List<BasicMedia>>(true, PREFIX + "ListSubscriptions", cancellationToken);
+            _client.GetAsync<List<BasicMedia>>(true, PREFIX + "ListSubscriptions", cancellationToken);
 
 
         /// <summary>
