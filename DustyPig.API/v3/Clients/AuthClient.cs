@@ -49,6 +49,20 @@ namespace DustyPig.API.v3.Clients
 
 
         /// <summary>
+        /// Sends a password reset email
+        /// </summary>
+        public Task<Response> SendPasswordResetEmailAsync(string email, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", new SimpleValue<string>(email), cancellationToken);
+
+
+        /// <summary>
+        /// Sends a verification email
+        /// </summary>
+        public Task<Response> SendVerificationEmailAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(false, PREFIX + "SendVerificationEmail", data, cancellationToken);
+
+
+        /// <summary>
         /// If called by a logged in profile, will sign out of the profile. If called by a logged in account, will sign out of the account
         /// </summary>
         public Task<Response> SignoutAsync(CancellationToken cancellationToken = default) =>
