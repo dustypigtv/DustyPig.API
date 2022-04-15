@@ -32,7 +32,7 @@ namespace DustyPig.API.v3.Models
 
             chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
             if (chk.Valid)
-                Email = chk.Fixed;
+                Password = chk.Fixed;
             else
                 lst.Add(chk.Error);
 
