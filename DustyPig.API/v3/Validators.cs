@@ -131,10 +131,10 @@ namespace DustyPig.API.v3
                             }
             }
 
-            ret.AddRange(Validate(media.Cast).Select(item => $"{nameof(media.Cast)}: {item}"));
-            ret.AddRange(Validate(media.Directors).Select(item => $"{nameof(media.Directors)}: {item}"));
-            ret.AddRange(Validate(media.Producers).Select(item => $"{nameof(media.Producers)}: {item}"));
-            ret.AddRange(Validate(media.Writers).Select(item => $"{nameof(media.Writers)}: {item}"));
+            ret.AddRange(ValidatePeople(media.Cast).Select(item => $"{nameof(media.Cast)}: {item}"));
+            ret.AddRange(ValidatePeople(media.Directors).Select(item => $"{nameof(media.Directors)}: {item}"));
+            ret.AddRange(ValidatePeople(media.Producers).Select(item => $"{nameof(media.Producers)}: {item}"));
+            ret.AddRange(ValidatePeople(media.Writers).Select(item => $"{nameof(media.Writers)}: {item}"));
 
             return ret;
         }
@@ -144,7 +144,7 @@ namespace DustyPig.API.v3
 
 
 
-        static List<string> Validate(List<string> lst)
+        static List<string> ValidatePeople(List<string> lst)
         {
             var ret = new List<string>();
 
@@ -197,6 +197,12 @@ namespace DustyPig.API.v3
 
 
             return (true, val, null);
+        }
+
+        public static void ValidateId(string name, int id, List<string> lst)
+        {
+            if (id <= 0)
+                lst.Add($"Invalid {name}");
         }
     }
 }

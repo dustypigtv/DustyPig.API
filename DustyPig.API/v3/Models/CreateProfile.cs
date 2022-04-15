@@ -1,11 +1,12 @@
-﻿using DustyPig.API.v3.MPAA;
+﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.MPAA;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateProfile
+    public class CreateProfile : IValidate
     {
         [JsonRequired]
         [JsonProperty("name")]

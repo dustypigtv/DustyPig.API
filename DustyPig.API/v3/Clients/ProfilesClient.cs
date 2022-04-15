@@ -24,15 +24,25 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<DetailedProfile>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<DetailedProfile>(true, PREFIX + $"Details/{id}", cancellationToken);
+        public Task<Response<DetailedProfile>> GetDetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<DetailedProfile> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<DetailedProfile>(true, PREFIX + $"Details/{id}", cancellationToken);
+        }
 
 
         /// <summary>

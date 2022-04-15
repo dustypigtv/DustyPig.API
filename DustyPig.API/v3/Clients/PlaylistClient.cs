@@ -25,8 +25,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<DetailedPlaylist>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<DetailedPlaylist>(true, PREFIX + $"Details/{id}", cancellationToken);
+        public Task<Response<DetailedPlaylist>> GetDetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<DetailedPlaylist> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<DetailedPlaylist>(true, PREFIX + $"Details/{id}", cancellationToken);
+        }
 
 
         /// <summary>
@@ -46,8 +51,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        }
 
 
         /// <summary>
@@ -76,7 +86,12 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> DeleteItemAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.DeleteAsync(true, PREFIX + $"DeleteItem/{id}", cancellationToken);
+        public Task<Response> DeleteItemAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"DeleteItem/{id}", cancellationToken);
+        }
     }
 }

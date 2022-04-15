@@ -1,4 +1,5 @@
 ﻿using DustyPig.API.v3.Clients;
+using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.Models;
 using DustyPig.REST;
 using System;
@@ -87,16 +88,30 @@ namespace DustyPig.API.v3
             return new Response<T> { Error = ret.Error };
         }
 
-        internal Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken) =>
-            _client.PostAsync(url, data, GetHeaders(tokenNeeded), cancellationToken);
-        
+        internal Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+        {
+            if (data is IValidate iv)
+                try { iv.Validate(); }
+                catch (ModelValidationException ex) { return Task.FromResult(new Response { Error = ex }); }
+           
+            return _client.PostAsync(url, data, GetHeaders(tokenNeeded), cancellationToken);
+        }
 
-        internal Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken) =>
-            _client.PostAsync<T>(url, data, GetHeaders(tokenNeeded), cancellationToken);
-        
+        internal Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+        {
+            if (data is IValidate iv)
+                try { iv.Validate(); }
+                catch (ModelValidationException ex) { return Task.FromResult(new Response<T> { Error = ex }); }
+
+            return _client.PostAsync<T>(url, data, GetHeaders(tokenNeeded), cancellationToken);
+        }
 
         internal async Task<Response<T>> PostWithSimpleResponseAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
+            if (data is IValidate iv)
+                try { iv.Validate(); }
+                catch (ModelValidationException ex) { return new Response<T> { Error = ex }; }
+
             var ret = await _client.PostAsync<SimpleValue<T>>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
             if (ret.Success)
                 return new Response<T> { Data = ret.Data.Value, Success = true };

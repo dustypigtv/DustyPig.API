@@ -23,9 +23,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires logged in profile. Associates the generated code with logged in user account, allowing a subsequent call to <see cref="VerifyDeviceLoginCodeAsync"/> by the device to get an account token
         /// </summary>
-        public Task<Response> LoginDeviceWithCodeAsync(string code, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", new SimpleValue<string>(code), cancellationToken);
+        public Task<Response> LoginDeviceWithCodeAsync(string code, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(code) || code.Length != Constants.DEVICE_ACTIVATION_CODE_LENGTH)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(code)}") });
 
+            return _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", new SimpleValue<string>(code), cancellationToken);
+        }
 
         /// <summary>
         /// Logs into the account using an OAuth token, and returns an account level bearer token
@@ -51,9 +55,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Sends a password reset email
         /// </summary>
-        public Task<Response> SendPasswordResetEmailAsync(string email, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", new SimpleValue<string>(email), cancellationToken);
+        public Task<Response> SendPasswordResetEmailAsync(string email, CancellationToken cancellationToken = default)
+        {
+            if (!System.StringUtils.IsValidEmail(email))
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
 
+            return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", new SimpleValue<string>(email), cancellationToken);
+        }
 
         /// <summary>
         /// Sends a verification email
@@ -79,8 +87,12 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Check the generated code to see if it has been authorized, and if so returns an account level bearer token. Once this returns true, the generated code will be deleted
         /// </summary>
-        public Task<Response<DeviceCodeStatus>> VerifyDeviceLoginCodeAsync(string code, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new SimpleValue<string>(code), cancellationToken);
+        public Task<Response<DeviceCodeStatus>> VerifyDeviceLoginCodeAsync(string code, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(code) || code.Length != Constants.DEVICE_ACTIVATION_CODE_LENGTH)
+                return Task.FromResult(new Response<DeviceCodeStatus> { Error = new ModelValidationException($"Invalid {nameof(code)}") });
 
+            return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new SimpleValue<string>(code), cancellationToken);
+        }
     }
 }

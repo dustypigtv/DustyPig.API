@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class UpdateFriend
+    public class UpdateFriend : IValidate
     {
         [JsonRequired]
         [JsonProperty("id")]
@@ -22,8 +23,7 @@ namespace DustyPig.API.v3.Models
         {
             var lst = new List<string>();
 
-            if (Id <= 0)
-                lst.Add($"Invalid {nameof(Id)}");
+            Validators.ValidateId(nameof(Id), Id, lst);
 
             var (Valid, Fixed, Error) = Validators.Validate(nameof(DisplayName), DisplayName, false, Constants.MAX_NAME_LENGTH);
             if (Valid)

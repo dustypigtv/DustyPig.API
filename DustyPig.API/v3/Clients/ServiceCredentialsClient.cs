@@ -32,29 +32,49 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken) =>
-            _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<GoogleDriveCredential>> GetGoogleDriveDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<GoogleDriveCredential>(true, PREFIX + $"GetGoogleDriveDetails/{id}", cancellationToken);
+        public Task<Response<GoogleDriveCredential>> GetGoogleDriveDetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<GoogleDriveCredential> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<GoogleDriveCredential>(true, PREFIX + $"GetGoogleDriveDetails/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<GoogleDriveToken>> GetGoogleDriveTokenAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<GoogleDriveToken>(true, PREFIX + $"GetGoogleDriveToken/{id}", cancellationToken);
+        public Task<Response<GoogleDriveToken>> GetGoogleDriveTokenAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<GoogleDriveToken> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<GoogleDriveToken>(true, PREFIX + $"GetGoogleDriveToken/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<S3Credential>> GetS3DetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<S3Credential>(true, PREFIX + $"GetS3Details/{id}", cancellationToken);
+        public Task<Response<S3Credential>> GetS3DetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<S3Credential> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<S3Credential>(true, PREFIX + $"GetS3Details/{id}", cancellationToken);
+        }
 
 
         /// <summary>

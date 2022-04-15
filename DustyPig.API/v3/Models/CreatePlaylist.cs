@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class CreatePlaylist
+    public class CreatePlaylist : IValidate
     {
         [JsonProperty("name")]
         [JsonRequired]

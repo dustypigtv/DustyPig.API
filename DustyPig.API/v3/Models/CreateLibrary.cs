@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateLibrary
+    public class CreateLibrary : IValidate
     {
         [JsonRequired]
         [JsonProperty("name")]

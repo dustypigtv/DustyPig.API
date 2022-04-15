@@ -8,6 +8,10 @@
 
         public const int MAX_DESCRIPTION_LENGTH = 2500;
 
+        public const int MAX_MOBILE_DEVICE_ID_LENGTH = 1024;
+
+        public const int DEVICE_ACTIVATION_CODE_LENGTH = 5;
+
 
         public static readonly MediaTypes[] PLAYABLE_MEDIA_TYPES = new MediaTypes[] { MediaTypes.Movie, MediaTypes.Episode };
 

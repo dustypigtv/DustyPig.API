@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class UpdateProfile : CreateProfile
+    public class UpdateProfile : CreateProfile, IValidate
     {
         [JsonRequired]
         [JsonProperty("id")]
@@ -14,8 +15,7 @@ namespace DustyPig.API.v3.Models
         {
             var lst = new List<string>();
 
-            if (Id <= 0)
-                lst.Add($"Invalid {nameof(Id)}");
+            Validators.ValidateId(nameof(Id), Id, lst);
 
             try { base.Validate(); }
             catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }

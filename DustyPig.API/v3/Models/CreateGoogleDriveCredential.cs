@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateGoogleDriveCredential
+    public class CreateGoogleDriveCredential : IValidate
     {
         [JsonRequired]
         [JsonProperty("name")]
@@ -32,9 +34,15 @@ namespace DustyPig.API.v3.Models
 
             chk = Validators.Validate(nameof(Email), Email, true, int.MaxValue);
             if (chk.Valid)
+            {
                 Email = chk.Fixed;
+                if (!StringUtils.IsValidEmail(Email))
+                    lst.Add($"Invalid {nameof(Email)}");
+            }
             else
+            {
                 lst.Add(chk.Error);
+            }
 
             //Don't change the text of the credential
             chk = Validators.Validate(nameof(ServiceCredentialsJson), ServiceCredentialsJson, true, int.MaxValue);

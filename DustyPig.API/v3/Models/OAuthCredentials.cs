@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DustyPig.API.v3.Models
 {
@@ -6,15 +10,12 @@ namespace DustyPig.API.v3.Models
     {
         Apple,
         Facebook,
-        Google,
-        Microsoft,
-        Twitter
+        Google
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class OAuthCredentials
+    public class OAuthCredentials : IValidate
     {
-
         [JsonRequired]
         [JsonProperty("provider")]
         public OAuthCredentialProviders Provider { get; set; }
@@ -22,5 +23,23 @@ namespace DustyPig.API.v3.Models
         [JsonRequired]
         [JsonProperty("token")]
         public string Token { get; set; }
+
+        public void Validate()
+        {
+            var lst = new List<string>();
+            if (!Enum.GetNames(typeof(OAuthCredentialProviders)).Contains(Provider.ToString()))
+                lst.Add($"Invalid {nameof(Provider)}");
+
+
+            var chk = Validators.Validate(nameof(Token), Token, true, int.MaxValue);
+            if (chk.Valid)
+                Token = chk.Fixed;
+            else
+                lst.Add(chk.Error);
+
+            if (lst.Count > 0)
+                throw new ModelValidationException { Errors = lst };
+        }
+        
     }
 }

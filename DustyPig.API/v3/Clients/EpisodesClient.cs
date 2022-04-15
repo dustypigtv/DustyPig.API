@@ -23,22 +23,37 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<DetailedEpisode>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<DetailedEpisode>(true, PREFIX + $"Details/{id}", cancellationToken);
+        public Task<Response<DetailedEpisode>> GetDetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<DetailedEpisode> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<DetailedEpisode>(true, PREFIX + $"Details/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all mvoies owned by the account
         /// </summary>
-        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default)
+        {
+            if (start <= 0)
+                return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
+
+            return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+        }
         
         
         /// <summary>

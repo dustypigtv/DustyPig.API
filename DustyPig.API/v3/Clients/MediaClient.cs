@@ -45,21 +45,39 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<SearchResults>> SearchAsync(string query, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<SearchResults>(true, PREFIX + "Search", new SimpleValue<string>(query), cancellationToken);
+        public Task<Response<SearchResults>> SearchAsync(string query, CancellationToken cancellationToken = default)
+        {
+            var chk = Validators.Validate(nameof(query), query, true, byte.MaxValue);
+            if (chk.Valid)
+                query = chk.Fixed;
+            else
+                return Task.FromResult(new Response<SearchResults> { Error  = new ModelValidationException(chk.Error) });
+
+            return _client.PostAsync<SearchResults>(true, PREFIX + "Search", new SimpleValue<string>(query), cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> AddToWatchlistAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync(true, PREFIX + $"AddToWatchlist/{id}", cancellationToken);
+        public Task<Response> AddToWatchlistAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync(true, PREFIX + $"AddToWatchlist/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> DeleteFromWatchlistAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.DeleteAsync(true, PREFIX + $"DeleteFromWatchlist/{id}", cancellationToken);
+        public Task<Response> DeleteFromWatchlistAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"DeleteFromWatchlist/{id}", cancellationToken);
+        }
     }
 }

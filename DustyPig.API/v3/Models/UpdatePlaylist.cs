@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using DustyPig.API.v3.Interfaces;
+using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class UpdatePlaylist : BasicPlaylist
+    public class UpdatePlaylist : BasicPlaylist, IValidate
     {
         public new void Validate()
         {
             var lst = new List<string>();
 
-            if (Id <= 0)
-                lst.Add("Invalid Id");
+            Validators.ValidateId(nameof(Id), Id, lst);
 
             try { base.Validate(); }
             catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }

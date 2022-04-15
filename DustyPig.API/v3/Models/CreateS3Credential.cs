@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateS3Credential
+    public class CreateS3Credential : IValidate
     {
         [JsonRequired]
         [JsonProperty("name")]

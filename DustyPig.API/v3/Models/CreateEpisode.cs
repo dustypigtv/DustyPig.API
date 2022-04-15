@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateEpisode : BaseEpisodeInfo, IMedia, IPlayableMedia
+    public class CreateEpisode : BaseEpisodeInfo, IMedia, IPlayableMedia, IValidate
     {
         #region IMedia
 
@@ -36,8 +36,7 @@ namespace DustyPig.API.v3.Models
         {
             var lst = new List<string>();
 
-            if (SeriesId <= 0)
-                lst.Add($"Invalid {nameof(SeriesId)}");
+            Validators.ValidateId(nameof(SeriesId), SeriesId, lst);
 
             if (SeasonNumber < 0)
                 lst.Add($"{nameof(SeasonNumber)} must be >= 0");

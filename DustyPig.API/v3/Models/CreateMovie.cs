@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateMovie : BaseMovieInfo, IMedia, ITopLevelMedia, IPlayableMedia
+    public class CreateMovie : BaseMovieInfo, IMedia, ITopLevelMedia, IPlayableMedia, IValidate
     {
         #region IMedia
 

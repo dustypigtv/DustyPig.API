@@ -24,22 +24,37 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        public Task<Response> DeleteAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<DetailedMovie>> GetDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<DetailedMovie>(true, PREFIX + $"Details/{id}", cancellationToken);
+        public Task<Response<DetailedMovie>> GetDetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<DetailedMovie> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+        
+            return _client.GetAsync<DetailedMovie>(true, PREFIX + $"Details/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires main profile. Designed for admin tools, this will return info on any movie owned by the account
         /// </summary>
-        public Task<Response<DetailedMovie>> GetAdminDetailsAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
+        public Task<Response<DetailedMovie>> GetAdminDetailsAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<DetailedMovie> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+        
+            return _client.GetAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
+        }
 
 
         /// <summary>
@@ -52,22 +67,32 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
         /// </summary>
-        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default)
+        {
+            if (start <= 0)
+                return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
+
+            return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires profile. Request override access to an existing movie
         /// </summary>
-        public Task<Response> RequestAccessOverrideAsync(int id, CancellationToken cancellationToken = default) =>
-            _client.GetAsync(true, PREFIX + $"RequestAccessOverride/{id}", cancellationToken);
+        public Task<Response> RequestAccessOverrideAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync(true, PREFIX + $"RequestAccessOverride/{id}", cancellationToken);
+        }
 
 
         /// <summary>
         /// Requires main profile. Set access override for a specific movie
         /// </summary>
-        public Task<Response> SetAccessOverrideAsync(TitleOverride info, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "SetAccessOverride", info, cancellationToken);
+        public Task<Response> SetAccessOverrideAsync(TitleOverride data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "SetAccessOverride", data, cancellationToken);
 
 
         /// <summary>
