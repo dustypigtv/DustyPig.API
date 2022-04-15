@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
@@ -27,9 +28,15 @@ namespace DustyPig.API.v3.Models
 
             var chk = Validators.Validate(nameof(Email), Email, true, int.MaxValue);
             if (chk.Valid)
+            {
                 Email = chk.Fixed.ToLower();
+                if (!StringUtils.IsValidEmail(Email))
+                    lst.Add($"Invalid {nameof(Email)}");
+            }
             else
+            {
                 lst.Add(chk.Error);
+            }
 
             chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
             if (chk.Valid)

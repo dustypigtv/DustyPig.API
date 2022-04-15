@@ -25,7 +25,7 @@ namespace DustyPig.API.v3.Models
             {
                 Email = chk.Fixed;
                 if (!StringUtils.IsValidEmail(Email))
-                    lst.Add($"Invalid {Email}");
+                    lst.Add($"Invalid {nameof(Email)}");
             }
             else
             {
