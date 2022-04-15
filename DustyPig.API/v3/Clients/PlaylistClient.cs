@@ -93,5 +93,11 @@ namespace DustyPig.API.v3.Clients
 
             return _client.DeleteAsync(true, PREFIX + $"DeleteItem/{id}", cancellationToken);
         }
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> MoveItemToNewIndexAsync(ManagePlaylistItem data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "MoveItemToNewIndex", data, cancellationToken);
     }
 }
