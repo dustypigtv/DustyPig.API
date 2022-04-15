@@ -17,8 +17,8 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Create the Firebase account and send a confirmation email
         /// </summary>
-        public Task<Response> CreateAsync(CreateAccount data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(false, PREFIX + "Create", data, cancellationToken);
+        public Task<Response<CreateAccountResponse>> CreateAsync(CreateAccount data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<CreateAccountResponse>(false, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
