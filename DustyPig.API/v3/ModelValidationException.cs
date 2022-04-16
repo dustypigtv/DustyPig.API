@@ -15,6 +15,6 @@ namespace DustyPig.API.v3
 
         public List<string> Errors { get; set; }
 
-        public override string ToString() => $"{Message}:\r\n\r\n" + string.Join("\r\n", Errors);
+        public override string ToString() => $"{Message}:\n\n" + string.Join("\n", Errors);
     }
 }
