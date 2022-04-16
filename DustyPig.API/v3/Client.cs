@@ -15,7 +15,7 @@ namespace DustyPig.API.v3
 #if DEBUG
         private const string BASE_URL = "https://localhost:5001/api/v3/";
 #else
-        private const string BASE_URL = "https://dustypig.azurewebsites.net/api/v3/";
+        private const string BASE_URL = "https://service.dustypig.tv/api/v3/";
 #endif
 
         private static readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(BASE_URL) };
