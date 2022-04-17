@@ -32,24 +32,26 @@ namespace DustyPig.API.v3.Clients
         }
 
         /// <summary>
-        /// Logs into the account using an OAuth token, and returns an account level bearer token
+        /// Logs into the account using an OAuth token. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
+        /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
         /// </summary>
-        public Task<Response<string>> OAuthLoginAsync(OAuthCredentials data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<string>(false, PREFIX + "OAuthLogin", data, cancellationToken);
+        public Task<Response<LoginResponse>> OAuthLoginAsync(OAuthCredentials data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<LoginResponse>(false, PREFIX + "OAuthLogin", data, cancellationToken);
 
 
         /// <summary>
-        /// Returns an account level bearer token
+        /// Logs into the account using email and password. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
+        /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
         /// </summary>
-        public Task<Response<string>> PasswordLoginAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<string>(false, PREFIX + "PasswordLogin", data, cancellationToken);
+        public Task<Response<LoginResponse>> PasswordLoginAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<LoginResponse>(false, PREFIX + "PasswordLogin", data, cancellationToken);
 
 
         /// <summary>
         /// Requires logged in account. Returns a profile level bearer token
         /// </summary>
-        public Task<Response<string>> ProfileLoginAsync(ProfileCredentials data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<string>(true, PREFIX + "ProfileLogin", data, cancellationToken);
+        public Task<Response<LoginResponse>> ProfileLoginAsync(ProfileCredentials data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<LoginResponse>(true, PREFIX + "ProfileLogin", data, cancellationToken);
 
 
         /// <summary>
@@ -85,7 +87,10 @@ namespace DustyPig.API.v3.Clients
 
 
         /// <summary>
-        /// Check the generated code to see if it has been authorized, and if so returns an account level bearer token. Once this returns true, the generated code will be deleted
+        /// Check the generated code to see if it has been authorized, and if so returns a level bearer token. 
+        /// If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
+        /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token.
+        /// Once this returns true, the generated code will be deleted
         /// </summary>
         public Task<Response<DeviceCodeStatus>> VerifyDeviceLoginCodeAsync(string code, CancellationToken cancellationToken = default)
         {
