@@ -12,5 +12,8 @@ namespace DustyPig.API.v3.Models
         /// </summary>
         [JsonProperty("token")]
         public string Token { get; set; }
+
+        [JsonProperty("login_type")]
+        public LoginResponseType LoginType { get; set; }
     }
 }
