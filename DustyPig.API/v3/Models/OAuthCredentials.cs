@@ -24,6 +24,9 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("token")]
         public string Token { get; set; }
 
+        [JsonProperty("device_token")]
+        public string DeviceToken { get; set; }
+
         public void Validate()
         {
             var lst = new List<string>();
@@ -34,6 +37,12 @@ namespace DustyPig.API.v3.Models
             var chk = Validators.Validate(nameof(Token), Token, true, int.MaxValue);
             if (chk.Valid)
                 Token = chk.Fixed;
+            else
+                lst.Add(chk.Error);
+
+            chk = Validators.Validate(nameof(DeviceToken), DeviceToken, false, Constants.MAX_MOBILE_DEVICE_ID_LENGTH);
+            if (chk.Valid)
+                DeviceToken = chk.Fixed;
             else
                 lst.Add(chk.Error);
 
