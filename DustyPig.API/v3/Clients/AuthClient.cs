@@ -99,5 +99,11 @@ namespace DustyPig.API.v3.Clients
 
             return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new SimpleValue<string>(code), cancellationToken);
         }
+
+        /// <summary>
+        /// Verifies an auth token and returns the type
+        /// </summary>
+        public Task<Response<VerifyTokenResponse>> VerifyTokenAsync(CancellationToken cancellationToken = default) =>
+            _client.GetAsync<VerifyTokenResponse>(true, PREFIX + "VerifyToken", cancellationToken);
     }
 }
