@@ -41,6 +41,9 @@ namespace DustyPig.API.v3.Models
                 lst.Add(chk.Error);
             }
 
+            if (Email == Clients.AuthClient.TEST_EMAIL)
+                lst.Add("Test email is not valid for this action");
+
             chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
             if (chk.Valid)
                 Password = chk.Fixed;

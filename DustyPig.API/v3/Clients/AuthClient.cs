@@ -63,8 +63,18 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response> SendPasswordResetEmailAsync(string email, CancellationToken cancellationToken = default)
         {
+            var chk = Validators.Validate(nameof(email), email, true, byte.MaxValue);
+            if (chk.Valid)
+                email = chk.Fixed.ToLower();
+            else
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
+
             if (!System.StringUtils.IsValidEmail(email))
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
+
+
+            if (email == TEST_EMAIL)
+                return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
 
             return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", new SimpleValue<string>(email), cancellationToken);
         }
