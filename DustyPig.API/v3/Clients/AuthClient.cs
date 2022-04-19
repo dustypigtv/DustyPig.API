@@ -7,6 +7,10 @@ namespace DustyPig.API.v3.Clients
 {
     public class AuthClient
     {
+        public const string TEST_EMAIL = "testuser@dustypig.tv";
+        public const string TEST_PASSWORD = "test password";
+
+
         private const string PREFIX = "Auth/";
 
         private readonly Client _client;
