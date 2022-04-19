@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -69,7 +70,7 @@ namespace DustyPig.API.v3.Clients
             else
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
 
-            if (!System.StringUtils.IsValidEmail(email))
+            if (!StringUtils.IsValidEmail(email))
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
 
 
@@ -82,9 +83,23 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Sends a verification email
         /// </summary>
-        public Task<Response> SendVerificationEmailAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(false, PREFIX + "SendVerificationEmail", data, cancellationToken);
+        public Task<Response> SendVerificationEmailAsync(PasswordCredentials data, CancellationToken cancellationToken = default)
+        {
+            var chk = Validators.Validate(nameof(data.Email), data.Email, true, byte.MaxValue);
+            if (chk.Valid)
+                data.Email = chk.Fixed.ToLower();
+            else
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(data.Email)}") });
 
+            if (!StringUtils.IsValidEmail(data.Email))
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(data.Email)}") });
+
+
+            if (data.Email == TEST_EMAIL)
+                return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
+
+            return _client.PostAsync(false, PREFIX + "SendVerificationEmail", data, cancellationToken);
+        }
 
         /// <summary>
         /// If called by a logged in profile, will sign out of the profile. If called by a logged in account, will sign out of the account

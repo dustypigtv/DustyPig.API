@@ -32,8 +32,17 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response> InviteAsync(string email, CancellationToken cancellationToken = default)
         {
-            if(!StringUtils.IsValidEmail(email))
+            var chk = Validators.Validate(nameof(email), email, true, byte.MaxValue);
+            if (chk.Valid)
+                email = chk.Fixed.ToLower();
+            else
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
+
+            if (!StringUtils.IsValidEmail(email))
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
+
+            if (email == AuthClient.TEST_EMAIL)
+                return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
 
             return _client.PostAsync(true, PREFIX + "Invite", new SimpleValue<string>(email), cancellationToken);
         }
