@@ -61,8 +61,18 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<List<BasicMedia>>> ListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetAsync<List<BasicMedia>>(true, PREFIX + "List", cancellationToken);
+        public Task<Response<List<BasicMedia>>> ListAsync(ListRequest data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "List", data, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> ListAsync(int start = 0, SortOrder sort = SortOrder.Alphabetical, CancellationToken cancellationToken = default) =>
+            ListAsync(new ListRequest
+            {
+                Start = start,
+                Sort = sort
+            }, cancellationToken);
 
 
         /// <summary>
