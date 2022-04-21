@@ -11,6 +11,11 @@ namespace DustyPig.API.v3.Models
         public int Id { get; set; }
 
         [JsonRequired]
+        [JsonProperty("id")]
+        public int MediaId { get; set; }
+
+
+        [JsonRequired]
         [JsonProperty("index")]
         public int Index { get; set; }
 

@@ -61,6 +61,16 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> ShareLibraryAsync(LibraryFriendLink data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "ShareLibrary", data, cancellationToken);
 
+        /// <summary>
+        /// Requires main profile. Shares a library with a friend
+        /// </summary>
+        public Task<Response> ShareLibraryAsync(int libraryId, int friendId, CancellationToken cancellationToken = default) =>
+            ShareLibraryAsync(new LibraryFriendLink
+            {
+                LibraryId = libraryId,
+                FriendId = friendId
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires main profile
@@ -80,11 +90,32 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> UnshareLibraryAsync(LibraryFriendLink data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "UnShareLibrary", data, cancellationToken);
 
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> UnshareLibraryAsync(int libraryId, int friendId, CancellationToken cancellationToken = default) =>
+            UnshareLibraryAsync(new LibraryFriendLink
+            {
+                FriendId = friendId,
+                LibraryId = libraryId
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires main profile
         /// </summary>
         public Task<Response> UpdateAsync(UpdateFriend data, CancellationToken cancellationToken = default) =>
              _client.PostAsync(true, PREFIX + "Update", data, cancellationToken);
+
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> UpdateAsync(int id, bool accepted, string displayName, CancellationToken cancellationToken = default) =>
+             UpdateAsync(new UpdateFriend
+             {
+                 Accepted = accepted,
+                 DisplayName = displayName,
+                 Id = id
+             }, cancellationToken);
     }
 }

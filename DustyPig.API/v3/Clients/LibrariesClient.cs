@@ -21,6 +21,16 @@ namespace DustyPig.API.v3.Clients
         public Task<Response<int>> CreateAsync(CreateLibrary data, CancellationToken cancellationToken = default) =>
             _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
 
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response<int>> CreateAsync(string name, bool isTV, CancellationToken cancellationToken = default) =>
+            CreateAsync(new CreateLibrary
+            {
+                Name = name,
+                IsTV = isTV
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires main profile
@@ -52,6 +62,16 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> LinkToProfileAsync(ProfileLibraryLink data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "LinkToProfile", data, cancellationToken);
 
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> LinkToProfileAsync(int profileId, int libraryId, CancellationToken cancellationToken = default) =>
+            LinkToProfileAsync(new ProfileLibraryLink
+            {
+                ProfileId = profileId,
+                LibraryId = libraryId,
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires profile
@@ -66,6 +86,16 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> ShareWithFriendAsync(LibraryFriendLink data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "ShareWithFriend", data, cancellationToken);
 
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> ShareWithFriendAsync(int libraryId, int friendId, CancellationToken cancellationToken = default) =>
+            ShareWithFriendAsync(new LibraryFriendLink
+            {
+                FriendId = friendId,
+                LibraryId = libraryId
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires main profile
@@ -77,8 +107,31 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
+        public Task<Response> UnlinkFromProfileAsync(int profileId, int libraryId, CancellationToken cancellationToken = default) =>
+             UnlinkFromProfileAsync(new ProfileLibraryLink
+             {
+                 ProfileId = profileId,
+                 LibraryId = libraryId
+             }, cancellationToken);
+
+
+
+
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
         public Task<Response> UnshareWithFriendAsync(LibraryFriendLink data, CancellationToken cancellationToken) =>
             _client.PostAsync(true, PREFIX + "UnShareWithFriend", data, cancellationToken);
+
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> UnshareWithFriendAsync(int libraryId, int friendId, CancellationToken cancellationToken) =>
+            UnshareWithFriendAsync(new LibraryFriendLink
+            {
+                LibraryId = libraryId,
+                FriendId = friendId
+            }, cancellationToken);
 
 
         /// <summary>

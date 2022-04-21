@@ -45,11 +45,37 @@ namespace DustyPig.API.v3.Clients
 
 
         /// <summary>
+        /// Logs into the account using an OAuth token. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
+        /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
+        /// </summary>
+        public Task<Response<LoginResponse>> OAuthLoginAsync(OAuthCredentialProviders provider, string token, string deviceToken = null, CancellationToken cancellationToken = default) =>
+            OAuthLoginAsync(new OAuthCredentials
+            {
+                 Provider = provider,
+                 Token = token, 
+                 DeviceToken = deviceToken
+            }, cancellationToken);
+
+
+
+        /// <summary>
         /// Logs into the account using email and password. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
         /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
         /// </summary>
         public Task<Response<LoginResponse>> PasswordLoginAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<LoginResponse>(false, PREFIX + "PasswordLogin", data, cancellationToken);
+
+        /// <summary>
+        /// Logs into the account using email and password. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
+        /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
+        /// </summary>
+        public Task<Response<LoginResponse>> PasswordLoginAsync(string email, string password, string deviceToken = null, CancellationToken cancellationToken = default) =>
+            PasswordLoginAsync(new PasswordCredentials
+            {
+                Email = email,
+                Password = password,
+                DeviceToken = deviceToken
+            }, cancellationToken);
 
 
         /// <summary>
@@ -57,6 +83,19 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<LoginResponse>> ProfileLoginAsync(ProfileCredentials data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<LoginResponse>(true, PREFIX + "ProfileLogin", data, cancellationToken);
+
+        /// <summary>
+        /// Requires logged in account. Returns a profile level bearer token
+        /// </summary>
+        public Task<Response<LoginResponse>> ProfileLoginAsync(int id, short? pin = null, string deviceToken = null, CancellationToken cancellationToken = default) =>
+            ProfileLoginAsync(new ProfileCredentials
+            {
+                Id = id,
+                Pin = pin,
+                DeviceToken = deviceToken
+            }, cancellationToken);
+
+
 
 
         /// <summary>
@@ -100,6 +139,17 @@ namespace DustyPig.API.v3.Clients
 
             return _client.PostAsync(false, PREFIX + "SendVerificationEmail", data, cancellationToken);
         }
+
+        /// <summary>
+        /// Sends a verification email
+        /// </summary>
+        public Task<Response> SendVerificationEmailAsync(string email, string password, CancellationToken cancellationToken = default) =>
+            SendVerificationEmailAsync(new PasswordCredentials
+            {
+                Email = email,
+                Password = password
+            }, cancellationToken);
+          
 
         /// <summary>
         /// If called by a logged in profile, will sign out of the profile. If called by a logged in account, will sign out of the account

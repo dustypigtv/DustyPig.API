@@ -51,12 +51,32 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> LinkToLibraryAsync(ProfileLibraryLink data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "LinkToLibrary", data, cancellationToken);
 
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> LinkToLibraryAsync(int profileId, int libraryId, CancellationToken cancellationToken = default) =>
+            LinkToLibraryAsync(new ProfileLibraryLink
+            {
+                ProfileId = profileId,
+                LibraryId = libraryId
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires main profile
         /// </summary>
         public Task<Response> UnlinkFromLibraryAsync(ProfileLibraryLink data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "UnLinkFromLibrary", data, cancellationToken);
+
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response> UnlinkFromLibraryAsync(int profileId, int libraryId, CancellationToken cancellationToken = default) =>
+            UnlinkFromLibraryAsync(new ProfileLibraryLink
+            {
+                LibraryId = libraryId,
+                ProfileId = profileId
+            }, cancellationToken);
 
 
         /// <summary>

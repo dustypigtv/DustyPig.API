@@ -1,4 +1,5 @@
 ﻿using DustyPig.API.v3.Models;
+using DustyPig.API.v3.MPAA;
 using DustyPig.REST;
 using System.Collections.Generic;
 using System.Threading;
@@ -27,6 +28,16 @@ namespace DustyPig.API.v3.Clients
         public Task<Response<List<BasicMedia>>> ListGenreItemsAsync(GenreListRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "ListGenreItems", data, cancellationToken);
 
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> ListGenreItemsAsync(Genres genre, int start = 0, CancellationToken cancellationToken = default) =>
+            ListGenreItemsAsync(new GenreListRequest
+            {
+                Genre = genre,
+                Start = start,
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires profile
@@ -34,12 +45,33 @@ namespace DustyPig.API.v3.Clients
         public Task<Response<List<BasicMedia>>> ListLibraryItemsAsync(LibraryListRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "ListLibraryItems", data, cancellationToken);
 
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> ListLibraryItemsAsync(int libraryId, int start = 0, SortOrder sortOrder = SortOrder.Alphabetical, CancellationToken cancellationToken = default) =>
+            ListLibraryItemsAsync(new LibraryListRequest
+            {
+                LibraryId = libraryId,
+                Start = start,
+                Sort = sortOrder
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(IDListRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "LoadMoreHomeScreenItems", data, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(long listId, int start = 0, CancellationToken cancellationToken = default) =>
+            LoadMoreHomeScreenItemsAsync(new IDListRequest
+            {
+                ListId = listId,
+                Start = start
+            }, cancellationToken);
 
 
         /// <summary>

@@ -63,6 +63,16 @@ namespace DustyPig.API.v3.Clients
         public Task<Response<List<BasicMedia>>> ListAsync(ListRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "List", data, cancellationToken);
 
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> ListAsync(int start = 0, SortOrder sort = SortOrder.Alphabetical, CancellationToken cancellationToken = default) =>
+            ListAsync(new ListRequest
+            {
+                Start = start,
+                Sort = sort
+            }, cancellationToken);
+
 
         /// <summary>
         /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
@@ -107,5 +117,15 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response> UpdatePlaybackProgressAsync(PlaybackProgress data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "UpdatePlaybackProgress", data, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> UpdatePlaybackProgressAsync(int id, double seconds, CancellationToken cancellationToken = default) =>
+            UpdatePlaybackProgressAsync(new PlaybackProgress
+            {
+                Id = id,
+                Seconds = seconds
+            }, cancellationToken);
     }
 }
