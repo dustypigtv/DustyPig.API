@@ -35,5 +35,7 @@ namespace System
         public static string ConvertToString(this List<string> lst, int maxLen) => StringUtils.ConvertToString(lst, maxLen);
 
         public static string FixSpaces(this string str) => StringUtils.FixSpaces(str);
+
+        public static string RemoveDiacritics(this string str) => StringUtils.RemoveDiacritics(str);
     }
 }

@@ -74,7 +74,7 @@ namespace System
 
         public static string SortTitle(string title)
         {
-            title = (title + string.Empty).Trim().Trim(RemovePreCharacters);
+            title = (title + string.Empty).NormalizeMiscCharacters().Trim().Trim(RemovePreCharacters);
             var parts = (title + string.Empty).Trim().Split(' ').ToList();
             if (parts.Count > 1)
             {
@@ -99,7 +99,7 @@ namespace System
             if (original == null || compare == null)
                 return false;
 
-            return original.Equals(compare, StringComparison.InvariantCultureIgnoreCase);
+            return original.NormalizeMiscCharacters().Equals(compare.NormalizeMiscCharacters(), StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool ICStartsWith(string str, string text)
@@ -110,7 +110,7 @@ namespace System
             if (str == null || text == null)
                 return false;
 
-            return str.StartsWith(text, StringComparison.InvariantCultureIgnoreCase);
+            return str.NormalizeMiscCharacters().StartsWith(text.NormalizeMiscCharacters(), StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool ICEndsWith(string str, string text)
@@ -121,7 +121,7 @@ namespace System
             if (str == null || text == null)
                 return false;
 
-            return str.EndsWith(text, StringComparison.InvariantCultureIgnoreCase);
+            return str.NormalizeMiscCharacters().EndsWith(text.NormalizeMiscCharacters(), StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool ICContains(string str, string text)
@@ -132,7 +132,7 @@ namespace System
             if (str == null || text == null)
                 return false;
 
-            return str.ToLower().Contains(text.ToLower());
+            return str.NormalizeMiscCharacters().ToLower().Contains(text.NormalizeMiscCharacters().ToLower());
         }
 
         public static bool ICContains(IEnumerable<string> lst, string text)
@@ -141,6 +141,16 @@ namespace System
                 return false;
 
             return lst.Any(item => item.ICEquals(text));
+        }
+
+        public static string RemoveDiacritics(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return text;
+            string normal = text.Normalize(NormalizationForm.FormD);
+            var withoutDiacritics = normal.Where(
+                c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark);
+            return new string(withoutDiacritics.ToArray());
         }
 
         public static string NormalizeMiscCharacters(string str)
@@ -157,21 +167,8 @@ namespace System
                .Replace("â€", "\"")
                .Replace("â€“", "-")
 
-               //Handle latin chars
-               .Replace("Á", "A")
-               .Replace("á", "a")
-               .Replace("É", "E")
-               .Replace("é", "e")
-               .Replace("Í", "I")
-               .Replace("í", "i")
-               .Replace("Ñ", "N")
-               .Replace("ñ", "n")
-               .Replace("Ó", "O")
-               .Replace("ó", "o")
-               .Replace("Ú", "U")
-               .Replace("ú", "u")
-               .Replace("Ü", "U")
-               .Replace("ü", "u")
+               //Handle Diacritics
+               .RemoveDiacritics()
 
                //Handle wierd versions of common chars
                .Replace("‘", "'")
@@ -220,7 +217,7 @@ namespace System
         }
 
         public static string NormalizedHash(string str) =>
-           BitConverter.ToString(_md5.ComputeHash(Encoding.UTF8.GetBytes(_hashRegex.Replace((str + string.Empty).ToLower(), string.Empty)))).Replace("-", string.Empty).ToLower();
+           BitConverter.ToString(_md5.ComputeHash(Encoding.UTF8.GetBytes(_hashRegex.Replace((str + string.Empty).NormalizeMiscCharacters().ToLower(), string.Empty)))).Replace("-", string.Empty).ToLower();
 
         public static List<string> Tokenize(string str)
         {
