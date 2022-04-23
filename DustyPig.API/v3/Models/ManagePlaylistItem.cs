@@ -11,7 +11,7 @@ namespace DustyPig.API.v3.Models
         public int Id { get; set; }
 
         [JsonRequired]
-        [JsonProperty("id")]
+        [JsonProperty("media_id")]
         public int MediaId { get; set; }
 
 
