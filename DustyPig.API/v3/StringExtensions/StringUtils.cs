@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -12,9 +11,7 @@ namespace System
         private static readonly List<string> RemovePrefixes = new List<string> { "the", "a", "an", "la", "les", "des", "l", "un", "el", "il", "le", "uno", };
         private static readonly char[] RemovePreCharacters = new char[] { '\'', '¡' };
 
-        private static readonly Regex _hashRegex = new Regex("[^a-z0-9]", RegexOptions.Compiled);
-        private static readonly MD5 _md5 = MD5.Create();
-
+        
 
         /// <summary>
         /// Converts a string to a list, splitting on null characters (\0)
@@ -215,9 +212,6 @@ namespace System
 
             return string.Join(" ", tokens).Trim();
         }
-
-        public static string NormalizedHash(string str) =>
-           BitConverter.ToString(_md5.ComputeHash(Encoding.UTF8.GetBytes(_hashRegex.Replace((str + string.Empty).NormalizeMiscCharacters().ToLower(), string.Empty)))).Replace("-", string.Empty).ToLower();
 
         public static List<string> Tokenize(string str)
         {

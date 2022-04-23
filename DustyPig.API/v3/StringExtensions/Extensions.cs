@@ -26,8 +26,6 @@ namespace System
 
         public static List<string> Tokenize(this string text) => StringUtils.Tokenize(text);
 
-        public static string NormalizedHash(this string str) => StringUtils.NormalizedHash(str);
-
         public static List<string> ConvertToList(this string str) => StringUtils.ConvertToList(str);
 
         public static string ConvertToString(this List<string> lst) => StringUtils.ConvertToString(lst);
