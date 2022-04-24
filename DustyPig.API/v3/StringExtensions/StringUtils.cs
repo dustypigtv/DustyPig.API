@@ -229,7 +229,7 @@ namespace System
             //The remove things like 'the' from the beginning of the title
             str = str.SortTitle().ToLower();
             str = str.Replace("'", "");
-            str = Regex.Replace(str, "[^a-z0-9 ]", " ");
+            str = Regex.Replace(str, "[^\\w ]", " ");
             var ret = new List<string>(str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
             ret = ret.Distinct().ToList();
 
