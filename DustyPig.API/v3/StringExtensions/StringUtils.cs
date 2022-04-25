@@ -202,6 +202,7 @@ namespace System
         public static string NormalizedQueryString(string str)
         {
             str = NormalizeText(str);
+            str = str.Replace("-", " ").Replace("/", " ");
             var tokens = Tokenize(str);
 
             if (tokens.Count == 0)
