@@ -2,11 +2,11 @@
 {
     public static class Constants
     {
-        public const int MAX_NAME_LENGTH = 100;
+        public const int MAX_NAME_LENGTH = 200;
 
         public const int MAX_URL_LENGTH = 1000;
 
-        public const int MAX_DESCRIPTION_LENGTH = 2500;
+        public const int MAX_DESCRIPTION_LENGTH = 10000;
 
         public const int MAX_MOBILE_DEVICE_ID_LENGTH = 1024;
 
