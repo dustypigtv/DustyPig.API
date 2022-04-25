@@ -80,6 +80,12 @@ namespace System
                 title = string.Join(" ", parts);
             }
 
+            title = Regex.Replace(title, "[^\\w ]", " ");
+            while(title.Contains("  "))
+            {
+                title = title.Replace("  ", " ");
+            }
+
             return title;
         }
 
