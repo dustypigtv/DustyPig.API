@@ -116,7 +116,7 @@ namespace DustyPig.API.v3.MPAA
                 return new string[] { AllGenres[Genres.Science_Fiction], AllGenres[Genres.Fantasy] };
 
             if (s.Equals("War & Politics"))
-                return new string[] { AllGenres[Genres.War], AllGenres[Genres.Podcast] };
+                return new string[] { AllGenres[Genres.War], AllGenres[Genres.Political] };
 
 
             return new string[] { s };
