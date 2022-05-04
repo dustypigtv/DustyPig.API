@@ -11,12 +11,12 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonProperty("bif_asset")]
-        public StreamingAsset BifAsset { get; set; }
+        [JsonProperty("bif_url")]
+        public string BifUrl { get; set; }
 
         [JsonRequired]
-        [JsonProperty("video_asset")]
-        public StreamingAsset VideoAsset { get; set; }
+        [JsonProperty("video_url")]
+        public string VideoUrl { get; set; }
 
         [JsonProperty("srt_subtitles")]
         public List<ExternalSubtitle> ExternalSubtitles { get; set; } = new List<ExternalSubtitle>();
