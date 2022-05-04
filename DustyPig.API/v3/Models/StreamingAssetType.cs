@@ -2,8 +2,9 @@
 {
     public enum StreamingAssetType
     {
-        Public,
-        GoogleDrive,
-        S3
+        Public = 0,
+        GoogleDrive = 1,
+        S3 = 2,
+        DPFS = 3
     }
 }
