@@ -3,7 +3,6 @@
     public enum ServiceCredentialTypes
     {
         S3 = 1,
-        GoogleDriveServiceAccount = 2,
-        DPFS = 3
+        DPFS = 2
     }
 }

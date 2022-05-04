@@ -18,13 +18,6 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(CreateGoogleDriveCredential data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "CreateGoogleDrive", data, cancellationToken);
-
-
-        /// <summary>
-        /// Requires main profile
-        /// </summary>
         public Task<Response<int>> CreateAsync(CreateS3Credential data, CancellationToken cancellationToken = default) =>
             _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "CreateS3", data, cancellationToken);
 
@@ -46,30 +39,6 @@ namespace DustyPig.API.v3.Clients
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
 
             return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
-        }
-
-
-        /// <summary>
-        /// Requires main profile
-        /// </summary>
-        public Task<Response<GoogleDriveCredential>> GetGoogleDriveDetailsAsync(int id, CancellationToken cancellationToken = default)
-        {
-            if (id <= 0)
-                return Task.FromResult(new Response<GoogleDriveCredential> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-
-            return _client.GetAsync<GoogleDriveCredential>(true, PREFIX + $"GetGoogleDriveDetails/{id}", cancellationToken);
-        }
-
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<GoogleDriveToken>> GetGoogleDriveTokenAsync(int id, CancellationToken cancellationToken = default)
-        {
-            if (id <= 0)
-                return Task.FromResult(new Response<GoogleDriveToken> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-
-            return _client.GetAsync<GoogleDriveToken>(true, PREFIX + $"GetGoogleDriveToken/{id}", cancellationToken);
         }
 
 
@@ -101,13 +70,6 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<List<ServiceCredential>>> ListAsync(CancellationToken cancellationToken = default) =>
             _client.GetAsync<List<ServiceCredential>>(true, PREFIX + "List", cancellationToken);
-
-
-        /// <summary>
-        /// Requires main profile
-        /// </summary>
-        public Task<Response> UpdateGoogleDriveAsync(GoogleDriveCredential data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "UpdateGoogleDrive", data, cancellationToken);
 
 
         /// <summary>
