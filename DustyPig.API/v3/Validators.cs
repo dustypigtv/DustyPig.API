@@ -65,14 +65,17 @@ namespace DustyPig.API.v3
                     ret.Add($"{nameof(media.IntroEndTime)} must be > {nameof(media.IntroStartTime)}");
             }
 
-            if (media.BifAsset != null)
-                ret.AddRange(Validate(media.BifAsset).Select(item => $"{nameof(media.BifAsset)}: {item}"));
-
-            if (media.VideoAsset == null)
-                ret.Add($"{nameof(media.VideoAsset)} missing");
+            var chk = Validate(nameof(media.BifUrl), media.BifUrl, false, Constants.MAX_URL_LENGTH);
+            if (chk.Valid)
+                media.BifUrl = chk.Fixed;
             else
-                ret.AddRange(Validate(media.VideoAsset).Select(item => $"{nameof(media.VideoAsset)}: {item}"));
+                ret.Add(chk.Error);
 
+            chk = Validate(nameof(media.VideoUrl), media.VideoUrl, true, Constants.MAX_URL_LENGTH);
+            if (chk.Valid)
+                media.VideoUrl = chk.Fixed;
+            else
+                ret.Add(chk.Error);
 
             if (media.ExternalSubtitles != null)
                 foreach (var subtitle in media.ExternalSubtitles)
@@ -87,20 +90,16 @@ namespace DustyPig.API.v3
 
 
 
-        public static List<string> Validate(IStreamingAsset asset)
+        public static List<string> Validate(ExternalSubtitle exSub)
         {
             var ret = new List<string>();
 
 
-            var (Valid, Fixed, Error) = Validate(nameof(asset.Url), asset.Url, true, Constants.MAX_URL_LENGTH);
-            if (Valid)
-                asset.Url = Fixed;
+            var chk = Validate(nameof(exSub.Url), exSub.Url, true, Constants.MAX_URL_LENGTH);
+            if (chk.Valid)
+                exSub.Url = chk.Fixed;
             else
-                ret.Add(Error);
-
-
-            if (asset.ServiceCredentialId != null && asset.ServiceCredentialId <= 0)
-                ret.Add($"Invalid {nameof(asset.ServiceCredentialId)}");
+                ret.Add(chk.Error);
 
             return ret;
         }

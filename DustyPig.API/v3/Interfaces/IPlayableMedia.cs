@@ -17,10 +17,10 @@ namespace DustyPig.API.v3.Interfaces
         public double? CreditsStartTime { get; set; }
 
 
-        public CreateStreamingAsset BifAsset { get; set; }
+        public string BifUrl { get; set; }
 
-        public CreateStreamingAsset VideoAsset { get; set; }
+        public string VideoUrl { get; set; }
 
-        public List<CreateExternalSubtitle> ExternalSubtitles { get; set; }
+        public List<ExternalSubtitle> ExternalSubtitles { get; set; }
     }
 }

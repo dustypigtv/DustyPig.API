@@ -19,15 +19,15 @@ namespace DustyPig.API.v3.Models
 
         //Partially handled by BaseEpisodeInfo
 
-        [JsonProperty("bif_asset")]
-        public CreateStreamingAsset BifAsset { get; set; }
+        [JsonProperty("bif_url")]
+        public string BifUrl { get; set; }
 
         [JsonRequired]
-        [JsonProperty("video_asset")]
-        public CreateStreamingAsset VideoAsset { get; set; }
+        [JsonProperty("video_url")]
+        public string VideoUrl { get; set; }
 
         [JsonProperty("srt_subtitles")]
-        public List<CreateExternalSubtitle> ExternalSubtitles { get; set; } = new List<CreateExternalSubtitle>();
+        public List<ExternalSubtitle> ExternalSubtitles { get; set; } = new List<ExternalSubtitle>();
 
         #endregion
 

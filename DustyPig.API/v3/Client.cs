@@ -54,8 +54,6 @@ namespace DustyPig.API.v3
 
         public SeriesClient Series => new SeriesClient(this);
 
-        public ServiceCredentialsClient ServiceCredentials => new ServiceCredentialsClient(this);
-
         public TMDBClient TMDB => new TMDBClient(this);
 
 

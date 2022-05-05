@@ -21,6 +21,10 @@
 	  </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DustyPig.REST" Version="3.0.1.5" />
   </ItemGroup>
 
