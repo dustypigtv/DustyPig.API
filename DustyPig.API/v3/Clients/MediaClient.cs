@@ -77,16 +77,19 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<SearchResults>> SearchAsync(string query, CancellationToken cancellationToken = default)
-        {
-            var chk = Validators.Validate(nameof(query), query, true, byte.MaxValue);
-            if (chk.Valid)
-                query = chk.Fixed;
-            else
-                return Task.FromResult(new Response<SearchResults> { Error  = new ModelValidationException(chk.Error) });
+        public Task<Response<SearchResults>> SearchAsync(SearchRequest data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<SearchResults>(true, PREFIX + "Search", data, cancellationToken);
 
-            return _client.PostAsync<SearchResults>(true, PREFIX + "Search", new SimpleValue<string>(query), cancellationToken);
-        }
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<SearchResults>> SearchAsync(string query, bool searchTMDB, CancellationToken cancellationToken = default) =>
+            SearchAsync(new SearchRequest
+            {
+                Query = query,
+                SearchTMDB = searchTMDB
+            }, cancellationToken);
 
 
         /// <summary>
