@@ -11,6 +11,10 @@ namespace DustyPig.API.v3.Models
         public List<BasicMedia> Available { get; set; } = new List<BasicMedia>();
 
         [JsonRequired]
+        [JsonProperty("other_titles_allowed")]
+        public bool OtherTitlesAllowed { get; set; }
+
+        [JsonRequired]
         [JsonProperty("other_titles")]
         public List<BasicTMDB> OtherTitles { get; set; } = new List<BasicTMDB>();
     }
