@@ -203,9 +203,6 @@ namespace System
             str = str.Replace("-", " ").Replace("/", " ");
             var tokens = Tokenize(str);
 
-            if (tokens.Count == 0)
-                return null;
-
             return string.Join(" ", tokens).Trim();
         }
 
