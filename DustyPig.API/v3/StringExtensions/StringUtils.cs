@@ -187,9 +187,7 @@ namespace System
         public static string NormalizeText(string str)
         {
             str = (str + string.Empty).Trim();
-            if (str.ICEquals("N/A"))
-                str = string.Empty;
-
+            
             return str
                 .NormalizeMiscCharacters()
 
@@ -208,15 +206,6 @@ namespace System
             if (tokens.Count == 0)
                 return null;
 
-            if (tokens.Count == 1)
-            {
-                if (tokens[0].Length < 3)
-                    return null;
-
-                if (tokens[0] == "the")
-                    return null;
-            }
-
             return string.Join(" ", tokens).Trim();
         }
 
@@ -225,22 +214,17 @@ namespace System
             if (string.IsNullOrWhiteSpace(str))
                 return new List<string>();
 
-            // Remove movie year
-            int pos = str.LastIndexOf("(");
-            if (pos > 0)
-                str = str.Substring(0, pos).Trim();
+            str = str.ToLower().Trim();
 
-            if (string.IsNullOrWhiteSpace(str))
-                return new List<string>();
+            //Contractions and possessives are stored without an apostrophe in both databases
+            str = str.Replace("'", ""); 
 
-            //The remove things like 'the' from the beginning of the title
-            str = str.SortTitle().ToLower();
-            str = str.Replace("'", "");
+            //Replace remaining special characters with a space
             str = Regex.Replace(str, "[^\\w ]", " ");
+            
+            //Split on spaces
             var ret = new List<string>(str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-            ret = ret.Distinct().ToList();
-
-
+            
             return ret;
         }
 
