@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace DustyPig.API.v3.BaseClasses
 {
-    public abstract class BaseMovieInfo : IMedia
+    public abstract class BaseMovieInfo : IMedia, ITopLevelMedia
     {
         #region IMedia
 
@@ -27,11 +27,14 @@ namespace DustyPig.API.v3.BaseClasses
         #endregion
 
 
-
+        #region ITopLevelMedia
 
         [JsonRequired]
         [JsonProperty("library_id")]
         public int LibraryId { get; set; }
+
+        [JsonProperty("backdrop_url")]
+        public string BackdropUrl { get; set; }
 
         [JsonProperty("rated")]
         public Ratings Rated { get; set; }
@@ -51,7 +54,10 @@ namespace DustyPig.API.v3.BaseClasses
         [JsonProperty("writers")]
         public List<string> Writers { get; set; }
 
+        [JsonProperty("extra_search_terms")]
+        public List<string> ExtraSearchTerms { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        #endregion
 
         [JsonProperty("date")]
         public DateTime Date { get; set; }

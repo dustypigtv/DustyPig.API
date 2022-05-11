@@ -17,10 +17,7 @@ namespace DustyPig.API.v3.Models
 
         #region ITopLevelMedia
 
-        //Paritally handled by BaseSeriesInfo
-
-        [JsonProperty("extra_search_terms")]
-        public List<string> ExtraSearchTerms { get; set; } = new List<string>();
+        //Completely handled by BaseSeriesInfo
 
         #endregion
 

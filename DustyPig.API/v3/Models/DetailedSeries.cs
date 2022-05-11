@@ -15,11 +15,5 @@ namespace DustyPig.API.v3.Models
 
         [JsonProperty("episodes")]
         public List<DetailedEpisode> Episodes { get; set; } = new List<DetailedEpisode>();
-
-        /// <summary>
-        /// Only returned when calling AdminDetails
-        /// </summary>
-        [JsonProperty("extra_search_terms")]
-        public List<string> ExtraSearchTerms { get; set; }
     }
 }

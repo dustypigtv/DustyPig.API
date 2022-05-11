@@ -130,6 +130,12 @@ namespace DustyPig.API.v3
                             }
             }
 
+            var chk = Validate(nameof(media.BackdropUrl), media.BackdropUrl, false, Constants.MAX_URL_LENGTH);
+            if (chk.Valid)
+                media.BackdropUrl = chk.Fixed;
+            else
+                ret.Add(chk.Error);
+
             ret.AddRange(ValidatePeople(media.Cast).Select(item => $"{nameof(media.Cast)}: {item}"));
             ret.AddRange(ValidatePeople(media.Directors).Select(item => $"{nameof(media.Directors)}: {item}"));
             ret.AddRange(ValidatePeople(media.Producers).Select(item => $"{nameof(media.Producers)}: {item}"));

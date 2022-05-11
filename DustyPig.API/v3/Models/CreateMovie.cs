@@ -18,10 +18,7 @@ namespace DustyPig.API.v3.Models
 
         #region ITopLevelMedia
 
-        //Partially handled by BaseMovieINfo
-
-        [JsonProperty("extra_search_terms")]
-        public List<string> ExtraSearchTerms { get; set; } = new List<string>();
+        //Completely handled by BaseMovieINfo
 
         #endregion
 

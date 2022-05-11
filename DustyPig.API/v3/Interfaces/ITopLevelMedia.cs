@@ -7,6 +7,8 @@ namespace DustyPig.API.v3.Interfaces
     {
         public int LibraryId { get; set; }
 
+        public string BackdropUrl { get; set; }
+
         public Ratings Rated { get; set; }
 
         public Genres Genres { get; set; }
