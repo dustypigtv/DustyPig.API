@@ -55,7 +55,7 @@ namespace DustyPig.API.v3.BaseClasses
         public List<string> Writers { get; set; }
 
         [JsonProperty("extra_search_terms")]
-        public List<string> ExtraSearchTerms { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<string> ExtraSearchTerms { get; set; } = new List<string>();
 
         #endregion
 
