@@ -15,5 +15,9 @@ namespace DustyPig.API.v3.Models
 
         [JsonProperty("episodes")]
         public List<DetailedEpisode> Episodes { get; set; } = new List<DetailedEpisode>();
+
+        [JsonRequired]
+        [JsonProperty("in_watchlist")]
+        public bool InWatchlist { get; set; }
     }
 }
