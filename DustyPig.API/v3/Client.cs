@@ -13,12 +13,12 @@ namespace DustyPig.API.v3
     public class Client
     {
 #if DEBUG
-        private const string BASE_URL = "https://localhost:5001/api/v3/";
+        public const string DEFAULT_BASE_ADDRESS = "https://localhost:5001/api/v3/";
 #else
-        private const string BASE_URL = "https://service.dustypig.tv/api/v3/";
+        public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-        private static readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(BASE_URL) };
+        private static readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
 
 
         public Client()
@@ -30,7 +30,12 @@ namespace DustyPig.API.v3
 
 
         public static Version APIVersion => typeof(Client).Assembly.GetName().Version;
-            
+        
+        public static Uri BaseUrl
+        {
+            get => _client.BaseAddress;
+            set => _client.BaseAddress = value;
+        }
 
         public string Token { get; set; }
 
