@@ -9,6 +9,11 @@ namespace DustyPig.API.v3.Clients
 {
     public class MediaClient
     {
+        public const long ID_CONTINUE_WATCHING = -500;
+        public const long ID_WATCHLIST = -400;
+        public const long ID_PLAYLISTS = -300;
+
+
         private const string PREFIX = "Media/";
 
         private readonly Client _client;
