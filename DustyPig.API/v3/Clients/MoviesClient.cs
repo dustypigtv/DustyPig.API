@@ -79,7 +79,7 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default)
         {
-            if (start <= 0)
+            if (start < 0)
                 return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
 
             return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
