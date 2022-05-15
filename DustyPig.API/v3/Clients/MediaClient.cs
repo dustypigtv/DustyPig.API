@@ -9,9 +9,17 @@ namespace DustyPig.API.v3.Clients
 {
     public class MediaClient
     {
+        //Reserved list ids
         public const long ID_CONTINUE_WATCHING = -500;
+        public const string ID_CONTINUE_WATCHING_TITLE = "Continue Watching";
+
         public const long ID_WATCHLIST = -400;
+        public const string ID_WATCHLIST_TITLE = "Watchlist";
+
         public const long ID_PLAYLISTS = -300;
+        public const string ID_PLAYLISTS_TITLE = "Playlists";
+
+
 
 
         private const string PREFIX = "Media/";
