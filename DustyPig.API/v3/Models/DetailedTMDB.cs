@@ -34,6 +34,9 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("writers")]
         public List<string> Writers { get; set; }
 
+        [JsonProperty("available")]
+        public List<BasicMedia> Available { get; set; } = new List<BasicMedia>();
+
         public override string ToString() => Title;
     }
 }
