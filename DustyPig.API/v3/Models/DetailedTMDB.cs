@@ -7,6 +7,9 @@ namespace DustyPig.API.v3.Models
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class DetailedTMDB : BasicTMDB
     {
+        [JsonProperty("year")]
+        public int Year { get; set; }
+
         [JsonProperty("backdrop_url")]
         public string BackdropUrl { get; set; }
 
