@@ -19,5 +19,8 @@ namespace DustyPig.API.v3.Models
         [JsonRequired]
         [JsonProperty("in_watchlist")]
         public bool InWatchlist { get; set; }
+
+        [JsonProperty("can_play")]
+        public bool CanPlay { get; set; }
     }
 }

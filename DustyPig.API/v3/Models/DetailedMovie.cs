@@ -27,8 +27,10 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("srt_subtitles")]
         public List<ExternalSubtitle> ExternalSubtitles { get; set; }
 
-        [JsonRequired]
         [JsonProperty("in_watchlist")]
         public bool InWatchlist { get; set; }
+
+        [JsonProperty("can_play")]
+        public bool CanPlay { get; set; }
     }
 }
