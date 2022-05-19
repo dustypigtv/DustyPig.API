@@ -81,12 +81,8 @@ namespace System
             }
 
             title = Regex.Replace(title, "[^\\w ]", " ");
-            while(title.Contains("  "))
-            {
-                title = title.Replace("  ", " ");
-            }
-
-            return title;
+            
+            return title.FixSpaces().ToLower();
         }
 
         public static void SortBySortTitle(List<string> lst)
