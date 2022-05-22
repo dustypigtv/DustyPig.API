@@ -60,6 +60,6 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response> UpdateAsync(UpdateEpisode data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "Update", data, cancellationToken);
+            _client.PostAsync(true, PREFIX + "Update", data, cancellationToken); 
     }
 }
