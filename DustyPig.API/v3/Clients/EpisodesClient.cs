@@ -61,22 +61,5 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response> UpdateAsync(UpdateEpisode data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "Update", data, cancellationToken);
-
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response> UpdatePlaybackProgressAsync(PlaybackProgress data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "UpdatePlaybackProgress", data, cancellationToken);
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response> UpdatePlaybackProgressAsync(int id, double seconds, CancellationToken cancellationToken = default) =>
-            UpdatePlaybackProgressAsync(new PlaybackProgress
-            {
-                Id = id,
-                Seconds = seconds
-            }, cancellationToken);
     }
 }

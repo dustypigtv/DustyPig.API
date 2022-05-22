@@ -127,5 +127,22 @@ namespace DustyPig.API.v3.Clients
 
             return _client.DeleteAsync(true, PREFIX + $"DeleteFromWatchlist/{id}", cancellationToken);
         }
+
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> UpdatePlaybackProgressAsync(PlaybackProgress data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "UpdatePlaybackProgress", data, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> UpdatePlaybackProgressAsync(int id, double seconds, CancellationToken cancellationToken = default) =>
+            UpdatePlaybackProgressAsync(new PlaybackProgress
+            {
+                Id = id,
+                Seconds = seconds
+            }, cancellationToken);
     }
 }
