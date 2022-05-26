@@ -214,7 +214,10 @@ namespace System
             str = str.ToLower().Trim();
 
             //Contractions and possessives are stored without an apostrophe in both databases
-            str = str.Replace("'", ""); 
+            str = str.Replace("'", "");
+
+            //FOr things like Law & Order
+            str = str.Replace(" & ", " and ");
 
             //Replace remaining special characters with a space
             str = Regex.Replace(str, "[^\\w ]", " ");
