@@ -16,5 +16,7 @@
         public static readonly MediaTypes[] PLAYABLE_MEDIA_TYPES = new MediaTypes[] { MediaTypes.Movie, MediaTypes.Episode };
 
         public static readonly MediaTypes[] TOP_LEVEL_MEDIA_TYPES = new MediaTypes[] { MediaTypes.Movie, MediaTypes.Series };
+
+        public const string DEFAULT_PLAYLIST_IMAGE = "https://s3.us-central-1.wasabisys.com/dustypig/media/playlist.svg";
     }
 }

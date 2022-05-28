@@ -43,7 +43,7 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(string name, string artworkUrl = null, CancellationToken cancellationToken = default) =>
+        public Task<Response<int>> CreateAsync(string name, string artworkUrl, CancellationToken cancellationToken = default) =>
             CreateAsync(new CreatePlaylist
             {
                 ArtworkUrl = artworkUrl,

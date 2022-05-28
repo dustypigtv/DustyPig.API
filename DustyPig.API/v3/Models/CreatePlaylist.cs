@@ -24,7 +24,10 @@ namespace DustyPig.API.v3.Models
             else
                 lst.Add(Error);
 
-            (Valid, Fixed, Error) = Validators.Validate(nameof(ArtworkUrl), ArtworkUrl, false, Constants.MAX_URL_LENGTH);
+            if (string.IsNullOrWhiteSpace(ArtworkUrl))
+                ArtworkUrl = Constants.DEFAULT_PLAYLIST_IMAGE;
+
+            (Valid, Fixed, Error) = Validators.Validate(nameof(ArtworkUrl), ArtworkUrl, true, Constants.MAX_URL_LENGTH);
             if (Valid)
                 ArtworkUrl = Fixed;
             else
