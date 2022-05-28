@@ -19,7 +19,6 @@ namespace DustyPig.API.v3.Models
 
 
         [JsonProperty("series_id")]
-        [JsonRequired]
         public int? SeriesId { get; set; }
 
         [JsonRequired]
