@@ -1,10 +1,15 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class UpdatePlaylist : BasicPlaylist, IValidate
+    public class UpdatePlaylist : CreatePlaylist, IValidate
     {
+        [JsonProperty("id")]
+        [JsonRequired]
+        public int Id { get; set; }
+
         public new void Validate()
         {
             var lst = new List<string>();
