@@ -144,5 +144,18 @@ namespace DustyPig.API.v3.Clients
                 Id = id,
                 Seconds = seconds
             }, cancellationToken);
+
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<Ratings>> GetAllAvailableRatingsAsync(CancellationToken cancellationToken = default) =>
+            _client.GetSimpleAsync<Ratings>(true, PREFIX + "GetAllAvailableRatings", cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<Genres>> GetAllAvailableGenresAsync(CancellationToken cancellationToken = default) =>
+            _client.GetSimpleAsync<Genres>(true, PREFIX + "GetAllAvailableGenres", cancellationToken);
     }
 }
