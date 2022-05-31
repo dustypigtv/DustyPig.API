@@ -157,5 +157,12 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<Genres>> GetAllAvailableGenresAsync(CancellationToken cancellationToken = default) =>
             _client.GetSimpleAsync<Genres>(true, PREFIX + "GetAllAvailableGenres", cancellationToken);
+
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> LoadExploreResultsAsync(ExploreRequest data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "Explore", data, cancellationToken);
     }
 }
