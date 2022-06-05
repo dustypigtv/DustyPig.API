@@ -169,7 +169,7 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<TitlePermissionInfo>> GetTitlePermissionsAsync(int id, CancellationToken cancellation) =>
+        public Task<Response<TitlePermissionInfo>> GetTitlePermissionsAsync(int id, CancellationToken cancellation = default) =>
             _client.GetAsync<TitlePermissionInfo>(true, PREFIX + "GetTitlePermissions", cancellation);
     }
 }
