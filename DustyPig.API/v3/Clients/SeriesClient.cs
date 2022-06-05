@@ -120,13 +120,6 @@ namespace DustyPig.API.v3.Clients
 
 
         /// <summary>
-        /// Requires main profile. Set access override for a specific movie
-        /// </summary>
-        public Task<Response> SetAccessOverrideAsync(TitleOverride info, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "SetAccessOverride", info, cancellationToken);
-
-
-        /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> ListSubscriptionsAsync(CancellationToken cancellationToken = default) =>
