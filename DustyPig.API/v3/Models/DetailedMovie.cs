@@ -32,5 +32,8 @@ namespace DustyPig.API.v3.Models
 
         [JsonProperty("can_play")]
         public bool CanPlay { get; set; }
+
+        [JsonProperty("can_manage")]
+        public bool CanManage { get; set; }
     }
 }
