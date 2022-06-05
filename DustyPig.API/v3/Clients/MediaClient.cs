@@ -164,5 +164,12 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<List<BasicMedia>>> LoadExploreResultsAsync(ExploreRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "Explore", data, cancellationToken);
+
+
+        /// <summary>
+        /// Requires main profile
+        /// </summary>
+        public Task<Response<TitlePermissionInfo>> GetTitlePermissionsAsync(int id, CancellationToken cancellation) =>
+            _client.GetAsync<TitlePermissionInfo>(true, PREFIX + "GetTitlePermissions", cancellation);
     }
 }
