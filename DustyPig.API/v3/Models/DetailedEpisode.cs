@@ -14,7 +14,6 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("bif_url")]
         public string BifUrl { get; set; }
 
-        [JsonRequired]
         [JsonProperty("video_url")]
         public string VideoUrl { get; set; }
 
