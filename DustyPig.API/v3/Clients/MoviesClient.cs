@@ -86,18 +86,7 @@ namespace DustyPig.API.v3.Clients
         }
 
 
-        /// <summary>
-        /// Requires profile. Request override access to an existing movie
-        /// </summary>
-        public Task<Response> RequestAccessOverrideAsync(int id, CancellationToken cancellationToken = default)
-        {
-            if (id <= 0)
-                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-
-            return _client.GetAsync(true, PREFIX + $"RequestAccessOverride/{id}", cancellationToken);
-        }
-
-
+        
         /// <summary>
         /// Requires main profile
         /// </summary>
