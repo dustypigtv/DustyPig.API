@@ -43,6 +43,17 @@ namespace DustyPig.API.v3.Clients
             return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
         }
 
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<BasicLibrary>> GetBasicAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<BasicLibrary> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<BasicLibrary>(true, PREFIX + $"GetBasic/{id}", cancellationToken);
+        }
+
 
         /// <summary>
         /// Requires main profile
