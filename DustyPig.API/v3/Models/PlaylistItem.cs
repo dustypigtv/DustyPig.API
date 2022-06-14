@@ -39,6 +39,8 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("played")]
         public double? Played { get; set; }
 
+        [JsonProperty("length")]
+        public double Length { get; set; }
 
         [JsonProperty("bif_url")]
         public string BifUrl { get; set; }
