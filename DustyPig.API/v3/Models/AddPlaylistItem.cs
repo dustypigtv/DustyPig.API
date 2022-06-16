@@ -1,12 +1,15 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     public class AddPlaylistItem : IValidate
     {
+        [JsonProperty("playlist_id")]
         public int PlaylistId { get; set; }
 
+        [JsonProperty("media_id")]
         public int MediaId { get; set; }
 
         public void Validate()

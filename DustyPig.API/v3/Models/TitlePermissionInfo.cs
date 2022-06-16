@@ -7,7 +7,7 @@ namespace DustyPig.API.v3.Models
     public class TitlePermissionInfo
     {
         [JsonProperty("title_id")]
-        public int TitlId { get; set; }
+        public int TitleId { get; set; }
 
         [JsonProperty("profiles")]
         public List<ProfileTitlePermissionInfo> Profiles { get; set; } = new List<ProfileTitlePermissionInfo>();

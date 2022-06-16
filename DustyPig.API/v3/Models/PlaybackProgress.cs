@@ -13,7 +13,7 @@ namespace DustyPig.API.v3.Models
         /// Set to 0 to reset
         /// </summary>
         [JsonRequired]
-        [JsonProperty("Seconds")]
+        [JsonProperty("seconds")]
         public double Seconds { get; set; }
     }
 }
