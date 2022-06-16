@@ -3,7 +3,7 @@
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class ProfileTilePermissionInfo : BasicProfile
+    public class ProfileTitlePermissionInfo : BasicProfile
     {
         [JsonProperty("has_library_access")]
         public bool HasLibraryAccess { get; set; }
