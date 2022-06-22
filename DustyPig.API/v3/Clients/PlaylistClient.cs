@@ -149,5 +149,12 @@ namespace DustyPig.API.v3.Clients
                 MediaId = mediaId,
                 Index = index
             }, cancellationToken);
+
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> UpdatePlaylistItems(UpdatePlaylistItemsData data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "UpdatePlaylistItems", data, cancellationToken);
     }
 }
