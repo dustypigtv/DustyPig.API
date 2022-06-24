@@ -42,5 +42,18 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<TitleRequestPermissions>> GetRequestTitlePermissionAsync(CancellationToken cancellationToken = default) =>
             _client.GetSimpleAsync<TitleRequestPermissions>(true, PREFIX + "GetRequestTitlePermission", cancellationToken);
+
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> RequestTitleAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "RequestTitle", data, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> RequestTitleAsync(int tmdb_id, int? accountId, CancellationToken cancellationToken = default) =>
+            RequestTitleAsync(new TitleRequest { AccountId = accountId, TMDB_Id = tmdb_id }, cancellationToken);
     }
 }
