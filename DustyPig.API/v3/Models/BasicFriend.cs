@@ -9,8 +9,13 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonRequired]
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
+
+        [JsonRequired]
+        [JsonProperty("avatar_url")]
+        public string AvatarUrl { get; set; }
 
         public int CompareTo(object obj)
         {
