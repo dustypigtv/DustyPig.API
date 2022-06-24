@@ -36,5 +36,11 @@ namespace DustyPig.API.v3.Clients
 
             return _client.GetAsync<DetailedTMDB>(true, PREFIX + $"GetSeries/{id}", cancellationToken);
         }
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<TitleRequestPermissions>> GetRequestTitlePermissionAsync(CancellationToken cancellationToken = default) =>
+            _client.GetSimpleAsync<TitleRequestPermissions>(true, PREFIX + "GetRequestTitlePermission", cancellationToken);
     }
 }
