@@ -13,8 +13,8 @@ namespace DustyPig.API.v3.Models
         /// <summary>
         /// If DetailedProfile.TitleRequestPermissions == <see cref="TitleRequestPermissions.RequiresAuthorization"/>, this is ignored as the request will be sent to the main profile on the account
         /// </summary>
-        [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        [JsonProperty("friend_id")]
+        public int? FriendId { get; set; }
 
         [JsonProperty("media_type")]
         public TMDB_MediaTypes MediaType { get; set; }
@@ -24,7 +24,7 @@ namespace DustyPig.API.v3.Models
             var lst = new List<string>();
             Validators.ValidateId(nameof(TMDB_Id), TMDB_Id, lst);
 
-            //Don't validate the AccountId, that will happen based on profile permissions on the server
+            //Don't validate the FriendId, that will happen based on profile permissions on the server
 
             if (MediaType != TMDB_MediaTypes.Movie)
                 if (MediaType != TMDB_MediaTypes.Series)

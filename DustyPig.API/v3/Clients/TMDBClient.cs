@@ -53,7 +53,7 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> RequestTitleAsync(int tmdb_id, int? accountId, CancellationToken cancellationToken = default) =>
-            RequestTitleAsync(new TitleRequest { AccountId = accountId, TMDB_Id = tmdb_id }, cancellationToken);
+        public Task<Response> RequestTitleAsync(int tmdb_id, int? friendId, CancellationToken cancellationToken = default) =>
+            RequestTitleAsync(new TitleRequest { FriendId = friendId, TMDB_Id = tmdb_id }, cancellationToken);
     }
 }
