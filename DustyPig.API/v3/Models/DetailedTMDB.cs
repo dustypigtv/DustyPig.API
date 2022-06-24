@@ -37,6 +37,9 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("available")]
         public List<BasicMedia> Available { get; set; } = new List<BasicMedia>();
 
+        [JsonProperty("can_requst")]
+        public bool CanRequest { get; set; }
+
         public override string ToString() => Title;
     }
 }
