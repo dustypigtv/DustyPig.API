@@ -11,7 +11,7 @@ namespace DustyPig.API.v3.Models
 
         [JsonRequired]
         [JsonProperty("media_type")]
-        public MediaTypes MediaType { get; set; }
+        public TMDB_MediaTypes MediaType { get; set; }
 
         [JsonRequired]
         [JsonProperty("artwork_url")]

@@ -16,12 +16,19 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("account_id")]
         public int? AccountId { get; set; }
 
+        [JsonProperty("media_type")]
+        public TMDB_MediaTypes MediaType { get; set; }
+
         public void Validate()
         {
             var lst = new List<string>();
             Validators.ValidateId(nameof(TMDB_Id), TMDB_Id, lst);
 
             //Don't validate the AccountId, that will happen based on profile permissions on the server
+
+            if (MediaType != TMDB_MediaTypes.Movie)
+                if (MediaType != TMDB_MediaTypes.Series)
+                    lst.Add($"Invalid {nameof(MediaType)}");
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
