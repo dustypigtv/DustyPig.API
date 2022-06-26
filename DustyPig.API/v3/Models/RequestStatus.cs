@@ -2,24 +2,26 @@
 {
     public enum RequestStatus
     {
+        NotRequested = 0,
+
         /// <summary>
-        /// Request senti
+        /// Request sent
         /// </summary>
-        Requested = 0,
+        Requested = 1,
 
         /// <summary>
         /// Request denied
         /// </summary>
-        Denied = 1,
+        Denied = 2,
 
         /// <summary>
         /// Request granted and pending fufillment
         /// </summary>
-        Pending = 2,
+        Pending = 3,
 
         /// <summary>
         /// Request fufilled
         /// </summary>
-        Fufilled = 3
+        Fufilled = 4
     }
 }
