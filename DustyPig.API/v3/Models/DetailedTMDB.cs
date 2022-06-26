@@ -40,6 +40,9 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("request_permission")]
         public TitleRequestPermissions RequestPermission { get; set; }
 
+        [JsonProperty("request_status")]
+        public RequestStatus RequestStatus { get; set; }
+
         public override string ToString() => Title;
     }
 }
