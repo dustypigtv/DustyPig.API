@@ -36,7 +36,7 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("can_manage")]
         public bool CanManage { get; set; }
 
-        [JsonProperty("access_requested")]
-        public bool AccessRequested { get; set; }
+        [JsonProperty("access_request_status")]
+        public OverrideRequestStatus AccessRequestedStatus { get; set; }
     }
 }
