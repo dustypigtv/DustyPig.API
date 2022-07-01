@@ -5,23 +5,19 @@
         NotRequested = 0,
 
         /// <summary>
-        /// Request sent
+        /// Sub profile requested a title from the Main profile. Main can deny, set to pending/fufilld, or send to a friend account
         /// </summary>
-        Requested = 1,
+        RequestSentToMain = 1,
 
         /// <summary>
-        /// Request denied
+        /// Request has been sent to a friend account
         /// </summary>
-        Denied = 2,
+        RequestSentToAccount = 2,
 
-        /// <summary>
-        /// Request granted and pending fufillment
-        /// </summary>
-        Pending = 3,
+        Denied = 3,
 
-        /// <summary>
-        /// Request fufilled
-        /// </summary>
-        Fufilled = 4
+        Pending = 4,
+
+        Fufilled = 5
     }
 }
