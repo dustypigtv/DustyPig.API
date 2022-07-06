@@ -50,10 +50,12 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> RequestTitleAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "RequestTitle", data, cancellationToken);
 
+       
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> RequestTitleAsync(int tmdb_id, int? friendId, CancellationToken cancellationToken = default) =>
-            RequestTitleAsync(new TitleRequest { FriendId = friendId, TMDB_Id = tmdb_id }, cancellationToken);
+        public Task<Response> CancelRequestAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "CancelTitleRequest", data, cancellationToken);
+       
     }
 }
