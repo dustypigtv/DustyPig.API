@@ -20,10 +20,23 @@ namespace DustyPig.API.v3
 
         private static readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
 
+        public static bool IncludeRawContentInResponse
+        {
+            get => _client.IncludeRawContentInResponse;
+            set => _client.IncludeRawContentInResponse = value;
+        }
+
+        public static bool AutoThrowIfError
+        {
+            get => _client.AutoThrowIfError;
+            set => _client.AutoThrowIfError = value;
+        }
+
 
         public Client()
         {
 #if DEBUG
+            IncludeRawContentInResponse = true;
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 #endif
         }
@@ -89,8 +102,22 @@ namespace DustyPig.API.v3
         {
             var ret = await _client.GetAsync<SimpleValue<T>>(url, null, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
             if (ret.Success)
-                return new Response<T> { Data = ret.Data.Value, Success = true };
-            return new Response<T> { Error = ret.Error };
+                return new Response<T>
+                {
+                    Data = ret.Data.Value,
+                    Success = true,
+                    RawContent = ret.RawContent,
+                    ReasonPhrase = ret.ReasonPhrase,
+                    StatusCode = ret.StatusCode
+                };
+
+            return new Response<T> 
+            {
+                Error = ret.Error,
+                RawContent = ret.RawContent,
+                ReasonPhrase = ret.ReasonPhrase,
+                StatusCode = ret.StatusCode
+            };
         }
 
         internal Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
@@ -119,8 +146,22 @@ namespace DustyPig.API.v3
 
             var ret = await _client.PostAsync<SimpleValue<T>>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
             if (ret.Success)
-                return new Response<T> { Data = ret.Data.Value, Success = true };
-            return new Response<T> { Error = ret.Error };
+                return new Response<T>
+                {
+                    Data = ret.Data.Value,
+                    Success = true,
+                    RawContent = ret.RawContent,
+                    ReasonPhrase = ret.ReasonPhrase,
+                    StatusCode = ret.StatusCode
+                };
+
+            return new Response<T>
+            {
+                Error = ret.Error,
+                RawContent = ret.RawContent,
+                ReasonPhrase = ret.ReasonPhrase,
+                StatusCode = ret.StatusCode
+            };
         }
 
         internal Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
