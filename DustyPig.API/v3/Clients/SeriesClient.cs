@@ -78,12 +78,18 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
         /// </summary>
-        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default)
+        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
+            AdminListAsync(start, 0, cancellationToken);
+
+        /// <summary>
+        /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
+        /// </summary>
+        public Task<Response<List<BasicMedia>>> AdminListAsync(int start, int libId, CancellationToken cancellationToken = default)
         {
             if (start < 0)
                 return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
 
-            return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}", cancellationToken);
+            return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminList/{start}/{libId}", cancellationToken);
         }
 
 
