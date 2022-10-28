@@ -19,7 +19,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile. Lists details of all libraries owned by the account
         /// </summary>
         public Task<Response<List<DetailedLibrary>>> AdminListAsync(CancellationToken cancellationToken = default) =>
-            _client.GetAsync<List<DetailedLibrary>>(true, "AdminList", cancellationToken);
+            _client.GetAsync<List<DetailedLibrary>>(true, PREFIX + "AdminList", cancellationToken);
 
 
         /// <summary>
