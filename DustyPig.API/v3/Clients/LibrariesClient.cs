@@ -16,6 +16,13 @@ namespace DustyPig.API.v3.Clients
         internal LibrariesClient(Client client) => _client = client;
 
         /// <summary>
+        /// Requires main profile. Lists details of all libraries owned by the account
+        /// </summary>
+        public Task<Response<List<DetailedLibrary>>> AdminListAsync(CancellationToken cancellationToken = default) =>
+            _client.GetAsync<List<DetailedLibrary>>(true, "AdminList", cancellationToken);
+
+
+        /// <summary>
         /// Requires main profile
         /// </summary>
         public Task<Response<int>> CreateAsync(CreateLibrary data, CancellationToken cancellationToken = default) =>
