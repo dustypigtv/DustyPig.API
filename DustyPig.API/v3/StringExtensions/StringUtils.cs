@@ -9,9 +9,7 @@ namespace System
     public static class StringUtils
     {
         private static readonly List<string> RemovePrefixes = new List<string> { "the", "a", "an", "la", "les", "des", "l", "un", "el", "il", "le", "uno", };
-        private static readonly char[] RemovePreCharacters = new char[] { '\'', '¡' };
-
-        
+                
 
         /// <summary>
         /// Converts a string to a list, splitting on null characters (\0)
@@ -71,16 +69,12 @@ namespace System
 
         public static string SortTitle(string title)
         {
-            title = (title + string.Empty).NormalizeMiscCharacters().Trim().Trim(RemovePreCharacters);
-            var parts = (title + string.Empty).Trim().Split(' ').ToList();
-            if (parts.Count > 1)
-            {
+            title = (title + string.Empty).NormalizeMiscCharacters().Trim().ToLower();
+            title = Regex.Replace(title, "[^a-z0-9 ]", " ").FixSpaces();
+            var parts = title.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length > 1)
                 if (RemovePrefixes.ICContains(parts[0]))
-                    parts.RemoveAt(0);
-                title = string.Join(" ", parts);
-            }
-
-            title = Regex.Replace(title, "[^\\w ]", " ");
+                    title = string.Join(" ", parts.Skip(1));
             
             return title.FixSpaces().ToLower();
         }
