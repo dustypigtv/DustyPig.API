@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DustyPig.API.v3
 {
-    public class Client
+    public class Client : IDisposable
     {
 #if DEBUG
         public const string DEFAULT_BASE_ADDRESS = "https://localhost:5001/api/v3/";
@@ -41,6 +41,7 @@ namespace DustyPig.API.v3
 #endif
         }
 
+        public void Dispose() => _client.Dispose();
 
         public static Version APIVersion => typeof(Client).Assembly.GetName().Version;
         
