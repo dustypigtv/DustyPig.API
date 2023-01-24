@@ -96,6 +96,11 @@ namespace DustyPig.API.v3.Clients
             }, cancellationToken);
 
 
+        /// <summary>
+        /// Requres logged in profile. Returns a new profile level bearer token
+        /// </summary>
+        public Task<Response<string>> UpdateDeviceTokenAsync(string deviceToken, CancellationToken cancellationToken = default) =>
+            _client.PostWithSimpleResponseAsync<string>(true, PREFIX + "UpdateDeviceToken", new SimpleValue<string>(deviceToken), cancellationToken);
 
 
         /// <summary>
