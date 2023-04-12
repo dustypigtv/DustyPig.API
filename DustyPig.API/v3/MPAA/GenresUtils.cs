@@ -6,7 +6,7 @@ namespace DustyPig.API.v3.MPAA
 {
     public static class GenresUtils
     {
-        private static readonly IReadOnlyDictionary<Genres, string> AllGenres = new Dictionary<Genres, string>
+        public static readonly IReadOnlyDictionary<Genres, string> AllGenres = new Dictionary<Genres, string>
         {
             { Genres.Unknown, "Unknown" },
             { Genres.Action, "Action"},
