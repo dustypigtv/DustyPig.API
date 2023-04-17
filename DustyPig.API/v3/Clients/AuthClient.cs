@@ -48,12 +48,12 @@ namespace DustyPig.API.v3.Clients
         /// Logs into the account using an OAuth token. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
         /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
         /// </summary>
-        public Task<Response<LoginResponse>> OAuthLoginAsync(OAuthCredentialProviders provider, string token, string deviceToken = null, CancellationToken cancellationToken = default) =>
+        public Task<Response<LoginResponse>> OAuthLoginAsync(OAuthCredentialProviders provider, string authToken, string fcmToken = null, CancellationToken cancellationToken = default) =>
             OAuthLoginAsync(new OAuthCredentials
             {
                  Provider = provider,
-                 Token = token, 
-                 DeviceToken = deviceToken
+                 Token = authToken, 
+                 FCMToken = fcmToken
             }, cancellationToken);
 
 
@@ -69,12 +69,13 @@ namespace DustyPig.API.v3.Clients
         /// Logs into the account using email and password. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
         /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
         /// </summary>
-        public Task<Response<LoginResponse>> PasswordLoginAsync(string email, string password, string deviceToken = null, CancellationToken cancellationToken = default) =>
+        /// <param name="fcmToken">FirebaseCloudMessaging token</param>
+        public Task<Response<LoginResponse>> PasswordLoginAsync(string email, string password, string fcmToken = null, CancellationToken cancellationToken = default) =>
             PasswordLoginAsync(new PasswordCredentials
             {
                 Email = email,
                 Password = password,
-                DeviceToken = deviceToken
+                FCMToken = fcmToken
             }, cancellationToken);
 
 
@@ -87,20 +88,22 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires logged in account. Returns a profile level bearer token
         /// </summary>
-        public Task<Response<LoginResponse>> ProfileLoginAsync(int id, short? pin = null, string deviceToken = null, CancellationToken cancellationToken = default) =>
+        /// <param name="fcmToken">FirebaseCloudMessaging token to include</param>
+        public Task<Response<LoginResponse>> ProfileLoginAsync(int id, short? pin = null, string fcmToken = null, CancellationToken cancellationToken = default) =>
             ProfileLoginAsync(new ProfileCredentials
             {
                 Id = id,
                 Pin = pin,
-                DeviceToken = deviceToken
+                FCMToken = fcmToken
             }, cancellationToken);
 
 
         /// <summary>
         /// Requres logged in profile. Returns a new profile level bearer token
         /// </summary>
-        public Task<Response<string>> UpdateDeviceTokenAsync(string deviceToken, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<string>(true, PREFIX + "UpdateDeviceToken", new SimpleValue<string>(deviceToken), cancellationToken);
+        /// <param name="fcmToken">FirebaseCloudMessaging token to include</param>
+        public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken, CancellationToken cancellationToken = default) =>
+            _client.PostWithSimpleResponseAsync<string>(true, PREFIX + "UpdateFCMToken", new SimpleValue<string>(fcmToken), cancellationToken);
 
 
         /// <summary>
@@ -171,7 +174,7 @@ namespace DustyPig.API.v3.Clients
 
 
         /// <summary>
-        /// Check the generated code to see if it has been authorized, and if so returns a level bearer token. 
+        /// Check the generated code to see if it has been authorized, and if so returns bearer token. 
         /// If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
         /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token.
         /// Once this returns true, the generated code will be deleted
@@ -187,7 +190,8 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Verifies an auth token and returns the type
         /// </summary>
-        public Task<Response<VerifyTokenResponse>> VerifyTokenAsync(CancellationToken cancellationToken = default) =>
-            _client.GetAsync<VerifyTokenResponse>(true, PREFIX + "VerifyToken", cancellationToken);
+        /// <param name="fcmToken">Include the FirebaseCloudMessaging token to also valid it as part of the call. If not null and validation fails, the auth token is invalided on the server and this call return 401 (Unauthorized), requiring a new login</param>
+        public Task<Response<VerifyTokenResponse>> VerifyAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<VerifyTokenResponse>(true, PREFIX + "VerifyAuthToken", new SimpleValue<string>(fcmToken),  cancellationToken);
     }
 }

@@ -14,8 +14,8 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("pin")]
         public short? Pin { get; set; }
 
-        [JsonProperty("device_token")]
-        public string DeviceToken { get; set; }
+        [JsonProperty("fcm_token")]
+        public string FCMToken { get; set; }
 
         public void Validate()
         {
@@ -26,9 +26,9 @@ namespace DustyPig.API.v3.Models
             if (Pin.HasValue && Pin.Value < 1000)
                 lst.Add($"Invalid {nameof(Pin)}");
 
-            var chk = Validators.Validate(nameof(DeviceToken), DeviceToken, false, Constants.MAX_MOBILE_DEVICE_ID_LENGTH);
+            var chk = Validators.Validate(nameof(FCMToken), FCMToken, false, Constants.MAX_MOBILE_DEVICE_ID_LENGTH);
             if (chk.Valid)
-                DeviceToken = chk.Fixed;
+                FCMToken = chk.Fixed;
             else
                 lst.Add(chk.Error);
 
