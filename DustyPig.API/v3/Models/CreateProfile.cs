@@ -29,19 +29,7 @@ namespace DustyPig.API.v3.Models
         [JsonRequired]
         [JsonProperty("locked")]
         public bool Locked { get; set; }
-
-        /// <summary>
-        /// Whether to send weekly updates of all new content
-        /// </summary>
-        [JsonRequired]
-        [JsonProperty("weekly_summary")]
-        public bool WeeklySummary { get; set; }
-
-        [JsonRequired]
-        [JsonProperty("notification_methods")]
-        public NotificationMethods NotificationMethods { get; set; }
-
-
+        
         public void Validate()
         {
             var lst = new List<string>();
