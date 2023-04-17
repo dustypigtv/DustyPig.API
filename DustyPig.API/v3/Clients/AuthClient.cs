@@ -192,6 +192,6 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         /// <param name="fcmToken">Include the FirebaseCloudMessaging token to also valid it as part of the call. If not null and validation fails, the auth token is invalided on the server and this call return 401 (Unauthorized), requiring a new login</param>
         public Task<Response<VerifyTokenResponse>> VerifyAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<VerifyTokenResponse>(true, PREFIX + "VerifyAuthToken", new SimpleValue<string>(fcmToken),  cancellationToken);
+            _client.PostAsync<VerifyTokenResponse>(true, PREFIX + "VerifyAuthToken", new SimpleValue<string>(fcmToken + string.Empty),  cancellationToken);
     }
 }
