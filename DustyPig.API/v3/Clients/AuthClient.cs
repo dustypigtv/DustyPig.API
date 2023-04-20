@@ -188,10 +188,11 @@ namespace DustyPig.API.v3.Clients
         }
 
         /// <summary>
-        /// Verifies an auth token and returns the type
+        /// Refreshes an auth token and returns the type.
+        /// Use by setting the Client.Token before calling this
         /// </summary>
         /// <param name="fcmToken">Include the FirebaseCloudMessaging token to also valid it as part of the call.</param>
-        public Task<Response<LoginResponse>> VerifyAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<LoginResponse>(true, PREFIX + "VerifyAuthToken", new SimpleValue<string>(fcmToken + string.Empty),  cancellationToken);
+        public Task<Response<LoginResponse>> UpdateAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<LoginResponse>(true, PREFIX + "UpdateAuthToken", new SimpleValue<string>(fcmToken + string.Empty),  cancellationToken);
     }
 }
