@@ -101,8 +101,8 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requres logged in profile. Returns a new profile level bearer token
         /// </summary>
-        /// <param name="fcmToken">FirebaseCloudMessaging token to include</param>
-        public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken, CancellationToken cancellationToken = default) =>
+        /// <param name="fcmToken">FirebaseCloudMessaging token to include. If null, and the current AuthToken is liked to a FCM token, then the FCM token is unlinked</param>
+        public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
             _client.PostWithSimpleResponseAsync<string>(true, PREFIX + "UpdateFCMToken", new SimpleValue<string>(fcmToken), cancellationToken);
 
 
