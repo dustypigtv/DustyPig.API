@@ -10,17 +10,31 @@ namespace DustyPig.API.v3.Clients
     public class MediaClient
     {
         //Reserved list ids
-        public const long ID_CONTINUE_WATCHING = -500;
+        public const long ID_CONTINUE_WATCHING = 100;
         public const string ID_CONTINUE_WATCHING_TITLE = "Continue Watching";
 
-        public const long ID_WATCHLIST = -400;
+        public const long ID_WATCHLIST = 200;
         public const string ID_WATCHLIST_TITLE = "Watchlist";
 
-        public const long ID_PLAYLISTS = -300;
+        public const long ID_PLAYLISTS = 300;
         public const string ID_PLAYLISTS_TITLE = "Playlists";
 
+        public const long ID_RECENTLY_ADDED = 400;
+        public const string ID_RECENTLY_ADDED_TITLE = "Recently Added";
 
+        public const long ID_POPULAR = 500;
+        public const string ID_POPULAR_TITLE = "Popular";
 
+        public static IReadOnlyDictionary<long, string> GetAllHomesScreenSections() => new Dictionary<long, string>
+        {
+            { ID_CONTINUE_WATCHING, ID_CONTINUE_WATCHING_TITLE },
+            { ID_WATCHLIST, ID_WATCHLIST_TITLE },
+            { ID_PLAYLISTS, ID_PLAYLISTS_TITLE },
+            { ID_RECENTLY_ADDED, ID_RECENTLY_ADDED_TITLE },
+            { ID_POPULAR, ID_POPULAR_TITLE }
+        };
+
+        public IReadOnlyDictionary<long, string> AllHomeScreenSections => GetAllHomesScreenSections();
 
         private const string PREFIX = "Media/";
 
