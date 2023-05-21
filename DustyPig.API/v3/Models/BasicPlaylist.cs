@@ -8,7 +8,7 @@ namespace DustyPig.API.v3.Models
         [JsonRequired]
         public int Id { get; set; }
 
-        [JsonProperty("artwork_url_1")]
+        [JsonProperty("artwork_url")]
         [JsonRequired]
         public string ArtworkUrl { get; set; }
     }
