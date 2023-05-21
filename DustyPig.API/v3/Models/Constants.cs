@@ -18,17 +18,22 @@
         public static readonly MediaTypes[] TOP_LEVEL_MEDIA_TYPES = new MediaTypes[] { MediaTypes.Movie, MediaTypes.Series };
 
 
+        public const string DEFAULT_PLAYLIST_URL_ROOT = "https://user-art.dustypig.tv/playlist/";
 
-        public const string DEFAULT_PLAYLIST_IMAGE = "https://user-art.dustypig.tv/playlist/default.jpg";
+        public const string DEFAULT_PLAYLIST_IMAGE = DEFAULT_PLAYLIST_URL_ROOT + "default.jpg";
 
-        public const string DEFAULT_PROFILE_IMAGE_BLUE = "https://user-art.dustypig.tv/profile/blue.png";
+
+
+        public const string DEFAULT_PROFILE_URL_ROOT = "https://user-art.dustypig.tv/profile/";
+
+        public const string DEFAULT_PROFILE_IMAGE_BLUE = DEFAULT_PROFILE_URL_ROOT + "blue.png";
         
-        public const string DEFAULT_PROFILE_IMAGE_GOLD = "https://user-art.dustypig.tv/profile/gold.png";
+        public const string DEFAULT_PROFILE_IMAGE_GOLD = DEFAULT_PROFILE_URL_ROOT + "gold.png";
         
-        public const string DEFAULT_PROFILE_IMAGE_GREEN = "https://user-art.dustypig.tv/profile/green.png";
+        public const string DEFAULT_PROFILE_IMAGE_GREEN = DEFAULT_PROFILE_URL_ROOT + "green.png";
         
-        public const string DEFAULT_PROFILE_IMAGE_GREY = "https://user-art.dustypig.tv/profile/grey.png";
+        public const string DEFAULT_PROFILE_IMAGE_GREY = DEFAULT_PROFILE_URL_ROOT + "grey.png";
         
-        public const string DEFAULT_PROFILE_IMAGE_RED = "https://user-art.dustypig.tv/profile/red.png";
+        public const string DEFAULT_PROFILE_IMAGE_RED = DEFAULT_PROFILE_URL_ROOT + "red.png";
     }
 }
