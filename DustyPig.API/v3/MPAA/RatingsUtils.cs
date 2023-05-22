@@ -85,6 +85,8 @@ namespace DustyPig.API.v3.MPAA
             if (string.IsNullOrWhiteSpace(s))
                 return Ratings.None;
 
+            s = s.Trim().Trim('*').Trim();
+
             foreach (Ratings r in RealValues)
             {
                 if (s.Equals(r.AsString(), StringComparison.CurrentCultureIgnoreCase))
