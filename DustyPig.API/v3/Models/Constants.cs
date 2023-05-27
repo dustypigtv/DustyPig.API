@@ -23,13 +23,19 @@
         public const string DEFAULT_HOST = "s3.dustypig.tv";
 
 
-        public const string DEFAULT_PLAYLIST_URL_ROOT = "https://" + DEFAULT_HOST + "/user-art/playlist/";
+
+        public const string DEFAULT_PLAYLIST_PATH = "user-art/playlist";
+
+        public const string DEFAULT_PLAYLIST_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PLAYLIST_PATH + "/";
 
         public const string DEFAULT_PLAYLIST_IMAGE = DEFAULT_PLAYLIST_URL_ROOT + "default.jpg";
 
 
 
-        public const string DEFAULT_PROFILE_URL_ROOT = "https://" + DEFAULT_HOST + "/user-art/profile/";
+        public const string DEFAULT_PROFILE_PATH = "user-art/profile";
+        
+        public const string DEFAULT_PROFILE_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PROFILE_PATH +  "/";
+
 
         public const string DEFAULT_PROFILE_IMAGE_BLUE = DEFAULT_PROFILE_URL_ROOT + "blue.png";
         
