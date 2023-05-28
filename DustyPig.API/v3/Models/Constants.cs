@@ -28,7 +28,7 @@
 
         public const string DEFAULT_PLAYLIST_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PLAYLIST_PATH + "/";
 
-        public const string DEFAULT_PLAYLIST_IMAGE = DEFAULT_PLAYLIST_URL_ROOT + "default.jpg";
+        public const string DEFAULT_PLAYLIST_IMAGE = DEFAULT_PLAYLIST_URL_ROOT + "default.png";
 
 
 
