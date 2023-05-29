@@ -5,6 +5,17 @@ namespace DustyPig.API.v3.Models
     public class ResponseWrapper
     {
         /// <summary>
+        /// Initialize with <see cref="Success"/> == true
+        /// </summary>
+        public ResponseWrapper() => Success = true;
+
+        /// <summary>
+        /// Initialize with <see cref="Success"/> == false and Error = <paramref name="error"/>
+        /// </summary>
+        public ResponseWrapper(string error) => Error = error;
+
+
+        /// <summary>
         /// Whether the operation was successful
         /// </summary>
         [JsonProperty("success")]
@@ -19,7 +30,24 @@ namespace DustyPig.API.v3.Models
 
     public class ResponseWrapper<T>
     {
+        public ResponseWrapper() { }
+
         /// <summary>
+        /// Initialize with <see cref="Success"/> == true and <see cref="Data"/> == <paramref name="data"/>
+        /// </summary>
+        public ResponseWrapper(T data)
+        {
+            Success = true;
+            Data = data;
+        }
+
+        /// <summary>
+        /// Initialize with <see cref="Success"/> == false and Error = <paramref name="error"/>
+        /// </summary>
+        public ResponseWrapper(string error) => Error = error;
+
+
+         /// <summary>
         /// Whether the operation was successful
         /// </summary>
         [JsonProperty("success")]
