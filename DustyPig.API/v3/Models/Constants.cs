@@ -1,4 +1,6 @@
-﻿namespace DustyPig.API.v3.Models
+﻿using System.Collections.Generic;
+
+namespace DustyPig.API.v3.Models
 {
     public static class Constants
     {
@@ -46,5 +48,14 @@
         public const string DEFAULT_PROFILE_IMAGE_GREY = DEFAULT_PROFILE_URL_ROOT + "grey.png";
         
         public const string DEFAULT_PROFILE_IMAGE_RED = DEFAULT_PROFILE_URL_ROOT + "red.png";
+
+        public static IReadOnlyList<string> DefaultProfileImages() => new List<string>
+        {
+            DEFAULT_PROFILE_IMAGE_BLUE,
+            DEFAULT_PROFILE_IMAGE_GOLD,
+            DEFAULT_PROFILE_IMAGE_GREEN,
+            DEFAULT_PROFILE_IMAGE_GREY,
+            DEFAULT_PROFILE_IMAGE_RED,
+        };
     }
 }
