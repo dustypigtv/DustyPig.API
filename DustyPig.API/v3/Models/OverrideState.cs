@@ -2,7 +2,6 @@
 {
     public enum OverrideState
     {
-        Default = 0,
         Allow = 1,
         Block = 2
     }

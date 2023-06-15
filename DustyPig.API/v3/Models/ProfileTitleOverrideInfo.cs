@@ -32,7 +32,7 @@ namespace DustyPig.API.v3.Models
 
             Validators.ValidateId(nameof(ProfileId), ProfileId, lst);
 
-            if (!(State == OverrideState.Allow || State == OverrideState.Block || State == OverrideState.Default))
+            if (!(State == OverrideState.Allow || State == OverrideState.Block))
                 lst.Add($"Invalid {nameof(State)}");
 
             //Don't validate Name and AvatarUrl. They set by the server for GetTitlePermissions, and ignored for SetTitlePermissions
