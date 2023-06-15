@@ -9,8 +9,8 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("profile_id")]
         public int ProfileId { get; set; }
 
-        [JsonProperty("new_state")]
-        public OverrideState NewState { get; set; }
+        [JsonProperty("state")]
+        public OverrideState State { get; set; }
 
         public void Validate()
         {
@@ -18,8 +18,8 @@ namespace DustyPig.API.v3.Models
 
             Validators.ValidateId(nameof(ProfileId), ProfileId, lst);
 
-            if (!(NewState == OverrideState.Allow || NewState == OverrideState.Block || NewState == OverrideState.Default))
-                lst.Add($"Invalid {nameof(NewState)}");
+            if (!(State == OverrideState.Allow || State == OverrideState.Block || State == OverrideState.Default))
+                lst.Add($"Invalid {nameof(State)}");
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };

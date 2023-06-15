@@ -10,6 +10,6 @@ namespace DustyPig.API.v3.Models
         public int TitleId { get; set; }
 
         [JsonProperty("profiles")]
-        public List<ProfileTitlePermissionInfo> Profiles { get; set; } = new List<ProfileTitlePermissionInfo>();
+        public List<ProfileTitleOverrideInfo> Profiles { get; set; } = new List<ProfileTitleOverrideInfo>();
     }
 }
