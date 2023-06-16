@@ -4,10 +4,7 @@ namespace DustyPig.API.v3.Models
 {
     public class ResponseWrapper
     {
-        /// <summary>
-        /// Initialize with <see cref="Success"/> == true
-        /// </summary>
-        public ResponseWrapper() => Success = true;
+        public ResponseWrapper() { }
 
         /// <summary>
         /// Initialize with <see cref="Success"/> == false and Error = <paramref name="error"/>
@@ -35,7 +32,11 @@ namespace DustyPig.API.v3.Models
         /// <summary>
         /// Initialize with <see cref="ResponseWrapper.Success"/> == true and <see cref="Data"/> == <paramref name="data"/>
         /// </summary>
-        public ResponseWrapper(T data) : base() => Data = data;
+        public ResponseWrapper(T data) : base()
+        {
+            Success = true;
+            Data = data;
+        }
 
         /// <summary>
         /// Initialize with <see cref="ResponseWrapper.Success"/> == false and Error = <paramref name="error"/>
