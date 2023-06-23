@@ -7,29 +7,26 @@ using System.Linq;
 
 namespace DustyPig.API.v3.Models
 {
-    public class GenreListRequest : IValidate
+    public class GenreListRequest : ListRequest, IValidate
     {
         [JsonProperty("genre")]
         public Genres Genre { get; set; }
 
-        [JsonProperty("start")]
-        public int Start { get; set; }
-
-        public void Validate()
+        public new void Validate()
         {
             var lst = new List<string>();
 
+            var allGenres = Enum.GetValues(typeof(Genres)).Cast<long>();
+            var min = allGenres.Min();
+            var max = allGenres.Max();
+
             long g = (long)Genre;
-            if (g == 0)
-            {
+
+            if (g < min || g > max)
                 lst.Add($"Invalid {nameof(Genre)}");
-            }
-            else if (g > 0)
-            {
-                if(!Enum.GetNames(typeof(Genres)).Contains(Genre.ToString()))
-                    lst.Add($"Invalid {nameof(Genre)}");
-            }
-            //g < 0 is speciallized request, like 'Up Next'
+            
+            try { base.Validate(); }
+            catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
 
             if (Start < 0)
                 lst.Add($"Invalid {nameof(Start)}");
