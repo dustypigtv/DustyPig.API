@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class IDListRequest : IValidate
+    public class HomeScreenListRequest : IValidate
     {
         [JsonProperty("list_id")]
         public long ListId { get; set; }

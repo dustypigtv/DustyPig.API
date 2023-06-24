@@ -87,14 +87,14 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(IDListRequest data, CancellationToken cancellationToken = default) =>
+        public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(HomeScreenListRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "LoadMoreHomeScreenItems", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(long listId, int start = 0, CancellationToken cancellationToken = default) =>
-            LoadMoreHomeScreenItemsAsync(new IDListRequest
+            LoadMoreHomeScreenItemsAsync(new HomeScreenListRequest
             {
                 ListId = listId,
                 Start = start

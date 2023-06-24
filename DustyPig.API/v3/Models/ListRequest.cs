@@ -19,7 +19,7 @@ namespace DustyPig.API.v3.Models
             var lst = new List<string>();
 
             if (Start < 0)
-                lst.Add($"Invalid {nameof(Start)}");
+                Start = 0;
 
             if (!Enum.GetNames(typeof(SortOrder)).Contains(Sort.ToString()))
                 lst.Add($"Invalid {nameof(Sort)}");
