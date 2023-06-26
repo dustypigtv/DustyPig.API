@@ -168,6 +168,8 @@ namespace System
                .Replace("’", "'")
                .Replace("–", "-")
                .Replace("·", "-")
+               .Replace("…", "...")
+
 
                //Other misc fixes
                .Replace("\0", "")
