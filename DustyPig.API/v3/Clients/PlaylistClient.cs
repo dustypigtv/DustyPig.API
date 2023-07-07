@@ -1,6 +1,7 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -155,7 +156,20 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> UpdatePlaylistItems(UpdatePlaylistItemsData data, CancellationToken cancellationToken = default) =>
+        public Task<Response> UpdatePlaylistItemsAsync(UpdatePlaylistItemsData data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "UpdatePlaylistItems", data, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> UpdatePlaylistItemsAsync(int id, List<int> mediaIds, CancellationToken cancellationToken = default) =>
+            UpdatePlaylistItemsAsync(new UpdatePlaylistItemsData { Id = id, MediaIds = mediaIds }, cancellationToken);
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> UpdatePlaylistItemsAsync(int id, IEnumerable<int> mediaIds, CancellationToken cancellationToken = default) =>
+            UpdatePlaylistItemsAsync(new UpdatePlaylistItemsData { Id = id, MediaIds = mediaIds.ToList()}, cancellationToken);
+    
     }
 }
