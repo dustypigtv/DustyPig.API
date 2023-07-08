@@ -73,14 +73,14 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> SetPlaylistProgress(SetPlaylistProgress data, CancellationToken cancellationToken = default) =>
+        public Task<Response> SetPlaylistProgressAsync(SetPlaylistProgress data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "SetPlaylistProgress", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> SetPlaylistProgress(int playlistId, int newIndex, double newProgress, CancellationToken cancellationToken = default) =>
-            SetPlaylistProgress(new SetPlaylistProgress
+        public Task<Response> SetPlaylistProgressAsync(int playlistId, int newIndex, double newProgress, CancellationToken cancellationToken = default) =>
+            SetPlaylistProgressAsync(new SetPlaylistProgress
             {
                 PlaylistId = playlistId,
                 NewIndex = newIndex,
