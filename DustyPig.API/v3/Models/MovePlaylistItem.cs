@@ -4,20 +4,21 @@ using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class ManagePlaylistItem : IValidate
+    public class MovePlaylistItem : IValidate
     {
+        /// <summary>
+        /// Playlist Item Id
+        /// </summary>
         [JsonRequired]
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        /// <summary>
+        /// New Index
+        /// </summary>
         [JsonRequired]
-        [JsonProperty("media_id")]
-        public int MediaId { get; set; }
-
-
-        [JsonRequired]
-        [JsonProperty("index")]
-        public int Index { get; set; }
+        [JsonProperty("new_index")]
+        public int NewIndex { get; set; }
 
         public void Validate()
         {
@@ -25,8 +26,8 @@ namespace DustyPig.API.v3.Models
 
             Validators.ValidateId(nameof(Id), Id, lst);
 
-            if (Index < 0)
-                lst.Add($"Invalid {nameof(Index)}");
+            if (NewIndex < 0)
+                lst.Add($"Invalid {nameof(NewIndex)}");
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };

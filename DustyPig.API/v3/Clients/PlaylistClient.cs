@@ -138,18 +138,17 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> MoveItemToNewIndexAsync(ManagePlaylistItem data, CancellationToken cancellationToken = default) =>
+        public Task<Response> MoveItemToNewIndexAsync(MovePlaylistItem data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "MoveItemToNewIndex", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> MoveItemToNewIndexAsync(int id, int mediaId, int index, CancellationToken cancellationToken = default) =>
-            MoveItemToNewIndexAsync(new ManagePlaylistItem
+        public Task<Response> MoveItemToNewIndexAsync(int id, int newIndex, CancellationToken cancellationToken = default) =>
+            MoveItemToNewIndexAsync(new MovePlaylistItem
             {
                 Id = id,
-                MediaId = mediaId,
-                Index = index
+                NewIndex = newIndex
             }, cancellationToken);
 
 
