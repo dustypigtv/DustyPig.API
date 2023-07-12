@@ -48,6 +48,12 @@ namespace DustyPig.API.v3.Clients
         public Task<Response<HomeScreen>> GetHomeScreenAsync(CancellationToken cancellationToken = default) =>
             _client.GetAsync<HomeScreen>(true, PREFIX + "HomeScreen", cancellationToken);
 
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response<HomeScreen>> GetHomeScreenAsync(int initialCount, CancellationToken cancellationToken = default) =>
+            _client.GetAsync<HomeScreen>(true, PREFIX + $"HomeScreen/{initialCount}", cancellationToken);
+
 
         /// <summary>
         /// Requires profile
