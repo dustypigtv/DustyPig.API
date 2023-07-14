@@ -51,7 +51,7 @@ namespace DustyPig.API.v3.Clients
         {
             string subPath = "HomeScreen";
             if (initialEntriesPerRow != null)
-                subPath += "?initialEntriesPerRow={initialEntriesPerRow}";
+                subPath += $"?initialEntriesPerRow={initialEntriesPerRow}";
             return _client.GetAsync<HomeScreen>(true, PREFIX + subPath, cancellationToken);
         }
 
