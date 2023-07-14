@@ -44,17 +44,16 @@ namespace DustyPig.API.v3.Clients
         internal MediaClient(Client client) => _client = client;
 
         /// <summary>
-        /// Requires profile
+        /// Requires profile.
         /// </summary>
-        public Task<Response<HomeScreen>> GetHomeScreenAsync(CancellationToken cancellationToken = default) =>
-            _client.GetAsync<HomeScreen>(true, PREFIX + "HomeScreen", cancellationToken);
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<HomeScreen>> GetHomeScreenAsync(int initialCount, CancellationToken cancellationToken = default) =>
-            _client.GetAsync<HomeScreen>(true, PREFIX + $"HomeScreen/{initialCount}", cancellationToken);
-
+        /// <param name="initialEntriesPerRow">The server will bound any specified value into the range of 2:25</param>
+        public Task<Response<HomeScreen>> GetHomeScreenAsync(int? initialEntriesPerRow = null, CancellationToken cancellationToken = default)
+        {
+            string subPath = "HomeScreen";
+            if (initialEntriesPerRow != null)
+                subPath += "?initialEntriesPerRow={initialEntriesPerRow}";
+            return _client.GetAsync<HomeScreen>(true, PREFIX + subPath, cancellationToken);
+        }
 
         /// <summary>
         /// Requires profile
