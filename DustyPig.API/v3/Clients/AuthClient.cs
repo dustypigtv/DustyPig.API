@@ -36,26 +36,12 @@ namespace DustyPig.API.v3.Clients
             return _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", new SimpleValue<string>(code), cancellationToken);
         }
 
-        ///// <summary>
-        ///// Logs into the account using an OAuth token. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
-        ///// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
-        ///// </summary>
-        //public Task<Response<LoginResponse>> OAuthLoginAsync(OAuthCredentials data, CancellationToken cancellationToken = default) =>
-        //    _client.PostAsync<LoginResponse>(false, PREFIX + "OAuthLogin", data, cancellationToken);
-
-
-        ///// <summary>
-        ///// Logs into the account using an OAuth token. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
-        ///// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
-        ///// </summary>
-        //public Task<Response<LoginResponse>> OAuthLoginAsync(OAuthCredentialProviders provider, string authToken, string fcmToken = null, CancellationToken cancellationToken = default) =>
-        //    OAuthLoginAsync(new OAuthCredentials
-        //    {
-        //         Provider = provider,
-        //         Token = authToken, 
-        //         FCMToken = fcmToken
-        //    }, cancellationToken);
-
+        /// <summary>
+        /// Logs into the account using a Firebase token. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
+        /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
+        /// </summary>
+        public Task<Response<LoginResponse>> LoginWithFirebaseTokenAsync(string token, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<LoginResponse>(false, PREFIX + "LoginWithFirebaseToken", new SimpleValue<string>(token), cancellationToken);
 
 
         /// <summary>
