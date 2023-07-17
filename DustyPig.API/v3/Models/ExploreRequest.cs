@@ -1,12 +1,13 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.MPAA;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class ExploreRequest : ListRequest, IValidate
+    public class ExploreRequest : ListRequest, IValidate, IEquatable<ExploreRequest>
     {
         /// <summary>
         /// If specified, only media in these genres will be returned.
@@ -51,7 +52,8 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("return_series", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool ReturnSeries { get; set; } = true;
 
-        
+
+        #region IValidate
 
         public new void Validate()
         {
@@ -72,5 +74,54 @@ namespace DustyPig.API.v3.Models
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
         }
+
+        #endregion
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ExploreRequest);
+        }
+
+        public bool Equals(ExploreRequest other)
+        {
+            return !(other is null) &&
+                   base.Equals(other) &&
+                   FilterOnGenres == other.FilterOnGenres &&
+                   IncludeUnknownGenres == other.IncludeUnknownGenres &&
+                   FilterOnRatings == other.FilterOnRatings &&
+                   IncludeNoneRatings == other.IncludeNoneRatings &&
+                   EqualityComparer<List<int>>.Default.Equals(LibraryIds, other.LibraryIds) &&
+                   ReturnMovies == other.ReturnMovies &&
+                   ReturnSeries == other.ReturnSeries;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 803654238;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + FilterOnGenres.GetHashCode();
+            hashCode = hashCode * -1521134295 + IncludeUnknownGenres.GetHashCode();
+            hashCode = hashCode * -1521134295 + FilterOnRatings.GetHashCode();
+            hashCode = hashCode * -1521134295 + IncludeNoneRatings.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<int>>.Default.GetHashCode(LibraryIds);
+            hashCode = hashCode * -1521134295 + ReturnMovies.GetHashCode();
+            hashCode = hashCode * -1521134295 + ReturnSeries.GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(ExploreRequest left, ExploreRequest right)
+        {
+            return EqualityComparer<ExploreRequest>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(ExploreRequest left, ExploreRequest right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 }

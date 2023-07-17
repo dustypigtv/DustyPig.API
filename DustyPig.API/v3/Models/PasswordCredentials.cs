@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class PasswordCredentials : IValidate
+    public class PasswordCredentials : IValidate, IEquatable<PasswordCredentials>
     {
         [JsonRequired]
         [JsonProperty("email")]
@@ -18,6 +18,9 @@ namespace DustyPig.API.v3.Models
 
         [JsonProperty("fcm_token")]
         public string FCMToken { get; set; }
+
+
+        #region IValidate
 
         public void Validate()
         {
@@ -35,7 +38,7 @@ namespace DustyPig.API.v3.Models
                 lst.Add(chk.Error);
             }
 
-            
+
             chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
             if (chk.Valid)
                 Password = chk.Fixed;
@@ -55,5 +58,45 @@ namespace DustyPig.API.v3.Models
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
         }
+
+        #endregion
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as PasswordCredentials);
+        }
+
+        public bool Equals(PasswordCredentials other)
+        {
+            return !(other is null) &&
+                   Email == other.Email &&
+                   Password == other.Password &&
+                   FCMToken == other.FCMToken;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -271805987;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Email);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FCMToken);
+            return hashCode;
+        }
+
+        
+        public static bool operator ==(PasswordCredentials left, PasswordCredentials right)
+        {
+            return EqualityComparer<PasswordCredentials>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(PasswordCredentials left, PasswordCredentials right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 }

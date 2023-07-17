@@ -4,6 +4,12 @@ namespace DustyPig.API.v3.Models
 {
     public static class Constants
     {
+        /// <summary>
+        /// The max number of media entries returned by the server for most queries
+        /// </summary>
+        public const int SERVER_RESULT_SIZE = 25;
+
+
         public const int MAX_NAME_LENGTH = 200;
 
         public const int MAX_URL_LENGTH = 1000;

@@ -1,10 +1,11 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace DustyPig.API.v3.BaseClasses
 {
-    public abstract class BaseEpisodeInfo : IMedia
+    public abstract class BaseEpisodeInfo : IMedia, IEquatable<BaseEpisodeInfo>
     {
         #region IMedia
 
@@ -53,6 +54,61 @@ namespace DustyPig.API.v3.BaseClasses
         [JsonProperty("episode_number")]
         public ushort EpisodeNumber { get; set; }
 
+        #region IEquatable
 
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as BaseEpisodeInfo);
+        }
+
+        public bool Equals(BaseEpisodeInfo other)
+        {
+            return !(other is null) &&
+                   Title == other.Title &&
+                   TMDB_Id == other.TMDB_Id &&
+                   Description == other.Description &&
+                   ArtworkUrl == other.ArtworkUrl &&
+                   Date == other.Date &&
+                   Length == other.Length &&
+                   IntroStartTime == other.IntroStartTime &&
+                   IntroEndTime == other.IntroEndTime &&
+                   CreditsStartTime == other.CreditsStartTime &&
+                   SeriesId == other.SeriesId &&
+                   SeasonNumber == other.SeasonNumber &&
+                   EpisodeNumber == other.EpisodeNumber;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 29759748;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
+            hashCode = hashCode * -1521134295 + TMDB_Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ArtworkUrl);
+            hashCode = hashCode * -1521134295 + Date.GetHashCode();
+            hashCode = hashCode * -1521134295 + Length.GetHashCode();
+            hashCode = hashCode * -1521134295 + IntroStartTime.GetHashCode();
+            hashCode = hashCode * -1521134295 + IntroEndTime.GetHashCode();
+            hashCode = hashCode * -1521134295 + CreditsStartTime.GetHashCode();
+            hashCode = hashCode * -1521134295 + SeriesId.GetHashCode();
+            hashCode = hashCode * -1521134295 + SeasonNumber.GetHashCode();
+            hashCode = hashCode * -1521134295 + EpisodeNumber.GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(BaseEpisodeInfo left, BaseEpisodeInfo right)
+        {
+            return EqualityComparer<BaseEpisodeInfo>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(BaseEpisodeInfo left, BaseEpisodeInfo right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+
+
+        public override string ToString() => $"s{SeasonNumber:00}e{EpisodeNumber:00}";
     }
 }

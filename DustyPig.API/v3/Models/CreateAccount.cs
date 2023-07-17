@@ -1,12 +1,13 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateAccount : IValidate
+    public class CreateAccount : IValidate, IEquatable<CreateAccount>
     {
         [JsonRequired]
         [JsonProperty("email")]
@@ -24,6 +25,9 @@ namespace DustyPig.API.v3.Models
 
         [JsonProperty("fcm_token")]
         public string FCMToken { get; set; }
+
+
+        #region IValidate
 
         public void Validate()
         {
@@ -71,5 +75,52 @@ namespace DustyPig.API.v3.Models
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
         }
+
+        #endregion
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as CreateAccount);
+        }
+
+        public bool Equals(CreateAccount other)
+        {
+            return !(other is null) &&
+                   Email == other.Email &&
+                   Password == other.Password &&
+                   DisplayName == other.DisplayName &&
+                   AvatarUrl == other.AvatarUrl &&
+                   FCMToken == other.FCMToken;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1250285400;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Email);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(DisplayName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AvatarUrl);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FCMToken);
+            return hashCode;
+        }
+
+        public static bool operator ==(CreateAccount left, CreateAccount right)
+        {
+            return EqualityComparer<CreateAccount>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(CreateAccount left, CreateAccount right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+
+
+        public override string ToString() => StringUtils.Coalesce(DisplayName, Email);
+
     }
 }

@@ -1,11 +1,12 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class TitleRequest : IValidate
+    public class TitleRequest : IValidate, IEquatable<TitleRequest>
     {
         [JsonProperty("tmdb_id")]
         public int TMDB_Id { get; set; }
@@ -18,6 +19,9 @@ namespace DustyPig.API.v3.Models
 
         [JsonProperty("media_type")]
         public TMDB_MediaTypes MediaType { get; set; }
+
+
+        #region IValidate
 
         public void Validate()
         {
@@ -33,5 +37,44 @@ namespace DustyPig.API.v3.Models
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
         }
+
+        #endregion
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as TitleRequest);
+        }
+
+        public bool Equals(TitleRequest other)
+        {
+            return !(other is null) &&
+                   TMDB_Id == other.TMDB_Id &&
+                   FriendId == other.FriendId &&
+                   MediaType == other.MediaType;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1402242925;
+            hashCode = hashCode * -1521134295 + TMDB_Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + FriendId.GetHashCode();
+            hashCode = hashCode * -1521134295 + MediaType.GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(TitleRequest left, TitleRequest right)
+        {
+            return EqualityComparer<TitleRequest>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(TitleRequest left, TitleRequest right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 }

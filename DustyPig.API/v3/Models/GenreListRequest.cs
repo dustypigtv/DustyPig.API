@@ -7,10 +7,13 @@ using System.Linq;
 
 namespace DustyPig.API.v3.Models
 {
-    public class GenreListRequest : ListRequest, IValidate
+    public class GenreListRequest : ListRequest, IValidate, IEquatable<GenreListRequest>
     {
         [JsonProperty("genre")]
         public Genres Genre { get; set; }
+
+
+        #region IValidate
 
         public new void Validate()
         {
@@ -24,7 +27,7 @@ namespace DustyPig.API.v3.Models
 
             if (g < min || g > max)
                 lst.Add($"Invalid {nameof(Genre)}");
-            
+
             try { base.Validate(); }
             catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
 
@@ -34,5 +37,47 @@ namespace DustyPig.API.v3.Models
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
         }
+
+        #endregion
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as GenreListRequest);
+        }
+
+        public bool Equals(GenreListRequest other)
+        {
+            return !(other is null) &&
+                   base.Equals(other) &&
+                   Genre == other.Genre;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1096400374;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + Genre.GetHashCode();
+            return hashCode;
+        }
+
+        
+
+        public static bool operator ==(GenreListRequest left, GenreListRequest right)
+        {
+            return EqualityComparer<GenreListRequest>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(GenreListRequest left, GenreListRequest right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+
+
+        public override string ToString() => Genre.AsString();
     }
 }

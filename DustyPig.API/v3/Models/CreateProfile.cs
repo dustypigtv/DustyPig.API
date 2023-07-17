@@ -1,12 +1,13 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.MPAA;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateProfile : IValidate
+    public class CreateProfile : IValidate, IEquatable<CreateProfile>
     {
         [JsonRequired]
         [JsonProperty("name")]
@@ -29,7 +30,10 @@ namespace DustyPig.API.v3.Models
         [JsonRequired]
         [JsonProperty("locked")]
         public bool Locked { get; set; }
-        
+
+
+        #region IValidate
+
         public void Validate()
         {
             var lst = new List<string>();
@@ -54,6 +58,53 @@ namespace DustyPig.API.v3.Models
                 throw new ModelValidationException { Errors = lst };
         }
 
+        #endregion
+
+        
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as CreateProfile);
+        }
+
+        public bool Equals(CreateProfile other)
+        {
+            return !(other is null) &&
+                   Name == other.Name &&
+                   AvatarUrl == other.AvatarUrl &&
+                   AllowedRatings == other.AllowedRatings &&
+                   Pin == other.Pin &&
+                   TitleRequestPermissions == other.TitleRequestPermissions &&
+                   Locked == other.Locked;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1237016275;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AvatarUrl);
+            hashCode = hashCode * -1521134295 + AllowedRatings.GetHashCode();
+            hashCode = hashCode * -1521134295 + Pin.GetHashCode();
+            hashCode = hashCode * -1521134295 + TitleRequestPermissions.GetHashCode();
+            hashCode = hashCode * -1521134295 + Locked.GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(CreateProfile left, CreateProfile right)
+        {
+            return EqualityComparer<CreateProfile>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(CreateProfile left, CreateProfile right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+
+
         public override string ToString() => Name;
+    
     }
 }

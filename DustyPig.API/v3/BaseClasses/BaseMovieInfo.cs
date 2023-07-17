@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace DustyPig.API.v3.BaseClasses
 {
-    public abstract class BaseMovieInfo : IMedia, ITopLevelMedia
+    public abstract class BaseMovieInfo : IMedia, ITopLevelMedia, IEquatable<BaseMovieInfo>
     {
         #region IMedia
 
@@ -74,5 +74,72 @@ namespace DustyPig.API.v3.BaseClasses
         [JsonProperty("credits_start_time")]
         public double? CreditsStartTime { get; set; }
 
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as BaseMovieInfo);
+        }
+
+        public bool Equals(BaseMovieInfo other)
+        {
+            return !(other is null) &&
+                   Title == other.Title &&
+                   TMDB_Id == other.TMDB_Id &&
+                   Description == other.Description &&
+                   ArtworkUrl == other.ArtworkUrl &&
+                   LibraryId == other.LibraryId &&
+                   BackdropUrl == other.BackdropUrl &&
+                   Rated == other.Rated &&
+                   Genres == other.Genres &&
+                   EqualityComparer<List<string>>.Default.Equals(Cast, other.Cast) &&
+                   EqualityComparer<List<string>>.Default.Equals(Directors, other.Directors) &&
+                   EqualityComparer<List<string>>.Default.Equals(Producers, other.Producers) &&
+                   EqualityComparer<List<string>>.Default.Equals(Writers, other.Writers) &&
+                   EqualityComparer<List<string>>.Default.Equals(ExtraSearchTerms, other.ExtraSearchTerms) &&
+                   Date == other.Date &&
+                   Length == other.Length &&
+                   IntroStartTime == other.IntroStartTime &&
+                   IntroEndTime == other.IntroEndTime &&
+                   CreditsStartTime == other.CreditsStartTime;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -891678491;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
+            hashCode = hashCode * -1521134295 + TMDB_Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ArtworkUrl);
+            hashCode = hashCode * -1521134295 + LibraryId.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BackdropUrl);
+            hashCode = hashCode * -1521134295 + Rated.GetHashCode();
+            hashCode = hashCode * -1521134295 + Genres.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(Cast);
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(Directors);
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(Producers);
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(Writers);
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(ExtraSearchTerms);
+            hashCode = hashCode * -1521134295 + Date.GetHashCode();
+            hashCode = hashCode * -1521134295 + Length.GetHashCode();
+            hashCode = hashCode * -1521134295 + IntroStartTime.GetHashCode();
+            hashCode = hashCode * -1521134295 + IntroEndTime.GetHashCode();
+            hashCode = hashCode * -1521134295 + CreditsStartTime.GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(BaseMovieInfo left, BaseMovieInfo right)
+        {
+            return EqualityComparer<BaseMovieInfo>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(BaseMovieInfo left, BaseMovieInfo right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+
+        public override string ToString() => $"{Title} ({Date.Year})";
     }
 }

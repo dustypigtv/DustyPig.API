@@ -1,15 +1,19 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class UpdateMovie : CreateMovie, IValidate
+    public class UpdateMovie : CreateMovie, IValidate, IEquatable<UpdateMovie>
     {
         [JsonRequired]
         [JsonProperty("id")]
         public int Id { get; set; }
+
+
+        #region IValidate
 
         public new void Validate()
         {
@@ -23,5 +27,45 @@ namespace DustyPig.API.v3.Models
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
         }
+
+        #endregion
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as UpdateMovie);
+        }
+
+        public bool Equals(UpdateMovie other)
+        {
+            return !(other is null) &&
+                   base.Equals(other) &&
+                   Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1545243542;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(UpdateMovie left, UpdateMovie right)
+        {
+            return EqualityComparer<UpdateMovie>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(UpdateMovie left, UpdateMovie right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
+
+
+        public override string ToString() => base.ToString();
     }
 }

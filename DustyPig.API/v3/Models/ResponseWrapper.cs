@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class ResponseWrapper
+    public class ResponseWrapper : IEquatable<ResponseWrapper>
     {
         public ResponseWrapper() { }
 
@@ -23,9 +25,44 @@ namespace DustyPig.API.v3.Models
         /// </summary>
         [JsonProperty("error")]
         public string Error { get; set; }
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ResponseWrapper);
+        }
+
+        public bool Equals(ResponseWrapper other)
+        {
+            return !(other is null) &&
+                   Success == other.Success &&
+                   Error == other.Error;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1489853407;
+            hashCode = hashCode * -1521134295 + Success.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Error);
+            return hashCode;
+        }
+
+        public static bool operator ==(ResponseWrapper left, ResponseWrapper right)
+        {
+            return EqualityComparer<ResponseWrapper>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(ResponseWrapper left, ResponseWrapper right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 
-    public class ResponseWrapper<T> : ResponseWrapper
+    public class ResponseWrapper<T> : ResponseWrapper, IEquatable<ResponseWrapper<T>>
     {
         public ResponseWrapper() : base() { }
 
@@ -48,5 +85,40 @@ namespace DustyPig.API.v3.Models
         /// </summary>
         [JsonProperty("data")]
         public T Data { get; set; }
+
+
+        #region IEquatable
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ResponseWrapper<T>);
+        }
+
+        public bool Equals(ResponseWrapper<T> other)
+        {
+            return !(other is null) &&
+                   base.Equals(other) &&
+                   EqualityComparer<T>.Default.Equals(Data, other.Data);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1686391899;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Data);
+            return hashCode;
+        }
+
+        public static bool operator ==(ResponseWrapper<T> left, ResponseWrapper<T> right)
+        {
+            return EqualityComparer<ResponseWrapper<T>>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(ResponseWrapper<T> left, ResponseWrapper<T> right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 }
