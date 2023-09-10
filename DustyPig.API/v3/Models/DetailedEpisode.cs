@@ -27,6 +27,12 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("up_next")]
         public bool UpNext { get; set; }
 
+        /// <summary>
+        /// Helpful info for clients, has zero functionality on the server, and is not included in equality checks
+        /// </summary>
+        [JsonProperty("series_title")]
+        public string SeriesTitle { get; set; }
+
 
         #region IEquatable
 
