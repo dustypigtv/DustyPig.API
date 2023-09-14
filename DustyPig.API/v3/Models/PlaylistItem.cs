@@ -43,6 +43,16 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("length")]
         public double Length { get; set; }
 
+        [JsonProperty("intro_start_time")]
+        public double? IntroStartTime { get; set; }
+
+        [JsonProperty("intro_end_time")]
+        public double? IntroEndTime { get; set; }
+
+        [JsonProperty("credits_start_time")]
+        public double? CreditsStartTime { get; set; }
+
+
         [JsonProperty("bif_url")]
         public string BifUrl { get; set; }
 
