@@ -11,9 +11,6 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("year")]
         public int Year { get; set; }
 
-        [JsonProperty("backdrop_url")]
-        public string BackdropUrl { get; set; }
-
         [JsonProperty("rated")]
         public string Rated { get; set; }
 
