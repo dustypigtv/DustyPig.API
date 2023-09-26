@@ -19,13 +19,7 @@ namespace DustyPig.API.v3.Clients
 
         internal AuthClient(Client client) => _client = client;
 
-        /// <summary>
-        /// Change the password
-        /// </summary>
-        public Task<Response> ChangePasswordAsync(string newPassword, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "ChangePassword", new SimpleValue<string>(newPassword), cancellationToken);
-
-
+        
         /// <summary>
         /// Returns a code that can be used to login to a device with no keyboard (streaming devices, smart tvs, etc)
         /// </summary>

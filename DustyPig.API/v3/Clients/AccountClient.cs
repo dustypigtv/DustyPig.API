@@ -27,5 +27,12 @@ namespace DustyPig.API.v3.Clients
         public Task<Response> DeleteAsync(CancellationToken cancellationToken = default) =>
             _client.DeleteAsync(true, PREFIX + "Delete", cancellationToken);
 
+        /// <summary>
+        /// Change the password
+        /// </summary>
+        public Task<Response> ChangePasswordAsync(string newPassword, CancellationToken cancellationToken = default) =>
+            _client.PostAsync(true, PREFIX + "ChangePassword", new SimpleValue<string>(newPassword), cancellationToken);
+
+
     }
 }
