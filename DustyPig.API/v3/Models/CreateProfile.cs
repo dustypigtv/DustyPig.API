@@ -44,7 +44,7 @@ namespace DustyPig.API.v3.Models
             else
                 lst.Add(chk.Error);
 
-            chk = Validators.Validate(nameof(AvatarUrl), AvatarUrl, false, Constants.MAX_NAME_LENGTH);
+            chk = Validators.Validate(nameof(AvatarUrl), AvatarUrl, false, Constants.MAX_URL_LENGTH);
             if (chk.Valid)
                 AvatarUrl = chk.Fixed;
             else
