@@ -1,40 +1,22 @@
-﻿using DustyPig.API.v3.Interfaces;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class TitlePermissionInfo : IValidate, IEquatable<TitlePermissionInfo>
+    public class TitlePermissionInfo : IEquatable<TitlePermissionInfo>
     {
-        [JsonProperty("title_id")]
-        public int TitleId { get; set; }
+        [JsonProperty("media_id")]
+        public int MediaId { get; set; }
 
-        /// <summary>
-        /// Profiles not listed will not have overrides changed
-        /// </summary>
-        [JsonProperty("profiles")]
-        public List<ProfileTitleOverrideInfo> Profiles { get; set; } = new List<ProfileTitleOverrideInfo>();
+        [JsonProperty("sub_profiles")]
+        public List<ProfileTitleOverrideInfo> SubProfiles { get; set; } = new List<ProfileTitleOverrideInfo>();
+
+        [JsonProperty("friend_profiles")]
+        public List<ProfileTitleOverrideInfo> FriendProfiles { get; set; } = new List<ProfileTitleOverrideInfo>();
 
 
-        #region IValidate
-
-        public void Validate()
-        {
-            var lst = new List<string>();
-            Validators.ValidateId(nameof(TitleId), TitleId, lst);
-
-            Profiles ??= new List<ProfileTitleOverrideInfo>();
-            foreach (var profile in Profiles)
-                try { profile.Validate(); }
-                catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
 
 
         #region IEquatable
@@ -47,15 +29,15 @@ namespace DustyPig.API.v3.Models
         public bool Equals(TitlePermissionInfo other)
         {
             return !(other is null) &&
-                   TitleId == other.TitleId &&
-                   EqualityComparer<List<ProfileTitleOverrideInfo>>.Default.Equals(Profiles, other.Profiles);
+                   MediaId == other.MediaId &&
+                   EqualityComparer<List<ProfileTitleOverrideInfo>>.Default.Equals(SubProfiles, other.SubProfiles);
         }
 
         public override int GetHashCode()
         {
             int hashCode = -1342469197;
-            hashCode = hashCode * -1521134295 + TitleId.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<ProfileTitleOverrideInfo>>.Default.GetHashCode(Profiles);
+            hashCode = hashCode * -1521134295 + MediaId.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<ProfileTitleOverrideInfo>>.Default.GetHashCode(SubProfiles);
             return hashCode;
         }
 
