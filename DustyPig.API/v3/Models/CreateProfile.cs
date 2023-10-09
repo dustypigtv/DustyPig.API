@@ -1,5 +1,5 @@
-﻿using DustyPig.API.v3.Interfaces;
-using DustyPig.API.v3.MPAA;
+﻿using DustyPig.API.v3.BaseClasses;
+using DustyPig.API.v3.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,62 +7,25 @@ using System.Collections.Generic;
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateProfile : IValidate, IEquatable<CreateProfile>
+    public class CreateProfile : BaseProfile, IValidate, IEquatable<CreateProfile>
     {
-        [JsonRequired]
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        //[JsonProperty("avatar_url")]
-        //public string AvatarUrl { get; set; }
-
         [JsonProperty("avatar_image")]
         public byte[] AvatarImage { get; set; }
 
-
-        [JsonRequired]
-        [JsonProperty("allowed_ratings")]
-        public Ratings AllowedRatings { get; set; }
-
-        [JsonProperty("pin")]
-        public short? Pin { get; set; }
-
-        [JsonRequired]
-        [JsonProperty("title_request_permissions")]
-        public TitleRequestPermissions TitleRequestPermissions { get; set; }
-
-        [JsonRequired]
-        [JsonProperty("locked")]
-        public bool Locked { get; set; }
-
         #region IValidate
 
-        public void Validate()
+        public new void Validate()
         {
             var lst = new List<string>();
 
-            var chk = Validators.Validate(nameof(Name), Name, true, Constants.MAX_NAME_LENGTH);
-            if (chk.Valid)
-                Name = chk.Fixed;
-            else
-                lst.Add(chk.Error);
+            try { base.Validate(); }
+            catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
 
-            //chk = Validators.Validate(nameof(AvatarUrl), AvatarUrl, false, Constants.MAX_URL_LENGTH);
-            //if (chk.Valid)
-            //    AvatarUrl = chk.Fixed;
-            //else
-            //    lst.Add(chk.Error);
-
-
+            
             //Limit avatar to 5mb
             if (AvatarImage != null)
                 if (AvatarImage.Length > 1024 * 1024 * 5)
                     lst.Add("AvatarImage must be less than 5 MB");
-
-
-            if (Pin != null && (Pin < 1000 || Pin > 9999))
-                lst.Add($"{nameof(Pin)} must be between 1000 and 9999");
-
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
@@ -81,23 +44,15 @@ namespace DustyPig.API.v3.Models
         public bool Equals(CreateProfile other)
         {
             return !(other is null) &&
-                   Name == other.Name &&
-                   EqualityComparer<byte[]>.Default.Equals(AvatarImage, other.AvatarImage) &&
-                   AllowedRatings == other.AllowedRatings &&
-                   Pin == other.Pin &&
-                   TitleRequestPermissions == other.TitleRequestPermissions &&
-                   Locked == other.Locked;
+                   base.Equals(other) &&
+                   EqualityComparer<byte[]>.Default.Equals(AvatarImage, other.AvatarImage);
         }
 
         public override int GetHashCode()
         {
-            int hashCode = 1686336231;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            int hashCode = -1822940787;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<byte[]>.Default.GetHashCode(AvatarImage);
-            hashCode = hashCode * -1521134295 + AllowedRatings.GetHashCode();
-            hashCode = hashCode * -1521134295 + Pin.GetHashCode();
-            hashCode = hashCode * -1521134295 + TitleRequestPermissions.GetHashCode();
-            hashCode = hashCode * -1521134295 + Locked.GetHashCode();
             return hashCode;
         }
 
@@ -111,10 +66,12 @@ namespace DustyPig.API.v3.Models
             return !(left == right);
         }
 
+
         #endregion
 
 
         public override string ToString() => Name;
 
+        
     }
 }

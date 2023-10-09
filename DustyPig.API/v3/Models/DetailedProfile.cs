@@ -1,12 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.BaseClasses;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class DetailedProfile : UpdateProfile, IEquatable<DetailedProfile>
+    public class DetailedProfile : BaseProfile, IEquatable<DetailedProfile>
     {
+        [JsonRequired]
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("avatar_url")]
+        public string AvatarUrl { get; set; }
+
+
         [JsonProperty("available_libraries")]
         public List<BasicLibrary> AvailableLibraries { get; set; } = new List<BasicLibrary>();
 
