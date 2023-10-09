@@ -13,8 +13,12 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("avatar_url")]
-        public string AvatarUrl { get; set; }
+        //[JsonProperty("avatar_url")]
+        //public string AvatarUrl { get; set; }
+
+        [JsonProperty("avatar_image")]
+        public byte[] AvatarImage { get; set; }
+
 
         [JsonRequired]
         [JsonProperty("allowed_ratings")]
@@ -31,7 +35,6 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("locked")]
         public bool Locked { get; set; }
 
-
         #region IValidate
 
         public void Validate()
@@ -44,11 +47,18 @@ namespace DustyPig.API.v3.Models
             else
                 lst.Add(chk.Error);
 
-            chk = Validators.Validate(nameof(AvatarUrl), AvatarUrl, false, Constants.MAX_URL_LENGTH);
-            if (chk.Valid)
-                AvatarUrl = chk.Fixed;
-            else
-                lst.Add(chk.Error);
+            //chk = Validators.Validate(nameof(AvatarUrl), AvatarUrl, false, Constants.MAX_URL_LENGTH);
+            //if (chk.Valid)
+            //    AvatarUrl = chk.Fixed;
+            //else
+            //    lst.Add(chk.Error);
+
+
+            //Limit avatar to 5mb
+            if (AvatarImage != null)
+                if (AvatarImage.Length > 1024 * 1024 * 5)
+                    lst.Add("AvatarImage must be less than 5 MB");
+
 
             if (Pin != null && (Pin < 1000 || Pin > 9999))
                 lst.Add($"{nameof(Pin)} must be between 1000 and 9999");
@@ -60,7 +70,7 @@ namespace DustyPig.API.v3.Models
 
         #endregion
 
-        
+
         #region IEquatable
 
         public override bool Equals(object obj)
@@ -72,7 +82,7 @@ namespace DustyPig.API.v3.Models
         {
             return !(other is null) &&
                    Name == other.Name &&
-                   AvatarUrl == other.AvatarUrl &&
+                   EqualityComparer<byte[]>.Default.Equals(AvatarImage, other.AvatarImage) &&
                    AllowedRatings == other.AllowedRatings &&
                    Pin == other.Pin &&
                    TitleRequestPermissions == other.TitleRequestPermissions &&
@@ -81,9 +91,9 @@ namespace DustyPig.API.v3.Models
 
         public override int GetHashCode()
         {
-            int hashCode = 1237016275;
+            int hashCode = 1686336231;
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AvatarUrl);
+            hashCode = hashCode * -1521134295 + EqualityComparer<byte[]>.Default.GetHashCode(AvatarImage);
             hashCode = hashCode * -1521134295 + AllowedRatings.GetHashCode();
             hashCode = hashCode * -1521134295 + Pin.GetHashCode();
             hashCode = hashCode * -1521134295 + TitleRequestPermissions.GetHashCode();
@@ -105,6 +115,6 @@ namespace DustyPig.API.v3.Models
 
 
         public override string ToString() => Name;
-    
+
     }
 }
