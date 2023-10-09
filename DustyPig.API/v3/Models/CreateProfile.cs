@@ -21,11 +21,20 @@ namespace DustyPig.API.v3.Models
             try { base.Validate(); }
             catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
 
-            
+
             //Limit avatar to 5mb
             if (AvatarImage != null)
+            {
                 if (AvatarImage.Length > 1024 * 1024 * 5)
-                    lst.Add("AvatarImage must be less than 5 MB");
+                    lst.Add($"{nameof(AvatarImage)} must be less than 5 MB");
+
+                else if (AvatarImage.Length < 2)
+                    lst.Add($"{nameof(AvatarImage)} is not a valid image");
+
+                else if (AvatarImage[0] != 0xFF && AvatarImage[1] != 0xD8)
+                    lst.Add($"{nameof(AvatarImage)} does not seem to be a jpg image");
+            }
+
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
