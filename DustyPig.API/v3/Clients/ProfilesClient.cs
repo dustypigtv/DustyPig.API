@@ -1,6 +1,11 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -92,6 +97,47 @@ namespace DustyPig.API.v3.Clients
         public Task<Response<List<BasicProfile>>> ListAsync(CancellationToken cancellationToken = default) =>
             _client.GetAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
 
+
+
+        /// <summary>
+        /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
+        /// </summary>
+        public Task<Response> SetProfileAvatar(int id, byte[] avatar, CancellationToken cancellationToken = default)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
+            foreach (var header in _client.GetHeaders(true))
+                request.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            request.Content = new ByteArrayContent(avatar);
+            
+            return _client.GetResponseAsync(request, cancellationToken);
+        }
+
+        /// <summary>
+        /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
+        /// </summary>
+        public Task<Response> SetProfileAvatar(int id, Stream avatar, CancellationToken cancellationToken = default)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
+            foreach (var header in _client.GetHeaders(true))
+                request.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            request.Content = new StreamContent(avatar);
+
+            return _client.GetResponseAsync(request, cancellationToken);
+        }
+
+
+        /// <summary>
+        /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
+        /// </summary>
+        public Task<Response> SetProfileAvatar(int id, FileInfo avatar, CancellationToken cancellationToken = default)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
+            foreach (var header in _client.GetHeaders(true))
+                request.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            request.Content = new StreamContent(avatar.OpenRead());
+
+            return _client.GetResponseAsync(request, cancellationToken);
+        }
 
     }
 }

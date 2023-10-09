@@ -5,6 +5,7 @@ using DustyPig.REST;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -139,6 +140,11 @@ namespace DustyPig.API.v3
         }
 
 
+        internal async Task<Response> GetResponseAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var response = await _client.GetResponseAsync<ResponseWrapper>(request, cancellationToken).ConfigureAwait(false);
+            return ConvertToResponse(response);
+        }
 
 
         static Response ConvertToResponse(Response<ResponseWrapper> rw)
