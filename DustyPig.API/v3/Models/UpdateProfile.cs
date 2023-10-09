@@ -47,7 +47,7 @@ namespace DustyPig.API.v3.Models
 
         public override int GetHashCode()
         {
-            int hashCode = 402319765;
+            int hashCode = 1545243542;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + Id.GetHashCode();
             return hashCode;
@@ -68,6 +68,5 @@ namespace DustyPig.API.v3.Models
 
         public override string ToString() => base.ToString();
 
-        
     }
 }

@@ -1,5 +1,5 @@
-﻿using DustyPig.API.v3.BaseClasses;
-using DustyPig.API.v3.Interfaces;
+﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.MPAA;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,33 +7,51 @@ using System.Collections.Generic;
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateProfile : BaseProfile, IValidate, IEquatable<CreateProfile>
+    public class CreateProfile : IValidate, IEquatable<CreateProfile>
     {
-        [JsonProperty("avatar_image")]
-        public byte[] AvatarImage { get; set; }
+        [JsonRequired]
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("avatar_url")]
+        public string AvatarUrl { get; set; }
+
+        [JsonRequired]
+        [JsonProperty("allowed_ratings")]
+        public Ratings AllowedRatings { get; set; }
+
+        [JsonProperty("pin")]
+        public short? Pin { get; set; }
+
+        [JsonRequired]
+        [JsonProperty("title_request_permissions")]
+        public TitleRequestPermissions TitleRequestPermissions { get; set; }
+
+        [JsonRequired]
+        [JsonProperty("locked")]
+        public bool Locked { get; set; }
+
 
         #region IValidate
 
-        public new void Validate()
+        public void Validate()
         {
             var lst = new List<string>();
 
-            try { base.Validate(); }
-            catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
+            var chk = Validators.Validate(nameof(Name), Name, true, Constants.MAX_NAME_LENGTH);
+            if (chk.Valid)
+                Name = chk.Fixed;
+            else
+                lst.Add(chk.Error);
 
+            chk = Validators.Validate(nameof(AvatarUrl), AvatarUrl, false, Constants.MAX_URL_LENGTH);
+            if (chk.Valid)
+                AvatarUrl = chk.Fixed;
+            else
+                lst.Add(chk.Error);
 
-            //Limit avatar to 5mb
-            if (AvatarImage != null && AvatarImage.Length > 0)
-            {
-                if (AvatarImage.Length > 1024 * 1024 * 5)
-                    lst.Add($"{nameof(AvatarImage)} must be less than 5 MB");
-
-                else if (AvatarImage.Length < 3)
-                    lst.Add($"{nameof(AvatarImage)} is not a valid image");
-
-                else if (AvatarImage[0] != 0xFF && AvatarImage[1] != 0xD8)
-                    lst.Add($"{nameof(AvatarImage)} does not seem to be a jpg image");
-            }
+            if (Pin != null && (Pin < 1000 || Pin > 9999))
+                lst.Add($"{nameof(Pin)} must be between 1000 and 9999");
 
 
             if (lst.Count > 0)
@@ -53,15 +71,23 @@ namespace DustyPig.API.v3.Models
         public bool Equals(CreateProfile other)
         {
             return !(other is null) &&
-                   base.Equals(other) &&
-                   EqualityComparer<byte[]>.Default.Equals(AvatarImage, other.AvatarImage);
+                   Name == other.Name &&
+                   AvatarUrl == other.AvatarUrl &&
+                   AllowedRatings == other.AllowedRatings &&
+                   Pin == other.Pin &&
+                   TitleRequestPermissions == other.TitleRequestPermissions &&
+                   Locked == other.Locked;
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -1822940787;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<byte[]>.Default.GetHashCode(AvatarImage);
+            int hashCode = 1237016275;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AvatarUrl);
+            hashCode = hashCode * -1521134295 + AllowedRatings.GetHashCode();
+            hashCode = hashCode * -1521134295 + Pin.GetHashCode();
+            hashCode = hashCode * -1521134295 + TitleRequestPermissions.GetHashCode();
+            hashCode = hashCode * -1521134295 + Locked.GetHashCode();
             return hashCode;
         }
 
@@ -75,12 +101,10 @@ namespace DustyPig.API.v3.Models
             return !(left == right);
         }
 
-
         #endregion
 
 
         public override string ToString() => Name;
 
-        
     }
 }

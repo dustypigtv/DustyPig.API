@@ -75,7 +75,7 @@ namespace DustyPig.API.v3
 
 
 
-        private Dictionary<string, string> GetHeaders(bool tokenNeeded)
+        internal Dictionary<string, string> GetHeaders(bool tokenNeeded)
         {
             var ret = new Dictionary<string, string>();
             if (tokenNeeded && !string.IsNullOrWhiteSpace(Token))

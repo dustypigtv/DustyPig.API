@@ -91,5 +91,7 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response<List<BasicProfile>>> ListAsync(CancellationToken cancellationToken = default) =>
             _client.GetAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
+
+
     }
 }
