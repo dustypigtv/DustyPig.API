@@ -23,12 +23,12 @@ namespace DustyPig.API.v3.Models
 
 
             //Limit avatar to 5mb
-            if (AvatarImage != null)
+            if (AvatarImage != null && AvatarImage.Length > 0)
             {
                 if (AvatarImage.Length > 1024 * 1024 * 5)
                     lst.Add($"{nameof(AvatarImage)} must be less than 5 MB");
 
-                else if (AvatarImage.Length < 2)
+                else if (AvatarImage.Length < 3)
                     lst.Add($"{nameof(AvatarImage)} is not a valid image");
 
                 else if (AvatarImage[0] != 0xFF && AvatarImage[1] != 0xD8)
