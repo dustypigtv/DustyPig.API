@@ -13,6 +13,13 @@ namespace DustyPig.API.v3.Models
         public int Id { get; set; }
 
 
+        /// <summary>
+        /// If the Pin is set, it will update. However, since the Pin can be null, if Pin = null, then the server will only clear the Pin if this field is true
+        /// </summary>
+        [JsonProperty("clear_pin")]
+        public bool ClearPin { get; set; }
+
+
         #region IValidate
 
         public new void Validate()
@@ -42,7 +49,8 @@ namespace DustyPig.API.v3.Models
         {
             return !(other is null) &&
                    base.Equals(other) &&
-                   Id == other.Id;
+                   Id == other.Id &&
+                   ClearPin == other.ClearPin;
         }
 
         public override int GetHashCode()
@@ -50,6 +58,7 @@ namespace DustyPig.API.v3.Models
             int hashCode = 1545243542;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + ClearPin.GetHashCode();
             return hashCode;
         }
 

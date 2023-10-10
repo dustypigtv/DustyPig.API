@@ -1,12 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using DustyPig.API.v3.BaseClasses;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class DetailedProfile : UpdateProfile, IEquatable<DetailedProfile>
+    public class DetailedProfile : BaseProfile, IEquatable<DetailedProfile>
     {
+        [JsonRequired]
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("has_pin")]
+        public bool HasPin { get; set; }
+
         [JsonProperty("available_libraries")]
         public List<BasicLibrary> AvailableLibraries { get; set; } = new List<BasicLibrary>();
 
@@ -25,6 +33,7 @@ namespace DustyPig.API.v3.Models
         {
             return !(other is null) &&
                    base.Equals(other) &&
+                   Id == other.Id &&
                    EqualityComparer<List<BasicLibrary>>.Default.Equals(AvailableLibraries, other.AvailableLibraries) &&
                    IsMain == other.IsMain;
         }
@@ -33,6 +42,8 @@ namespace DustyPig.API.v3.Models
         {
             int hashCode = -950904311;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + HasPin.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<List<BasicLibrary>>.Default.GetHashCode(AvailableLibraries);
             hashCode = hashCode * -1521134295 + IsMain.GetHashCode();
             return hashCode;
