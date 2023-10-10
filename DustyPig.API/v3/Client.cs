@@ -146,6 +146,18 @@ namespace DustyPig.API.v3
             return ConvertToResponse(response);
         }
 
+        internal async Task<Response<T>> GetResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var response = await _client.GetResponseAsync<ResponseWrapper<T>>(request, cancellationToken).ConfigureAwait(false);
+            return ConvertToDataResponse(response);
+        }
+
+        internal async Task<Response<T>> GetSimpleResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var response = await _client.GetResponseAsync<ResponseWrapper<SimpleValue<T>>>(request, cancellationToken).ConfigureAwait(false);
+            return ConvertToSimpleResponse(response);
+        }
+
 
         static Response ConvertToResponse(Response<ResponseWrapper> rw)
         {

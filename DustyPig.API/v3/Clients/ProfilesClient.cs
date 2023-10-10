@@ -115,28 +115,28 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
         /// </summary>
-        public Task<Response> SetProfileAvatar(int id, Stream avatar, CancellationToken cancellationToken = default)
+        public Task<Response<string>> SetProfileAvatar(int id, Stream avatar, CancellationToken cancellationToken = default)
         {
             var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
             foreach (var header in _client.GetHeaders(true))
                 request.Headers.TryAddWithoutValidation(header.Key, header.Value);
             request.Content = new StreamContent(avatar);
 
-            return _client.GetResponseAsync(request, cancellationToken);
+            return _client.GetSimpleResponseAsync<string>(request, cancellationToken);
         }
 
 
         /// <summary>
         /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
         /// </summary>
-        public Task<Response> SetProfileAvatar(int id, FileInfo avatar, CancellationToken cancellationToken = default)
+        public Task<Response<string>> SetProfileAvatar(int id, FileInfo avatar, CancellationToken cancellationToken = default)
         {
             var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
             foreach (var header in _client.GetHeaders(true))
                 request.Headers.TryAddWithoutValidation(header.Key, header.Value);
             request.Content = new StreamContent(avatar.OpenRead());
 
-            return _client.GetResponseAsync(request, cancellationToken);
+            return _client.GetSimpleResponseAsync<string>(request, cancellationToken);
         }
 
     }
