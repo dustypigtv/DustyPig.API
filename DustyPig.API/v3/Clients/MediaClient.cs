@@ -177,27 +177,7 @@ namespace DustyPig.API.v3.Clients
                 Seconds = seconds
             }, cancellationToken);
 
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<Ratings>> GetAllAvailableRatingsAsync(CancellationToken cancellationToken = default) =>
-            _client.GetSimpleAsync<Ratings>(true, PREFIX + "GetAllAvailableRatings", cancellationToken);
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<Genres>> GetAllAvailableGenresAsync(CancellationToken cancellationToken = default) =>
-            _client.GetSimpleAsync<Genres>(true, PREFIX + "GetAllAvailableGenres", cancellationToken);
-
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<List<BasicMedia>>> LoadExploreResultsAsync(ExploreRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "Explore", data, cancellationToken);
-
-
+        
         /// <summary>
         /// Requires main profile
         /// </summary>

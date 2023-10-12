@@ -37,9 +37,6 @@ namespace DustyPig.API.v3.BaseClasses
         public string BackdropUrl { get; set; }
 
 
-        [JsonProperty("rated")]
-        public Ratings Rated { get; set; }
-
         [JsonProperty("genres")]
         public Genres Genres { get; set; }
 
@@ -60,6 +57,10 @@ namespace DustyPig.API.v3.BaseClasses
 
 
         #endregion
+
+        [JsonProperty("rated")]
+        public TVRatings Rated { get; set; }
+
 
         #region IEquatable
 

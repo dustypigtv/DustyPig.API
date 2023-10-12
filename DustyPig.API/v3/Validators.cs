@@ -117,19 +117,6 @@ namespace DustyPig.API.v3
             if (media.LibraryId <= 0)
                 ret.Add($"{nameof(media.LibraryId)} must be > 0");
 
-            if (media.Rated != Ratings.None)
-            {
-                int ratingsCnt = 0;
-                foreach (Ratings rating in Enum.GetValues(typeof(Ratings)))
-                    if (rating != Ratings.None)
-                        if (media.Rated.HasFlag(rating))
-                            if (++ratingsCnt > 1)
-                            {
-                                ret.Add("Cannot have multiple Ratings");
-                                break;
-                            }
-            }
-
             var chk = Validate(nameof(media.BackdropUrl), media.BackdropUrl, false, Constants.MAX_URL_LENGTH);
             if (chk.Valid)
                 media.BackdropUrl = chk.Fixed;

@@ -53,100 +53,38 @@ namespace DustyPig.API.v3.MPAA
         }
 
 
-
-
-
-
-        public static string AsString(Ratings rating)
+        public static string AsString(MovieRatings self)
         {
-            if (rating == Ratings.None || rating == Ratings.All)
-                return rating.ToString();
-
-            var lst = new List<string>();
-            foreach (var candidate in RealValues)
-                if (rating.HasFlag(candidate))
-                {
-                    var s = candidate
-                        .ToString()
-                        .Replace('_', '-');
-                    if (s == "TV-NotRated")
-                        s = "TV-Not Rated";
-                    lst.Add(s);
-                }
-
-            if (lst.Count > 0)
-                return String.Join(", ", lst);
-
-            return null;
+            return self.ToString().Replace("_", "-");
         }
 
-        public static Ratings ToRatings(string s)
+        public static MovieRatings ToMovieRatings(string self)
         {
-            if (string.IsNullOrWhiteSpace(s))
-                return Ratings.None;
-
-            s = s.Trim().Trim('*').Trim();
-
-            foreach (Ratings r in RealValues)
-            {
-                if (s.Equals(r.AsString(), StringComparison.CurrentCultureIgnoreCase))
-                    return r;
-                if (s.Equals(r.ToString(), StringComparison.CurrentCultureIgnoreCase))
-                    return r;
-            }
-
-            return Ratings.None;
+            foreach(MovieRatings rating in Enum.GetValues(typeof(MovieRatings)))
+                if (rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
+                    return rating;
+            return MovieRatings.None;
         }
 
 
 
-        public static Ratings ToRatings(IEnumerable<string> lst)
+        public static string AsString(TVRatings self)
         {
-            var ret = Ratings.None;
-
-            foreach (var s in lst)
-                foreach (var candidate in RealValues)
-                    if (s.Equals(candidate.AsString(), StringComparison.CurrentCultureIgnoreCase))
-                        ret |= candidate;
-
+            var ret = self.ToString().Replace("_", "-");
+            if (ret == "NotRated")
+                ret = "Not Rated";
             return ret;
         }
 
-
-        public static IReadOnlyList<Ratings> RealValues
+        public static TVRatings ToTVRatings(string self)
         {
-            get
-            {
-                var ret = new List<Ratings>();
-
-                foreach (Ratings rating in Enum.GetValues(typeof(Ratings)))
-                    if (rating != Ratings.All && rating != Ratings.None)
-                        ret.Add(rating);
-
-                return ret;
-            }
+            foreach(TVRatings rating in Enum.GetValues(typeof(TVRatings)))
+                if(rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
+                    return rating;
+            return TVRatings.None;
         }
 
-        public static IReadOnlyList<Ratings> MovieRatings => new List<Ratings>()
-        {
-            Ratings.G,
-            Ratings.PG,
-            Ratings.PG_13,
-            Ratings.R,
-            Ratings.NC_17,
-            Ratings.Unrated
-        };
 
-        public static IReadOnlyList<Ratings> TVRatings => new List<Ratings>()
-        {
-            Ratings.TV_Y,
-            Ratings.TV_Y7,
-            Ratings.TV_G,
-            Ratings.TV_PG,
-            Ratings.TV_14,
-            Ratings.TV_MA,
-            Ratings.TV_NotRated
-        };
 
 
     }

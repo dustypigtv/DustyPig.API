@@ -4,11 +4,16 @@ namespace DustyPig.API.v3.MPAA
 {
     public static partial class Extensions
     {
-        public static string AsString(this Ratings rating) => RatingsUtils.AsString(rating);
+        public static string AsString(this MovieRatings rating) => RatingsUtils.AsString(rating);
 
-        public static Ratings ToRatings(this string s) => RatingsUtils.ToRatings(s);
+        public static string AsString(this TVRatings rating) => RatingsUtils.AsString(rating);
 
-        public static Ratings ToRatings(this IEnumerable<string> lst) => RatingsUtils.ToRatings(lst);
+
+
+        public static MovieRatings ToMovieRatings(this string s) => RatingsUtils.ToMovieRatings(s);
+
+        public static TVRatings ToTVRatings(this string s) => RatingsUtils.ToTVRatings(s);
+
 
 
 

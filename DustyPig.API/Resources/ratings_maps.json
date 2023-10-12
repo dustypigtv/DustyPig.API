@@ -36,7 +36,7 @@
     "Country": "US",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 1
   },
   {
@@ -716,7 +716,7 @@
     "Country": "MY",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 3
   },
   {
@@ -756,7 +756,7 @@
     "Country": "CA-QC",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -780,7 +780,7 @@
     "Country": "DK",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -796,7 +796,7 @@
     "Country": "SE",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 3
   },
   {
@@ -900,7 +900,7 @@
     "Country": "NO",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -956,7 +956,7 @@
     "Country": "HU",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -1004,7 +1004,7 @@
     "Country": "LT",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -1052,7 +1052,7 @@
     "Country": "RU",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -1108,7 +1108,7 @@
     "Country": "PH",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 2
   },
   {
@@ -1140,7 +1140,7 @@
     "Country": "IT",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Unrated",
     "Rank": 3
   },
   {
@@ -1148,7 +1148,7 @@
     "Country": "US",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 1
   },
   {
@@ -1372,7 +1372,7 @@
     "Country": "CA-QC",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
@@ -1460,7 +1460,7 @@
     "Country": "ES",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
@@ -1532,7 +1532,7 @@
     "Country": "FR",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
@@ -1628,7 +1628,7 @@
     "Country": "HU",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
@@ -1732,7 +1732,7 @@
     "Country": "LT",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 3
   },
   {
@@ -1764,7 +1764,7 @@
     "Country": "NL",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
@@ -1812,7 +1812,7 @@
     "Country": "PH",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 3
   },
   {
@@ -1852,7 +1852,7 @@
     "Country": "PT",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
@@ -1940,7 +1940,7 @@
     "Country": "SK",
     "Rating": "NR",
     "Meaning": "No rating information.",
-    "US_Equivalent": "NR",
+    "US_Equivalent": "Not Rated",
     "Rank": 2
   },
   {
