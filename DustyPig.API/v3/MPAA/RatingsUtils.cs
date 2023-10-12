@@ -69,8 +69,8 @@ namespace DustyPig.API.v3.MPAA
                     var s = candidate
                         .ToString()
                         .Replace('_', '-');
-                    if (s == "NR")
-                        s = "Not Rated";
+                    if (s == "TV-NotRated")
+                        s = "TV-Not Rated";
                     lst.Add(s);
                 }
 
@@ -145,7 +145,7 @@ namespace DustyPig.API.v3.MPAA
             Ratings.TV_PG,
             Ratings.TV_14,
             Ratings.TV_MA,
-            Ratings.Unrated
+            Ratings.TV_NotRated
         };
 
 

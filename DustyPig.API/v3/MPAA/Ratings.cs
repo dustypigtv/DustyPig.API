@@ -21,7 +21,7 @@ namespace DustyPig.API.v3.MPAA
         TV_14 = 1 << 10,
         TV_MA = 1 << 11,
 
-        NR = 1 << 12,
+        TV_NotRated = 1 << 12,
 
         All = ~(-1 << 13)
     }
