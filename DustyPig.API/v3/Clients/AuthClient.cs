@@ -1,7 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
 using System;
-using System.Data.SqlTypes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,7 +18,7 @@ namespace DustyPig.API.v3.Clients
 
         internal AuthClient(Client client) => _client = client;
 
-        
+
         /// <summary>
         /// Returns a code that can be used to login to a device with no keyboard (streaming devices, smart tvs, etc)
         /// </summary>
@@ -145,7 +144,7 @@ namespace DustyPig.API.v3.Clients
                 Email = email,
                 Password = password
             }, cancellationToken);
-          
+
 
         /// <summary>
         /// If called by a logged in profile, will sign out of the profile. If called by a logged in account, will sign out of the account
@@ -181,6 +180,6 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         /// <param name="fcmToken">Include the FirebaseCloudMessaging token to also valid it as part of the call.</param>
         public Task<Response<LoginResponse>> UpdateAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<LoginResponse>(true, PREFIX + "UpdateAuthToken", new SimpleValue<string>(fcmToken + string.Empty),  cancellationToken);
+            _client.PostAsync<LoginResponse>(true, PREFIX + "UpdateAuthToken", new SimpleValue<string>(fcmToken + string.Empty), cancellationToken);
     }
 }

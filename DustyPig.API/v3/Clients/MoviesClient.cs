@@ -40,7 +40,7 @@ namespace DustyPig.API.v3.Clients
         {
             if (id <= 0)
                 return Task.FromResult(new Response<DetailedMovie> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-        
+
             return _client.GetAsync<DetailedMovie>(true, PREFIX + $"Details/{id}", cancellationToken);
         }
 
@@ -52,7 +52,7 @@ namespace DustyPig.API.v3.Clients
         {
             if (id <= 0)
                 return Task.FromResult(new Response<DetailedMovie> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-        
+
             return _client.GetAsync<DetailedMovie>(true, PREFIX + $"AdminDetails/{id}", cancellationToken);
         }
 

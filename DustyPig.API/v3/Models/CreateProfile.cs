@@ -1,6 +1,5 @@
 ﻿using DustyPig.API.v3.BaseClasses;
 using DustyPig.API.v3.Interfaces;
-using DustyPig.API.v3.MPAA;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace DustyPig.API.v3.Models
     public class CreateProfile : BaseProfile, IValidate, IEquatable<CreateProfile>
     {
         [JsonProperty("pin")]
-        public short? Pin { get; set; }
+        public ushort? Pin { get; set; }
 
         #region IValidate
 
@@ -70,6 +69,6 @@ namespace DustyPig.API.v3.Models
 
         public override string ToString() => Name;
 
-        
+
     }
 }

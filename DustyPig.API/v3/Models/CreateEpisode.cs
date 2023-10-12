@@ -30,7 +30,7 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("srt_subtitles")]
         public List<ExternalSubtitle> ExternalSubtitles { get; set; } = new List<ExternalSubtitle>();
 
-       
+
         #endregion
 
 

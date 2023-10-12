@@ -63,7 +63,7 @@ namespace DustyPig.API.v3.Models
             return hashCode;
         }
 
-        
+
 
         public static bool operator ==(GenreListRequest left, GenreListRequest right)
         {

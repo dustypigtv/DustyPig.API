@@ -168,7 +168,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response> UpdatePlaylistItemsAsync(int id, IEnumerable<int> mediaIds, CancellationToken cancellationToken = default) =>
-            UpdatePlaylistItemsAsync(new UpdatePlaylistItemsData { Id = id, MediaIds = mediaIds.ToList()}, cancellationToken);
-    
+            UpdatePlaylistItemsAsync(new UpdatePlaylistItemsData { Id = id, MediaIds = mediaIds.ToList() }, cancellationToken);
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DustyPig.API.v3.MPAA
+﻿namespace DustyPig.API.v3.MPAA
 {
     //[Flags]
     //public enum Ratings

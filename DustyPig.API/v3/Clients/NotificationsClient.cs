@@ -22,7 +22,7 @@ namespace DustyPig.API.v3.Clients
         {
             if (id <= 0)
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-        
+
             return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
         }
 
@@ -37,11 +37,11 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> MarkAsReadAsync(int id, CancellationToken cancellationToken = default) 
+        public Task<Response> MarkAsReadAsync(int id, CancellationToken cancellationToken = default)
         {
             if (id <= 0)
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-        
+
             return _client.GetAsync(true, PREFIX + $"MarkAsRead/{id}", cancellationToken);
         }
 

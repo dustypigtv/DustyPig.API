@@ -58,7 +58,7 @@ namespace DustyPig.API.v3.Models
             return hashCode;
         }
 
-         public static bool operator ==(CreateLibrary left, CreateLibrary right)
+        public static bool operator ==(CreateLibrary left, CreateLibrary right)
         {
             return EqualityComparer<CreateLibrary>.Default.Equals(left, right);
         }

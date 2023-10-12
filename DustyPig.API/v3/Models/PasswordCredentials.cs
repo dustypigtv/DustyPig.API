@@ -86,7 +86,7 @@ namespace DustyPig.API.v3.Models
             return hashCode;
         }
 
-        
+
         public static bool operator ==(PasswordCredentials left, PasswordCredentials right)
         {
             return EqualityComparer<PasswordCredentials>.Default.Equals(left, right);

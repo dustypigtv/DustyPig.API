@@ -1,11 +1,8 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -108,7 +105,7 @@ namespace DustyPig.API.v3.Clients
             foreach (var header in _client.GetHeaders(true))
                 request.Headers.TryAddWithoutValidation(header.Key, header.Value);
             request.Content = new ByteArrayContent(avatar);
-            
+
             return _client.GetResponseAsync(request, cancellationToken);
         }
 

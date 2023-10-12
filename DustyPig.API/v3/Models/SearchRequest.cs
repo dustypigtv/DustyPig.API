@@ -9,10 +9,10 @@ namespace DustyPig.API.v3.Models
     public class SearchRequest : IValidate, IEquatable<SearchRequest>
     {
         [JsonRequired]
-        [JsonProperty("query")] 
+        [JsonProperty("query")]
         public string Query { get; set; }
 
-        [JsonProperty("search_tmdb")] 
+        [JsonProperty("search_tmdb")]
         public bool SearchTMDB { get; set; }
 
 

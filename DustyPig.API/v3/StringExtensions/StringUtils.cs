@@ -9,7 +9,7 @@ namespace System
     public static class StringUtils
     {
         private static readonly List<string> RemovePrefixes = new List<string> { "the", "a", "an", "la", "les", "des", "l", "un", "el", "il", "le", "uno", };
-                
+
 
         /// <summary>
         /// Converts a string to a list, splitting on null characters (\0)
@@ -75,7 +75,7 @@ namespace System
             if (parts.Length > 1)
                 if (RemovePrefixes.ICContains(parts[0]))
                     title = string.Join(" ", parts.Skip(1));
-            
+
             return title.FixSpaces().ToLower();
         }
 
@@ -152,7 +152,7 @@ namespace System
 
             return str
 
-               //The original annoyances
+                //The original annoyances
                 .Replace("â€˜", "\"")
                 .Replace("â€™", "'")
                 .Replace("â€¦", "!")
@@ -219,11 +219,11 @@ namespace System
 
                 //.Replace("Ç", "C")
                 //.Replace("ç", "c")
-                
+
                 //.Replace("Ñ", "N")
                 //.Replace("ñ", "n")
 
-                
+
                 .Replace("¨", "\"")
                 .Replace("´", "'")
                 .Replace("`", "'")
@@ -250,7 +250,7 @@ namespace System
         public static string NormalizeText(string str)
         {
             str = (str + string.Empty).Trim();
-            
+
             return str
                 .NormalizeMiscCharacters()
 
@@ -288,10 +288,10 @@ namespace System
 
             //Replace remaining special characters with a space
             str = Regex.Replace(str, "[^\\w ]", " ");
-            
+
             //Split on spaces
             var ret = new List<string>(str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-            
+
             return ret;
         }
 

@@ -46,7 +46,7 @@ namespace DustyPig.API.v3.Clients
         {
             if (id <= 0)
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
-        
+
             return _client.DeleteAsync(true, PREFIX + $"Delete/{id}", cancellationToken);
         }
 

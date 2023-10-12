@@ -60,7 +60,7 @@ namespace DustyPig.API.v3.Models
                 bool realRating = false;
                 foreach (MovieRatings rating in Enum.GetValues(typeof(MovieRatings)))
                 {
-                    if(rating == Rated)
+                    if (rating == Rated)
                     {
                         realRating = true;
                         break;
@@ -69,7 +69,7 @@ namespace DustyPig.API.v3.Models
                 if (!realRating)
                     lst.Add($"Invalid {nameof(Rated)}");
             }
-            
+
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };

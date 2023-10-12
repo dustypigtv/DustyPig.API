@@ -177,7 +177,7 @@ namespace DustyPig.API.v3.Clients
                 Seconds = seconds
             }, cancellationToken);
 
-        
+
         /// <summary>
         /// Requires main profile
         /// </summary>

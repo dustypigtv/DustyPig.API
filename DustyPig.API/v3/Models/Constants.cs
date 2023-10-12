@@ -41,18 +41,18 @@ namespace DustyPig.API.v3.Models
 
 
         public const string DEFAULT_PROFILE_PATH = "user-art/profile";
-        
-        public const string DEFAULT_PROFILE_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PROFILE_PATH +  "/";
+
+        public const string DEFAULT_PROFILE_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PROFILE_PATH + "/";
 
 
         public const string DEFAULT_PROFILE_IMAGE_BLUE = DEFAULT_PROFILE_URL_ROOT + "blue.png";
-        
+
         public const string DEFAULT_PROFILE_IMAGE_GOLD = DEFAULT_PROFILE_URL_ROOT + "gold.png";
-        
+
         public const string DEFAULT_PROFILE_IMAGE_GREEN = DEFAULT_PROFILE_URL_ROOT + "green.png";
-        
+
         public const string DEFAULT_PROFILE_IMAGE_GREY = DEFAULT_PROFILE_URL_ROOT + "grey.png";
-        
+
         public const string DEFAULT_PROFILE_IMAGE_RED = DEFAULT_PROFILE_URL_ROOT + "red.png";
 
         public static IReadOnlyList<string> DefaultProfileImages() => new List<string>

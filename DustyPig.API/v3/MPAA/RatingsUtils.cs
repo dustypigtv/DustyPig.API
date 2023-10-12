@@ -60,7 +60,7 @@ namespace DustyPig.API.v3.MPAA
 
         public static MovieRatings ToMovieRatings(string self)
         {
-            foreach(MovieRatings rating in Enum.GetValues(typeof(MovieRatings)))
+            foreach (MovieRatings rating in Enum.GetValues(typeof(MovieRatings)))
                 if (rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
                     return rating;
             return MovieRatings.None;
@@ -78,8 +78,8 @@ namespace DustyPig.API.v3.MPAA
 
         public static TVRatings ToTVRatings(string self)
         {
-            foreach(TVRatings rating in Enum.GetValues(typeof(TVRatings)))
-                if(rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
+            foreach (TVRatings rating in Enum.GetValues(typeof(TVRatings)))
+                if (rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
                     return rating;
             return TVRatings.None;
         }

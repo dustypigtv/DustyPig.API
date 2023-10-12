@@ -27,7 +27,7 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        
+
         #region IEquatable
 
         public override bool Equals(object obj)
