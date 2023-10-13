@@ -18,19 +18,19 @@ namespace DustyPig.API.v3.Models
         public string Description { get; set; }
 
         [JsonProperty("genres")]
-        public Genres? Genres { get; set; }
+        public Genres Genres { get; set; }
 
         [JsonProperty("cast")]
-        public List<string> Cast { get; set; }
+        public List<string> Cast { get; set; } = new List<string>();
 
         [JsonProperty("directors")]
-        public List<string> Directors { get; set; }
+        public List<string> Directors { get; set; } = new List<string>();
 
         [JsonProperty("producers")]
-        public List<string> Producers { get; set; }
+        public List<string> Producers { get; set; } = new List<string>();
 
         [JsonProperty("writers")]
-        public List<string> Writers { get; set; }
+        public List<string> Writers { get; set; } = new List<string>();
 
         [JsonProperty("available")]
         public List<BasicMedia> Available { get; set; } = new List<BasicMedia>();
