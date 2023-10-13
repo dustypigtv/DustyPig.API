@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{64FB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{266EF426-B43A-4A54-BCFB-E903538B0765}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\auto_build.yml = .github\workflows\auto_build.yml
 		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
