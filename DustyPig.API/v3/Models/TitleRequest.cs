@@ -13,14 +13,8 @@ namespace DustyPig.API.v3.Models
         public int TMDB_Id { get; set; }
 
         /// <summary>
-        /// If true, the request will be sent to the main profile on the account, and <see cref="FriendId"/> will be ignored
-        /// </summary>
-        [JsonProperty("request_from_main_profile")]
-        public bool RequestFromMainProfile { get; set; }
-
-        /// <summary>
-        /// If <see cref="RequestFromMainProfile"/> == true, this field will be ignored
         /// This will also be ignored if If <see cref="BaseProfile.TitleRequestPermissions"/> == <see cref="TitleRequestPermissions.RequiresAuthorization"/>, as the request will be sent to the main profile on the account. 
+        /// Set to null to request the title from the main profile on the account
         /// </summary>
         [JsonProperty("friend_id")]
         public int? FriendId { get; set; }
