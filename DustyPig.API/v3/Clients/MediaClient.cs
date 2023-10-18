@@ -58,41 +58,6 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<List<BasicMedia>>> ListGenreItemsAsync(GenreListRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "ListGenreItems", data, cancellationToken);
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<List<BasicMedia>>> ListGenreItemsAsync(Genres genre, int start = 0, CancellationToken cancellationToken = default) =>
-            ListGenreItemsAsync(new GenreListRequest
-            {
-                Genre = genre,
-                Start = start,
-            }, cancellationToken);
-
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<List<BasicMedia>>> ListLibraryItemsAsync(LibraryListRequest data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<List<BasicMedia>>(true, PREFIX + "ListLibraryItems", data, cancellationToken);
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
-        public Task<Response<List<BasicMedia>>> ListLibraryItemsAsync(int libraryId, int start = 0, SortOrder sortOrder = SortOrder.Alphabetical, CancellationToken cancellationToken = default) =>
-            ListLibraryItemsAsync(new LibraryListRequest
-            {
-                LibraryId = libraryId,
-                Start = start,
-                Sort = sortOrder
-            }, cancellationToken);
-
-
-        /// <summary>
-        /// Requires profile
-        /// </summary>
         public Task<Response<List<BasicMedia>>> LoadMoreHomeScreenItemsAsync(HomeScreenListRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync<List<BasicMedia>>(true, PREFIX + "LoadMoreHomeScreenItems", data, cancellationToken);
 
