@@ -110,17 +110,18 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> AddSeriesAsync(AddPlaylistItem data, CancellationToken cancellationToken = default) =>
+        public Task<Response> AddSeriesAsync(AddSeriesToPlaylistInfo data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "AddSeries", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> AddSeriesAsync(int playlistId, int mediaId, CancellationToken cancellationToken = default) =>
-            AddSeriesAsync(new AddPlaylistItem
+        public Task<Response> AddSeriesAsync(int playlistId, int mediaId, bool addNewEpisodes, CancellationToken cancellationToken = default) =>
+            AddSeriesAsync(new AddSeriesToPlaylistInfo
             {
                 MediaId = mediaId,
-                PlaylistId = playlistId
+                PlaylistId = playlistId,
+                AutoAddNewEpisodes = addNewEpisodes
             }, cancellationToken);
 
 
