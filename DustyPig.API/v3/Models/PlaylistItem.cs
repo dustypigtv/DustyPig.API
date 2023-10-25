@@ -37,9 +37,6 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("artwork_url")]
         public string ArtworkUrl { get; set; }
 
-        [JsonProperty("played")]
-        public double? Played { get; set; }
-
         [JsonProperty("length")]
         public double Length { get; set; }
 
@@ -81,7 +78,6 @@ namespace DustyPig.API.v3.Models
                    Title == other.Title &&
                    Description == other.Description &&
                    ArtworkUrl == other.ArtworkUrl &&
-                   Played == other.Played &&
                    Length == other.Length &&
                    BifUrl == other.BifUrl &&
                    VideoUrl == other.VideoUrl &&
@@ -99,7 +95,6 @@ namespace DustyPig.API.v3.Models
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ArtworkUrl);
-            hashCode = hashCode * -1521134295 + Played.GetHashCode();
             hashCode = hashCode * -1521134295 + Length.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BifUrl);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(VideoUrl);
