@@ -8,12 +8,8 @@ namespace DustyPig.API.v3.Models
     public class SetPlaylistProgress : IValidate, IEquatable<SetPlaylistProgress>
     {
         [JsonRequired]
-        [JsonProperty("playlist_id")]
-        public int PlaylistId { get; set; }
-
-        [JsonRequired]
-        [JsonProperty("new_index")]
-        public int NewIndex { get; set; }
+        [JsonProperty("playlist_item_id")]
+        public int PlaylistItemId { get; set; }
 
         [JsonRequired]
         [JsonProperty("new_progress")]
@@ -26,10 +22,7 @@ namespace DustyPig.API.v3.Models
         {
             var lst = new List<string>();
 
-            Validators.ValidateId(nameof(PlaylistId), PlaylistId, lst);
-
-            if (NewIndex < 0)
-                lst.Add($"Invalid {nameof(NewIndex)}");
+            Validators.ValidateId(nameof(PlaylistItemId), PlaylistItemId, lst);
 
             if (NewProgress < 0)
                 lst.Add($"Invalid {nameof(NewProgress)}");
@@ -51,16 +44,14 @@ namespace DustyPig.API.v3.Models
         public bool Equals(SetPlaylistProgress other)
         {
             return !(other is null) &&
-                   PlaylistId == other.PlaylistId &&
-                   NewIndex == other.NewIndex &&
+                   PlaylistItemId == other.PlaylistItemId &&
                    NewProgress == other.NewProgress;
         }
 
         public override int GetHashCode()
         {
             int hashCode = 1016641471;
-            hashCode = hashCode * -1521134295 + PlaylistId.GetHashCode();
-            hashCode = hashCode * -1521134295 + NewIndex.GetHashCode();
+            hashCode = hashCode * -1521134295 + PlaylistItemId.GetHashCode();
             hashCode = hashCode * -1521134295 + NewProgress.GetHashCode();
             return hashCode;
         }

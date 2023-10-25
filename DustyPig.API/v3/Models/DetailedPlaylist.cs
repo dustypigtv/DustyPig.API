@@ -7,8 +7,8 @@ namespace DustyPig.API.v3.Models
     public class DetailedPlaylist : BasicPlaylist, IEquatable<DetailedPlaylist>
     {
         [JsonRequired]
-        [JsonProperty("current_index")]
-        public int CurrentIndex { get; set; }
+        [JsonProperty("current_item_id")]
+        public int CurrentItemId { get; set; }
 
         [JsonRequired]
         [JsonProperty("items")]
@@ -26,7 +26,7 @@ namespace DustyPig.API.v3.Models
         {
             return !(other is null) &&
                    base.Equals(other) &&
-                   CurrentIndex == other.CurrentIndex &&
+                   CurrentItemId == other.CurrentItemId &&
                    EqualityComparer<List<PlaylistItem>>.Default.Equals(Items, other.Items);
         }
 
@@ -34,7 +34,7 @@ namespace DustyPig.API.v3.Models
         {
             int hashCode = 519810995;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + CurrentIndex.GetHashCode();
+            hashCode = hashCode * -1521134295 + CurrentItemId.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<List<PlaylistItem>>.Default.GetHashCode(Items);
             return hashCode;
         }

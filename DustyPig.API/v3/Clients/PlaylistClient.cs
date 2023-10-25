@@ -79,11 +79,10 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> SetPlaylistProgressAsync(int playlistId, int newIndex, double newProgress, CancellationToken cancellationToken = default) =>
+        public Task<Response> SetPlaylistProgressAsync(int playlistItemId, double newProgress, CancellationToken cancellationToken = default) =>
             SetPlaylistProgressAsync(new SetPlaylistProgress
             {
-                PlaylistId = playlistId,
-                NewIndex = newIndex,
+                PlaylistItemId = playlistItemId,
                 NewProgress = newProgress
             }, cancellationToken);
 
