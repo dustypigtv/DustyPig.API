@@ -7,6 +7,9 @@ namespace DustyPig.API.v3.Models
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class PlaybackProgress : IEquatable<PlaybackProgress>
     {
+        /// <summary>
+        /// For playlists, this is the <see cref="PlaylistItem.Id"/>. Otherwise, this is the movie or episode id
+        /// </summary>
         [JsonRequired]
         [JsonProperty("id")]
         public int Id { get; set; }
