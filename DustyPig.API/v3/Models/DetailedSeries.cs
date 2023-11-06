@@ -34,6 +34,9 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("access_request_status")]
         public OverrideRequestStatus AccessRequestedStatus { get; set; }
 
+        [JsonProperty("subscribed")]
+        public bool Subscribed { get; set; }
+
 
         #region IEquatable
 
