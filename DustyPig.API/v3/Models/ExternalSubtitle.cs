@@ -15,6 +15,11 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("url")]
         public string Url { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("file_size")]
+        public long FileSize { get; set; }
 
         #region IValidate
 
@@ -53,7 +58,8 @@ namespace DustyPig.API.v3.Models
         {
             return !(other is null) &&
                    Name == other.Name &&
-                   Url == other.Url;
+                   Url == other.Url &&
+                   FileSize == other.FileSize;
         }
 
         public override int GetHashCode()
@@ -61,6 +67,7 @@ namespace DustyPig.API.v3.Models
             int hashCode = -1254404684;
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Url);
+            hashCode = hashCode * -1521134295 + FileSize.GetHashCode();
             return hashCode;
         }
 

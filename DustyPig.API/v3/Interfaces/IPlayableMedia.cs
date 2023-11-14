@@ -19,7 +19,17 @@ namespace DustyPig.API.v3.Interfaces
 
         public string BifUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        public ulong BifSize { get; set; }
+
         public string VideoUrl { get; set; }
+
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        public ulong VideoSize { get; set; }
 
         public List<ExternalSubtitle> ExternalSubtitles { get; set; }
     }

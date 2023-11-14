@@ -22,7 +22,6 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("backdrop_url")]
         public string BackdropUrl { get; set; }
 
-
         [JsonRequired]
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -41,6 +40,7 @@ namespace DustyPig.API.v3.Models
                    Id == other.Id &&
                    MediaType == other.MediaType &&
                    ArtworkUrl == other.ArtworkUrl &&
+                   BackdropUrl == other.BackdropUrl &&
                    Title == other.Title;
         }
 
@@ -50,6 +50,7 @@ namespace DustyPig.API.v3.Models
             hashCode = hashCode * -1521134295 + Id.GetHashCode();
             hashCode = hashCode * -1521134295 + MediaType.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ArtworkUrl);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BackdropUrl);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
             return hashCode;
         }

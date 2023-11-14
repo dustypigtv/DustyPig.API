@@ -21,8 +21,21 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("bif_url")]
         public string BifUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("bif_size")]
+        public ulong BifSize { get; set; }
+
+
         [JsonProperty("video_url")]
         public string VideoUrl { get; set; }
+
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("video_size")]
+        public ulong VideoSize { get; set; }
 
         [JsonProperty("srt_subtitles")]
         public List<ExternalSubtitle> ExternalSubtitles { get; set; } = new List<ExternalSubtitle>();
@@ -58,7 +71,9 @@ namespace DustyPig.API.v3.Models
                    Owner == other.Owner &&
                    Played == other.Played &&
                    BifUrl == other.BifUrl &&
+                   BifSize == other.BifSize &&
                    VideoUrl == other.VideoUrl &&
+                   VideoSize == other.VideoSize &&
                    EqualityComparer<List<ExternalSubtitle>>.Default.Equals(ExternalSubtitles, other.ExternalSubtitles) &&
                    InWatchlist == other.InWatchlist &&
                    CanPlay == other.CanPlay &&
@@ -74,7 +89,9 @@ namespace DustyPig.API.v3.Models
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Owner);
             hashCode = hashCode * -1521134295 + Played.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BifUrl);
+            hashCode = hashCode * -1521134295 + BifSize.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(VideoUrl);
+            hashCode = hashCode * -1521134295 + VideoSize.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<List<ExternalSubtitle>>.Default.GetHashCode(ExternalSubtitles);
             hashCode = hashCode * -1521134295 + InWatchlist.GetHashCode();
             hashCode = hashCode * -1521134295 + CanPlay.GetHashCode();

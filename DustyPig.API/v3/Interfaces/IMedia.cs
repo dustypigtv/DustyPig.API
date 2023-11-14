@@ -9,5 +9,11 @@
         public string Description { get; set; }
 
         public string ArtworkUrl { get; set; }
+
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        public ulong ArtworkSize { get; set; }
+
     }
 }

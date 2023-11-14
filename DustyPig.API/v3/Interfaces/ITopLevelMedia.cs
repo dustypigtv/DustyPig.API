@@ -9,6 +9,11 @@ namespace DustyPig.API.v3.Interfaces
 
         public string BackdropUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        public ulong BackdropSize { get; set; }
+
         public Genres Genres { get; set; }
 
         public List<string> Cast { get; set; }

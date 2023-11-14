@@ -24,6 +24,12 @@ namespace DustyPig.API.v3.BaseClasses
         [JsonProperty("artwork_url")]
         public string ArtworkUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("artwork_size")]
+        public ulong ArtworkSize { get; set; }
+
 
         #endregion
 
@@ -36,6 +42,11 @@ namespace DustyPig.API.v3.BaseClasses
         [JsonProperty("backdrop_url")]
         public string BackdropUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("backdrop_size")]
+        public ulong BackdropSize { get; set; }
 
         [JsonProperty("genres")]
         public Genres Genres { get; set; }
@@ -76,8 +87,10 @@ namespace DustyPig.API.v3.BaseClasses
                    TMDB_Id == other.TMDB_Id &&
                    Description == other.Description &&
                    ArtworkUrl == other.ArtworkUrl &&
+                   ArtworkSize == other.ArtworkSize &&
                    LibraryId == other.LibraryId &&
                    BackdropUrl == other.BackdropUrl &&
+                   BackdropSize == other.BackdropSize &&
                    Rated == other.Rated &&
                    Genres == other.Genres &&
                    EqualityComparer<List<string>>.Default.Equals(Cast, other.Cast) &&
@@ -94,8 +107,10 @@ namespace DustyPig.API.v3.BaseClasses
             hashCode = hashCode * -1521134295 + TMDB_Id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ArtworkUrl);
+            hashCode = hashCode * -1521134295 + ArtworkSize.GetHashCode();
             hashCode = hashCode * -1521134295 + LibraryId.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BackdropUrl);
+            hashCode = hashCode * -1521134295 + BackdropSize.GetHashCode();
             hashCode = hashCode * -1521134295 + Rated.GetHashCode();
             hashCode = hashCode * -1521134295 + Genres.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(Cast);

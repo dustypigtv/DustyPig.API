@@ -23,6 +23,13 @@ namespace DustyPig.API.v3.BaseClasses
         [JsonProperty("artwork_url")]
         public string ArtworkUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("artwork_size")]
+        public ulong ArtworkSize { get; set; }
+
+
         #endregion
 
 
@@ -63,11 +70,12 @@ namespace DustyPig.API.v3.BaseClasses
 
         public bool Equals(BaseEpisodeInfo other)
         {
-            return !(other is null) &&
+            return !(other is null) && 
                    Title == other.Title &&
                    TMDB_Id == other.TMDB_Id &&
                    Description == other.Description &&
                    ArtworkUrl == other.ArtworkUrl &&
+                   ArtworkSize == other.ArtworkSize &&
                    Date == other.Date &&
                    Length == other.Length &&
                    IntroStartTime == other.IntroStartTime &&
@@ -80,11 +88,12 @@ namespace DustyPig.API.v3.BaseClasses
 
         public override int GetHashCode()
         {
-            int hashCode = 29759748;
+            int hashCode = 539037754;
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
             hashCode = hashCode * -1521134295 + TMDB_Id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ArtworkUrl);
+            hashCode = hashCode * -1521134295 + ArtworkSize.GetHashCode();
             hashCode = hashCode * -1521134295 + Date.GetHashCode();
             hashCode = hashCode * -1521134295 + Length.GetHashCode();
             hashCode = hashCode * -1521134295 + IntroStartTime.GetHashCode();
@@ -95,6 +104,7 @@ namespace DustyPig.API.v3.BaseClasses
             hashCode = hashCode * -1521134295 + EpisodeNumber.GetHashCode();
             return hashCode;
         }
+
 
         public static bool operator ==(BaseEpisodeInfo left, BaseEpisodeInfo right)
         {
@@ -110,5 +120,6 @@ namespace DustyPig.API.v3.BaseClasses
 
 
         public override string ToString() => $"s{SeasonNumber:00}e{EpisodeNumber:00}";
+
     }
 }

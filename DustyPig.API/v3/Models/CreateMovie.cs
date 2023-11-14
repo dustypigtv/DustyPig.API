@@ -31,8 +31,20 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("bif_url")]
         public string BifUrl { get; set; }
 
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("bif_size")]
+        public ulong BifSize { get; set; }
+
         [JsonProperty("video_url")]
         public string VideoUrl { get; set; }
+
+        /// <summary>
+        /// Size in Bytes
+        /// </summary>
+        [JsonProperty("video_size")]
+        public ulong VideoSize { get; set; }
 
         [JsonProperty("srt_subtitles")]
         public List<ExternalSubtitle> ExternalSubtitles { get; set; } = new List<ExternalSubtitle>();
@@ -90,7 +102,9 @@ namespace DustyPig.API.v3.Models
             return !(other is null) &&
                    base.Equals(other) &&
                    BifUrl == other.BifUrl &&
+                   BifSize == other.BifSize &&
                    VideoUrl == other.VideoUrl &&
+                   VideoSize == other.VideoSize &&
                    EqualityComparer<List<ExternalSubtitle>>.Default.Equals(ExternalSubtitles, other.ExternalSubtitles);
         }
 
@@ -99,7 +113,9 @@ namespace DustyPig.API.v3.Models
             int hashCode = 874782302;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BifUrl);
+            hashCode = hashCode * -1521134295 + BifSize.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(VideoUrl);
+            hashCode = hashCode * -1521134295 + VideoUrl.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<List<ExternalSubtitle>>.Default.GetHashCode(ExternalSubtitles);
             return hashCode;
         }
