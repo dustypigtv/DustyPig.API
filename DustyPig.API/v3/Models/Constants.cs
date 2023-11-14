@@ -38,6 +38,9 @@ namespace DustyPig.API.v3.Models
 
         public const string DEFAULT_PLAYLIST_IMAGE = DEFAULT_PLAYLIST_URL_ROOT + "default.png";
 
+        public const ulong DEFAULT_PLAYLIST_IMAGE_SIZE = 4038;
+
+
 
 
         public const string DEFAULT_PROFILE_PATH = "user-art/profile";
