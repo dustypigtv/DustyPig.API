@@ -19,7 +19,7 @@ namespace DustyPig.API.v3.Models
         /// Size in Bytes
         /// </summary>
         [JsonProperty("file_size")]
-        public long FileSize { get; set; }
+        public ulong FileSize { get; set; }
 
         #region IValidate
 
