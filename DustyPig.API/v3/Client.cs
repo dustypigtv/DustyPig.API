@@ -211,7 +211,7 @@ namespace DustyPig.API.v3
                 {
                     Success = rw.Data.Success,
                     Error = rw.Data.Success ? null : new Exception(rw.Data.Error),
-                    Data = rw.Data.Data.Value,
+                    Data = rw.Data.Success ? rw.Data.Data.Value : default,
                     RawContent = rw.RawContent,
                     ReasonPhrase = rw.ReasonPhrase,
                     StatusCode = rw.StatusCode
