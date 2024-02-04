@@ -2,41 +2,27 @@
 {
     public enum NotificationTypes
     {
-        /// <summary>
-        /// A request or answer to have a new movie added
-        /// </summary>
-        NewMovieRequest,
+        NewMovieRequested = 1,
+        NewMoviePending = 2,
+        NewMovieFulfilled = 3,
+        NewMovieRejected = 4,
 
-        /// <summary>
-        /// A request or answer to have a new series added
-        /// </summary>
-        NewSeriesRequest,
+        NewSeriesRequested = 5,
+        NewSeriesPending = 6,
+        NewSeriesFulfilled = 7,
+        NewSeriesRejected = 8,
 
+        NewEpisodeAvailable = 9,
 
-        /// <summary>
-        /// New movie that is being monitored has been added and is available for viewing
-        /// </summary>
-        NewMovieAvailable,
+        OverrideMovieRequested = 10,
+        OverrideMovieGranted = 11,
+        OverrideMovieRejected = 12,
 
+        OverrideSeriesRequested = 13,
+        OverrideSeriesGranted = 14,
+        OverrideSeriesRejected = 15,
 
-        /// <summary>
-        /// Season 1 Episode 1 of a series that is being monitored has been added and is available for viewing
-        /// </summary>
-        NewSeriesAvailable,
-
-        /// <summary>
-        /// A new episode of a series subscription is available and is available for viewing
-        /// </summary>
-        NewEpisodeAvailable,
-
-        /// <summary>
-        /// A new request or answer for overriding parental controls
-        /// </summary>
-        OverrideRequest,
-
-        /// <summary>
-        /// Friendship request or answer
-        /// </summary>
-        Friendship
+        FriendshipInvited = 16,
+        FriendshipAccepted = 17
     }
 }
