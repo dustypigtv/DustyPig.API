@@ -23,8 +23,12 @@ namespace DustyPig.API.v3.Models
         [JsonProperty("message")]
         public string Message { get; set; }
 
-        [JsonProperty("deep_link")]
-        public string DeepLink { get; set; }
+        [JsonProperty("notification_type")]
+        public NotificationTypes NotificationType { get; set; }
+
+        [JsonProperty("media_id")]
+        public int MediaId { get; set; }
+
 
         [JsonRequired]
         [JsonProperty("seen")]
@@ -49,7 +53,8 @@ namespace DustyPig.API.v3.Models
                    ProfileId == other.ProfileId &&
                    Title == other.Title &&
                    Message == other.Message &&
-                   DeepLink == other.DeepLink &&
+                   NotificationType == other.NotificationType &&
+                   MediaId == other.MediaId &&
                    Seen == other.Seen &&
                    Timestamp == other.Timestamp;
         }
@@ -61,7 +66,8 @@ namespace DustyPig.API.v3.Models
             hashCode = hashCode * -1521134295 + ProfileId.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Message);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(DeepLink);
+            hashCode = hashCode * -1521134295 + NotificationType.GetHashCode();
+            hashCode = hashCode * -1521134295 + MediaId.GetHashCode();
             hashCode = hashCode * -1521134295 + Seen.GetHashCode();
             hashCode = hashCode * -1521134295 + Timestamp.GetHashCode();
             return hashCode;
