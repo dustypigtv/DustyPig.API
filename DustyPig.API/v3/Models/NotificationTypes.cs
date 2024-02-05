@@ -2,27 +2,17 @@
 {
     public enum NotificationTypes
     {
-        NewMovieRequested = 1,
-        NewMoviePending = 2,
-        NewMovieFulfilled = 3,
-        NewMovieRejected = 4,
+        NewMediaRequested = 1,
+        NewMediaPending = 2,
+        NewMediaFulfilled = 3,
+        NewMediaRejected = 4,
+        NewMediaAvailable = 5,
 
-        NewSeriesRequested = 5,
-        NewSeriesPending = 6,
-        NewSeriesFulfilled = 7,
-        NewSeriesRejected = 8,
+        OverrideMediaRequested = 6,
+        OverrideMediaGranted = 7,
+        OverrideMediaRejected = 8,
 
-        NewEpisodeAvailable = 9,
-
-        OverrideMovieRequested = 10,
-        OverrideMovieGranted = 11,
-        OverrideMovieRejected = 12,
-
-        OverrideSeriesRequested = 13,
-        OverrideSeriesGranted = 14,
-        OverrideSeriesRejected = 15,
-
-        FriendshipInvited = 16,
-        FriendshipAccepted = 17
+        FriendshipInvited = 9,
+        FriendshipAccepted = 10
     }
 }

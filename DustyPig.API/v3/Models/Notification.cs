@@ -36,6 +36,12 @@ namespace DustyPig.API.v3.Models
         public int? MediaId { get; set; }
 
         /// <summary>
+        /// Only used for media requests
+        /// </summary>
+        [JsonProperty("media_type")]
+        public MediaTypes? MediaType { get; set; }
+
+        /// <summary>
         /// This will only by used for friendship notifications.
         /// For media notifications, this will be null.
         /// </summary>
