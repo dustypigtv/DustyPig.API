@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DustyPig.API.v3
 {
-    public class Client
+    public class Client : IDisposable
     {
 #if DEBUG
         public const string DEFAULT_BASE_ADDRESS = "https://localhost:5001/api/v3/";
@@ -19,13 +19,7 @@ namespace DustyPig.API.v3
         public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-        private static readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
-
-        public static bool IncludeRawContentInResponse
-        {
-            get => _client.IncludeRawContentInResponse;
-            set => _client.IncludeRawContentInResponse = value;
-        }
+        private readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
 
         public Client()
         {
@@ -35,13 +29,33 @@ namespace DustyPig.API.v3
 #endif
         }
 
+        public void Dispose()
+        {
+            _client.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+
+
 
         public static Version APIVersion => typeof(Client).Assembly.GetName().Version;
 
-        public static Uri BaseUrl
+        public bool IncludeRawContentInResponse
+        {
+            get => _client.IncludeRawContentInResponse;
+            set => _client.IncludeRawContentInResponse = value;
+        }
+
+        public Uri BaseUrl
         {
             get => _client.BaseAddress;
             set => _client.BaseAddress = value;
+        }
+
+        public bool AutoThrowIfError
+        {
+            get => _client.AutoThrowIfError;
+            set => _client.AutoThrowIfError = value;
         }
 
         public string Token { get; set; }
@@ -85,146 +99,118 @@ namespace DustyPig.API.v3
         }
 
 
-        internal async Task<Response> GetAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
+        internal Task<Response> GetAsync(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
+            _client.GetAsync(url, GetHeaders(tokenNeeded), cancellationToken);
+
+
+        internal Task<Response<T>> GetAsync<T>(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
+            _client.GetAsync<T>(url, GetHeaders(tokenNeeded), cancellationToken);
+
+
+        internal async Task<Response<string>> GetStringAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
         {
-            var response = await _client.GetAsync<ResponseWrapper>(url, null, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToResponse(response);
+            var response = await _client.GetAsync<StringValue>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return new Response<string>
+            {
+                Data = response.Success ? response.Data.Value : null,
+                Error = response.Error,
+                RawContent = response.RawContent,
+                ReasonPhrase = response.ReasonPhrase,
+                StatusCode = response.StatusCode,
+                Success = response.Success,
+            };
         }
 
-        internal async Task<Response<T>> GetAsync<T>(bool tokenNeeded, string url, CancellationToken cancellationToken)
+        internal async Task<Response<int?>> GetIntAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
         {
-            var response = await _client.GetAsync<ResponseWrapper<T>>(url, null, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToDataResponse(response);
+            var response = await _client.GetAsync<IntValue>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return new Response<int?>
+            {
+                Data = response.Success ? response.Data.Value : null,
+                Error = response.Error,
+                RawContent = response.RawContent,
+                ReasonPhrase = response.ReasonPhrase,
+                StatusCode = response.StatusCode,
+                Success = response.Success,
+            };
         }
 
-        internal async Task<Response<T>> GetSimpleAsync<T>(bool tokenNeeded, string url, CancellationToken cancellationToken)
-        {
-            var response = await _client.GetAsync<ResponseWrapper<SimpleValue<T>>>(url, null, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToSimpleResponse(response);
-        }
 
-        internal async Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+        internal Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
             if (data is IValidate iv)
                 try { iv.Validate(); }
-                catch (ModelValidationException ex) { return new Response { Error = ex }; }
+                catch (ModelValidationException ex)
+                {
+                    if (AutoThrowIfError)
+                        throw;
+                    return Task.FromResult(new Response
+                    {
+                        Error = ex,
+                        ReasonPhrase = ex.Message,
+                        StatusCode = HttpStatusCode.BadRequest
+                    });
+                }
 
-            var response = await _client.PostAsync<ResponseWrapper>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToResponse(response);
+            return _client.PostAsync(url, data, GetHeaders(tokenNeeded), cancellationToken);
         }
 
-        internal async Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+        internal Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
             if (data is IValidate iv)
                 try { iv.Validate(); }
-                catch (ModelValidationException ex) { return new Response<T> { Error = ex }; }
-
-            var response = await _client.PostAsync<ResponseWrapper<T>>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToDataResponse(response);
-        }
-
-        internal async Task<Response<T>> PostWithSimpleResponseAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
-        {
-            if (data is IValidate iv)
-                try { iv.Validate(); }
-                catch (ModelValidationException ex) { return new Response<T> { Error = ex }; }
-
-            var response = await _client.PostAsync<ResponseWrapper<SimpleValue<T>>>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToSimpleResponse(response);
-        }
-
-        internal async Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
-        {
-            var response = await _client.DeleteAsync<ResponseWrapper>(url, null, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return ConvertToResponse(response);
-        }
-
-
-        internal async Task<Response> GetResponseAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var response = await _client.GetResponseAsync<ResponseWrapper>(request, cancellationToken).ConfigureAwait(false);
-            return ConvertToResponse(response);
-        }
-
-        internal async Task<Response<T>> GetResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var response = await _client.GetResponseAsync<ResponseWrapper<T>>(request, cancellationToken).ConfigureAwait(false);
-            return ConvertToDataResponse(response);
-        }
-
-        internal async Task<Response<T>> GetSimpleResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var response = await _client.GetResponseAsync<ResponseWrapper<SimpleValue<T>>>(request, cancellationToken).ConfigureAwait(false);
-            return ConvertToSimpleResponse(response);
-        }
-
-
-        static Response ConvertToResponse(Response<ResponseWrapper> rw)
-        {
-            if (rw.Success)
-                return new Response
+                catch (ModelValidationException ex)
                 {
-                    Success = rw.Data.Success,
-                    Error = rw.Data.Success ? null : new Exception(rw.Data.Error),
-                    RawContent = rw.RawContent,
-                    ReasonPhrase = rw.ReasonPhrase,
-                    StatusCode = rw.StatusCode
-                };
-            else
-                return new Response
-                {
-                    Success = false,
-                    Error = rw.Error,
-                    RawContent = rw.RawContent,
-                    ReasonPhrase = rw.ReasonPhrase,
-                    StatusCode = rw.StatusCode
-                };
+                    if (AutoThrowIfError)
+                        throw;
+                    return Task.FromResult(new Response<T>
+                    {
+                        Error = ex,
+                        ReasonPhrase = ex.Message,
+                        StatusCode = HttpStatusCode.BadRequest
+                    });
+                }
+
+            return _client.PostAsync<T>(url, data, GetHeaders(tokenNeeded), cancellationToken);
         }
 
-        static Response<T> ConvertToDataResponse<T>(Response<ResponseWrapper<T>> rw)
+        internal async Task<Response<string>> PostAndGetStringAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
-            if (rw.Success)
-                return new Response<T>
-                {
-                    Success = rw.Data.Success,
-                    Error = rw.Data.Success ? null : new Exception(rw.Data.Error),
-                    Data = rw.Data.Data,
-                    RawContent = rw.RawContent,
-                    ReasonPhrase = rw.ReasonPhrase,
-                    StatusCode = rw.StatusCode
-                };
-            else
-                return new Response<T>
-                {
-                    Success = false,
-                    Error = rw.Error,
-                    RawContent = rw.RawContent,
-                    ReasonPhrase = rw.ReasonPhrase,
-                    StatusCode = rw.StatusCode
-                };
+            var response = await _client.PostAsync<StringValue>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return new Response<string>
+            {
+                Data = response.Success ? response.Data.Value : null,
+                Error = response.Error,
+                RawContent = response.RawContent,
+                ReasonPhrase = response.ReasonPhrase,
+                StatusCode = response.StatusCode,
+                Success = response.Success,
+            };
         }
 
-        static Response<T> ConvertToSimpleResponse<T>(Response<ResponseWrapper<SimpleValue<T>>> rw)
+        internal async Task<Response<int?>> PostAndGetIntAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
-            if (rw.Success)
-                return new Response<T>
-                {
-                    Success = rw.Data.Success,
-                    Error = rw.Data.Success ? null : new Exception(rw.Data.Error),
-                    Data = rw.Data.Success ? rw.Data.Data.Value : default,
-                    RawContent = rw.RawContent,
-                    ReasonPhrase = rw.ReasonPhrase,
-                    StatusCode = rw.StatusCode
-                };
-            else
-                return new Response<T>
-                {
-                    Success = false,
-                    Error = rw.Error,
-                    RawContent = rw.RawContent,
-                    ReasonPhrase = rw.ReasonPhrase,
-                    StatusCode = rw.StatusCode
-                };
+            var response = await _client.PostAsync<IntValue>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return new Response<int?>
+            {
+                Data = response.Success ? response.Data.Value : null,
+                Error = response.Error,
+                RawContent = response.RawContent,
+                ReasonPhrase = response.ReasonPhrase,
+                StatusCode = response.StatusCode,
+                Success = response.Success,
+            };
         }
+
+
+        internal Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
+            _client.DeleteAsync(url, GetHeaders(tokenNeeded), cancellationToken);
+
+
+
+
+        internal Task<Response<T>> GetResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken) =>
+            _client.GetResponseAsync<T>(request, cancellationToken);
+
     }
 }

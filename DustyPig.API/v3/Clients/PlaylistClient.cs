@@ -38,13 +38,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(CreatePlaylist data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+        public Task<Response<int?>> CreateAsync(CreatePlaylist data, CancellationToken cancellationToken = default) =>
+            _client.PostAndGetIntAsync(true, PREFIX + "Create", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(string name, CancellationToken cancellationToken = default) =>
+        public Task<Response<int?>> CreateAsync(string name, CancellationToken cancellationToken = default) =>
             CreateAsync(new CreatePlaylist
             {
                 Name = name
@@ -91,13 +91,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<int>> AddItemAsync(AddPlaylistItem data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "AddItem", data, cancellationToken);
+        public Task<Response<int?>> AddItemAsync(AddPlaylistItem data, CancellationToken cancellationToken = default) =>
+            _client.PostAndGetIntAsync(true, PREFIX + "AddItem", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<int>> AddItemAsync(int playlistId, int mediaId, CancellationToken cancellationToken = default) =>
+        public Task<Response<int?>> AddItemAsync(int playlistId, int mediaId, CancellationToken cancellationToken = default) =>
             AddItemAsync(new AddPlaylistItem
             {
                 MediaId = mediaId,
@@ -109,14 +109,14 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> AddSeriesAsync(AddSeriesToPlaylistInfo data, CancellationToken cancellationToken = default) =>
+        public Task<Response> AddSeriesAsync(AddSeriesToPlaylist data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "AddSeries", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response> AddSeriesAsync(int playlistId, int mediaId, bool addNewEpisodes, CancellationToken cancellationToken = default) =>
-            AddSeriesAsync(new AddSeriesToPlaylistInfo
+            AddSeriesAsync(new AddSeriesToPlaylist
             {
                 MediaId = mediaId,
                 PlaylistId = playlistId,
@@ -155,20 +155,20 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response> UpdatePlaylistItemsAsync(UpdatePlaylistItemsData data, CancellationToken cancellationToken = default) =>
+        public Task<Response> UpdatePlaylistItemsAsync(UpdatePlaylistItems data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "UpdatePlaylistItems", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response> UpdatePlaylistItemsAsync(int id, List<int> mediaIds, CancellationToken cancellationToken = default) =>
-            UpdatePlaylistItemsAsync(new UpdatePlaylistItemsData { Id = id, MediaIds = mediaIds }, cancellationToken);
+            UpdatePlaylistItemsAsync(new UpdatePlaylistItems { Id = id, MediaIds = mediaIds }, cancellationToken);
 
         /// <summary>
         /// Requires profile
         /// </summary>
         public Task<Response> UpdatePlaylistItemsAsync(int id, IEnumerable<int> mediaIds, CancellationToken cancellationToken = default) =>
-            UpdatePlaylistItemsAsync(new UpdatePlaylistItemsData { Id = id, MediaIds = mediaIds.ToList() }, cancellationToken);
+            UpdatePlaylistItemsAsync(new UpdatePlaylistItems { Id = id, MediaIds = mediaIds.ToList() }, cancellationToken);
 
     }
 }

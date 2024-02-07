@@ -1,25 +1,21 @@
 ﻿using DustyPig.API.v3.BaseClasses;
 using DustyPig.API.v3.Interfaces;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models
 {
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class TitleRequest : IValidate, IEquatable<TitleRequest>
+    public class TitleRequest : IValidate
     {
-        [JsonProperty("tmdb_id")]
+        [JsonPropertyName("tmdb_Id")]
         public int TMDB_Id { get; set; }
 
         /// <summary>
         /// This will also be ignored if If <see cref="BaseProfile.TitleRequestPermissions"/> == <see cref="TitleRequestPermissions.RequiresAuthorization"/>, as the request will be sent to the main profile on the account. 
         /// Set to null to request the title from the main profile on the account
         /// </summary>
-        [JsonProperty("friend_id")]
         public int? FriendId { get; set; }
 
-        [JsonProperty("media_type")]
         public TMDB_MediaTypes MediaType { get; set; }
 
 
@@ -38,43 +34,6 @@ namespace DustyPig.API.v3.Models
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
-
-
-        #region IEquatable
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as TitleRequest);
-        }
-
-        public bool Equals(TitleRequest other)
-        {
-            return !(other is null) &&
-                   TMDB_Id == other.TMDB_Id &&
-                   FriendId == other.FriendId &&
-                   MediaType == other.MediaType;
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = -1402242925;
-            hashCode = hashCode * -1521134295 + TMDB_Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + FriendId.GetHashCode();
-            hashCode = hashCode * -1521134295 + MediaType.GetHashCode();
-            return hashCode;
-        }
-
-        public static bool operator ==(TitleRequest left, TitleRequest right)
-        {
-            return EqualityComparer<TitleRequest>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(TitleRequest left, TitleRequest right)
-        {
-            return !(left == right);
         }
 
         #endregion

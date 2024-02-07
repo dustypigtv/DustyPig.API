@@ -1,18 +1,14 @@
 ﻿using DustyPig.API.v3.Interfaces;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models
 {
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class SearchRequest : IValidate, IEquatable<SearchRequest>
+    public class SearchRequest : IValidate
     {
-        [JsonRequired]
-        [JsonProperty("query")]
         public string Query { get; set; }
 
-        [JsonProperty("search_tmdb")]
+        [JsonPropertyName("searchTMDB")]
         public bool SearchTMDB { get; set; }
 
 
@@ -30,41 +26,6 @@ namespace DustyPig.API.v3.Models
 
             if (lst.Count > 0)
                 throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
-
-
-        #region IEquatable
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as SearchRequest);
-        }
-
-        public bool Equals(SearchRequest other)
-        {
-            return !(other is null) &&
-                   Query == other.Query &&
-                   SearchTMDB == other.SearchTMDB;
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = 652018495;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Query);
-            hashCode = hashCode * -1521134295 + SearchTMDB.GetHashCode();
-            return hashCode;
-        }
-
-        public static bool operator ==(SearchRequest left, SearchRequest right)
-        {
-            return EqualityComparer<SearchRequest>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(SearchRequest left, SearchRequest right)
-        {
-            return !(left == right);
         }
 
         #endregion

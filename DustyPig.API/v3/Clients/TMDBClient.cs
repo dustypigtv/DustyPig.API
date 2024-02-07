@@ -40,9 +40,19 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<TitleRequestPermissions>> GetRequestTitlePermissionAsync(CancellationToken cancellationToken = default) =>
-            _client.GetSimpleAsync<TitleRequestPermissions>(true, PREFIX + "GetRequestTitlePermission", cancellationToken);
-
+        public async Task<Response<TitleRequestPermissions?>> GetRequestTitlePermissionAsync(CancellationToken cancellationToken = default)
+        {
+            var ret = await _client.GetAsync<TitleRequestPermissionsValue>(true, PREFIX + "GetRequestTitlePermission", cancellationToken).ConfigureAwait(false);
+            return new Response<TitleRequestPermissions?>
+            {
+                Data = ret.Success ? ret.Data.Value : null,
+                Error = ret.Error,
+                RawContent = ret.RawContent,
+                ReasonPhrase = ret.ReasonPhrase,
+                StatusCode = ret.StatusCode,
+                Success = ret.Success
+            };
+        }
 
         /// <summary>
         /// Requires profile

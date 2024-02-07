@@ -1,15 +1,15 @@
 ﻿using DustyPig.API.v3.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 
 namespace DustyPig.API.v3.MPAA
 {
     public static class RatingsUtils
     {
-        private static readonly IReadOnlyList<RatingsMap> _ratingsMaps = JsonConvert.DeserializeObject<List<RatingsMap>>(Encoding.UTF8.GetString(Properties.Resources.ratings_maps));
+        private static readonly IReadOnlyList<RatingsMap> _ratingsMaps = JsonSerializer.Deserialize<List<RatingsMap>>(Encoding.UTF8.GetString(Properties.Resources.ratings_maps));
 
         public static string MapMovieRatings(string country, string rating)
         {

@@ -1,13 +1,11 @@
 ﻿using DustyPig.API.v3.BaseClasses;
 using DustyPig.API.v3.Interfaces;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models
 {
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class CreateEpisode : BaseEpisodeInfo, IMedia, IPlayableMedia, IValidate, IEquatable<CreateEpisode>
+    public class CreateEpisode : BaseEpisodeInfo, IMedia, IPlayableMedia, IValidate
     {
         #region IMedia
 
@@ -20,29 +18,24 @@ namespace DustyPig.API.v3.Models
 
         //Partially handled by BaseEpisodeInfo
 
-        [JsonProperty("bif_url")]
         public string BifUrl { get; set; }
 
         /// <summary>
         /// Size in Bytes
         /// </summary>
-        [JsonProperty("bif_size")]
         public ulong BifSize { get; set; }
 
 
-        [JsonRequired]
-        [JsonProperty("video_url")]
         public string VideoUrl { get; set; }
 
         /// <summary>
         /// Size in Bytes
         /// </summary>
-        [JsonProperty("video_size")]
         public ulong VideoSize { get; set; }
 
 
-        [JsonProperty("srt_subtitles")]
-        public List<ExternalSubtitle> ExternalSubtitles { get; set; } = new List<ExternalSubtitle>();
+        [JsonPropertyName("srtSubtitles")]
+        public List<SRTSubtitle> SRTSubtitles { get; set; }
 
 
         #endregion
@@ -71,52 +64,6 @@ namespace DustyPig.API.v3.Models
 
         #endregion
 
-
-        #region IEquatable
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as CreateEpisode);
-        }
-
-        public bool Equals(CreateEpisode other)
-        {
-            return !(other is null) &&
-                   base.Equals(other) &&
-                   BifUrl == other.BifUrl &&
-                   BifSize == other.BifSize &&
-                   VideoUrl == other.VideoUrl &&
-                   VideoSize == other.VideoSize &&
-                   EqualityComparer<List<ExternalSubtitle>>.Default.Equals(ExternalSubtitles, other.ExternalSubtitles);
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = 1121788965;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BifUrl);
-            hashCode = hashCode * -1521134295 + BifSize.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(VideoUrl);
-            hashCode = hashCode * -1521134295 + VideoUrl.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<ExternalSubtitle>>.Default.GetHashCode(ExternalSubtitles);
-            return hashCode;
-        }
-
-
-        public static bool operator ==(CreateEpisode left, CreateEpisode right)
-        {
-            return EqualityComparer<CreateEpisode>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(CreateEpisode left, CreateEpisode right)
-        {
-            return !(left == right);
-        }
-
-        #endregion
-
-
         public override string ToString() => base.ToString();
-
     }
 }

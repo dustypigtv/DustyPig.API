@@ -31,6 +31,6 @@ namespace DustyPig.API.v3.Interfaces
         /// </summary>
         public ulong VideoSize { get; set; }
 
-        public List<ExternalSubtitle> ExternalSubtitles { get; set; }
+        public List<SRTSubtitle> SRTSubtitles { get; set; }
     }
 }

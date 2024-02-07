@@ -1,5 +1,4 @@
 ﻿using DustyPig.API.v3.Models;
-using DustyPig.API.v3.MPAA;
 using DustyPig.REST;
 using System.Collections.Generic;
 using System.Threading;
@@ -46,14 +45,8 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile.
         /// </summary>
-        /// <param name="initialEntriesPerRow">The server will bound any specified value into the range of 2:25</param>
-        public Task<Response<HomeScreen>> GetHomeScreenAsync(int? initialEntriesPerRow = null, CancellationToken cancellationToken = default)
-        {
-            string subPath = "HomeScreen";
-            if (initialEntriesPerRow != null)
-                subPath += $"?initialEntriesPerRow={initialEntriesPerRow}";
-            return _client.GetAsync<HomeScreen>(true, PREFIX + subPath, cancellationToken);
-        }
+        public Task<Response<HomeScreen>> GetHomeScreenAsync(CancellationToken cancellationToken = default) =>
+            _client.GetAsync<HomeScreen>(true, PREFIX + "HomeScreen", cancellationToken);
 
         /// <summary>
         /// Requires profile
@@ -146,17 +139,17 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<TitlePermissionInfo>> GetTitlePermissionsAsync(int id, CancellationToken cancellation = default) =>
-            _client.GetAsync<TitlePermissionInfo>(true, PREFIX + $"GetTitlePermissions/{id}", cancellation);
+        public Task<Response<TitlePermissions>> GetTitlePermissionsAsync(int id, CancellationToken cancellation = default) =>
+            _client.GetAsync<TitlePermissions>(true, PREFIX + $"GetTitlePermissions/{id}", cancellation);
 
         /// <summary>
         /// Requires main profile. Set access override for a specific movie or series
         /// </summary>
-        public Task<Response> SetTitlePermissionsAsync(SetTitlePermissionInfo data, CancellationToken cancellationToken = default) =>
+        public Task<Response> SetTitlePermissionsAsync(SetTitlePermission data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "SetTitlePermissions", data, cancellationToken);
 
         public Task<Response> SetTitlePermissionsAsync(int mediaId, int profileId, OverrideState overrideState, CancellationToken cancellationToken = default) =>
-            SetTitlePermissionsAsync(new SetTitlePermissionInfo
+            SetTitlePermissionsAsync(new SetTitlePermission
             {
                 MediaId = mediaId,
                 ProfileId = profileId,

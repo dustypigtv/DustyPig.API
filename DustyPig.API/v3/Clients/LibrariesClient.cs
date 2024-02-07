@@ -25,13 +25,13 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(CreateLibrary data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+        public Task<Response<int?>> CreateAsync(CreateLibrary data, CancellationToken cancellationToken = default) =>
+            _client.PostAndGetIntAsync(true, PREFIX + "Create", data, cancellationToken);
 
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(string name, bool isTV, CancellationToken cancellationToken = default) =>
+        public Task<Response<int?>> CreateAsync(string name, bool isTV, CancellationToken cancellationToken = default) =>
             CreateAsync(new CreateLibrary
             {
                 Name = name,

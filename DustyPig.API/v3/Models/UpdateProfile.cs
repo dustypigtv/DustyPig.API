@@ -1,22 +1,16 @@
 ﻿using DustyPig.API.v3.Interfaces;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class UpdateProfile : CreateProfile, IValidate, IEquatable<UpdateProfile>
+    public class UpdateProfile : CreateProfile, IValidate
     {
-        [JsonRequired]
-        [JsonProperty("id")]
         public int Id { get; set; }
 
 
         /// <summary>
         /// If the Pin is set, it will update. However, since the Pin can be null, if Pin = null, then the server will only clear the Pin if this field is true
         /// </summary>
-        [JsonProperty("clear_pin")]
         public bool ClearPin { get; set; }
 
 
@@ -37,42 +31,6 @@ namespace DustyPig.API.v3.Models
 
         #endregion
 
-
-        #region IEquatable
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as UpdateProfile);
-        }
-
-        public bool Equals(UpdateProfile other)
-        {
-            return !(other is null) &&
-                   base.Equals(other) &&
-                   Id == other.Id &&
-                   ClearPin == other.ClearPin;
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = 1545243542;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + ClearPin.GetHashCode();
-            return hashCode;
-        }
-
-        public static bool operator ==(UpdateProfile left, UpdateProfile right)
-        {
-            return EqualityComparer<UpdateProfile>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(UpdateProfile left, UpdateProfile right)
-        {
-            return !(left == right);
-        }
-
-        #endregion
 
 
         public override string ToString() => base.ToString();

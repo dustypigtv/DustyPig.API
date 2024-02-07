@@ -17,8 +17,8 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Create the Firebase account and send a confirmation email
         /// </summary>
-        public Task<Response<CreateAccountResponse>> CreateAsync(CreateAccount data, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<CreateAccountResponse>(false, PREFIX + "Create", data, cancellationToken);
+        public Task<Response<AccountCreated>> CreateAsync(CreateAccount data, CancellationToken cancellationToken = default) =>
+            _client.PostAsync<AccountCreated>(false, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -31,8 +31,7 @@ namespace DustyPig.API.v3.Clients
         /// Change the password
         /// </summary>
         public Task<Response> ChangePasswordAsync(string newPassword, CancellationToken cancellationToken = default) =>
-            _client.PostAsync(true, PREFIX + "ChangePassword", new SimpleValue<string>(newPassword), cancellationToken);
-
+            _client.PostAsync(true, PREFIX + "ChangePassword", new StringValue(newPassword), cancellationToken);
 
     }
 }

@@ -1,36 +1,26 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.Models;
 using DustyPig.API.v3.MPAA;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.BaseClasses
 {
-    public abstract class BaseProfile : IValidate, IEquatable<BaseProfile>
+    public abstract class BaseProfile : IValidate
     {
-        [JsonRequired]
-        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("avatar_url")]
         public string AvatarUrl { get; set; }
 
-        [JsonRequired]
-        [JsonProperty("max_movie_rating")]
         public MovieRatings MaxMovieRating { get; set; }
 
-        [JsonRequired]
-        [JsonProperty("max_tv_rating")]
+        [JsonPropertyName("maxTVRating")]
         public TVRatings MaxTVRating { get; set; }
 
 
-        [JsonRequired]
-        [JsonProperty("title_request_permissions")]
         public TitleRequestPermissions TitleRequestPermissions { get; set; }
 
-        [JsonRequired]
-        [JsonProperty("locked")]
         public bool Locked { get; set; }
 
 
@@ -102,51 +92,6 @@ namespace DustyPig.API.v3.BaseClasses
 
         #endregion
 
-
-        #region IEquatable
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as BaseProfile);
-        }
-
-        public bool Equals(BaseProfile other)
-        {
-            return !(other is null) &&
-                   Name == other.Name &&
-                   AvatarUrl == other.AvatarUrl &&
-                   MaxMovieRating == other.MaxMovieRating &&
-                   MaxTVRating == other.MaxTVRating &&
-                   TitleRequestPermissions == other.TitleRequestPermissions &&
-                   Locked == other.Locked;
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = 1237016275;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AvatarUrl);
-            hashCode = hashCode * -1521134295 + MaxMovieRating.GetHashCode();
-            hashCode = hashCode * -1521134295 + MaxTVRating.GetHashCode();
-            hashCode = hashCode * -1521134295 + TitleRequestPermissions.GetHashCode();
-            hashCode = hashCode * -1521134295 + Locked.GetHashCode();
-            return hashCode;
-        }
-
-        public static bool operator ==(BaseProfile left, BaseProfile right)
-        {
-            return EqualityComparer<BaseProfile>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(BaseProfile left, BaseProfile right)
-        {
-            return !(left == right);
-        }
-
-        #endregion
-
-
         public override string ToString() => Name;
-
     }
 }

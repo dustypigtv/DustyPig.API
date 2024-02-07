@@ -21,9 +21,9 @@ namespace DustyPig.API.v3.Models
         public const int DEVICE_ACTIVATION_CODE_LENGTH = 5;
 
 
-        public static readonly MediaTypes[] PLAYABLE_MEDIA_TYPES = new MediaTypes[] { MediaTypes.Movie, MediaTypes.Episode };
+        public static readonly MediaTypes[] PLAYABLE_MEDIA_TYPES = [MediaTypes.Movie, MediaTypes.Episode];
 
-        public static readonly MediaTypes[] TOP_LEVEL_MEDIA_TYPES = new MediaTypes[] { MediaTypes.Movie, MediaTypes.Series };
+        public static readonly MediaTypes[] TOP_LEVEL_MEDIA_TYPES = [MediaTypes.Movie, MediaTypes.Series];
 
 
 

@@ -44,7 +44,7 @@ namespace DustyPig.API.v3.Clients
             if (email == AuthClient.TEST_EMAIL)
                 return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
 
-            return _client.PostAsync(true, PREFIX + "Invite", new SimpleValue<string>(email), cancellationToken);
+            return _client.PostAsync(true, PREFIX + "Invite", new StringValue(email), cancellationToken);
         }
 
 

@@ -76,9 +76,9 @@ namespace DustyPig.API.v3
             else
                 ret.Add(chk.Error);
 
-            if (media.ExternalSubtitles != null)
-                foreach (var subtitle in media.ExternalSubtitles)
-                    ret.AddRange(Validate(subtitle).Select(item => $"{nameof(media.ExternalSubtitles)}: {item}"));
+            if (media.SRTSubtitles != null)
+                foreach (var subtitle in media.SRTSubtitles)
+                    ret.AddRange(Validate(subtitle).Select(item => $"{nameof(media.SRTSubtitles)}: {item}"));
 
 
             return ret;
@@ -89,7 +89,7 @@ namespace DustyPig.API.v3
 
 
 
-        public static List<string> Validate(ExternalSubtitle exSub)
+        public static List<string> Validate(SRTSubtitle exSub)
         {
             var ret = new List<string>();
 

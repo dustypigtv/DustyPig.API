@@ -9,8 +9,7 @@ namespace DustyPig.API.v3
 
         public ModelValidationException(string error) : base("Validation failed")
         {
-            Errors = new List<string>();
-            Errors.Add(error);
+            Errors = [error];
         }
 
         public List<string> Errors { get; set; }

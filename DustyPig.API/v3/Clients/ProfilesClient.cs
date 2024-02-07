@@ -1,7 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,8 +18,8 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires main profile
         /// </summary>
-        public Task<Response<int>> CreateAsync(CreateProfile data, CancellationToken cancellationToken = default) =>
-            _client.PostWithSimpleResponseAsync<int>(true, PREFIX + "Create", data, cancellationToken);
+        public Task<Response<int?>> CreateAsync(CreateProfile data, CancellationToken cancellationToken = default) =>
+            _client.PostAndGetIntAsync(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -99,42 +98,41 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
         /// </summary>
-        public Task<Response> SetProfileAvatar(int id, byte[] avatar, CancellationToken cancellationToken = default)
+        public async Task<Response<string>> SetProfileAvatar(int id, byte[] avatar, CancellationToken cancellationToken = default)
         {
-            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
+            const int MAX_LENGTH = 1024 * 1024;
+
+            if (avatar.Length > MAX_LENGTH)
+            {
+                var ex = new ModelValidationException($"Validation failed: {nameof(avatar)} must not exceed {MAX_LENGTH} bytes");
+
+                if (_client.AutoThrowIfError)
+                    throw ex;
+
+                return new Response<string>
+                {
+                    Error = ex,
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    ReasonPhrase = ex.Message
+                };
+            }
+
+            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + $"SetProfileAvatarBinary/{id}");
             foreach (var header in _client.GetHeaders(true))
                 request.Headers.TryAddWithoutValidation(header.Key, header.Value);
             request.Content = new ByteArrayContent(avatar);
 
-            return _client.GetResponseAsync(request, cancellationToken);
+            var response = await _client.GetResponseAsync<StringValue>(request, cancellationToken).ConfigureAwait(false);
+
+            return new Response<string>
+            {
+                Data = response.Success ? response.Data.Value : null,
+                Error = response.Error,
+                RawContent = response.RawContent,
+                ReasonPhrase = response.ReasonPhrase,
+                StatusCode = response.StatusCode,
+                Success = response.Success
+            };
         }
-
-        /// <summary>
-        /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
-        /// </summary>
-        public Task<Response<string>> SetProfileAvatar(int id, Stream avatar, CancellationToken cancellationToken = default)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
-            foreach (var header in _client.GetHeaders(true))
-                request.Headers.TryAddWithoutValidation(header.Key, header.Value);
-            request.Content = new StreamContent(avatar);
-
-            return _client.GetSimpleResponseAsync<string>(request, cancellationToken);
-        }
-
-
-        /// <summary>
-        /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
-        /// </summary>
-        public Task<Response<string>> SetProfileAvatar(int id, FileInfo avatar, CancellationToken cancellationToken = default)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + "SetProfileAvatarBinary");
-            foreach (var header in _client.GetHeaders(true))
-                request.Headers.TryAddWithoutValidation(header.Key, header.Value);
-            request.Content = new StreamContent(avatar.OpenRead());
-
-            return _client.GetSimpleResponseAsync<string>(request, cancellationToken);
-        }
-
     }
 }
