@@ -205,7 +205,7 @@ namespace DustyPig.API.v3
 
 
 
-       
+
         internal async Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
         {
             var ret = await _client.DeleteAsync<Result>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
