@@ -55,6 +55,8 @@ namespace DustyPig.API.v3.Models
 
         public static Result<T> BuildError(Exception ex) => new() { Error = ex.Message };
 
+        public static Result<T> FromResult(Result result) => new Result<T> { Success = result.Success, Error = result.Error };
+
 
         /// <summary>
         /// Implicitly converts the specified <paramref name="ex"/> to an <see cref="Result{T}"/> and sets <see cref="Error"/> = <paramref name="ex"/>.ToString().
@@ -87,6 +89,6 @@ namespace DustyPig.API.v3.Models
         /// Implicitly converts the specified <paramref name="result"/> to an <see cref="Result{T}"/>.
         /// </summary>
         /// <param name="result">The <see cref="Result"/>.</param>
-        public static implicit operator Result<T>(Result result) => new Result<T> { Success = result.Success, Error = result.Error };
+        public static implicit operator Result<T>(Result result) => FromResult(result);
     }
 }
