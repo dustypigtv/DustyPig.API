@@ -17,7 +17,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int?>> CreateAsync(CreateEpisode data, CancellationToken cancellationToken = default) =>
-            _client.PostAndGetIntAsync(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostAsync<int?>(true, PREFIX + "Create", data, cancellationToken);
 
         /// <summary>
         /// Requires main profile

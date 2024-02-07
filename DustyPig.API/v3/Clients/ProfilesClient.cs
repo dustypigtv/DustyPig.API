@@ -19,7 +19,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile
         /// </summary>
         public Task<Response<int?>> CreateAsync(CreateProfile data, CancellationToken cancellationToken = default) =>
-            _client.PostAndGetIntAsync(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostAsync<int?>(true, PREFIX + "Create", data, cancellationToken);
 
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
         /// </summary>
-        public async Task<Response<string>> SetProfileAvatar(int id, byte[] avatar, CancellationToken cancellationToken = default)
+        public Task<Response<string>> SetProfileAvatar(int id, byte[] avatar, CancellationToken cancellationToken = default)
         {
             const int MAX_LENGTH = 1024 * 1024;
 
@@ -109,12 +109,12 @@ namespace DustyPig.API.v3.Clients
                 if (_client.AutoThrowIfError)
                     throw ex;
 
-                return new Response<string>
+                return Task.FromResult(new Response<string>
                 {
                     Error = ex,
                     StatusCode = System.Net.HttpStatusCode.BadRequest,
                     ReasonPhrase = ex.Message
-                };
+                });
             }
 
             var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + $"SetProfileAvatarBinary/{id}");
@@ -122,17 +122,7 @@ namespace DustyPig.API.v3.Clients
                 request.Headers.TryAddWithoutValidation(header.Key, header.Value);
             request.Content = new ByteArrayContent(avatar);
 
-            var response = await _client.GetResponseAsync<StringValue>(request, cancellationToken).ConfigureAwait(false);
-
-            return new Response<string>
-            {
-                Data = response.Success ? response.Data.Value : null,
-                Error = response.Error,
-                RawContent = response.RawContent,
-                ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode,
-                Success = response.Success
-            };
+            return _client.GetResponseAsync<string>(request, cancellationToken);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace DustyPig.API.v3.Clients
         /// Returns a code that can be used to login to a device with no keyboard (streaming devices, smart tvs, etc)
         /// </summary>
         public Task<Response<string>> GenerateDeviceLoginCodeAsync(CancellationToken cancellationToken = default) =>
-            _client.GetStringAsync(false, PREFIX + "GenerateDeviceLoginCode", cancellationToken);
+            _client.GetAsync<string>(false, PREFIX + "GenerateDeviceLoginCode", cancellationToken);
 
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         /// <param name="fcmToken">FirebaseCloudMessaging token to include. If null, and the current AuthToken is liked to a FCM token, then the FCM token is unlinked</param>
         public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-            _client.PostAndGetStringAsync(true, PREFIX + "UpdateFCMToken", new StringValue(fcmToken), cancellationToken);
+            _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", new StringValue(fcmToken), cancellationToken);
 
 
         /// <summary>

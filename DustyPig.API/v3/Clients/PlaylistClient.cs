@@ -39,7 +39,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<int?>> CreateAsync(CreatePlaylist data, CancellationToken cancellationToken = default) =>
-            _client.PostAndGetIntAsync(true, PREFIX + "Create", data, cancellationToken);
+            _client.PostAsync<int?>(true, PREFIX + "Create", data, cancellationToken);
 
         /// <summary>
         /// Requires profile
@@ -92,7 +92,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires profile
         /// </summary>
         public Task<Response<int?>> AddItemAsync(AddPlaylistItem data, CancellationToken cancellationToken = default) =>
-            _client.PostAndGetIntAsync(true, PREFIX + "AddItem", data, cancellationToken);
+            _client.PostAsync<int?>(true, PREFIX + "AddItem", data, cancellationToken);
 
         /// <summary>
         /// Requires profile

@@ -99,44 +99,71 @@ namespace DustyPig.API.v3
         }
 
 
-        internal Task<Response> GetAsync(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
-            _client.GetAsync(url, GetHeaders(tokenNeeded), cancellationToken);
 
 
-        internal Task<Response<T>> GetAsync<T>(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
-            _client.GetAsync<T>(url, GetHeaders(tokenNeeded), cancellationToken);
 
-
-        internal async Task<Response<string>> GetStringAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
+        private static Response FlattenResult(Response<Result> response)
         {
-            var response = await _client.GetAsync<StringValue>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return new Response<string>
+            if (response.Success)
+                return new Response
+                {
+                    Error = response.Data.Success ? null : new Exception(response.Data.Error),
+                    RawContent = response.RawContent,
+                    ReasonPhrase = response.ReasonPhrase,
+                    StatusCode = response.StatusCode,
+                    Success = response.Data.Success
+                };
+
+            return new Response
             {
-                Data = response.Success ? response.Data.Value : null,
                 Error = response.Error,
                 RawContent = response.RawContent,
                 ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode,
-                Success = response.Success,
+                StatusCode = response.StatusCode
             };
         }
 
-        internal async Task<Response<int?>> GetIntAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
+        private static Response<T> FlattenResult<T>(Response<Result<T>> response)
         {
-            var response = await _client.GetAsync<IntValue>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return new Response<int?>
+            if (response.Success)
+                return new Response<T>
+                {
+                    Data = response.Data.Data,
+                    Error = response.Data.Success ? null : new Exception(response.Data.Error),
+                    RawContent = response.RawContent,
+                    ReasonPhrase = response.ReasonPhrase,
+                    StatusCode = response.StatusCode,
+                    Success = response.Data.Success
+                };
+
+            return new Response<T>
             {
-                Data = response.Success ? response.Data.Value : null,
                 Error = response.Error,
                 RawContent = response.RawContent,
                 ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode,
-                Success = response.Success,
+                StatusCode = response.StatusCode
             };
         }
 
 
-        internal Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+
+
+
+        internal async Task<Response> GetAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
+        {
+            var ret = await _client.GetAsync<Result>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return FlattenResult(ret);
+        }
+
+        internal async Task<Response<T>> GetAsync<T>(bool tokenNeeded, string url, CancellationToken cancellationToken)
+        {
+            var ret = await _client.GetAsync<Result<T>>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return FlattenResult(ret);
+        }
+
+
+
+        internal async Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
             if (data is IValidate iv)
                 try { iv.Validate(); }
@@ -144,18 +171,19 @@ namespace DustyPig.API.v3
                 {
                     if (AutoThrowIfError)
                         throw;
-                    return Task.FromResult(new Response
+                    return new Response
                     {
                         Error = ex,
                         ReasonPhrase = ex.Message,
                         StatusCode = HttpStatusCode.BadRequest
-                    });
+                    };
                 }
 
-            return _client.PostAsync(url, data, GetHeaders(tokenNeeded), cancellationToken);
+            var ret = await _client.PostAsync<Result>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return FlattenResult(ret);
         }
 
-        internal Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+        internal async Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
         {
             if (data is IValidate iv)
                 try { iv.Validate(); }
@@ -163,54 +191,35 @@ namespace DustyPig.API.v3
                 {
                     if (AutoThrowIfError)
                         throw;
-                    return Task.FromResult(new Response<T>
+                    return new Response<T>
                     {
                         Error = ex,
                         ReasonPhrase = ex.Message,
                         StatusCode = HttpStatusCode.BadRequest
-                    });
+                    };
                 }
 
-            return _client.PostAsync<T>(url, data, GetHeaders(tokenNeeded), cancellationToken);
+            var ret = await _client.PostAsync<Result<T>>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return FlattenResult(ret);
         }
 
-        internal async Task<Response<string>> PostAndGetStringAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+
+
+       
+        internal async Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
         {
-            var response = await _client.PostAsync<StringValue>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return new Response<string>
-            {
-                Data = response.Success ? response.Data.Value : null,
-                Error = response.Error,
-                RawContent = response.RawContent,
-                ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode,
-                Success = response.Success,
-            };
+            var ret = await _client.DeleteAsync<Result>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            return FlattenResult(ret);
         }
 
-        internal async Task<Response<int?>> PostAndGetIntAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+
+
+
+        internal async Task<Response<T>> GetResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var response = await _client.PostAsync<IntValue>(url, data, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
-            return new Response<int?>
-            {
-                Data = response.Success ? response.Data.Value : null,
-                Error = response.Error,
-                RawContent = response.RawContent,
-                ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode,
-                Success = response.Success,
-            };
+            var ret = await _client.GetResponseAsync<Result<T>>(request, cancellationToken).ConfigureAwait(false);
+            return FlattenResult(ret);
         }
-
-
-        internal Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken) =>
-            _client.DeleteAsync(url, GetHeaders(tokenNeeded), cancellationToken);
-
-
-
-
-        internal Task<Response<T>> GetResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken) =>
-            _client.GetResponseAsync<T>(request, cancellationToken);
 
     }
 }
