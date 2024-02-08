@@ -34,7 +34,7 @@ namespace DustyPig.API.v3.Clients
             if (string.IsNullOrWhiteSpace(code) || code.Length != Constants.DEVICE_ACTIVATION_CODE_LENGTH)
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(code)}") });
 
-            return _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", new StringValue(code), cancellationToken);
+            return _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", code, cancellationToken);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace DustyPig.API.v3.Clients
         /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
         /// </summary>
         public Task<Response<LoginResponse>> LoginWithFirebaseTokenAsync(string token, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<LoginResponse>(false, PREFIX + "LoginWithFirebaseToken", new StringValue(token), cancellationToken);
+            _client.PostAsync<LoginResponse>(false, PREFIX + "LoginWithFirebaseToken", token, cancellationToken);
 
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         /// <param name="fcmToken">FirebaseCloudMessaging token to include. If null, and the current AuthToken is liked to a FCM token, then the FCM token is unlinked</param>
         public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", new StringValue(fcmToken), cancellationToken);
+            _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", fcmToken, cancellationToken);
 
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace DustyPig.API.v3.Clients
             if (email == TEST_EMAIL)
                 return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
 
-            return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", new StringValue(email), cancellationToken);
+            return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", email, cancellationToken);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace DustyPig.API.v3.Clients
             if (string.IsNullOrWhiteSpace(code) || code.Length != Constants.DEVICE_ACTIVATION_CODE_LENGTH)
                 return Task.FromResult(new Response<DeviceCodeStatus> { Error = new ModelValidationException($"Invalid {nameof(code)}") });
 
-            return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new StringValue(code), cancellationToken);
+            return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", code, cancellationToken);
         }
 
         /// <summary>
@@ -180,6 +180,6 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         /// <param name="fcmToken">Include the FirebaseCloudMessaging token to also valid it as part of the call.</param>
         public Task<Response<LoginResponse>> UpdateAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-            _client.PostAsync<LoginResponse>(true, PREFIX + "UpdateAuthToken", new StringValue(fcmToken), cancellationToken);
+            _client.PostAsync<LoginResponse>(true, PREFIX + "UpdateAuthToken", fcmToken, cancellationToken);
     }
 }
