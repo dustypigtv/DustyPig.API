@@ -79,7 +79,7 @@ namespace DustyPig.API.v3.Clients
         /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
         /// </summary>
         public Task<Response<List<BasicMedia>>> AdminListAsync(int start, CancellationToken cancellationToken = default) =>
-            AdminListAsync(start, 0, cancellationToken);
+            AdminListAsync(start, start, cancellationToken);
 
         /// <summary>
         /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
