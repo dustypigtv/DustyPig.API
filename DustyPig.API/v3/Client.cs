@@ -76,6 +76,8 @@ namespace DustyPig.API.v3
 
         public NotificationsClient Notifications => new NotificationsClient(this);
 
+        public NoOpClient NoOp => new NoOpClient(this);
+
         public PlaylistClient Playlists => new PlaylistClient(this);
 
         public ProfilesClient Profiles => new ProfilesClient(this);
