@@ -7,7 +7,7 @@ namespace DustyPig.API.v3.Models
 {
     public class TitleRequest : IValidate
     {
-        [JsonPropertyName("tmdb_Id")]
+        [JsonPropertyName("tmdbId")]
         public int TMDB_Id { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace DustyPig.API.v3.Models
         public void Validate()
         {
             var lst = new List<string>();
-            Validators.ValidateId(nameof(TMDB_Id), TMDB_Id, lst);
+            Validators.ValidateId("tmdbId", TMDB_Id, lst);
 
             //Don't validate the FriendId, that will happen based on profile permissions on the server
 

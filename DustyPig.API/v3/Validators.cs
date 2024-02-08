@@ -26,7 +26,7 @@ namespace DustyPig.API.v3
                 ret.Add(chk.Error);
 
             if (media.TMDB_Id != null && media.TMDB_Id <= 0)
-                ret.Add($"{nameof(media.TMDB_Id)} must be > 0 when specified");
+                ret.Add($"tmdbId must be > 0 when specified");
 
 
             chk = Validate(nameof(media.ArtworkUrl), media.ArtworkUrl, true, Constants.MAX_URL_LENGTH);

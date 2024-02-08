@@ -4,7 +4,7 @@ namespace DustyPig.API.v3.Models
 {
     public class BasicTMDB
     {
-        [JsonPropertyName("tmdb_Id")]
+        [JsonPropertyName("tmdbId")]
         public int TMDB_ID { get; set; }
 
         public TMDB_MediaTypes MediaType { get; set; }

@@ -10,7 +10,7 @@ namespace DustyPig.API.v3.BaseClasses
 
         public string Title { get; set; }
 
-        [JsonPropertyName("tmdb_Id")]
+        [JsonPropertyName("tmdbId")]
         public int? TMDB_Id { get; set; }
 
         public string Description { get; set; }
