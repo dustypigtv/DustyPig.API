@@ -9,6 +9,8 @@ namespace DustyPig.API.v3.Models
 
         public string Name { get; set; }
 
+        public string Initials { get; set; }
+
         public string AvatarUrl { get; set; }
     }
 }

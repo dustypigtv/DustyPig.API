@@ -13,6 +13,8 @@ namespace DustyPig.API.v3.Models
 
         public bool IsMain { get; set; }
 
+        public string Initials { get; set; }
+
         public override string ToString() => base.ToString();
 
     }

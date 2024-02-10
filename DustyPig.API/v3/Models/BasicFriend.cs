@@ -8,6 +8,8 @@ namespace DustyPig.API.v3.Models
 
         public string DisplayName { get; set; }
 
+        public string Initials { get; set; }
+
         public string AvatarUrl { get; set; }
 
         #region IComparable
