@@ -15,15 +15,7 @@ namespace DustyPig.API.v3.Interfaces
         public ulong BackdropSize { get; set; }
 
         public Genres Genres { get; set; }
-
-        public List<string> Cast { get; set; }
-
-        public List<string> Directors { get; set; }
-
-        public List<string> Producers { get; set; }
-
-        public List<string> Writers { get; set; }
-
+        
         public List<string> ExtraSearchTerms { get; set; }
     }
 }

@@ -122,11 +122,7 @@ namespace DustyPig.API.v3
             else
                 ret.Add(chk.Error);
 
-            ret.AddRange(ValidatePeople(media.Cast).Select(item => $"{nameof(media.Cast)}: {item}"));
-            ret.AddRange(ValidatePeople(media.Directors).Select(item => $"{nameof(media.Directors)}: {item}"));
-            ret.AddRange(ValidatePeople(media.Producers).Select(item => $"{nameof(media.Producers)}: {item}"));
-            ret.AddRange(ValidatePeople(media.Writers).Select(item => $"{nameof(media.Writers)}: {item}"));
-
+           
             return ret;
         }
 
@@ -134,37 +130,6 @@ namespace DustyPig.API.v3
 
 
 
-
-        static List<string> ValidatePeople(List<string> lst)
-        {
-            var ret = new List<string>();
-
-            if (lst == null)
-                return ret;
-
-            lst.RemoveAll(item => string.IsNullOrWhiteSpace(item));
-
-
-            //Not ref, so make a copy to dedup
-            var newLst = new List<string>();
-            foreach (string item in lst)
-            {
-                var (Valid, Fixed, Error) = Validate("Person", item, true, Constants.MAX_NAME_LENGTH);
-                if (Valid)
-                {
-                    if (!newLst.Contains(item))
-                        newLst.Add(item);
-                }
-                else
-                {
-                    ret.Add(Error);
-                }
-            }
-            lst.Clear();
-            lst.AddRange(newLst);
-
-            return ret;
-        }
 
 
 

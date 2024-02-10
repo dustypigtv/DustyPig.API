@@ -40,14 +40,6 @@ namespace DustyPig.API.v3.BaseClasses
 
         public Genres Genres { get; set; }
 
-        public List<string> Cast { get; set; }
-
-        public List<string> Directors { get; set; }
-
-        public List<string> Producers { get; set; }
-
-        public List<string> Writers { get; set; }
-
         public List<string> ExtraSearchTerms { get; set; }
 
         #endregion

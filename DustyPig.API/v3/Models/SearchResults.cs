@@ -9,5 +9,7 @@ namespace DustyPig.API.v3.Models
         public bool OtherTitlesAllowed { get; set; }
 
         public List<BasicTMDB> OtherTitles { get; set; }
+
+        public List<Person> People { get; set; }
     }
 }

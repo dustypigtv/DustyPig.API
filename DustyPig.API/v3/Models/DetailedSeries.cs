@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using DustyPig.API.v3.Interfaces;
+using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models
 {
-    public class DetailedSeries : CreateSeries
+    public class DetailedSeries : CreateSeries, ICredits
     {
         public int Id { get; set; }
 
@@ -21,6 +22,18 @@ namespace DustyPig.API.v3.Models
         public OverrideRequestStatus AccessRequestedStatus { get; set; }
 
         public bool Subscribed { get; set; }
+
+        #region ICredits
+
+        public List<Person> Cast { get; set; }
+
+        public List<Person> Directors { get; set; }
+
+        public List<Person> Producers { get; set; }
+
+        public List<Person> Writers { get; set; }
+
+        #endregion
 
         public override string ToString() => base.ToString();
     }
