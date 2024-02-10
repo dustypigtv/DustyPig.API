@@ -345,9 +345,9 @@ namespace System
                 return null;
 
             var parts = name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var ret = parts.First().ToUpperInvariant();
+            var ret = parts.First()[0].ToString().ToUpperInvariant();
             if (parts.Length > 1)
-                ret += parts.Last().ToUpperInvariant();
+                ret += parts.Last()[0].ToString().ToUpperInvariant();
             return ret;
         }
     }
