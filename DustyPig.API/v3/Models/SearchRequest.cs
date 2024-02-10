@@ -11,7 +11,7 @@ namespace DustyPig.API.v3.Models
         [JsonPropertyName("searchTMDB")]
         public bool SearchTMDB { get; set; }
 
-        public bool SearchForPeople { get; set; }
+        public bool SearchPeople { get; set; }
 
         #region IValidate
 
