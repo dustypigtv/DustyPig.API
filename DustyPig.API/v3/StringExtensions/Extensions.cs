@@ -35,5 +35,7 @@ namespace System
         public static string FixSpaces(this string str) => StringUtils.FixSpaces(str);
 
         public static string RemoveDiacritics(this string str) => StringUtils.RemoveDiacritics(str);
+
+        public static string GetInitials(this string str) => StringUtils.GetInitials(str);
     }
 }

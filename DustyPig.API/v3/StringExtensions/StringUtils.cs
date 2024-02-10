@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace System
 {
@@ -337,5 +338,17 @@ namespace System
             }
         }
 
+        public static string GetInitials(string name)
+        {
+            name = (name + string.Empty).Trim();
+            if (string.IsNullOrWhiteSpace(name))
+                return null;
+
+            var parts = name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var ret = parts.First().ToUpperInvariant();
+            if (parts.Length > 1)
+                ret += parts.Last().ToUpperInvariant();
+            return ret;
+        }
     }
 }
