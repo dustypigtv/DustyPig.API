@@ -12,5 +12,10 @@ namespace DustyPig.API.v3.Models
         public string Initials { get; set; }
 
         public string AvatarUrl { get; set; }
+
+        public int Order { get; set; }
+
+        public CreditRoles Roles { get; set; }
+        
     }
 }
