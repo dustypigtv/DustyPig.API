@@ -15,7 +15,7 @@ namespace DustyPig.API.v3.Interfaces
         public ulong BackdropSize { get; set; }
 
         public Genres Genres { get; set; }
-        
+
         public List<string> ExtraSearchTerms { get; set; }
     }
 }

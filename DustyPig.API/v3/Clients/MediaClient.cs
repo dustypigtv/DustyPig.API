@@ -33,7 +33,7 @@ namespace DustyPig.API.v3.Clients
             { ID_POPULAR, ID_POPULAR_TITLE }
         };
 
-        
+
         private const string PREFIX = "Media/";
 
         private readonly Client _client;

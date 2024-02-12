@@ -16,6 +16,6 @@ namespace DustyPig.API.v3.Models
         public int Order { get; set; }
 
         public CreditRoles Role { get; set; }
-        
+
     }
 }

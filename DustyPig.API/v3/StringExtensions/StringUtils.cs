@@ -165,7 +165,7 @@ namespace System
                 .Replace("â€“", "-")
 
                 ////Latin diacritics (https://jkorpela.fi/latin1/3.3.html)
-                
+
                 .Replace("¨", "\"")
                 .Replace("´", "'")
                 .Replace("`", "'")
