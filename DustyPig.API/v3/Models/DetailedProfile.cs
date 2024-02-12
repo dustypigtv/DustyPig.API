@@ -9,7 +9,7 @@ namespace DustyPig.API.v3.Models
 
         public bool HasPin { get; set; }
 
-        public List<BasicLibrary> AvailableLibraries { get; set; }
+        public List<BasicLibrary> AvailableLibraries { get; set; } = [];
 
         public bool IsMain { get; set; }
 

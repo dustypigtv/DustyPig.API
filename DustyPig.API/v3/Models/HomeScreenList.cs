@@ -9,7 +9,7 @@ namespace DustyPig.API.v3.Models
 
         public string Title { get; set; }
 
-        public List<BasicMedia> Items { get; set; }
+        public List<BasicMedia> Items { get; set; } = [];
 
         public int CompareTo(object obj)
         {

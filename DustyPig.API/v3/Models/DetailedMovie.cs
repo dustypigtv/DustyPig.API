@@ -23,7 +23,7 @@ namespace DustyPig.API.v3.Models
 
         #region ICredits
 
-        public List<Person> Credits { get; set; }
+        public List<Person> Credits { get; set; } = [];
 
         #endregion
 

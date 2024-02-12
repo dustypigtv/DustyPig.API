@@ -10,7 +10,7 @@ namespace DustyPig.API.v3.Models
         /// <summary>
         /// New list of media ids, in the order desired
         /// </summary>
-        public List<int> MediaIds { get; set; }
+        public List<int> MediaIds { get; set; } = [];
 
 
         #region IValidate

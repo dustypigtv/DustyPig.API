@@ -14,7 +14,7 @@ namespace DustyPig.API.v3.Models
 
         public Genres Genres { get; set; }
 
-        public List<BasicMedia> Available { get; set; }
+        public List<BasicMedia> Available { get; set; } = [];
 
         public TitleRequestPermissions RequestPermission { get; set; }
 
@@ -22,7 +22,7 @@ namespace DustyPig.API.v3.Models
 
         #region ICredits
 
-        public List<Person> Credits { get; set; }
+        public List<Person> Credits { get; set; } = [];
 
         #endregion
 

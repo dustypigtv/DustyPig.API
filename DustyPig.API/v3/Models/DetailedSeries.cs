@@ -9,7 +9,7 @@ namespace DustyPig.API.v3.Models
 
         public string Owner { get; set; }
 
-        public List<DetailedEpisode> Episodes { get; set; }
+        public List<DetailedEpisode> Episodes { get; set; } = [];
 
         public bool InWatchlist { get; set; }
 
@@ -25,7 +25,7 @@ namespace DustyPig.API.v3.Models
 
         #region ICredits
 
-        public List<Person> Credits { get; set; }
+        public List<Person> Credits { get; set; } = [];
 
         #endregion
 

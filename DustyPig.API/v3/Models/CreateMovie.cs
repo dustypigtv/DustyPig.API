@@ -42,7 +42,7 @@ namespace DustyPig.API.v3.Models
         public ulong VideoSize { get; set; }
 
         [JsonPropertyName("srtSubtitles")]
-        public List<SRTSubtitle> SRTSubtitles { get; set; }
+        public List<SRTSubtitle> SRTSubtitles { get; set; } = [];
 
 
         #endregion
