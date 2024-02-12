@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace System
 {
@@ -230,7 +229,7 @@ namespace System
             str = str.Replace(" & ", " and ");
 
             //Replace remaining special characters with a space
-            str = Regex.Replace(str, "[^\\w ]", " ");
+            str = Regex.Replace(str, "[^\\w ]", " ", RegexOptions.Compiled);
 
             //Split on spaces
             var ret = new List<string>(str.Split(SpaceSplitChar, StringSplitOptions.RemoveEmptyEntries));
@@ -318,7 +317,7 @@ namespace System
             try
             {
                 // Normalize the domain
-                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.None);
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.Compiled);
 
                 // Examines the domain part of the email and normalizes it.
                 static string DomainMapper(Match match)
@@ -334,7 +333,7 @@ namespace System
 
                 return Regex.IsMatch(email,
                     @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                    RegexOptions.IgnoreCase);
+                    RegexOptions.IgnoreCase | RegexOptions.Compiled);
             }
             catch
             {
