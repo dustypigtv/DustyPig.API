@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 	  <LangVersion>12</LangVersion>
-    <RootNamespace>DustyPig.API</RootNamespace>
+      <RootNamespace>DustyPig.API</RootNamespace>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <NoWarn>$(NoWarn);1591,CS1573,,IDE0090</NoWarn>
 	  <Authors>DustyPig.tv</Authors>
@@ -13,12 +13,12 @@
 	  <PackageProjectUrl>https://github.com/dustypigtv/DustyPig.API</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/dustypigtv/DustyPig.API.git</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
+	  <NeutralLanguage>en</NeutralLanguage>
 
-
-		<!-- Leave the revision as zero, it will be set by github actions -->
-		<Version>3.6.0.0</Version>
+	  <!-- Leave the revision as zero, it will be set by github actions -->
+	  <Version>3.6.0.0</Version>
 	  
-	  </PropertyGroup>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />

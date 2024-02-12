@@ -33,9 +33,7 @@ namespace DustyPig.API.v3.Clients
             { ID_POPULAR, ID_POPULAR_TITLE }
         };
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "This is meant to be called from an instance, for ease of use")]
-        public IReadOnlyDictionary<long, string> AllHomeScreenSections => GetAllHomesScreenSections();
-
+        
         private const string PREFIX = "Media/";
 
         private readonly Client _client;

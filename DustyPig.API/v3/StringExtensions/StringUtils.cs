@@ -9,7 +9,11 @@ namespace System
 {
     public static class StringUtils
     {
-        private static readonly List<string> RemovePrefixes = new List<string> { "the", "a", "an", "la", "les", "des", "l", "un", "el", "il", "le", "uno", };
+        private static readonly List<string> RemovePrefixes = ["the", "a", "an", "la", "les", "des", "l", "un", "el", "il", "le", "uno"];
+
+        private static readonly char[] NullSplitChar = ['\0'];
+
+        private static readonly char[] SpaceSplitChar = ['\0'];
 
 
         /// <summary>
@@ -18,8 +22,8 @@ namespace System
         public static List<string> ConvertToList(string str)
         {
             if (string.IsNullOrWhiteSpace(str))
-                return new List<string>();
-            return str.Split(new char[] { '\0' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                return [];
+            return [.. str.Split(NullSplitChar, StringSplitOptions.RemoveEmptyEntries)];
         }
 
         /// <summary>
@@ -71,8 +75,8 @@ namespace System
         public static string SortTitle(string title)
         {
             title = (title + string.Empty).NormalizeMiscCharacters().Trim().ToLower();
-            title = Regex.Replace(title, "[^a-z0-9 ]", " ").FixSpaces();
-            var parts = title.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            title = Regex.Replace(title, "[^a-z0-9 ]", " ", RegexOptions.Compiled).FixSpaces();
+            var parts = title.Split(SpaceSplitChar, StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length > 1)
                 if (RemovePrefixes.ICContains(parts[0]))
                     title = string.Join(" ", parts.Skip(1));
@@ -126,7 +130,7 @@ namespace System
             if (str == null || text == null)
                 return false;
 
-            return str.NormalizeMiscCharacters().ToLower().Contains(text.NormalizeMiscCharacters().ToLower());
+            return str.NormalizeMiscCharacters().ToLower().Contains(text.NormalizeMiscCharacters(), StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool ICContains(IEnumerable<string> lst, string text)
@@ -215,7 +219,7 @@ namespace System
         public static List<string> Tokenize(string str)
         {
             if (string.IsNullOrWhiteSpace(str))
-                return new List<string>();
+                return [];
 
             str = str.ToLower().Trim();
 
@@ -229,7 +233,7 @@ namespace System
             str = Regex.Replace(str, "[^\\w ]", " ");
 
             //Split on spaces
-            var ret = new List<string>(str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            var ret = new List<string>(str.Split(SpaceSplitChar, StringSplitOptions.RemoveEmptyEntries));
 
             return ret;
         }
@@ -344,7 +348,7 @@ namespace System
             if (string.IsNullOrWhiteSpace(name))
                 return null;
 
-            var parts = name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var parts = name.Split(SpaceSplitChar, StringSplitOptions.RemoveEmptyEntries);
             var ret = parts.First()[0].ToString().ToUpperInvariant();
             if (parts.Length > 1)
                 ret += parts.Last()[0].ToString().ToUpperInvariant();

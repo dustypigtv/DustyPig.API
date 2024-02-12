@@ -93,33 +93,33 @@ namespace DustyPig.API.v3.MPAA
         private static string[] FixGenre(string s)
         {
             if (string.IsNullOrWhiteSpace(s))
-                return new string[] { AllGenres[Genres.Unknown] };
+                return [AllGenres[Genres.Unknown]];
 
             s = s.Trim();
 
             if (s.ICEquals("Animated"))
-                return new string[] { AllGenres[Genres.Animation] };
+                return [AllGenres[Genres.Animation]];
 
             if (s.ICEquals("Anime"))
-                return new string[] { AllGenres[Genres.Animation] };
+                return [AllGenres[Genres.Animation]];
 
             if (s.ICEquals("Kids"))
-                return new string[] { AllGenres[Genres.Children] };
+                return [AllGenres[Genres.Children]];
 
             if (s.ICEquals("Talk"))
-                return new string[] { AllGenres[Genres.Talk_Show] };
+                return [AllGenres[Genres.Talk_Show]];
 
             if (s.Equals("Sci-Fi"))
-                return new string[] { AllGenres[Genres.Science_Fiction] };
+                return [AllGenres[Genres.Science_Fiction]];
 
             if (s.Equals("Sci-Fi & Fantasy"))
-                return new string[] { AllGenres[Genres.Science_Fiction], AllGenres[Genres.Fantasy] };
+                return [AllGenres[Genres.Science_Fiction], AllGenres[Genres.Fantasy]];
 
             if (s.Equals("War & Politics"))
-                return new string[] { AllGenres[Genres.War], AllGenres[Genres.Political] };
+                return [AllGenres[Genres.War], AllGenres[Genres.Political]];
 
 
-            return new string[] { s };
+            return [s];
         }
 
 
