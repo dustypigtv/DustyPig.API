@@ -19,7 +19,7 @@ namespace DustyPig.API.v3
         public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-        private readonly REST.Client _client = new REST.Client() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+        private readonly REST.Client _client = new REST.Client(new Uri(DEFAULT_BASE_ADDRESS));
 
         public Client()
         {
@@ -44,12 +44,6 @@ namespace DustyPig.API.v3
         {
             get => _client.IncludeRawContentInResponse;
             set => _client.IncludeRawContentInResponse = value;
-        }
-
-        public Uri BaseUrl
-        {
-            get => _client.BaseAddress;
-            set => _client.BaseAddress = value;
         }
 
         public bool AutoThrowIfError
