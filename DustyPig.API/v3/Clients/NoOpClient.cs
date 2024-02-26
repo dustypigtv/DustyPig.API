@@ -1,5 +1,4 @@
-﻿using DustyPig.REST;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace DustyPig.API.v3.Clients

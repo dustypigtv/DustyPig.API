@@ -1,7 +1,6 @@
 ﻿using DustyPig.API.v3.Clients;
 using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.Models;
-using DustyPig.REST;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -19,7 +18,7 @@ namespace DustyPig.API.v3
         public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-        private readonly REST.Client _client = new REST.Client(new Uri(DEFAULT_BASE_ADDRESS));
+        private readonly API.RestClient _client = new API.RestClient(new Uri(DEFAULT_BASE_ADDRESS));
 
         public Client()
         {

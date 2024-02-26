@@ -1,5 +1,4 @@
 ﻿using DustyPig.API.v3.Models;
-using DustyPig.REST;
 using System.Threading;
 using System.Threading.Tasks;
 
