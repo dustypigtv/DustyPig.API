@@ -18,7 +18,7 @@ namespace DustyPig.API.v3
         public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-        private readonly API.RestClient _client = new API.RestClient(new Uri(DEFAULT_BASE_ADDRESS));
+        private readonly RestClient _client = new RestClient(new Uri(DEFAULT_BASE_ADDRESS));
 
         public Client()
         {
@@ -203,7 +203,7 @@ namespace DustyPig.API.v3
 
         internal async Task<Response> DeleteAsync(bool tokenNeeded, string url, CancellationToken cancellationToken)
         {
-            var ret = await _client.DeleteAsync<Result>(url, GetHeaders(tokenNeeded), cancellationToken).ConfigureAwait(false);
+            var ret = await _client.DeleteAsync<Result>(url, GetHeaders(tokenNeeded), cancellationToken: cancellationToken).ConfigureAwait(false);
             return FlattenResult(ret);
         }
 

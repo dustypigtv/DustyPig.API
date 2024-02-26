@@ -15,6 +15,8 @@ namespace DustyPig.API.v3.Models
 
         public string Title { get; set; }
 
+        public string Role { get; set; }
+
         public override string ToString() => Title;
     }
 }

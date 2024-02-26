@@ -39,6 +39,17 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
+        public Task<Response<TMDB_Person>> GetPersonAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response<TMDB_Person> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+
+            return _client.GetAsync<TMDB_Person>(true, PREFIX + $"GetPerson/{id}", cancellationToken);
+        }
+
+        /// <summary>
+        /// Requires profile
+        /// </summary>
         public Task<Response<TitleRequestPermissions?>> GetRequestTitlePermissionAsync(CancellationToken cancellationToken = default) =>
             _client.GetAsync<TitleRequestPermissions?>(true, PREFIX + "GetRequestTitlePermission", cancellationToken);
 
@@ -55,6 +66,5 @@ namespace DustyPig.API.v3.Clients
         /// </summary>
         public Task<Response> CancelRequestAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
             _client.PostAsync(true, PREFIX + "CancelTitleRequest", data, cancellationToken);
-
     }
 }
