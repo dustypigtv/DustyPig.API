@@ -12,7 +12,7 @@
 
         public string Title { get; set; }
 
-        public string Role { get; set; }
+        public CreditRoles? Role { get; set; }
 
         public override string ToString() => Title;
 
