@@ -15,7 +15,7 @@ public class TMDB_Person
 
     public DateOnly? Birthday { get; set; }
 
-    public DateTime? Deathday { get; set; }
+    public DateOnly? Deathday { get; set; }
 
     public string PlaceOfBirth { get; set; }
 
