@@ -12,8 +12,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<ContinousIntegrationBuild>true</ContinousIntegrationBuild>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Authors>DustyPig.tv</Authors>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>DustyPig API Client</Description>
@@ -22,10 +20,14 @@
 		<RepositoryUrl>https://github.com/dustypigtv/DustyPig.API.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<NeutralLanguage>en</NeutralLanguage>
+
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -34,7 +36,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DustyPig.REST" Version="3.4.0.23" />
+		<PackageReference Include="DustyPig.REST" Version="3.4.0.27" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 	</ItemGroup>
 
