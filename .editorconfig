@@ -2,3 +2,6 @@
 
 # IDE0042: Deconstruct variable declaration
 dotnet_diagnostic.IDE0042.severity = none
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = none

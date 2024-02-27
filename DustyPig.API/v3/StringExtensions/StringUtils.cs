@@ -147,7 +147,7 @@ namespace System
             string normal = text.Normalize(NormalizationForm.FormD);
             var withoutDiacritics = normal.Where(
                 c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark);
-            return new string(withoutDiacritics.ToArray());
+            return new(withoutDiacritics.ToArray());
         }
 
         public static string NormalizeMiscCharacters(string str)

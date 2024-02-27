@@ -56,7 +56,7 @@ namespace DustyPig.API.v3.MPAA
             public string Text { get; set; }
         }
 
-        private static List<MapItem> GenreMaps => new List<MapItem>(AllGenres.Select(item => new MapItem { Genre = item.Key, Text = item.Value }));
+        private static List<MapItem> GenreMaps => new(AllGenres.Select(item => new MapItem { Genre = item.Key, Text = item.Value }));
 
         public static string AsString(Genres g)
         {

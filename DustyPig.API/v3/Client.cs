@@ -1,6 +1,7 @@
 ﻿using DustyPig.API.v3.Clients;
 using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.Models;
+using DustyPig.REST;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -18,7 +19,7 @@ namespace DustyPig.API.v3
         public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-        private readonly RestClient _client = new RestClient(new Uri(DEFAULT_BASE_ADDRESS));
+        private readonly REST.Client _client = new(DEFAULT_BASE_ADDRESS);
 
         public Client()
         {
@@ -53,31 +54,31 @@ namespace DustyPig.API.v3
 
         public string Token { get; set; }
 
-        public AccountClient Account => new AccountClient(this);
+        public AccountClient Account => new(this);
 
-        public AuthClient Auth => new AuthClient(this);
+        public AuthClient Auth => new(this);
 
-        public EpisodesClient Episodes => new EpisodesClient(this);
+        public EpisodesClient Episodes => new(this);
 
-        public FriendsClient Friends => new FriendsClient(this);
+        public FriendsClient Friends => new(this);
 
-        public LibrariesClient Libraries => new LibrariesClient(this);
+        public LibrariesClient Libraries => new(this);
 
-        public MediaClient Media => new MediaClient(this);
+        public MediaClient Media => new(this);
 
-        public MoviesClient Movies => new MoviesClient(this);
+        public MoviesClient Movies => new(this);
 
-        public NotificationsClient Notifications => new NotificationsClient(this);
+        public NotificationsClient Notifications => new(this);
 
-        public NoOpClient NoOp => new NoOpClient(this);
+        public NoOpClient NoOp => new(this);
 
-        public PlaylistClient Playlists => new PlaylistClient(this);
+        public PlaylistClient Playlists => new(this);
 
-        public ProfilesClient Profiles => new ProfilesClient(this);
+        public ProfilesClient Profiles => new(this);
 
-        public SeriesClient Series => new SeriesClient(this);
+        public SeriesClient Series => new(this);
 
-        public TMDBClient TMDB => new TMDBClient(this);
+        public TMDBClient TMDB => new(this);
 
 
 
@@ -100,16 +101,16 @@ namespace DustyPig.API.v3
         private static Response FlattenResult(Response<Result> response)
         {
             if (response.Success)
-                return new Response
+                return new()
                 {
-                    Error = response.Data.Success ? null : new Exception(response.Data.Error),
+                    Error = response.Data.Success ? null : new(response.Data.Error),
                     RawContent = response.RawContent,
                     ReasonPhrase = response.ReasonPhrase,
                     StatusCode = response.StatusCode,
                     Success = response.Data.Success
                 };
 
-            return new Response
+            return new()
             {
                 Error = response.Error,
                 RawContent = response.RawContent,
@@ -121,17 +122,17 @@ namespace DustyPig.API.v3
         private static Response<T> FlattenResult<T>(Response<Result<T>> response)
         {
             if (response.Success)
-                return new Response<T>
+                return new()
                 {
                     Data = response.Data.Data,
-                    Error = response.Data.Success ? null : new Exception(response.Data.Error),
+                    Error = response.Data.Success ? null : new(response.Data.Error),
                     RawContent = response.RawContent,
                     ReasonPhrase = response.ReasonPhrase,
                     StatusCode = response.StatusCode,
                     Success = response.Data.Success
                 };
 
-            return new Response<T>
+            return new()
             {
                 Error = response.Error,
                 RawContent = response.RawContent,
@@ -166,7 +167,7 @@ namespace DustyPig.API.v3
                 {
                     if (AutoThrowIfError)
                         throw;
-                    return new Response
+                    return new()
                     {
                         Error = ex,
                         ReasonPhrase = ex.Message,
@@ -186,7 +187,7 @@ namespace DustyPig.API.v3
                 {
                     if (AutoThrowIfError)
                         throw;
-                    return new Response<T>
+                    return new()
                     {
                         Error = ex,
                         ReasonPhrase = ex.Message,
