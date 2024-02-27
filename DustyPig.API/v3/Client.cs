@@ -52,6 +52,8 @@ namespace DustyPig.API.v3
             set => _client.AutoThrowIfError = value;
         }
 
+
+
         public string Token { get; set; }
 
         public AccountClient Account => new(this);
