@@ -3,5 +3,5 @@
 
 Nuget: https://www.nuget.org/packages/DustyPig.API
 
-DustyPig Client API
+DustyPig API Client
 

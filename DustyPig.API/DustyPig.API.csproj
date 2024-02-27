@@ -16,7 +16,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Authors>DustyPig.tv</Authors>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Description>DustyPig client API</Description>
+		<Description>DustyPig API Client</Description>
 		<Copyright>DustyPig.tv</Copyright>
 		<PackageProjectUrl>https://github.com/dustypigtv/DustyPig.API</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/dustypigtv/DustyPig.API.git</RepositoryUrl>

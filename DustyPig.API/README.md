@@ -1,2 +1,1 @@
-DustyPig Client API
-
+DustyPig API Client
