@@ -25,8 +25,10 @@ namespace DustyPig.API.v3.BaseClasses
 
         #endregion
 
-
-        public DateTime Date { get; set; }
+#if !NET7_0_OR_GREATER
+        [JsonConverter(typeof(JsonConverters.DateOnlyConverter))]
+#endif
+        public DateOnly Date { get; set; }
 
         public double Length { get; set; }
 

@@ -2,11 +2,18 @@
 using System;
 using System.Collections.Generic;
 
+#if !NET7_0_OR_GREATER
+using System.Text.Json.Serialization;
+#endif
+
 namespace DustyPig.API.v3.Interfaces
 {
     public interface IPlayableMedia
     {
-        public DateTime Date { get; set; }
+#if !NET7_0_OR_GREATER
+        [JsonConverter(typeof(JsonConverters.DateOnlyConverter))]
+#endif
+        public DateOnly Date { get; set; }
 
         public double Length { get; set; }
 
