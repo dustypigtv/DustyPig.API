@@ -17,16 +17,17 @@
 	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
 	  <IncludeSymbols>true</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-	  <PackageReadmeFile>..\README.md</PackageReadmeFile>
-
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <Deterministic>true</Deterministic>
 
 	  <!-- Leave the revision as zero, it will be set by github actions -->
-	  <Version>3.6.0.0</Version>
+	  <Version>3.6.1.0</Version>
 	  
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+	<None Include="..\.editorconfig" Link=".editorconfig" />
+	<None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
   <ItemGroup>
