@@ -14,6 +14,10 @@
 	  <RepositoryUrl>https://github.com/dustypigtv/DustyPig.API.git</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <NeutralLanguage>en</NeutralLanguage>
+	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
 
 	  <!-- Leave the revision as zero, it will be set by github actions -->
 	  <Version>3.6.0.0</Version>
@@ -26,9 +30,10 @@
 
   <ItemGroup>
     <PackageReference Include="DustyPig.REST" Version="3.3.0.21" />
+	<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
-  
+	
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
