@@ -53,39 +53,60 @@ namespace DustyPig.API.v3.MPAA
         }
 
 
-        public static string AsString(MovieRatings self)
+        public static string AsString(MovieRatings value)
         {
-            return self.ToString().Replace("_", "-");
+            return value.ToString().Replace("_", "-");
         }
 
-        public static MovieRatings ToMovieRatings(string self)
+        public static MovieRatings ToMovieRatings(string value)
         {
+            value = value.Replace("*", null).Trim();
             foreach (MovieRatings rating in Enum.GetValues(typeof(MovieRatings)))
-                if (rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
+                if (rating.AsString().ICEquals(value) || rating.ToString().ICEquals(value))
                     return rating;
             return MovieRatings.None;
         }
 
-
-
-        public static string AsString(TVRatings self)
+        public static MovieRatings ToMovieRatings(TVRatings value) => value switch
         {
-            var ret = self.ToString().Replace("_", "-");
+            TVRatings.NotRated => MovieRatings.Unrated,
+            TVRatings.TV_14 => MovieRatings.PG_13,
+            TVRatings.TV_G => MovieRatings.G,
+            TVRatings.TV_MA => MovieRatings.NC_17,
+            TVRatings.TV_PG => MovieRatings.PG,
+            TVRatings.TV_Y7 => MovieRatings.G,
+            TVRatings.TV_Y => MovieRatings.G,
+            _ => MovieRatings.None
+        };
+
+
+
+        public static string AsString(TVRatings value)
+        {
+            var ret = value.ToString().Replace("_", "-");
             if (ret == "NotRated")
                 ret = "Not Rated";
             return ret;
         }
 
-        public static TVRatings ToTVRatings(string self)
+        public static TVRatings ToTVRatings(string value)
         {
+            value = value.Replace("*", null).Trim();
             foreach (TVRatings rating in Enum.GetValues(typeof(TVRatings)))
-                if (rating.AsString().ICEquals(self) || rating.ToString().ICEquals(self))
+                if (rating.AsString().ICEquals(value) || rating.ToString().ICEquals(value))
                     return rating;
             return TVRatings.None;
         }
 
-
-
-
+        public static TVRatings ToTVRatings(MovieRatings value) => value switch
+        {
+            MovieRatings.G => TVRatings.TV_G,
+            MovieRatings.PG => TVRatings.TV_PG,
+            MovieRatings.PG_13 => TVRatings.TV_14,
+            MovieRatings.R => TVRatings.TV_MA,
+            MovieRatings.NC_17 => TVRatings.TV_MA,
+            MovieRatings.Unrated => TVRatings.NotRated,
+            _ => TVRatings.None
+        };
     }
 }

@@ -12,7 +12,13 @@ namespace DustyPig.API.v3.MPAA
 
         public static MovieRatings ToMovieRatings(this string s) => RatingsUtils.ToMovieRatings(s);
 
+        public static MovieRatings ToMovieRatings(this TVRatings value) => RatingsUtils.ToMovieRatings(value);
+
+
+
         public static TVRatings ToTVRatings(this string s) => RatingsUtils.ToTVRatings(s);
+
+        public static TVRatings ToTVRatings(this MovieRatings value) => RatingsUtils.ToTVRatings(value);
 
 
 
