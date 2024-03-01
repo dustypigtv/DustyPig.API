@@ -2030,5 +2030,61 @@
     "Meaning": "Banned.",
     "US_Equivalent": "TV-MA",
     "Rank": 2
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "G",
+    "Meaning": "General",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "PG",
+    "Meaning": "Parental guidance",
+    "US_Equivalent": "PG",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "NC16",
+    "Meaning": "No children below 16 years old",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "M18",
+    "Meaning": "Mature 18 for persons 18 years and above",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "R(A)",
+    "Meaning": "Restricted to adults",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "R21",
+    "Meaning": "Restricted to persons 21 years and above (theatrical only)",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
+    "Rating": "Not Rated",
+    "Meaning": "Not Rated",
+    "US_Equivalent": "Unrated",
+    "Rank": 3
   }
 ]
