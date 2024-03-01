@@ -16,18 +16,12 @@ namespace DustyPig.API.v3.MPAA
             if (string.IsNullOrWhiteSpace(country) || string.IsNullOrWhiteSpace(rating))
                 return null;
 
-            foreach (var map in _ratingsMaps.Where(item => item.EntryType == MediaTypes.Movie).Where(item => item.Rank == 1))
-                if (map.Country.ICEquals(country))
-                    if (map.Rating.ICEquals(rating))
-                        return map.US_Equivalent;
-
-
             int max = _ratingsMaps.Where(item => item.EntryType == MediaTypes.Movie).Max(item => item.Rank);
-            for (int rank = 2; rank < max; rank++)
+            for (int rank = 1; rank < max; rank++)
                 foreach (var map in _ratingsMaps.Where(item => item.EntryType == MediaTypes.Movie).Where(item => item.Rank == rank))
                     if (map.Country.ICEquals(country))
                         if (map.Rating.ICEquals(rating))
-                            return map.US_Equivalent + " *";
+                            return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
 
             return null;
         }
@@ -37,17 +31,12 @@ namespace DustyPig.API.v3.MPAA
             if (string.IsNullOrWhiteSpace(country) || string.IsNullOrWhiteSpace(rating))
                 return null;
 
-            foreach (var map in _ratingsMaps.Where(item => item.EntryType == MediaTypes.Series).Where(item => item.Rank == 1))
-                if (map.Country.ICEquals(country))
-                    if (map.Rating.ICEquals(rating))
-                        return map.US_Equivalent;
-
             int max = _ratingsMaps.Where(item => item.EntryType == MediaTypes.Series).Max(item => item.Rank);
-            for (int rank = 2; rank < max; rank++)
+            for (int rank = 1; rank < max; rank++)
                 foreach (var map in _ratingsMaps.Where(item => item.EntryType == MediaTypes.Series).Where(item => item.Rank == rank))
                     if (map.Country.ICEquals(country))
                         if (map.Rating.ICEquals(rating))
-                            return map.US_Equivalent + " *";
+                            return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
 
             return null;
         }
