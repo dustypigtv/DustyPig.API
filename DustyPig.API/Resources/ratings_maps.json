@@ -2058,6 +2058,14 @@
   {
     "EntryType": 1,
     "Country": "SG",
+    "Rating": "NC-16",
+    "Meaning": "No children below 16 years old",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "SG",
     "Rating": "M18",
     "Meaning": "Mature 18 for persons 18 years and above",
     "US_Equivalent": "NC-17",
