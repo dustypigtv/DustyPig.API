@@ -11,38 +11,25 @@ namespace DustyPig.API.v3.MPAA
     {
         private static readonly IReadOnlyList<RatingsMap> _ratingsMaps = JsonSerializer.Deserialize<List<RatingsMap>>(Encoding.UTF8.GetString(Properties.Resources.ratings_maps));
 
-        public static string MapMovieRatings(string country, string rating)
+        public static string MapMovieRatings(string country, string rating) => MapRatings(country, rating, MediaTypes.Movie);
+
+        public static string MapTVRatings(string country, string rating) => MapRatings(country, rating, MediaTypes.Series);
+
+        private static string MapRatings(string country, string rating, MediaTypes mediaType)
         {
             if (string.IsNullOrWhiteSpace(country) || string.IsNullOrWhiteSpace(rating))
                 return null;
 
-            int max = _ratingsMaps.Where(item => item.EntryType == MediaTypes.Movie).Max(item => item.Rank);
-            for (int rank = 1; rank <= max; rank++)
+            var rankQ = _ratingsMaps
+                .Where(item => item.EntryType == mediaType)
+                .Select(item => item.Rank)
+                .Distinct()
+                .OrderBy(item => item);
+
+            foreach(int rank in rankQ)
             {
                 var map = _ratingsMaps
-                    .Where(item => item.EntryType == MediaTypes.Movie)
-                    .Where(item => item.Rank == rank)
-                    .Where(item => item.Country.ICEquals(country))
-                    .Where(item => item.Rating.ICEquals(rating))
-                    .FirstOrDefault();
-
-                if(map != null)
-                    return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
-            }
-
-            return null;
-        }
-
-        public static string MapTVRatings(string country, string rating)
-        {
-            if (string.IsNullOrWhiteSpace(country) || string.IsNullOrWhiteSpace(rating))
-                return null;
-
-            int max = _ratingsMaps.Where(item => item.EntryType == MediaTypes.Series).Max(item => item.Rank);
-            for (int rank = 1; rank <= max; rank++)
-            {
-                var map = _ratingsMaps
-                    .Where(item => item.EntryType == MediaTypes.Series)
+                    .Where(item => item.EntryType == mediaType)
                     .Where(item => item.Rank == rank)
                     .Where(item => item.Country.ICEquals(country))
                     .Where(item => item.Rating.ICEquals(rating))
@@ -54,6 +41,8 @@ namespace DustyPig.API.v3.MPAA
 
             return null;
         }
+
+
 
 
         public static string AsString(MovieRatings value)
