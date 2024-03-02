@@ -2094,5 +2094,78 @@
     "Meaning": "Not Rated",
     "US_Equivalent": "Unrated",
     "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "ATP",
+    "Meaning": "Passed only for persons 7 and over",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "0",
+    "Meaning": "Passed only for persons 7 and over",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "7",
+    "Meaning": "Passed only for persons 7 and over",
+    "US_Equivalent": "G",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "10",
+    "Meaning": "Passed only for persons 10 and over",
+    "US_Equivalent": "PG",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "12",
+    "Meaning": "Passed only for persons 12 and over",
+    "US_Equivalent": "PG-13",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "13",
+    "Meaning": "Passed only for persons 13 and over",
+    "US_Equivalent": "PG-13",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "14",
+    "Meaning": "Passed only for persons 14 and over",
+    "US_Equivalent": "PG-14",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "16",
+    "Meaning": "Passed only for persons 16 and over",
+    "US_Equivalent": "R",
+    "Rank": 3
+  },
+  {
+    "EntryType": 1,
+    "Country": "AR",
+    "Rating": "18",
+    "Meaning": "Passed only for persons 18 and over",
+    "US_Equivalent": "NC-17",
+    "Rank": 3
   }
+
 ]
