@@ -17,11 +17,18 @@ namespace DustyPig.API.v3.MPAA
                 return null;
 
             int max = _ratingsMaps.Where(item => item.EntryType == MediaTypes.Movie).Max(item => item.Rank);
-            for (int rank = 1; rank < max; rank++)
-                foreach (var map in _ratingsMaps.Where(item => item.EntryType == MediaTypes.Movie).Where(item => item.Rank == rank))
-                    if (map.Country.ICEquals(country))
-                        if (map.Rating.ICEquals(rating))
-                            return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
+            for (int rank = 1; rank <= max; rank++)
+            {
+                var map = _ratingsMaps
+                    .Where(item => item.EntryType == MediaTypes.Movie)
+                    .Where(item => item.Rank == rank)
+                    .Where(item => item.Country.ICEquals(country))
+                    .Where(item => item.Rating.ICEquals(rating))
+                    .FirstOrDefault();
+
+                if(map != null)
+                    return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
+            }
 
             return null;
         }
@@ -32,11 +39,18 @@ namespace DustyPig.API.v3.MPAA
                 return null;
 
             int max = _ratingsMaps.Where(item => item.EntryType == MediaTypes.Series).Max(item => item.Rank);
-            for (int rank = 1; rank < max; rank++)
-                foreach (var map in _ratingsMaps.Where(item => item.EntryType == MediaTypes.Series).Where(item => item.Rank == rank))
-                    if (map.Country.ICEquals(country))
-                        if (map.Rating.ICEquals(rating))
-                            return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
+            for (int rank = 1; rank <= max; rank++)
+            {
+                var map = _ratingsMaps
+                    .Where(item => item.EntryType == MediaTypes.Series)
+                    .Where(item => item.Rank == rank)
+                    .Where(item => item.Country.ICEquals(country))
+                    .Where(item => item.Rating.ICEquals(rating))
+                    .FirstOrDefault();
+
+                if (map != null)
+                    return map.US_Equivalent + (rank == 1 ? string.Empty : " *");
+            }
 
             return null;
         }
