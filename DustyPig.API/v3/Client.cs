@@ -46,11 +46,7 @@ namespace DustyPig.API.v3
             set => _client.IncludeRawContentInResponse = value;
         }
 
-        public bool AutoThrowIfError
-        {
-            get => _client.AutoThrowIfError;
-            set => _client.AutoThrowIfError = value;
-        }
+        public bool AutoThrowIfError { get; set; }
 
 
 
@@ -100,10 +96,11 @@ namespace DustyPig.API.v3
 
 
 
-        private static Response FlattenResult(Response<Result> response)
+        private Response FlattenResult(Response<Result> response)
         {
             if (response.Success)
-                return new()
+            {
+                var ret1 = new Response
                 {
                     Error = response.Data.Success ? null : new(response.Data.Error),
                     RawContent = response.RawContent,
@@ -112,19 +109,31 @@ namespace DustyPig.API.v3
                     Success = response.Data.Success
                 };
 
-            return new()
+                if (AutoThrowIfError)
+                    ret1.ThrowIfError();
+                return ret1;
+            }
+            else
             {
-                Error = response.Error,
-                RawContent = response.RawContent,
-                ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode
-            };
+                var ret2 = new Response
+                {
+                    Error = response.Error,
+                    RawContent = response.RawContent,
+                    ReasonPhrase = response.ReasonPhrase,
+                    StatusCode = response.StatusCode
+                };
+
+                if (AutoThrowIfError)
+                    ret2.ThrowIfError();
+                return ret2;
+            }
         }
 
-        private static Response<T> FlattenResult<T>(Response<Result<T>> response)
+        private Response<T> FlattenResult<T>(Response<Result<T>> response)
         {
             if (response.Success)
-                return new()
+            {
+                var ret1 = new Response<T>
                 {
                     Data = response.Data.Data,
                     Error = response.Data.Success ? null : new(response.Data.Error),
@@ -134,13 +143,24 @@ namespace DustyPig.API.v3
                     Success = response.Data.Success
                 };
 
-            return new()
+                if (AutoThrowIfError)
+                    ret1.ThrowIfError();
+                return ret1;
+            }
+            else
             {
-                Error = response.Error,
-                RawContent = response.RawContent,
-                ReasonPhrase = response.ReasonPhrase,
-                StatusCode = response.StatusCode
-            };
+                var ret2 = new Response<T>
+                {
+                    Error = response.Error,
+                    RawContent = response.RawContent,
+                    ReasonPhrase = response.ReasonPhrase,
+                    StatusCode = response.StatusCode
+                };
+
+                if (AutoThrowIfError)
+                    ret2.ThrowIfError();
+                return ret2;
+            }
         }
 
 
