@@ -10,8 +10,8 @@ namespace DustyPig.API.v3.Models
 
         public List<BasicTMDB> OtherTitles { get; set; } = [];
 
-        public List<Person> AvailablePeople { get; set; } = [];
+        public List<BasicPerson> AvailablePeople { get; set; } = [];
 
-        public List<Person> OtherPeople { get; set; } = [];
+        public List<BasicPerson> OtherPeople { get; set; } = [];
     }
 }

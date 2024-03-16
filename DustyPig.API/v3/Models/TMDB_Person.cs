@@ -11,7 +11,7 @@ public class TMDB_Person
 
     public string Name { get; set; }
 
-    public string ArtworkUrl { get; set; }
+    public string AvatarUrl { get; set; }
 
 #if !NET7_0_OR_GREATER
     [JsonConverter(typeof(JsonConverters.DateOnlyConverter))]

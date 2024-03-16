@@ -2,7 +2,7 @@
 
 namespace DustyPig.API.v3.Models
 {
-    public class Person
+    public class BasicPerson
     {
         [JsonPropertyName("tmdbId")]
         public int TMDB_Id { get; set; }

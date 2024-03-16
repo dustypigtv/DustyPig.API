@@ -5,6 +5,6 @@ namespace DustyPig.API.v3.Interfaces
 {
     public interface ICredits
     {
-        public List<Person> Credits { get; set; }
+        public List<BasicPerson> Credits { get; set; }
     }
 }
