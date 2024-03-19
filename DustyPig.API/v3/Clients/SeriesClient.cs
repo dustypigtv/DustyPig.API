@@ -104,12 +104,12 @@ namespace DustyPig.API.v3.Clients
             return _client.GetAsync(true, PREFIX + $"RemoveFromContinueWatching/{id}", cancellationToken);
         }
 
-        public Task<Response> MarkSeriesWatchedAsync(int id, CancellationToken cancellationToken = default)
+        public Task<Response> MarkWatchedAsync(int id, CancellationToken cancellationToken = default)
         {
             if (id <= 0)
                 return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
 
-            return _client.GetAsync(true, PREFIX + $"MarkSeriesWatched/{id}", cancellationToken);
+            return _client.GetAsync(true, PREFIX + $"MarkWatched/{id}", cancellationToken);
         }
 
         /// <summary>
