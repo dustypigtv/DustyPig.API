@@ -42,6 +42,15 @@ namespace DustyPig.API.v3.Clients
             return _client.GetAsync<DetailedEpisode>(true, PREFIX + $"Details/{id}", cancellationToken);
         }
 
+        
+        
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> MarkWatchedAsync(int id, CancellationToken cancellationToken = default) =>
+            _client.GetAsync(true, PREFIX + $"MarkWatched/{id}", cancellationToken);
+
+
 
         /// <summary>
         /// Requires main profile
