@@ -86,7 +86,16 @@ namespace DustyPig.API.v3.Clients
                 Seconds = newProgress
             }, cancellationToken);
 
+        /// <summary>
+        /// Requires profile
+        /// </summary>
+        public Task<Response> MarkWatchedAsync(int id, CancellationToken cancellationToken = default)
+        {
+            if (id <= 0)
+                return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(id)}") });
 
+            return _client.GetAsync(true, PREFIX + $"MarkWatched/{id}", cancellationToken);
+        }
 
         /// <summary>
         /// Requires profile
