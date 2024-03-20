@@ -34,12 +34,12 @@ namespace DustyPig.API.v3.Clients
         /// <summary>
         /// Requires profile
         /// </summary>
-        public Task<Response<DetailedEpisode>> GetDetailsAsync(int id, CancellationToken cancellationToken = default)
+        public Task<Response<DetailedEpisodeEx>> GetDetailsAsync(int id, CancellationToken cancellationToken = default)
         {
             if (id <= 0)
-                return Task.FromResult(new Response<DetailedEpisode> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
+                return Task.FromResult(new Response<DetailedEpisodeEx> { Error = new ModelValidationException($"Invalid {nameof(id)}") });
 
-            return _client.GetAsync<DetailedEpisode>(true, PREFIX + $"Details/{id}", cancellationToken);
+            return _client.GetAsync<DetailedEpisodeEx>(true, PREFIX + $"Details/{id}", cancellationToken);
         }
 
 
