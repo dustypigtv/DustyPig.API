@@ -5,5 +5,9 @@
 /// </summary>
 public class DetailedEpisodeEx : DetailedEpisode
 {
-   public DetailedSeries Series { get; set; }
+    public string SeriesTitle { get; set; }
+
+    public string SeriesArtworkUrl { get; set; }
+
+    public string SeriesBackdropUrl { get; set; }
 }
