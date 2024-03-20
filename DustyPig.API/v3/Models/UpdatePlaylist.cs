@@ -1,35 +1,34 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using System.Collections.Generic;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+/// <summary>
+/// Use this to rename a playlist
+/// </summary>
+public class UpdatePlaylist : CreatePlaylist, IValidate
 {
-    /// <summary>
-    /// Use this to rename a playlist
-    /// </summary>
-    public class UpdatePlaylist : CreatePlaylist, IValidate
+    public int Id { get; set; }
+
+
+    #region IValidate
+
+    public new void Validate()
     {
-        public int Id { get; set; }
+        var lst = new List<string>();
 
+        Validators.ValidateId(nameof(Id), Id, lst);
 
-        #region IValidate
+        try { base.Validate(); }
+        catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
 
-        public new void Validate()
-        {
-            var lst = new List<string>();
+        if (lst.Count > 0)
+            throw new ModelValidationException { Errors = lst };
 
-            Validators.ValidateId(nameof(Id), Id, lst);
-
-            try { base.Validate(); }
-            catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-
-        }
-
-        #endregion
-
-
-        public override string ToString() => base.ToString();
     }
+
+    #endregion
+
+
+    public override string ToString() => base.ToString();
 }

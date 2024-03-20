@@ -1,7 +1,6 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public class AccountCreated
 {
-    public class AccountCreated
-    {
-        public bool EmailVerificationRequired { get; set; }
-    }
+    public bool EmailVerificationRequired { get; set; }
 }

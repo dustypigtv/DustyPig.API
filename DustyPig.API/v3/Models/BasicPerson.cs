@@ -1,21 +1,20 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class BasicPerson
 {
-    public class BasicPerson
-    {
-        [JsonPropertyName("tmdbId")]
-        public int TMDB_Id { get; set; }
+    [JsonPropertyName("tmdbId")]
+    public int TMDB_Id { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string Initials { get; set; }
+    public string Initials { get; set; }
 
-        public string AvatarUrl { get; set; }
+    public string AvatarUrl { get; set; }
 
-        public int Order { get; set; }
+    public int Order { get; set; }
 
-        public CreditRoles Role { get; set; }
+    public CreditRoles Role { get; set; }
 
-    }
 }

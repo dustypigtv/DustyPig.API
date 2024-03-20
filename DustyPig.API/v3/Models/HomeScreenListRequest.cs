@@ -1,28 +1,27 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using System.Collections.Generic;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class HomeScreenListRequest : IValidate
 {
-    public class HomeScreenListRequest : IValidate
+    public long ListId { get; set; }
+
+    public int Start { get; set; }
+
+
+    #region IValidate
+
+    public void Validate()
     {
-        public long ListId { get; set; }
+        var lst = new List<string>();
 
-        public int Start { get; set; }
+        if (Start < 0)
+            lst.Add($"Invalid {nameof(Start)}");
 
-
-        #region IValidate
-
-        public void Validate()
-        {
-            var lst = new List<string>();
-
-            if (Start < 0)
-                lst.Add($"Invalid {nameof(Start)}");
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
+        if (lst.Count > 0)
+            throw new ModelValidationException { Errors = lst };
     }
+
+    #endregion
 }

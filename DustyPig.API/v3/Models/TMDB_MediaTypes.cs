@@ -1,8 +1,7 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public enum TMDB_MediaTypes
 {
-    public enum TMDB_MediaTypes
-    {
-        Movie = 0,
-        Series = 1
-    }
+    Movie = 0,
+    Series = 1
 }

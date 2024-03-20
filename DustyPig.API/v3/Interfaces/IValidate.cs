@@ -1,7 +1,6 @@
-﻿namespace DustyPig.API.v3.Interfaces
+﻿namespace DustyPig.API.v3.Interfaces;
+
+public interface IValidate
 {
-    public interface IValidate
-    {
-        public void Validate();
-    }
+    public void Validate();
 }

@@ -1,10 +1,9 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public enum OverrideRequestStatus
 {
-    public enum OverrideRequestStatus
-    {
-        NotRequested = 0,
-        Requested = 1,
-        Denied = 2,
-        Granted = 3
-    }
+    NotRequested = 0,
+    Requested = 1,
+    Denied = 2,
+    Granted = 3
 }

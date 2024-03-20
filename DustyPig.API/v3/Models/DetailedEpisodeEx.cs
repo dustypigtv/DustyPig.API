@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DustyPig.API.v3.Models;
+﻿namespace DustyPig.API.v3.Models;
 
 /// <summary>
 /// Returned when calling <see cref="Clients.EpisodesClient.GetDetailsAsync"/>

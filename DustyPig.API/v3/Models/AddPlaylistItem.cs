@@ -1,27 +1,26 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using System.Collections.Generic;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class AddPlaylistItem : IValidate
 {
-    public class AddPlaylistItem : IValidate
+    public int PlaylistId { get; set; }
+
+    public int MediaId { get; set; }
+
+    #region IValidate
+
+    public void Validate()
     {
-        public int PlaylistId { get; set; }
+        var lst = new List<string>();
 
-        public int MediaId { get; set; }
+        Validators.ValidateId(nameof(PlaylistId), PlaylistId, lst);
+        Validators.ValidateId(nameof(MediaId), MediaId, lst);
 
-        #region IValidate
-
-        public void Validate()
-        {
-            var lst = new List<string>();
-
-            Validators.ValidateId(nameof(PlaylistId), PlaylistId, lst);
-            Validators.ValidateId(nameof(MediaId), MediaId, lst);
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
+        if (lst.Count > 0)
+            throw new ModelValidationException { Errors = lst };
     }
+
+    #endregion
 }

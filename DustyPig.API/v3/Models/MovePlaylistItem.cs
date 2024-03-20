@@ -1,36 +1,35 @@
 ﻿using DustyPig.API.v3.Interfaces;
 using System.Collections.Generic;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class MovePlaylistItem : IValidate
 {
-    public class MovePlaylistItem : IValidate
+    /// <summary>
+    /// Playlist Item Id
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
+    /// New Index
+    /// </summary>
+    public int NewIndex { get; set; }
+
+
+    #region IValidate
+
+    public void Validate()
     {
-        /// <summary>
-        /// Playlist Item Id
-        /// </summary>
-        public int Id { get; set; }
+        var lst = new List<string>();
 
-        /// <summary>
-        /// New Index
-        /// </summary>
-        public int NewIndex { get; set; }
+        Validators.ValidateId(nameof(Id), Id, lst);
 
+        if (NewIndex < 0)
+            lst.Add($"Invalid {nameof(NewIndex)}");
 
-        #region IValidate
-
-        public void Validate()
-        {
-            var lst = new List<string>();
-
-            Validators.ValidateId(nameof(Id), Id, lst);
-
-            if (NewIndex < 0)
-                lst.Add($"Invalid {nameof(NewIndex)}");
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
+        if (lst.Count > 0)
+            throw new ModelValidationException { Errors = lst };
     }
+
+    #endregion
 }

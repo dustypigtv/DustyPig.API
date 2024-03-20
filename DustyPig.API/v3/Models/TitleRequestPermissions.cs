@@ -1,9 +1,8 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public enum TitleRequestPermissions : byte
 {
-    public enum TitleRequestPermissions : byte
-    {
-        Enabled = 0,
-        Disabled = 1,
-        RequiresAuthorization = 2
-    }
+    Enabled = 0,
+    Disabled = 1,
+    RequiresAuthorization = 2
 }

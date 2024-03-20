@@ -1,19 +1,18 @@
-﻿namespace DustyPig.API.v3.Interfaces
+﻿namespace DustyPig.API.v3.Interfaces;
+
+public interface IMedia
 {
-    public interface IMedia
-    {
-        public string Title { get; set; }
+    public string Title { get; set; }
 
-        public int? TMDB_Id { get; set; }
+    public int? TMDB_Id { get; set; }
 
-        public string Description { get; set; }
+    public string Description { get; set; }
 
-        public string ArtworkUrl { get; set; }
+    public string ArtworkUrl { get; set; }
 
-        /// <summary>
-        /// Size in Bytes
-        /// </summary>
-        public ulong ArtworkSize { get; set; }
+    /// <summary>
+    /// Size in Bytes
+    /// </summary>
+    public ulong ArtworkSize { get; set; }
 
-    }
 }

@@ -2,33 +2,32 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class SearchRequest : IValidate
 {
-    public class SearchRequest : IValidate
+    public string Query { get; set; }
+
+    [JsonPropertyName("searchTMDB")]
+    public bool SearchTMDB { get; set; }
+
+    public bool SearchPeople { get; set; }
+
+    #region IValidate
+
+    public void Validate()
     {
-        public string Query { get; set; }
+        var lst = new List<string>();
 
-        [JsonPropertyName("searchTMDB")]
-        public bool SearchTMDB { get; set; }
+        var chk = Validators.Validate(nameof(Query), Query, true, Constants.MAX_NAME_LENGTH);
+        if (chk.Valid)
+            Query = chk.Fixed.ToLower();
+        else
+            lst.Add(chk.Error);
 
-        public bool SearchPeople { get; set; }
-
-        #region IValidate
-
-        public void Validate()
-        {
-            var lst = new List<string>();
-
-            var chk = Validators.Validate(nameof(Query), Query, true, Constants.MAX_NAME_LENGTH);
-            if (chk.Valid)
-                Query = chk.Fixed.ToLower();
-            else
-                lst.Add(chk.Error);
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
+        if (lst.Count > 0)
+            throw new ModelValidationException { Errors = lst };
     }
+
+    #endregion
 }

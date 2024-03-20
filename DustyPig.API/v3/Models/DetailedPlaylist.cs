@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class DetailedPlaylist : BasicPlaylist
 {
-    public class DetailedPlaylist : BasicPlaylist
-    {
-        /// <summary>
-        /// Size in Bytes
-        /// </summary>
-        public ulong ArtworkSize { get; set; }
+    /// <summary>
+    /// Size in Bytes
+    /// </summary>
+    public ulong ArtworkSize { get; set; }
 
-        public int CurrentItemId { get; set; }
+    public int CurrentItemId { get; set; }
 
-        public double CurrentProgress { get; set; }
+    public double CurrentProgress { get; set; }
 
-        public List<PlaylistItem> Items { get; set; } = [];
+    public List<PlaylistItem> Items { get; set; } = [];
 
-        public override string ToString() => base.ToString();
-    }
+    public override string ToString() => base.ToString();
 }

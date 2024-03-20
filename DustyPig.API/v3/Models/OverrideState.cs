@@ -1,9 +1,8 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public enum OverrideState
 {
-    public enum OverrideState
-    {
-        Default = 0,
-        Allow = 1,
-        Block = 2
-    }
+    Default = 0,
+    Allow = 1,
+    Block = 2
 }

@@ -4,39 +4,38 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DustyPig.API.v3.Models
+namespace DustyPig.API.v3.Models;
+
+public class GenreListRequest : ListRequest, IValidate
 {
-    public class GenreListRequest : ListRequest, IValidate
+    public Genres Genre { get; set; }
+
+    #region IValidate
+
+    public new void Validate()
     {
-        public Genres Genre { get; set; }
+        var lst = new List<string>();
 
-        #region IValidate
+        var allGenres = Enum.GetValues(typeof(Genres)).Cast<long>();
+        var min = allGenres.Min();
+        var max = allGenres.Max();
 
-        public new void Validate()
-        {
-            var lst = new List<string>();
+        long g = (long)Genre;
 
-            var allGenres = Enum.GetValues(typeof(Genres)).Cast<long>();
-            var min = allGenres.Min();
-            var max = allGenres.Max();
+        if (g < min || g > max)
+            lst.Add($"Invalid {nameof(Genre)}");
 
-            long g = (long)Genre;
+        try { base.Validate(); }
+        catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
 
-            if (g < min || g > max)
-                lst.Add($"Invalid {nameof(Genre)}");
+        if (Start < 0)
+            lst.Add($"Invalid {nameof(Start)}");
 
-            try { base.Validate(); }
-            catch (ModelValidationException ex) { lst.AddRange(ex.Errors); }
-
-            if (Start < 0)
-                lst.Add($"Invalid {nameof(Start)}");
-
-            if (lst.Count > 0)
-                throw new ModelValidationException { Errors = lst };
-        }
-
-        #endregion
-
-        public override string ToString() => Genre.AsString();
+        if (lst.Count > 0)
+            throw new ModelValidationException { Errors = lst };
     }
+
+    #endregion
+
+    public override string ToString() => Genre.AsString();
 }

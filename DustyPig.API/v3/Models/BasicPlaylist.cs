@@ -1,11 +1,10 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public class BasicPlaylist : CreatePlaylist
 {
-    public class BasicPlaylist : CreatePlaylist
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string ArtworkUrl { get; set; }
+    public string ArtworkUrl { get; set; }
 
-        public override string ToString() => base.ToString();
-    }
+    public override string ToString() => base.ToString();
 }

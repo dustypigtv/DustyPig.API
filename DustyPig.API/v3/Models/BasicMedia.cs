@@ -1,20 +1,19 @@
-﻿namespace DustyPig.API.v3.Models
+﻿namespace DustyPig.API.v3.Models;
+
+public class BasicMedia
 {
-    public class BasicMedia
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public MediaTypes MediaType { get; set; }
+    public MediaTypes MediaType { get; set; }
 
-        public string ArtworkUrl { get; set; }
+    public string ArtworkUrl { get; set; }
 
-        public string BackdropUrl { get; set; }
+    public string BackdropUrl { get; set; }
 
-        public string Title { get; set; }
+    public string Title { get; set; }
 
-        public CreditRoles? Role { get; set; }
+    public CreditRoles? Role { get; set; }
 
-        public override string ToString() => Title;
+    public override string ToString() => Title;
 
-    }
 }
