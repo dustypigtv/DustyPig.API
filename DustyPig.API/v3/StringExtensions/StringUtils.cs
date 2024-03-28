@@ -12,7 +12,7 @@ public static class StringUtils
 
     private static readonly char[] NullSplitChar = ['\0'];
 
-    private static readonly char[] SpaceSplitChar = ['\0'];
+    private static readonly char[] SpaceSplitChar = [' '];
 
 
     /// <summary>
