@@ -14,6 +14,11 @@ public class PasswordCredentials : IValidate
     [JsonPropertyName("fcmToken")]
     public string FCMToken { get; set; }
 
+    /// <summary>
+    /// Optional. When specified, this will delete tokens with identical device id's from the database
+    /// </summary>
+    public string DeviceId { get; set; }
+
 
     #region IValidate
 
@@ -49,6 +54,14 @@ public class PasswordCredentials : IValidate
             FCMToken = chk.Fixed;
         else
             lst.Add(chk.Error);
+
+
+        chk = Validators.Validate(nameof(DeviceId), DeviceId, false, Constants.MAX_MOBILE_DEVICE_ID_LENGTH);
+        if (chk.Valid)
+            DeviceId = chk.Fixed;
+        else
+            lst.Add(chk.Error);
+
 
         if (lst.Count > 0)
             throw new ModelValidationException { Errors = lst };
