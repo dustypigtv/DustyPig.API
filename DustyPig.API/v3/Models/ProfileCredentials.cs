@@ -37,6 +37,14 @@ public class ProfileCredentials : IValidate
         else
             lst.Add(chk.Error);
 
+
+        chk = Validators.Validate(nameof(DeviceId), DeviceId, false, Constants.MAX_MOBILE_DEVICE_ID_LENGTH);
+        if (chk.Valid)
+            DeviceId = chk.Fixed;
+        else
+            lst.Add(chk.Error);
+
+
         if (lst.Count > 0)
             throw new ModelValidationException { Errors = lst };
     }
