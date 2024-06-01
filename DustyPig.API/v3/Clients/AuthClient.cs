@@ -165,12 +165,4 @@ public class AuthClient
 
         return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", code, cancellationToken);
     }
-
-    /// <summary>
-    /// Refreshes an auth token and returns the type.
-    /// Use by setting the Client.Token before calling this
-    /// </summary>
-    /// <param name="fcmToken">Include the FirebaseCloudMessaging token to also valid it as part of the call.</param>
-    public Task<Response<LoginResponse>> UpdateAuthTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<LoginResponse>(true, PREFIX + "UpdateAuthToken", fcmToken, cancellationToken);
 }
