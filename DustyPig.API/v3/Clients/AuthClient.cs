@@ -106,36 +106,36 @@ public class AuthClient
         return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", email, cancellationToken);
     }
 
-    /// <summary>
-    /// Sends a verification email
-    /// </summary>
-    public Task<Response> SendVerificationEmailAsync(PasswordCredentials data, CancellationToken cancellationToken = default)
-    {
-        var chk = Validators.Validate(nameof(data.Email), data.Email, true, byte.MaxValue);
-        if (chk.Valid)
-            data.Email = chk.Fixed.ToLower();
-        else
-            return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(data.Email)}") });
+    ///// <summary>
+    ///// Sends a verification email
+    ///// </summary>
+    //public Task<Response> SendVerificationEmailAsync(PasswordCredentials data, CancellationToken cancellationToken = default)
+    //{
+    //    var chk = Validators.Validate(nameof(data.Email), data.Email, true, byte.MaxValue);
+    //    if (chk.Valid)
+    //        data.Email = chk.Fixed.ToLower();
+    //    else
+    //        return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(data.Email)}") });
 
-        if (!StringUtils.IsValidEmail(data.Email))
-            return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(data.Email)}") });
+    //    if (!StringUtils.IsValidEmail(data.Email))
+    //        return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(data.Email)}") });
 
 
-        if (data.Email == TEST_EMAIL)
-            return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
+    //    if (data.Email == TEST_EMAIL)
+    //        return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
 
-        return _client.PostAsync(false, PREFIX + "SendVerificationEmail", data, cancellationToken);
-    }
+    //    return _client.PostAsync(false, PREFIX + "SendVerificationEmail", data, cancellationToken);
+    //}
 
-    /// <summary>
-    /// Sends a verification email
-    /// </summary>
-    public Task<Response> SendVerificationEmailAsync(string email, string password, CancellationToken cancellationToken = default) =>
-        SendVerificationEmailAsync(new PasswordCredentials
-        {
-            Email = email,
-            Password = password
-        }, cancellationToken);
+    ///// <summary>
+    ///// Sends a verification email
+    ///// </summary>
+    //public Task<Response> SendVerificationEmailAsync(string email, string password, CancellationToken cancellationToken = default) =>
+    //    SendVerificationEmailAsync(new PasswordCredentials
+    //    {
+    //        Email = email,
+    //        Password = password
+    //    }, cancellationToken);
 
 
     /// <summary>
