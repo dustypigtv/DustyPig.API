@@ -14,6 +14,12 @@ public class ProfileCredentials : IValidate
     public string FCMToken { get; set; }
 
 
+    /// <summary>
+    /// Optional. When specified, this will delete tokens with identical device id's from the database
+    /// </summary>
+    public string DeviceId { get; set; }
+
+
     #region IValidate
 
     public void Validate()
