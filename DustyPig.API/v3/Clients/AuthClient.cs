@@ -41,15 +41,15 @@ public class AuthClient
     /// Logs into the account using email and password. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
     /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
     /// </summary>
-    public Task<Response<LoginResponse>> PasswordLoginAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<LoginResponse>(false, PREFIX + "PasswordLogin", data, cancellationToken);
+    public Task<Response<AccountLoginResponse>> PasswordLoginAsync(PasswordCredentials data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync<AccountLoginResponse>(false, PREFIX + "PasswordLogin", data, cancellationToken);
 
     /// <summary>
     /// Logs into the account using email and password. If the account only has 1 <see cref="BasicProfile" /> and <see cref="BasicProfile.HasPin"/> = false,
     /// then this returns a profile level token (fully logged in). Otherwise, this will return an account level token
     /// </summary>
     /// <param name="fcmToken">FirebaseCloudMessaging token</param>
-    public Task<Response<LoginResponse>> PasswordLoginAsync(string email, string password, string fcmToken = null, CancellationToken cancellationToken = default) =>
+    public Task<Response<AccountLoginResponse>> PasswordLoginAsync(string email, string password, string fcmToken = null, CancellationToken cancellationToken = default) =>
         PasswordLoginAsync(new PasswordCredentials
         {
             Email = email,
@@ -61,14 +61,14 @@ public class AuthClient
     /// <summary>
     /// Requires logged in account. Returns a profile level bearer token
     /// </summary>
-    public Task<Response<LoginResponse>> ProfileLoginAsync(ProfileCredentials data, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<LoginResponse>(true, PREFIX + "ProfileLogin", data, cancellationToken);
+    public Task<Response<ProfileLoginResponse>> ProfileLoginAsync(ProfileCredentials data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync<ProfileLoginResponse>(true, PREFIX + "ProfileLogin", data, cancellationToken);
 
     /// <summary>
     /// Requires logged in account. Returns a profile level bearer token
     /// </summary>
     /// <param name="fcmToken">FirebaseCloudMessaging token to include</param>
-    public Task<Response<LoginResponse>> ProfileLoginAsync(int id, short? pin = null, string fcmToken = null, CancellationToken cancellationToken = default) =>
+    public Task<Response<ProfileLoginResponse>> ProfileLoginAsync(int id, short? pin = null, string fcmToken = null, CancellationToken cancellationToken = default) =>
         ProfileLoginAsync(new ProfileCredentials
         {
             Id = id,

@@ -8,7 +8,7 @@ public enum LoginType
 }
 
 
-public class LoginResponse
+public class ProfileLoginResponse
 {
     public string Token { get; set; }
 
