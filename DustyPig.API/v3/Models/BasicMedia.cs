@@ -12,6 +12,8 @@ public class BasicMedia
 
     public string Title { get; set; }
 
+    public string Description { get; set; }
+
     public CreditRoles? Role { get; set; }
 
     public override string ToString() => Title;
