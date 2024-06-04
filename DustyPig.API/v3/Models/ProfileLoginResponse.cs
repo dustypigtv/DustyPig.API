@@ -10,9 +10,12 @@ public enum LoginType
 
 public class ProfileLoginResponse
 {
-    public string Token { get; set; }
-
     public LoginType LoginType { get; set; }
+
+    /// <summary>
+    /// If <see cref="LoginType"/> != <see cref="LoginType.Account"/>, this will hold the new profile token
+    /// </summary>
+    public string ProfileToken { get; set; }
 
     /// <summary>
     /// If <see cref="LoginType"/> != <see cref="LoginType.Account"/>, this will hold the id of the logged in profile
