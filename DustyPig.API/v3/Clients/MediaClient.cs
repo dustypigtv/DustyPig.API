@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,8 +44,17 @@ public class MediaClient
     /// <summary>
     /// Requires profile.
     /// </summary>
-    public Task<Response<HomeScreen>> GetHomeScreenAsync(CancellationToken cancellationToken = default) =>
-        _client.GetAsync<HomeScreen>(true, PREFIX + "HomeScreen", cancellationToken);
+    public Task<Response<HomeScreen>> GetHomeScreenAsync(int? itemsPerSection = Constants.SERVER_RESULT_SIZE, CancellationToken cancellationToken = default)
+    {
+        string url = PREFIX + "HomeScreen";
+        if (itemsPerSection.HasValue)
+        {
+            itemsPerSection = Math.Min(Math.Max(itemsPerSection.Value, 25), 100);
+            url += $"?itemsPerSection={itemsPerSection.Value}";
+        }
+        return _client.GetAsync<HomeScreen>(true, url, cancellationToken);
+    }
+
 
     /// <summary>
     /// Requires profile
