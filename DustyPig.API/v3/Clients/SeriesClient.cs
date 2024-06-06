@@ -84,6 +84,7 @@ public class SeriesClient
     /// <summary>
     /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
     /// </summary>
+    /// <param name="libId">If 0, then libraryFiltering will be disabled</param>
     public Task<Response<List<BasicMedia>>> AdminListAsync(int start, int libId, CancellationToken cancellationToken = default)
     {
         if (start < 0)
@@ -151,4 +152,32 @@ public class SeriesClient
     /// </summary>
     public Task<Response> UpdateAsync(UpdateSeries data, CancellationToken cancellationToken = default) =>
         _client.PostAsync(true, PREFIX + "Update", data, cancellationToken);
+
+
+
+    /// <summary>
+    /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account that have never been played
+    /// </summary>
+    /// <param name="libId">If 0, then libraryFiltering will be disabled</param>
+    public Task<Response<List<BasicMedia>>> GetNeverPlayedAsync(int start, int libId, CancellationToken cancellationToken = default)
+    {
+        if (start < 0)
+            return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
+
+        return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"GetNeverPlayed/{start}/{libId}", cancellationToken);
+
+    }
+
+    /// <summary>
+    /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all series owned by the account that have ever been played
+    /// </summary>
+    /// <param name="libId">If 0, then libraryFiltering will be disabled</param>
+    public Task<Response<List<BasicMedia>>> GetEverPlayedAsync(int start, int libId, CancellationToken cancellationToken = default)
+    {
+        if (start < 0)
+            return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
+
+        return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"GetEverPlayed/{start}/{libId}", cancellationToken);
+
+    }
 }
