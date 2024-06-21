@@ -21,11 +21,6 @@ public class PlaylistItem
 
     public string ArtworkUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong ArtworkSize { get; set; }
-
     public double Length { get; set; }
 
     public double? IntroStartTime { get; set; }
@@ -37,17 +32,7 @@ public class PlaylistItem
 
     public string BifUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong BifSize { get; set; }
-
     public string VideoUrl { get; set; }
-
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong VideoSize { get; set; }
 
     [JsonPropertyName("srtSubtitles")]
     public List<SRTSubtitle> SRTSubtitles { get; set; } = [];

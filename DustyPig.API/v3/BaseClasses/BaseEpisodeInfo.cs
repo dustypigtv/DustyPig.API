@@ -17,12 +17,6 @@ public abstract class BaseEpisodeInfo : IMedia
 
     public string ArtworkUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong ArtworkSize { get; set; }
-
-
     #endregion
 
 #if !NET7_0_OR_GREATER

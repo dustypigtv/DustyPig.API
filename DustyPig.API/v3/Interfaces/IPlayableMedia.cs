@@ -26,17 +26,7 @@ public interface IPlayableMedia
 
     public string BifUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong BifSize { get; set; }
-
     public string VideoUrl { get; set; }
-
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong VideoSize { get; set; }
 
     public List<SRTSubtitle> SRTSubtitles { get; set; }
 }

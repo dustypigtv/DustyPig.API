@@ -19,11 +19,6 @@ public abstract class BaseMovieInfo : IMedia, ITopLevelMedia
 
     public string ArtworkUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong ArtworkSize { get; set; }
-
     #endregion
 
 
@@ -32,11 +27,6 @@ public abstract class BaseMovieInfo : IMedia, ITopLevelMedia
     public int LibraryId { get; set; }
 
     public string BackdropUrl { get; set; }
-
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong BackdropSize { get; set; }
 
     public Genres Genres { get; set; }
 

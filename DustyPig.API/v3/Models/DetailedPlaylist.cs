@@ -4,11 +4,6 @@ namespace DustyPig.API.v3.Models;
 
 public class DetailedPlaylist : BasicPlaylist
 {
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong ArtworkSize { get; set; }
-
     public int CurrentItemId { get; set; }
 
     public double CurrentProgress { get; set; }

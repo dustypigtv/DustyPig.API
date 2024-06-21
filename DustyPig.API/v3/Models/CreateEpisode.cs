@@ -20,20 +20,9 @@ public class CreateEpisode : BaseEpisodeInfo, IMedia, IPlayableMedia, IValidate
 
     public string BifUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong BifSize { get; set; }
-
-
     public string VideoUrl { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong VideoSize { get; set; }
-
-
+    
     [JsonPropertyName("srtSubtitles")]
     public List<SRTSubtitle> SRTSubtitles { get; set; } = [];
 

@@ -9,11 +9,6 @@ public class SRTSubtitle : IValidate
 
     public string Url { get; set; }
 
-    /// <summary>
-    /// Size in Bytes
-    /// </summary>
-    public ulong FileSize { get; set; }
-
     #region IValidate
 
     public void Validate()
