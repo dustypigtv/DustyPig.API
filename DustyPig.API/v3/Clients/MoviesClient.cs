@@ -93,6 +93,27 @@ public class MoviesClient
     }
 
 
+    /// <summary>
+    /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
+    /// </summary>
+    public Task<Response<List<DetailedMovie>>> AdminListDetailsAsync(int start, CancellationToken cancellationToken = default) =>
+        AdminListDetailsAsync(start, 0, cancellationToken);
+
+    /// <summary>
+    /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
+    /// </summary>
+    /// <param name="libId">If 0, then libraryFiltering will be disabled</param>
+    public Task<Response<List<DetailedMovie>>> AdminListDetailsAsync(int start, int libId, CancellationToken cancellationToken = default)
+    {
+        if (start < 0)
+            return Task.FromResult(new Response<List<DetailedMovie>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
+
+        return _client.GetAsync<List<DetailedMovie>>(true, PREFIX + $"AdminListDetails/{start}/{libId}", cancellationToken);
+    }
+
+
+
+
 
     /// <summary>
     /// Requires profile
