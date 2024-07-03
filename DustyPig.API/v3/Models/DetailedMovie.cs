@@ -1,4 +1,5 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models;
@@ -26,6 +27,11 @@ public class DetailedMovie : CreateMovie, ICredits
     public List<BasicPerson> Credits { get; set; } = [];
 
     #endregion
+
+    /// <summary>
+    /// Timestamp when movie was added to the server
+    /// </summary>
+    public DateTime Added { get; set; }
 
     public override string ToString() => base.ToString();
 }
