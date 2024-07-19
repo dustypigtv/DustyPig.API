@@ -91,14 +91,17 @@ static class Validators
 
     public static List<string> Validate(SRTSubtitle exSub)
     {
+        
         var ret = new List<string>();
 
-
-        var chk = Validate(nameof(exSub.Url), exSub.Url, true, Constants.MAX_URL_LENGTH);
-        if (chk.Valid)
-            exSub.Url = chk.Fixed;
-        else
-            ret.Add(chk.Error);
+        try
+        {
+            exSub.Validate();
+        }
+        catch (ModelValidationException ex)
+        {
+            ret = ex.Errors;
+        }
 
         return ret;
     }
