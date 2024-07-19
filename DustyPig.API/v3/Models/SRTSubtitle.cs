@@ -5,6 +5,14 @@ namespace DustyPig.API.v3.Models;
 
 public class SRTSubtitle : IValidate
 {
+    /// <summary>
+    /// ISO 639.2B 3 character language code. Example: eng
+    /// </summary>
+    public string Language { get; set; }
+
+    /// <summary>
+    /// Friendly name. Example: English
+    /// </summary>
     public string Name { get; set; }
 
     public string Url { get; set; }
@@ -14,6 +22,11 @@ public class SRTSubtitle : IValidate
     public void Validate()
     {
         var lst = new List<string>();
+
+        if (Language == null || Language.Trim().Length != 3)
+            lst.Add(nameof(Language) + " must be an ISO 639.2B 3 character language code";
+        else
+            Language = Language.Trim().ToLower();
 
         var chk = Validators.Validate(nameof(Name), Name, true, Constants.MAX_NAME_LENGTH);
         if (chk.Valid)
