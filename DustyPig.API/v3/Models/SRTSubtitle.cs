@@ -24,7 +24,7 @@ public class SRTSubtitle : IValidate
         var lst = new List<string>();
 
         if (Language == null || Language.Trim().Length != 3)
-            lst.Add(nameof(Language) + " must be an ISO 639.2B 3 character language code";
+            lst.Add(nameof(Language) + " must be an ISO 639.2B 3 character language code");
         else
             Language = Language.Trim().ToLower();
 
