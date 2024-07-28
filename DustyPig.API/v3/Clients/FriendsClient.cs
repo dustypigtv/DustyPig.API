@@ -30,22 +30,8 @@ public class FriendsClient
     /// <summary>
     /// Requires main profile. Invites a new friend using their email
     /// </summary>
-    public Task<Response> InviteAsync(string email, CancellationToken cancellationToken = default)
-    {
-        var chk = Validators.Validate(nameof(email), email, true, byte.MaxValue);
-        if (chk.Valid)
-            email = chk.Fixed.ToLower();
-        else
-            return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
-
-        if (!StringUtils.IsValidEmail(email))
-            return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
-
-        if (email == AuthClient.TEST_EMAIL)
-            return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
-
-        return _client.PostAsync(true, PREFIX + "Invite", email, cancellationToken);
-    }
+    public Task<Response> InviteAsync(string email, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "Invite", new StringValue { Value = email }, cancellationToken);
 
 
     /// <summary>

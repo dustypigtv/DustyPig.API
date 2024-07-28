@@ -31,6 +31,6 @@ public class AccountClient
     /// Change the password
     /// </summary>
     public Task<Response> ChangePasswordAsync(string newPassword, CancellationToken cancellationToken = default) =>
-        _client.PostAsync(true, PREFIX + "ChangePassword", newPassword, cancellationToken);
+        _client.PostAsync(true, PREFIX + "ChangePassword", new StringValue { Value = newPassword }, cancellationToken);
 
 }

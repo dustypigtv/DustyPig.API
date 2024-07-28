@@ -34,7 +34,7 @@ public class AuthClient
         if (string.IsNullOrWhiteSpace(code) || code.Length != Constants.DEVICE_ACTIVATION_CODE_LENGTH)
             return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(code)}") });
 
-        return _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", code, cancellationToken);
+        return _client.PostAsync(true, PREFIX + "LoginDeviceWithCode", new StringValue { Value = code }, cancellationToken);
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class AuthClient
     /// </summary>
     /// <param name="fcmToken">FirebaseCloudMessaging token to include. If null, and the current AuthToken is liked to a FCM token, then the FCM token is unlinked</param>
     public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", fcmToken, cancellationToken);
+        _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", new StringValue { Value = fcmToken }, cancellationToken);
 
 
     /// <summary>
@@ -90,20 +90,13 @@ public class AuthClient
     /// </summary>
     public Task<Response> SendPasswordResetEmailAsync(string email, CancellationToken cancellationToken = default)
     {
-        var chk = Validators.Validate(nameof(email), email, true, byte.MaxValue);
-        if (chk.Valid)
-            email = chk.Fixed.ToLower();
-        else
-            return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
-
         if (!StringUtils.IsValidEmail(email))
             return Task.FromResult(new Response { Error = new ModelValidationException($"Invalid {nameof(email)}") });
-
 
         if (email == TEST_EMAIL)
             return Task.FromResult(new Response { Error = new ModelValidationException("Test email is not valid for this action") });
 
-        return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", email, cancellationToken);
+        return _client.PostAsync(false, PREFIX + "SendPasswordResetEmail", new StringValue { Value = email }, cancellationToken);
     }
 
     
@@ -132,6 +125,6 @@ public class AuthClient
         if (string.IsNullOrWhiteSpace(code) || code.Length != Constants.DEVICE_ACTIVATION_CODE_LENGTH)
             return Task.FromResult(new Response<DeviceCodeStatus> { Error = new ModelValidationException($"Invalid {nameof(code)}") });
 
-        return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", code, cancellationToken);
+        return _client.PostAsync<DeviceCodeStatus>(false, PREFIX + "VerifyDeviceLoginCode", new StringValue { Value = code }, cancellationToken);
     }
 }
