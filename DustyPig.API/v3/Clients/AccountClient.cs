@@ -17,8 +17,8 @@ public class AccountClient
     /// <summary>
     /// Create the Firebase account and send a confirmation email
     /// </summary>
-    public Task<Response<AccountCreated>> CreateAsync(CreateAccount data, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<AccountCreated>(false, PREFIX + "Create", data, cancellationToken);
+    public Task<Response> CreateAsync(CreateAccount data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(false, PREFIX + "Create", data, cancellationToken);
 
 
     /// <summary>
