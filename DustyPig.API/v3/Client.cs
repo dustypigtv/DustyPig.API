@@ -20,7 +20,6 @@ public class Client : IDisposable
 #endif
 
     private readonly REST.Client _client;
-    private readonly bool _disposeOfHttpclient = false;
 
 
     /// <summary>
@@ -28,7 +27,6 @@ public class Client : IDisposable
     /// </summary>
     public Client()
     {
-        _disposeOfHttpclient = true;
         _client = new() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
 
 #if DEBUG
@@ -45,9 +43,6 @@ public class Client : IDisposable
     /// <param name="httpClient">The shared <see cref="HttpClient"/> this REST configuration should use</param>
     public Client(HttpClient httpClient)
     {
-        if(httpClient == null)
-            throw new ArgumentNullException(nameof(httpClient));
-
         _client = new(httpClient) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
 
 #if DEBUG
@@ -60,11 +55,8 @@ public class Client : IDisposable
 
     public void Dispose()
     {
-        if (_disposeOfHttpclient)
-        {
-            _client.Dispose();
-            GC.SuppressFinalize(this);
-        }
+        _client.Dispose();
+        GC.SuppressFinalize(this);
     }
 
 
