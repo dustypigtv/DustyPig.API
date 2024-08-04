@@ -45,6 +45,9 @@ public class Client : IDisposable
     /// <param name="httpClient">The shared <see cref="HttpClient"/> this REST configuration should use</param>
     public Client(HttpClient httpClient)
     {
+        if(httpClient == null)
+            throw new ArgumentNullException(nameof(httpClient));
+
         _client = new(httpClient) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
 
 #if DEBUG
