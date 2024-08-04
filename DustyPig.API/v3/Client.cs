@@ -19,20 +19,49 @@ public class Client : IDisposable
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
 
-    private readonly REST.Client _client = new(DEFAULT_BASE_ADDRESS);
+    private readonly REST.Client _client;
+    private readonly bool _disposeOfHttpclient = false;
 
+
+    /// <summary>
+    /// Creates a configuration that uses its own internal <see cref="HttpClient"/>. When using this constructor, <see cref="Dispose"/> should be called.
+    /// </summary>
     public Client()
     {
+        _disposeOfHttpclient = true;
+        _client = new() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+
 #if DEBUG
         IncludeRawContentInResponse = true;
         ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 #endif
     }
 
+
+
+    /// <summary
+    /// Creates a configurtion that uses a shared <see cref="HttpClient"/>
+    /// </summary
+    /// <param name="httpClient">The shared <see cref="HttpClient"/> this REST configuration should use</param>
+    public Client(HttpClient httpClient)
+    {
+        _client = new(httpClient) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+
+#if DEBUG
+        IncludeRawContentInResponse = true;
+        ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+#endif
+    }
+
+
+
     public void Dispose()
     {
-        _client.Dispose();
-        GC.SuppressFinalize(this);
+        if (_disposeOfHttpclient)
+        {
+            _client.Dispose();
+            GC.SuppressFinalize(this);
+        }
     }
 
 
@@ -47,6 +76,13 @@ public class Client : IDisposable
     }
 
     public bool AutoThrowIfError { get; set; }
+
+
+    public Uri BaseAddress
+    {
+        get => _client.BaseAddress;
+        set => _client.BaseAddress = value;
+    }
 
 
 
