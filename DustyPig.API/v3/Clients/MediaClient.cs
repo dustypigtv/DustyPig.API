@@ -44,14 +44,9 @@ public class MediaClient
     /// <summary>
     /// Requires profile.
     /// </summary>
-    public Task<Response<HomeScreen>> GetHomeScreenAsync(int? itemsPerSection = Constants.SERVER_RESULT_SIZE, CancellationToken cancellationToken = default)
+    public Task<Response<HomeScreen>> GetHomeScreenAsync(int itemsPerSection = Constants.SERVER_RESULT_SIZE, bool includeDescription = false, CancellationToken cancellationToken = default)
     {
-        string url = PREFIX + "HomeScreen";
-        if (itemsPerSection.HasValue)
-        {
-            itemsPerSection = Math.Min(Math.Max(itemsPerSection.Value, 25), 100);
-            url += $"?itemsPerSection={itemsPerSection.Value}";
-        }
+        string url = PREFIX + $"HomeScreen?itemsPerSection={itemsPerSection}&includeDescription={includeDescription}";
         return _client.GetAsync<HomeScreen>(true, url, cancellationToken);
     }
 

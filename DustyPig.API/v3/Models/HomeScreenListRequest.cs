@@ -9,6 +9,8 @@ public class HomeScreenListRequest : IValidate
 
     public int Start { get; set; }
 
+    public bool IncludeDescription { get; set; }
+
 
     #region IValidate
 
