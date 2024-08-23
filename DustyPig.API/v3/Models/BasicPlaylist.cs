@@ -6,5 +6,7 @@ public class BasicPlaylist : CreatePlaylist
 
     public string ArtworkUrl { get; set; }
 
+    public string BackdropUrl { get; set; }
+
     public override string ToString() => base.ToString();
 }
