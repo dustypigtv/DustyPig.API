@@ -168,7 +168,7 @@ public class MoviesClient
     /// Requires main profile. Designed for admin tools, this will search for any movie owned by the account
     /// </summary>
     public Task<Response<List<DetailedMovie>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearch", new SearchRequest { Query = title }, cancellationToken);
+        _client.PostAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearch?libraryId={libraryId}", new SearchRequest { Query = title }, cancellationToken);
 
 
     /// <summary>
@@ -179,6 +179,6 @@ public class MoviesClient
         if (tmdbId <= 0)
             return Task.FromResult(new Response<List<DetailedMovie>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
 
-        return _client.GetAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearchByTmdbId/{libraryId}/{tmdbId}", cancellationToken);
+        return _client.GetAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearchByTmdbId?libraryId={libraryId}&tmdbId={tmdbId}", cancellationToken);
     }
 }
