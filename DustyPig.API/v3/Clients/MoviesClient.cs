@@ -57,6 +57,7 @@ public class MoviesClient
     }
 
 
+
     /// <summary>
     /// Requires profile
     /// </summary>
@@ -162,4 +163,22 @@ public class MoviesClient
 
     }
 
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will search for any movie owned by the account
+    /// </summary>
+    public Task<Response<List<DetailedMovie>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
+        _client.PostAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearch", new SearchRequest { Query = title }, cancellationToken);
+
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will return info on any movie owned by the account with the specified tmdb
+    /// </summary>
+    public Task<Response<List<DetailedMovie>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    {
+        if (tmdbId <= 0)
+            return Task.FromResult(new Response<List<DetailedMovie>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
+
+        return _client.GetAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearchByTmdbId/{libraryId}/{tmdbId}", cancellationToken);
+    }
 }

@@ -205,4 +205,24 @@ public class SeriesClient
         return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"GetEverPlayed/{start}/{libId}", cancellationToken);
 
     }
+
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will search for any series owned by the account
+    /// </summary>
+    public Task<Response<List<DetailedSeries>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
+        _client.PostAsync<List<DetailedSeries>>(true, PREFIX + $"AdminSearch", new SearchRequest { Query = title }, cancellationToken);
+
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account with the specified tmdb
+    /// </summary>
+    public Task<Response<List<DetailedSeries>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    {
+        if (tmdbId <= 0)
+            return Task.FromResult(new Response<List<DetailedSeries>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
+
+        return _client.GetAsync<List<DetailedSeries>>(true, PREFIX + $"AdminSearchByTmdbId/{libraryId}/{tmdbId}", cancellationToken);
+    }
+
 }
