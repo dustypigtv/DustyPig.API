@@ -205,7 +205,9 @@ public static class StringUtils
     public static string NormalizedQueryString(string str)
     {
         str = NormalizeText(str);
-        str = str.Replace("-", " ").Replace("/", " ");
+        str = str.Replace(" & ", " and ");
+        str = str.ToLower().Trim();
+        str = Regex.Replace(str, "[^a-z0-9 ]", string.Empty, RegexOptions.Compiled);
         var tokens = Tokenize(str);
 
         for (int i = 0; i < tokens.Count; i++)
@@ -225,7 +227,7 @@ public static class StringUtils
         //Contractions and possessives are stored without an apostrophe in both databases
         str = str.Replace("'", "");
 
-        //FOr things like Law & Order
+        //For things like Law & Order
         str = str.Replace(" & ", " and ");
 
         //Replace remaining special characters with a space
