@@ -191,7 +191,7 @@ public class SeriesClient
     /// Requires main profile. Designed for admin tools, this will search for any series owned by the account
     /// </summary>
     public Task<Response<List<BasicMedia>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<List<DetailedSeries>>(true, PREFIX + $"AdminSearch?libraryId={libraryId}", new SearchRequest { Query = title }, cancellationToken);
+        _client.PostAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearch?libraryId={libraryId}", new SearchRequest { Query = title }, cancellationToken);
 
 
     /// <summary>
@@ -200,9 +200,9 @@ public class SeriesClient
     public Task<Response<List<BasicMedia>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
     {
         if (tmdbId <= 0)
-            return Task.FromResult(new Response<List<DetailedSeries>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
+            return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
 
-        return _client.GetAsync<List<DetailedSeries>>(true, PREFIX + $"AdminSearchByTmdbId?libraryId={libraryId}&tmdbId={tmdbId}", cancellationToken);
+        return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearchByTmdbId?libraryId={libraryId}&tmdbId={tmdbId}", cancellationToken);
     }
 
 }
