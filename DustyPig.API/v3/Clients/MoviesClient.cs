@@ -94,25 +94,6 @@ public class MoviesClient
     }
 
 
-    /// <summary>
-    /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
-    /// </summary>
-    public Task<Response<List<DetailedMovie>>> AdminListDetailsAsync(int start, CancellationToken cancellationToken = default) =>
-        AdminListDetailsAsync(start, 0, cancellationToken);
-
-    /// <summary>
-    /// Requires main profile. Returns the next 100 movies based on start position and sort order. Designed for admin tools, will return all movies owned by the account
-    /// </summary>
-    /// <param name="libId">If 0, then libraryFiltering will be disabled</param>
-    public Task<Response<List<DetailedMovie>>> AdminListDetailsAsync(int start, int libId, CancellationToken cancellationToken = default)
-    {
-        if (start < 0)
-            return Task.FromResult(new Response<List<DetailedMovie>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
-
-        return _client.GetAsync<List<DetailedMovie>>(true, PREFIX + $"AdminListDetails/{start}/{libId}", cancellationToken);
-    }
-
-
 
 
 
@@ -167,18 +148,18 @@ public class MoviesClient
     /// <summary>
     /// Requires main profile. Designed for admin tools, this will search for any movie owned by the account
     /// </summary>
-    public Task<Response<List<DetailedMovie>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearch?libraryId={libraryId}", new SearchRequest { Query = title }, cancellationToken);
+    public Task<Response<List<BasicMedia>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
+        _client.PostAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearch?libraryId={libraryId}", new SearchRequest { Query = title }, cancellationToken);
 
 
     /// <summary>
     /// Requires main profile. Designed for admin tools, this will return info on any movie owned by the account with the specified tmdb
     /// </summary>
-    public Task<Response<List<DetailedMovie>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    public Task<Response<List<BasicMedia>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
     {
         if (tmdbId <= 0)
-            return Task.FromResult(new Response<List<DetailedMovie>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
+            return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
 
-        return _client.GetAsync<List<DetailedMovie>>(true, PREFIX + $"AdminSearchByTmdbId?libraryId={libraryId}&tmdbId={tmdbId}", cancellationToken);
+        return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearchByTmdbId?libraryId={libraryId}&tmdbId={tmdbId}", cancellationToken);
     }
 }

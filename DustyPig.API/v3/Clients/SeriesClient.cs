@@ -96,26 +96,6 @@ public class SeriesClient
 
 
 
-    /// <summary>
-    /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
-    /// </summary>
-    public Task<Response<List<DetailedSeries>>> AdminListDetailsAsync(int start, CancellationToken cancellationToken = default) =>
-        AdminListDetailsAsync(start, 0, cancellationToken);
-
-    /// <summary>
-    /// Requires main profile. Returns the next 100 series based on start position and sort order. Designed for admin tools, will return all series owned by the account
-    /// </summary>
-    /// <param name="libId">If 0, then libraryFiltering will be disabled</param>
-    public Task<Response<List<DetailedSeries>>> AdminListDetailsAsync(int start, int libId, CancellationToken cancellationToken = default)
-    {
-        if (start < 0)
-            return Task.FromResult(new Response<List<DetailedSeries>> { Error = new ModelValidationException($"Invalid {nameof(start)}") });
-
-        return _client.GetAsync<List<DetailedSeries>>(true, PREFIX + $"AdminListDetails/{start}/{libId}", cancellationToken);
-    }
-
-
-
 
 
 
@@ -210,14 +190,14 @@ public class SeriesClient
     /// <summary>
     /// Requires main profile. Designed for admin tools, this will search for any series owned by the account
     /// </summary>
-    public Task<Response<List<DetailedSeries>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
+    public Task<Response<List<BasicMedia>>> AdminSearchAsync(string title, int libraryId = 0, CancellationToken cancellationToken = default) =>
         _client.PostAsync<List<DetailedSeries>>(true, PREFIX + $"AdminSearch?libraryId={libraryId}", new SearchRequest { Query = title }, cancellationToken);
 
 
     /// <summary>
     /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account with the specified tmdb
     /// </summary>
-    public Task<Response<List<DetailedSeries>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    public Task<Response<List<BasicMedia>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
     {
         if (tmdbId <= 0)
             return Task.FromResult(new Response<List<DetailedSeries>> { Error = new ModelValidationException($"Invalid {nameof(tmdbId)}") });
