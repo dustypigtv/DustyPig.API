@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net7;net8;net9</TargetFrameworks>
 		<LangVersion>12</LangVersion>
 		<RootNamespace>DustyPig.API</RootNamespace>
 		<NoWarn>$(NoWarn);1591,CS1573,,IDE0090</NoWarn>
@@ -36,7 +36,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DustyPig.REST" Version="3.4.0.32" />
+		<PackageReference Include="DustyPig.REST" Version="3.4.0.33" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 	</ItemGroup>
 

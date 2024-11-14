@@ -14,7 +14,7 @@ namespace DustyPig.API.v3;
 public class Client : IDisposable
 {
 #if DEBUG
-    public const string DEFAULT_BASE_ADDRESS = "https://localhost:5001/api/v3/";
+    public const string DEFAULT_BASE_ADDRESS = "http://localhost:5000/api/v3/";
 #else
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif
@@ -28,11 +28,6 @@ public class Client : IDisposable
     public Client()
     {
         _client = new() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
-
-#if DEBUG
-        IncludeRawContentInResponse = true;
-        ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-#endif
     }
 
 
@@ -44,11 +39,6 @@ public class Client : IDisposable
     public Client(HttpClient httpClient)
     {
         _client = new(httpClient) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
-
-#if DEBUG
-        IncludeRawContentInResponse = true;
-        ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-#endif
     }
 
 
