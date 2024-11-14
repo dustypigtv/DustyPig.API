@@ -4,7 +4,7 @@
 		<TargetFrameworks>net7;net8;net9</TargetFrameworks>
 		<LangVersion>12</LangVersion>
 		<RootNamespace>DustyPig.API</RootNamespace>
-		<NoWarn>$(NoWarn);1591,CS1573,,IDE0090</NoWarn>
+		<NoWarn>$(NoWarn);1591,CS1573,CS1570,IDE0090</NoWarn>
 
 		<!-- Leave the revision as zero, it will be set by github actions -->
 		<Version>3.6.1.0</Version>
