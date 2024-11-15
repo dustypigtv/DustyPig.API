@@ -97,11 +97,11 @@ public class ProfilesClient
 
 
     /// <summary>
-    /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
+    /// Requires profile. The avatar data must be less than 5MB. This will update the profiles AvatarUrl
     /// </summary>
     public Task<Response<string>> SetProfileAvatarAsync(int id, byte[] avatar, CancellationToken cancellationToken = default)
     {
-        const int MAX_LENGTH = 1024 * 1024;
+        const int MAX_LENGTH = 1024 * 1024 * 5;
 
         if (avatar.Length > MAX_LENGTH)
         {
