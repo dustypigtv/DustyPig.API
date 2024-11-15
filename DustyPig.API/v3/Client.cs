@@ -14,7 +14,7 @@ namespace DustyPig.API.v3;
 public class Client : IDisposable
 {
 #if DEBUG
-    public const string DEFAULT_BASE_ADDRESS = "http://localhost:5000/api/v3/";
+    public const string DEFAULT_BASE_ADDRESS = "https://localhost:5001/api/v3/";
 #else
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 #endif

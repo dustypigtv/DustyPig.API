@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
@@ -98,7 +99,7 @@ public class ProfilesClient
     /// <summary>
     /// Requires profile. The avatar data must be less than 1 MB. This will update the profiles AvatarUrl
     /// </summary>
-    public Task<Response<string>> SetProfileAvatar(int id, byte[] avatar, CancellationToken cancellationToken = default)
+    public Task<Response<string>> SetProfileAvatarAsync(int id, byte[] avatar, CancellationToken cancellationToken = default)
     {
         const int MAX_LENGTH = 1024 * 1024;
 
@@ -117,10 +118,11 @@ public class ProfilesClient
             });
         }
 
-        var request = new HttpRequestMessage(HttpMethod.Put, PREFIX + $"SetProfileAvatarBinary/{id}");
+        var request = new HttpRequestMessage(HttpMethod.Put, new Uri(_client.BaseAddress, PREFIX + $"SetProfileAvatarBinary/{id}"));
         foreach (var header in _client.GetHeaders(true))
             request.Headers.TryAddWithoutValidation(header.Key, header.Value);
         request.Content = new ByteArrayContent(avatar);
+        request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 
         return _client.GetResponseAsync<string>(request, cancellationToken);
     }
