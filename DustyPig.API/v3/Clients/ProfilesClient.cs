@@ -2,6 +2,7 @@
 using DustyPig.REST;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -102,10 +103,27 @@ public class ProfilesClient
     public Task<Response<string>> SetProfileAvatarAsync(int id, byte[] avatar, CancellationToken cancellationToken = default)
     {
         const int MAX_LENGTH = 1024 * 1024 * 5;
+        
+        ArgumentNullException.ThrowIfNull(avatar, nameof(avatar));
 
         if (avatar.Length > MAX_LENGTH)
         {
             var ex = new ModelValidationException($"Validation failed: {nameof(avatar)} must not exceed {MAX_LENGTH} bytes");
+
+            if (_client.AutoThrowIfError)
+                throw ex;
+
+            return Task.FromResult(new Response<string>
+            {
+                Error = ex,
+                StatusCode = System.Net.HttpStatusCode.BadRequest,
+                ReasonPhrase = ex.Message
+            });
+        }
+
+        if (!(IsJpeg(avatar) || IsPng(avatar)))
+        {
+            var ex = new ModelValidationException($"Validation failed: {nameof(avatar)} must does not appear to be a jpg or png file");
 
             if (_client.AutoThrowIfError)
                 throw ex;
@@ -125,5 +143,32 @@ public class ProfilesClient
         request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 
         return _client.GetResponseAsync<string>(request, cancellationToken);
+    }
+
+    static bool IsJpeg(byte[] data)
+    {
+        const int MIN_JPG_LENGTH = 107;
+
+        return
+            data.Length >= MIN_JPG_LENGTH &&
+            data[0] == 0xFF &&
+            data[1] == 0xD8;
+    }
+
+
+    static bool IsPng(byte[] data)
+    {
+        const int MIN_PNG_LENGTH = 67;
+        
+        return
+            data.Length >= MIN_PNG_LENGTH &&
+            data[0] == 0x89 &&
+            data[1] == 0x50 &&
+            data[2] == 0x4E &&
+            data[3] == 0x47 &&
+            data[4] == 0x0D &&
+            data[5] == 0x0A &&
+            data[6] == 0x1A &&
+            data[7] == 0x0A;
     }
 }
