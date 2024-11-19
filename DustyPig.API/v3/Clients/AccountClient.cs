@@ -33,4 +33,9 @@ public class AccountClient
     public Task<Response> ChangePasswordAsync(string newPassword, CancellationToken cancellationToken = default) =>
         _client.PostAsync(true, PREFIX + "ChangePassword", new StringValue { Value = newPassword }, cancellationToken);
 
+    /// <summary>
+    /// Requires main profile. Change the email address. 
+    /// </summary>
+    public Task<Response> ChangeEmailAddressAsync(string newEmailAddress, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "ChangeEmailAddress", new StringValue { Value = newEmailAddress }, cancellationToken);
 }
