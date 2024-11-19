@@ -252,6 +252,14 @@ public class Client : IDisposable
     }
 
 
+    internal async Task<Response> DeleteAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
+    {
+        var ret = await _client.DeleteAsync<Result>(url, GetHeaders(tokenNeeded), data, cancellationToken: cancellationToken).ConfigureAwait(false);
+        return FlattenResult(ret);
+    }
+
+
+
 
 
     internal async Task<Response<T>> GetResponseAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)

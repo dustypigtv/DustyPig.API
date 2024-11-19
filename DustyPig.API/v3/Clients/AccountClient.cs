@@ -24,18 +24,19 @@ public class AccountClient
     /// <summary>
     /// Requires main profile. WARNING: This will permanently delete the account and ALL data. This is not recoverable!
     /// </summary>
-    public Task<Response> DeleteAsync(CancellationToken cancellationToken = default) =>
-        _client.DeleteAsync(true, PREFIX + "Delete", cancellationToken);
+    public Task<Response> DeleteAsync(DeleteAccountRequest data, CancellationToken cancellationToken = default) =>
+        _client.DeleteAsync(true, PREFIX + "Delete", data, cancellationToken);
+
 
     /// <summary>
     /// Change the password
     /// </summary>
-    public Task<Response> ChangePasswordAsync(string newPassword, CancellationToken cancellationToken = default) =>
-        _client.PostAsync(true, PREFIX + "ChangePassword", new StringValue { Value = newPassword }, cancellationToken);
+    public Task<Response> ChangePasswordAsync(ChangePasswordRequest data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "ChangePassword", data, cancellationToken);
 
     /// <summary>
     /// Requires main profile. Change the email address. 
     /// </summary>
-    public Task<Response> ChangeEmailAddressAsync(string newEmailAddress, CancellationToken cancellationToken = default) =>
-        _client.PostAsync(true, PREFIX + "ChangeEmailAddress", new StringValue { Value = newEmailAddress }, cancellationToken);
+    public Task<Response> ChangeEmailAddressAsync(ChangeEmailAddressRequest data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "ChangeEmailAddress", data, cancellationToken);
 }

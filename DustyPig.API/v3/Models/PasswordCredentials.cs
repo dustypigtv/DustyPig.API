@@ -11,6 +11,9 @@ public class PasswordCredentials : IValidate
 
     public string Password { get; set; }
 
+    /// <summary>
+    /// Optional. When specified, this assignes the Firebase Cloud Messaging token to this device
+    /// </summary>
     [JsonPropertyName("fcmToken")]
     public string FCMToken { get; set; }
 
