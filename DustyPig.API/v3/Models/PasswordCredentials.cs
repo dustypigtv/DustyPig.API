@@ -42,11 +42,8 @@ public class PasswordCredentials : IValidate
         }
 
 
-        chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
-        if (chk.Valid)
-            Password = chk.Fixed;
-        else
-            lst.Add(chk.Error);
+        Validators.ValidatePassword(nameof(Password), Password, lst);
+
 
         if (Email == Clients.AuthClient.TEST_EMAIL)
             if (Password != Clients.AuthClient.TEST_PASSWORD)

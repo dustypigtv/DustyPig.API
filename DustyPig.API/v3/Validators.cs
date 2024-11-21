@@ -133,12 +133,6 @@ static class Validators
 
 
 
-
-
-
-
-
-
     public static (bool Valid, string Fixed, string Error) Validate(string name, string val, bool required, int maxLength)
     {
         val = StringUtils.FixSpaces(val);
@@ -158,9 +152,55 @@ static class Validators
         return (true, val, null);
     }
 
+
+
+
     public static void ValidateId(string name, int id, List<string> lst)
     {
         if (id <= 0)
             lst.Add($"Invalid {name}");
+    }
+
+
+
+
+
+    public static void ValidatePassword(string name, string password, List<string> lst)
+    {
+        if (string.IsNullOrEmpty(password))
+        {
+            lst.Add($"{name} cannot be empty");
+            return;
+        }
+
+        if (password.Length > byte.MaxValue)
+        {
+            lst.Add($"{name} is too long. Max length is {byte.MaxValue} characters");
+            return;
+        }
+    }
+
+
+
+
+    public static void ValidateNewPassword(string name, string password, List<string> lst)
+    {
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            lst.Add($"{name} cannot be empty or all spaces");
+            return;
+        }
+
+        if (password.Length < 6)
+        {
+            lst.Add($"{name} must be at least 6 characters");
+            return;
+        }
+
+        if (password.Length > byte.MaxValue)
+        {
+            lst.Add($"{name} is too long. Max length is {byte.MaxValue} characters");
+            return;
+        }
     }
 }

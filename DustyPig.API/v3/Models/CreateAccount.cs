@@ -39,11 +39,10 @@ public class CreateAccount : IValidate
         if (Email == Clients.AuthClient.TEST_EMAIL)
             lst.Add("Test email is not valid for this action");
 
-        chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
-        if (chk.Valid)
-            Password = chk.Fixed;
-        else
-            lst.Add(chk.Error);
+
+        Validators.ValidateNewPassword(nameof(Password), Password, lst);
+
+
 
         chk = Validators.Validate(nameof(DisplayName), DisplayName, true, Constants.MAX_NAME_LENGTH);
         if (chk.Valid)

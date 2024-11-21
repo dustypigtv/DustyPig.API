@@ -36,26 +36,9 @@ public class ChangePasswordRequest : IValidate
         if (EmailAddress == Clients.AuthClient.TEST_EMAIL)
             lst.Add("Test email is not valid for this action");
 
-        chk = Validators.Validate(nameof(Password), Password, true, int.MaxValue);
-        if (chk.Valid)
-            Password = chk.Fixed;
-        else
-            lst.Add(chk.Error);
 
-
-
-        chk = Validators.Validate(nameof(NewPassword), NewPassword, true, int.MaxValue);
-        if (chk.Valid)
-        {
-            NewPassword = chk.Fixed.ToLower();
-            if (!StringUtils.IsValidEmail(NewPassword))
-                lst.Add($"Invalid {nameof(NewPassword)}");
-        }
-        else
-        {
-            lst.Add(chk.Error);
-        }
-
+        Validators.ValidatePassword(nameof(Password), Password, lst);
+        Validators.ValidateNewPassword(nameof(NewPassword), NewPassword, lst);
 
         if (lst.Count > 0)
             throw new ModelValidationException { Errors = lst };
