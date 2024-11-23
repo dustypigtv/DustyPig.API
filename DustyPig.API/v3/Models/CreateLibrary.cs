@@ -11,6 +11,16 @@ public class CreateLibrary : IValidate
     [JsonPropertyName("isTV")]
     public bool IsTV { get; set; }
 
+    /// <summary>
+    /// If not null, this will set or replace the friends that are allowed to access this library
+    /// </summary>
+    public List<int> FriendIds { get; set; }
+
+    /// <summary>
+    /// If not null, this will set or replace the profiles that are allowed to access this library.
+    /// </summary>
+    public List<int> ProfileIds { get; set; }
+
 
     #region IValidate
 
