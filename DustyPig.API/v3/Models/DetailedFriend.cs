@@ -5,8 +5,6 @@ namespace DustyPig.API.v3.Models;
 
 public class DetailedFriend : BasicFriend
 {
-    public bool Accepted { get; set; }
-
     public DateTime Timestamp { get; set; }
 
     public List<BasicLibrary> SharedWithFriend { get; set; } = [];

@@ -12,6 +12,13 @@ public class BasicFriend : IComparable
 
     public string AvatarUrl { get; set; }
 
+    /// <summary>
+    /// Whether the friend request has been accepted
+    /// </summary>
+    public bool Accepted { get; set; }
+
+    public RequestDirection FriendRequestDirection { get; set; }
+
     #region IComparable
 
     public int CompareTo(object obj)
