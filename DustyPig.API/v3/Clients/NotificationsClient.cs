@@ -30,8 +30,8 @@ public class NotificationsClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<List<Notification>>> ListAsync(CancellationToken cancellationToken = default) =>
-        _client.GetAsync<List<Notification>>(true, PREFIX + "List", cancellationToken);
+    public Task<Response<List<Notification>>> ListAsync(int start = 0, CancellationToken cancellationToken = default) =>
+        _client.GetAsync<List<Notification>>(true, PREFIX + $"List/{start}", cancellationToken);
 
 
     /// <summary>
