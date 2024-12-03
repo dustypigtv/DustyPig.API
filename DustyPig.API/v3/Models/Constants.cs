@@ -126,4 +126,17 @@ public static class Constants
     public const int GUIDELINE_MAX_JPG_BACKDROP_WIDTH = 940;
     public const int GUIDELINE_MAX_JPG_BACKDROP_HEIGHT = 600;
     public const int GUIDELINE_MAX_JPG_BACKDROP_FILESIZE = 564_000;
+
+
+
+
+
+
+    //Keys used in FCM messages
+    public const string FCM_KEY_ID = "dp.id";
+    public const string FCM_KEY_PROFILE_ID = "dp.pid";
+    public const string FCM_KEY_NOTIFICATION_TYPE = "dp.nt";
+    public const string FCM_KEY_MEDIA_ID = "dp.mid";
+    public const string FCM_KEY_MEDIA_TYPE = "dp.mt";
+    public const string FCM_KEY_FRIENDSHIP_ID = "dp.fid";
 }
