@@ -139,4 +139,6 @@ public static class Constants
     public const string FCM_KEY_MEDIA_ID = "dp.mid";
     public const string FCM_KEY_MEDIA_TYPE = "dp.mt";
     public const string FCM_KEY_FRIENDSHIP_ID = "dp.fid";
+    public const string FCM_KEY_ANDROID_ICON = "ic_notification";
+    public const string FCM_KEY_ANDROID_COLOR = "#000000";
 }
