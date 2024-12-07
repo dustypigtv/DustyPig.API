@@ -141,4 +141,8 @@ public static class Constants
     public const string FCM_KEY_FRIENDSHIP_ID = "dp.fid";
     public const string FCM_KEY_ANDROID_ICON = "ic_notification";
     public const string FCM_KEY_ANDROID_COLOR = "#000000";
+
+
+    //Keys used in Firestore DB
+    public const string FDB_KEY_ALERTS_COLLECTION = "alerts";
 }
