@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -67,4 +68,11 @@ public class TMDBClient
     /// </summary>
     public Task<Response> CancelRequestAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
         _client.PostAsync(true, PREFIX + "CancelTitleRequest", data, cancellationToken);
+
+
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response<List<TitleRequestSource>>> ListTitleRequestSourcesAsync(CancellationToken cancellationToken = default) =>
+        _client.GetAsync<List<TitleRequestSource>>(true, PREFIX + "ListTitleRequestSources", cancellationToken);
 }
