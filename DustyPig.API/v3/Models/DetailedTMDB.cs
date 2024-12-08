@@ -20,6 +20,10 @@ public class DetailedTMDB : BasicTMDB, ICredits
 
     public RequestStatus RequestStatus { get; set; }
 
+    public bool RequestedOfThisProfile { get; set; }
+
+    public List<string> Requestors { get; set; } = [];
+
     #region ICredits
 
     public List<BasicPerson> Credits { get; set; } = [];
