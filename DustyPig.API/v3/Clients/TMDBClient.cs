@@ -71,6 +71,22 @@ public class TMDBClient
 
 
     /// <summary>
+    /// Requires main profile
+    /// </summary>
+    public Task<Response> DenyRequestAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "DenyTitleRequest", data, cancellationToken);
+
+
+    /// <summary>
+    /// Requires main profile
+    /// </summary>
+    public Task<Response> GrantRequestAsync(TitleRequest data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "GrantTitleRequest", data, cancellationToken);
+
+
+
+
+    /// <summary>
     /// Requires profile
     /// </summary>
     public Task<Response<List<TitleRequestSource>>> ListTitleRequestSourcesAsync(CancellationToken cancellationToken = default) =>
