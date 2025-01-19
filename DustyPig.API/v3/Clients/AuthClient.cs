@@ -82,7 +82,15 @@ public class AuthClient
     /// </summary>
     /// <param name="fcmToken">FirebaseCloudMessaging token to include. If null, and the current AuthToken is liked to a FCM token, then the FCM token is unlinked</param>
     public Task<Response<string>> UpdateFCMTokenAsync(string fcmToken = null, CancellationToken cancellationToken = default) =>
-        _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", new StringValue { Value = fcmToken }, cancellationToken);
+        UpdateFCMTokenAsync(new FCMToken { Value = fcmToken }, cancellationToken);
+
+
+    /// <summary>
+    /// Requres logged in profile. Returns a new profile level bearer token
+    /// </summary>
+    /// <param name="fcmToken">FirebaseCloudMessaging token to include. If null, and the current AuthToken is liked to a FCM token, then the FCM token is unlinked</param>
+    public Task<Response<string>> UpdateFCMTokenAsync(FCMToken fcmToken, CancellationToken cancellationToken = default) =>
+        _client.PostAsync<string>(true, PREFIX + "UpdateFCMToken", fcmToken, cancellationToken);
 
 
     /// <summary>
