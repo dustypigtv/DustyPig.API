@@ -145,4 +145,5 @@ public static class Constants
 
     //Keys used in Firestore DB
     public const string FDB_KEY_ALERTS_COLLECTION = "alerts";
+    public const string FDB_KEY_HOMESCREEN_COLLECTION = "homescreen";
 }
