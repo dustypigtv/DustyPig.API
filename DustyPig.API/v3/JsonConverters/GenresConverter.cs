@@ -17,6 +17,8 @@ internal class GenresConverter : JsonConverter<Genres>
             string s = reader.GetString();
             if (long.TryParse(s, out long ret))
                 return (Genres)ret;
+
+            return GenresUtils.ToGenres(s);
         }
 
         throw new Exception("Unable to parse json");

@@ -18,9 +18,7 @@ internal class MovieRatingsConverter : JsonConverter<MovieRatings>
             if (int.TryParse(s, out int ret))
                 return (MovieRatings)ret;
 
-            foreach (MovieRatings value in Enum.GetValues(typeof(MovieRatings)))
-                if (value.ToString().ICEquals(s))
-                    return value;
+            return RatingsUtils.ToMovieRatings(s);
         }
 
         throw new Exception("Unable to parse json");
