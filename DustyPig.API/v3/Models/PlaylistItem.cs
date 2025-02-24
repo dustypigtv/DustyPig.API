@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DustyPig.API.v3.JsonConverters;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
@@ -13,6 +14,7 @@ public class PlaylistItem
 
     public int? SeriesId { get; set; }
 
+    [JsonConverter(typeof(MediaTypesConverter))]
     public MediaTypes MediaType { get; set; }
 
     public string Title { get; set; }

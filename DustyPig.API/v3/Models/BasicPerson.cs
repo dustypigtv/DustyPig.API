@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using DustyPig.API.v3.JsonConverters;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
 
@@ -15,6 +16,7 @@ public class BasicPerson
 
     public int Order { get; set; }
 
+    [JsonConverter(typeof(CreditRolesConverter))]
     public CreditRoles Role { get; set; }
 
 }

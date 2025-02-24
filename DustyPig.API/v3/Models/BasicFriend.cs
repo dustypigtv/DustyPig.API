@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DustyPig.API.v3.JsonConverters;
+using System;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
 
@@ -17,6 +19,7 @@ public class BasicFriend : IComparable
     /// </summary>
     public bool Accepted { get; set; }
 
+    [JsonConverter(typeof(RequestDirectionConverter))]
     public RequestDirection FriendRequestDirection { get; set; }
 
     #region IComparable

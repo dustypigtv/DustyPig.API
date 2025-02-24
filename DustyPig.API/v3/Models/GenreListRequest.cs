@@ -1,13 +1,16 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using DustyPig.API.v3.MPAA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
 
 public class GenreListRequest : ListRequest, IValidate
 {
+    [JsonConverter(typeof(GenresConverter))]
     public Genres Genre { get; set; }
 
     #region IValidate

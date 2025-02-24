@@ -1,6 +1,8 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
 
@@ -18,8 +20,10 @@ public class DetailedSeries : CreateSeries, ICredits
 
     public bool CanManage { get; set; }
 
+    [JsonConverter(typeof(TitleRequestPermissionsConverter))]
     public TitleRequestPermissions TitleRequestPermission { get; set; }
 
+    [JsonConverter(typeof(OverrideRequestStatusConverter))]
     public OverrideRequestStatus AccessRequestedStatus { get; set; }
 
     public bool Subscribed { get; set; }

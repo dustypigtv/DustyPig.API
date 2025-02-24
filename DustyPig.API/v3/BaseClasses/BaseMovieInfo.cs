@@ -1,4 +1,5 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using DustyPig.API.v3.MPAA;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ public abstract class BaseMovieInfo : IMedia, ITopLevelMedia
 
     public string BackdropUrl { get; set; }
 
+    [JsonConverter(typeof(GenresConverter))]
     public Genres Genres { get; set; }
 
     public List<string> ExtraSearchTerms { get; set; } = [];
@@ -47,6 +49,7 @@ public abstract class BaseMovieInfo : IMedia, ITopLevelMedia
 
     public double? CreditsStartTime { get; set; }
 
+    [JsonConverter(typeof(MovieRatingsConverter))]
     public MovieRatings Rated { get; set; }
 
     public override string ToString() => $"{Title} ({Date.Year})";

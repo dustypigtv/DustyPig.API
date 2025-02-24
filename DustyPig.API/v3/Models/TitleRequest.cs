@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.BaseClasses;
 using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
@@ -16,6 +17,7 @@ public class TitleRequest : IValidate
     /// </summary>
     public int? FriendId { get; set; }
 
+    [JsonConverter(typeof(TMDB_MediaTypesConverter))]
     public TMDB_MediaTypes MediaType { get; set; }
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DustyPig.API.v3.JsonConverters;
+using System;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
 
@@ -12,6 +14,7 @@ public class Notification
 
     public string Message { get; set; }
 
+    [JsonConverter(typeof(JsonConverter))]
     public NotificationTypes NotificationType { get; set; }
 
     /// <summary>
@@ -25,6 +28,7 @@ public class Notification
     /// <summary>
     /// Only used for media requests
     /// </summary>
+    [JsonConverter(typeof(MediaTypesConverter))]
     public MediaTypes? MediaType { get; set; }
 
     /// <summary>

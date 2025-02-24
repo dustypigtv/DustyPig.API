@@ -1,7 +1,9 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace DustyPig.API.v3.Models;
 
@@ -11,6 +13,7 @@ public class SetTitlePermission : IValidate
 
     public int ProfileId { get; set; }
 
+    [JsonConverter(typeof(OverrideStateConverter))]
     public OverrideState OverrideState { get; set; }
 
     #region IValidate

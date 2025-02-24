@@ -1,4 +1,5 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using DustyPig.API.v3.MPAA;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -26,6 +27,7 @@ public abstract class BaseSeriesInfo : IMedia, ITopLevelMedia
 
     public string BackdropUrl { get; set; }
 
+    [JsonConverter(typeof(GenresConverter))]
     public Genres Genres { get; set; }
 
     public List<string> ExtraSearchTerms { get; set; } = [];
@@ -33,6 +35,7 @@ public abstract class BaseSeriesInfo : IMedia, ITopLevelMedia
 
     #endregion
 
+    [JsonConverter(typeof(TVRatingsConverter))]
     public TVRatings Rated { get; set; }
 
     public override string ToString() => Title;

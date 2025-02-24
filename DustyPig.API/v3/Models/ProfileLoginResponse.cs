@@ -1,4 +1,7 @@
-﻿namespace DustyPig.API.v3.Models;
+﻿using DustyPig.API.v3.JsonConverters;
+using System.Text.Json.Serialization;
+
+namespace DustyPig.API.v3.Models;
 
 public enum LoginType
 {
@@ -10,6 +13,7 @@ public enum LoginType
 
 public class ProfileLoginResponse
 {
+    [JsonConverter(typeof(LoginTypeConverter))]
     public LoginType LoginType { get; set; }
 
     /// <summary>

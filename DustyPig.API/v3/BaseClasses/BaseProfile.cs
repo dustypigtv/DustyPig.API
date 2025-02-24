@@ -1,4 +1,5 @@
 ﻿using DustyPig.API.v3.Interfaces;
+using DustyPig.API.v3.JsonConverters;
 using DustyPig.API.v3.Models;
 using DustyPig.API.v3.MPAA;
 using System;
@@ -13,12 +14,14 @@ public abstract class BaseProfile : IValidate
 
     public string AvatarUrl { get; set; }
 
+    [JsonConverter(typeof(MovieRatingsConverter))]
     public MovieRatings MaxMovieRating { get; set; }
 
     [JsonPropertyName("maxTVRating")]
+    [JsonConverter(typeof(TVRatingsConverter))]
     public TVRatings MaxTVRating { get; set; }
 
-
+    [JsonConverter(typeof(TitleRequestPermissionsConverter))]
     public TitleRequestPermissions TitleRequestPermissions { get; set; }
 
     public bool Locked { get; set; }
