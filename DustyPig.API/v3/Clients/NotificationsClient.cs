@@ -45,9 +45,15 @@ public class NotificationsClient
         return _client.GetAsync(true, PREFIX + $"MarkAsRead/{id}", cancellationToken);
     }
 
+    /// <summary>
+    /// Requires profile
+    /// </summary>
     public Task<Response> MarkAllReadAsync(CancellationToken cancellationToken = default) =>
         _client.GetAsync(true, PREFIX + "MarkAllRead", cancellationToken);
 
+    /// <summary>
+    /// Requires profile
+    /// </summary>
     public Task<Response> DeleteAllAsync(CancellationToken cancellationToken = default) =>
         _client.DeleteAsync(true, PREFIX + "DeleteAll", cancellationToken);
 }
