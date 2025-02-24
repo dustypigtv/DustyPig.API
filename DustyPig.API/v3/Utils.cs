@@ -19,13 +19,13 @@ static class Utils
     const double BACKDROP_RATIO = 0.5625d;
 
 
-    public static int GetGuidlinePosterJpgHeight(int width) => Convert.ToInt32(width / TWO_THIRDS);
+    public static int GetGuidelinePosterJpgHeight(int width) => Convert.ToInt32(width / TWO_THIRDS);
 
-    public static int GetGuidlinePosterJpgWidth(int height) => Convert.ToInt32(height * TWO_THIRDS);
+    public static int GetGuidelinePosterJpgWidth(int height) => Convert.ToInt32(height * TWO_THIRDS);
 
-    public static int GetGuidlineBackdropJpgHeight(int width) => Convert.ToInt32(width * BACKDROP_RATIO);
+    public static int GetGuidelineBackdropJpgHeight(int width) => Convert.ToInt32(width * BACKDROP_RATIO);
 
-    public static int GetGuidlineBackdropJpgWidth(int height) => Convert.ToInt32(height / BACKDROP_RATIO);
+    public static int GetGuidelineBackdropJpgWidth(int height) => Convert.ToInt32(height / BACKDROP_RATIO);
 
     public static int GetGuidelineMaxJpgSize(int width, int height) =>
         Convert.ToInt32(Math.Ceiling(width * height * TWELVE_EIGHTS * TWO_THIRDS));
