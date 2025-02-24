@@ -115,17 +115,23 @@ public static class Constants
 
     */
 
-    public const int GUIDELINE_MAX_JPG_POSTER_WIDTH = 400;
+
+
+
+
     public const int GUIDELINE_MAX_JPG_POSTER_HEIGHT = 600;
+    public const int GUIDELINE_MAX_JPG_POSTER_WIDTH = 400;
     public const int GUIDELINE_MAX_JPG_POSTER_FILESIZE = 240_000;
 
-    public const int GUIDELINE_MAX_JPG_SCREENSHOT_WIDTH = 470;
-    public const int GUIDELINE_MAX_JPG_SCREENSHOT_HEIGHT = 300;
-    public const int GUIDELINE_MAX_JPG_SCREENSHOT_FILESIZE = 141_000;
 
-    public const int GUIDELINE_MAX_JPG_BACKDROP_WIDTH = 940;
-    public const int GUIDELINE_MAX_JPG_BACKDROP_HEIGHT = 600;
-    public const int GUIDELINE_MAX_JPG_BACKDROP_FILESIZE = 564_000;
+    public const int GUIDELINE_MAX_JPG_SCREENSHOT_WIDTH = 480;
+    public const int GUIDELINE_MAX_JPG_SCREENSHOT_HEIGHT = 270;
+    public const int GUIDELINE_MAX_JPG_SCREENSHOT_FILESIZE = 129_600;
+
+
+    public const int GUIDELINE_MAX_JPG_BACKDROP_WIDTH = 960;
+    public const int GUIDELINE_MAX_JPG_BACKDROP_HEIGHT = 540;
+    public const int GUIDELINE_MAX_JPG_BACKDROP_FILESIZE = 518_400;
 
 
 
