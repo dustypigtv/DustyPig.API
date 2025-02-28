@@ -1,6 +1,6 @@
 ﻿namespace DustyPig.API.v3.Models;
 
-public enum NotificationTypes
+public enum NotificationTypes : int
 {
     NewMediaRequested = 1,
     NewMediaPending = 2,

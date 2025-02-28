@@ -14,7 +14,7 @@ public class Notification
 
     public string Message { get; set; }
 
-    [JsonConverter(typeof(JsonConverter))]
+    [JsonConverter(typeof(NotificationTypesConverter))]
     public NotificationTypes NotificationType { get; set; }
 
     /// <summary>
