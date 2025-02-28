@@ -18,9 +18,6 @@ public class BasicMedia
 
     public string Description { get; set; }
 
-    [JsonConverter(typeof(CreditRolesConverter))]
-    public CreditRoles? Role { get; set; }
-
     public override string ToString() => Title;
 
 }

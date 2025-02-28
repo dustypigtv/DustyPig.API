@@ -17,8 +17,5 @@ public class BasicTMDB
 
     public string Title { get; set; }
 
-    [JsonConverter(typeof(CreditRolesConverter))]
-    public CreditRoles? Role { get; set; }
-
     public override string ToString() => Title;
 }
