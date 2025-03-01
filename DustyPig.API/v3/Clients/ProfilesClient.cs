@@ -96,6 +96,9 @@ public class ProfilesClient
         _client.GetAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
 
 
+    /// <summary>
+    /// Requires profile
+    /// </summary>
     public Task<Response<string>> ResetAvatarAsync(CancellationToken cancellationToken = default) =>
         _client.GetAsync<string>(true, PREFIX + "ResetAvatar", cancellationToken);
 
