@@ -99,12 +99,12 @@ public class ProfilesClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<string>> ResetAvatarAsync(CancellationToken cancellationToken = default) =>
-        _client.GetAsync<string>(true, PREFIX + "ResetAvatar", cancellationToken);
+    public Task<Response<string>> ResetAvatarAsync(int id, CancellationToken cancellationToken = default) =>
+        _client.GetAsync<string>(true, PREFIX + $"ResetAvatar/{id}", cancellationToken);
 
 
     /// <summary>
-    /// Requires profile. The avatar data must be less than 5MB. This will update the profiles AvatarUrl
+    /// Requires profile. The avatar data must be less than 5MB. This will return the profile's new AvatarUrl
     /// </summary>
     public Task<Response<string>> SetProfileAvatarAsync(int id, byte[] avatar, CancellationToken cancellationToken = default)
     {
