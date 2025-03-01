@@ -96,6 +96,9 @@ public class ProfilesClient
         _client.GetAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
 
 
+    public Task<Response<string>> ResetAvatarAsync(CancellationToken cancellationToken = default) =>
+        _client.GetAsync<string>(true, PREFIX + "ResetAvatar", cancellationToken);
+
 
     /// <summary>
     /// Requires profile. The avatar data must be less than 5MB. This will update the profiles AvatarUrl
@@ -103,7 +106,9 @@ public class ProfilesClient
     public Task<Response<string>> SetProfileAvatarAsync(int id, byte[] avatar, CancellationToken cancellationToken = default)
     {
         const int MAX_LENGTH = 1024 * 1024 * 5;
-        
+
+        if (avatar != null && avatar.Length == 0)
+            avatar = null;
         ArgumentNullException.ThrowIfNull(avatar, nameof(avatar));
 
         if (avatar.Length > MAX_LENGTH)
@@ -136,13 +141,13 @@ public class ProfilesClient
             });
         }
 
-        var request = new HttpRequestMessage(HttpMethod.Put, new Uri(_client.BaseAddress, PREFIX + $"SetProfileAvatarBinary/{id}"));
-        foreach (var header in _client.GetHeaders(true))
-            request.Headers.TryAddWithoutValidation(header.Key, header.Value);
-        request.Content = new ByteArrayContent(avatar);
-        request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+        var data = new UpdateProfileAvatar
+        {
+            Id = id,
+            Base64Image = Convert.ToBase64String(avatar)
+        };
 
-        return _client.GetResponseAsync<string>(request, cancellationToken);
+        return _client.PostAsync<string>(true, PREFIX + "SetProfileAvatar", data, cancellationToken);
     }
 
     static bool IsJpeg(byte[] data)
