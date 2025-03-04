@@ -38,7 +38,7 @@ public class UpdateProfileAvatar : IValidate
 
     static bool IsPngOrJpg(byte[] data) => IsPng(data) || IsJpeg(data);
 
-    static bool IsJpeg(byte[] data)
+    public static bool IsJpeg(byte[] data)
     {
         const int MIN_JPG_LENGTH = 107;
 
@@ -49,7 +49,7 @@ public class UpdateProfileAvatar : IValidate
     }
 
 
-    static bool IsPng(byte[] data)
+    public static bool IsPng(byte[] data)
     {
         const int MIN_PNG_LENGTH = 67;
 
