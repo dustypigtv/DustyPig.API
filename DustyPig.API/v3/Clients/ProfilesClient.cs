@@ -153,6 +153,15 @@ public class ProfilesClient
         return _client.PostAsync<string>(true, PREFIX + "SetProfileAvatar", data, cancellationToken);
     }
 
+
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response<DetailedProfile>> GetMainProfileDetailsAsync(CancellationToken cancellationToken = default) =>
+        _client.GetAsync<DetailedProfile>(true, PREFIX + "GetMainProfileDetails", cancellationToken);
+
+
+
     static bool IsJpeg(byte[] data)
     {
         const int MIN_JPG_LENGTH = 107;
