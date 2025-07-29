@@ -28,5 +28,5 @@ public interface IPlayableMedia
 
     public string VideoUrl { get; set; }
 
-    public List<SRTSubtitle> SRTSubtitles { get; set; }
+    //public List<SRTSubtitle> SRTSubtitles { get; set; }
 }

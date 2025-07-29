@@ -35,7 +35,4 @@ public class PlaylistItem
     public string BifUrl { get; set; }
 
     public string VideoUrl { get; set; }
-
-    [JsonPropertyName("srtSubtitles")]
-    public List<SRTSubtitle> SRTSubtitles { get; set; } = [];
 }

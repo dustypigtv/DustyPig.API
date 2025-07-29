@@ -76,35 +76,12 @@ static class Validators
         else
             ret.Add(chk.Error);
 
-        if (media.SRTSubtitles != null)
-            foreach (var subtitle in media.SRTSubtitles)
-                ret.AddRange(Validate(subtitle).Select(item => $"{nameof(media.SRTSubtitles)}: {item}"));
-
-
-        return ret;
-    }
-
-
-
-
-
-
-    public static List<string> Validate(SRTSubtitle exSub)
-    {
         
-        var ret = new List<string>();
-
-        try
-        {
-            exSub.Validate();
-        }
-        catch (ModelValidationException ex)
-        {
-            ret = ex.Errors;
-        }
-
         return ret;
     }
+
+
+
 
 
 

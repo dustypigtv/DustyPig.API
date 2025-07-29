@@ -22,11 +22,6 @@ public class CreateEpisode : BaseEpisodeInfo, IMedia, IPlayableMedia, IValidate
 
     public string VideoUrl { get; set; }
 
-    
-    [JsonPropertyName("srtSubtitles")]
-    public List<SRTSubtitle> SRTSubtitles { get; set; } = [];
-
-
     #endregion
 
 

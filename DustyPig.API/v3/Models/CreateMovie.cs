@@ -31,10 +31,6 @@ public class CreateMovie : BaseMovieInfo, IMedia, ITopLevelMedia, IPlayableMedia
 
     public string VideoUrl { get; set; }
 
-    [JsonPropertyName("srtSubtitles")]
-    public List<SRTSubtitle> SRTSubtitles { get; set; } = [];
-
-
     #endregion
 
 
