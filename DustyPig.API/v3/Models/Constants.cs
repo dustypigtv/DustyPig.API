@@ -154,6 +154,6 @@ public static class Constants
     public const string FDB_KEY_ALERTS_COLLECTION = "alerts";
     public const string FDB_KEY_HOMESCREEN_COLLECTION = "homescreen";
     public const string FDB_KEY_CONTINUE_WATCHING = "continue_watching";
-    public const string FBD_KEY_WATCHLIST = "watchlist";
-    public const string FBD_KEY_PLAYLIST = "playlist";
+    public const string FDB_KEY_WATCHLIST = "watchlist";
+    public const string FDB_KEY_PLAYLIST = "playlist";
 }
