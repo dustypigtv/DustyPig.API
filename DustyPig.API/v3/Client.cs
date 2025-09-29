@@ -2,6 +2,7 @@
 using DustyPig.API.v3.Interfaces;
 using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -11,46 +12,23 @@ using System.Threading.Tasks;
 
 namespace DustyPig.API.v3;
 
-public class Client : IDisposable
+public class Client
 {
-#if DEBUG
-    public const string DEFAULT_BASE_ADDRESS = "https://localhost:5001/api/v3/";
-#else
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
-#endif
-
     private readonly REST.Client _client;
-
+    private readonly ILogger<Client> _logger;
 
     /// <summary>
     /// Creates a configuration that uses its own internal <see cref="HttpClient"/>. When using this constructor, <see cref="Dispose"/> should be called.
     /// </summary>
-    public Client()
+    public Client(HttpClient httpClient, ILogger<Client> logger = null)
     {
-        _client = new() { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+        _client = new(httpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
     }
 
 
 
-    /// <summary
-    /// Creates a configurtion that uses a shared <see cref="HttpClient"/>
-    /// </summary
-    /// <param name="httpClient">The shared <see cref="HttpClient"/> this REST configuration should use</param>
-    public Client(HttpClient httpClient)
-    {
-        _client = new(httpClient) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
-    }
-
-
-
-    public void Dispose()
-    {
-        _client.Dispose();
-        GC.SuppressFinalize(this);
-    }
-
-
-
+        
 
     public static Version APIVersion => typeof(Client).Assembly.GetName().Version;
 
@@ -205,9 +183,14 @@ public class Client : IDisposable
     internal async Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
     {
         if (data is IValidate iv)
-            try { iv.Validate(); }
+            try 
+            {
+                iv.Validate(); 
+            }
             catch (ModelValidationException ex)
             {
+                _logger?.LogError(ex, nameof(PostAsync));
+
                 if (AutoThrowIfError)
                     throw;
                 return new()
@@ -225,9 +208,14 @@ public class Client : IDisposable
     internal async Task<Response<T>> PostAsync<T>(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
     {
         if (data is IValidate iv)
-            try { iv.Validate(); }
+            try 
+            {
+                iv.Validate(); 
+            }
             catch (ModelValidationException ex)
             {
+                _logger?.LogError(ex, nameof(PostAsync));
+
                 if (AutoThrowIfError)
                     throw;
                 return new()
