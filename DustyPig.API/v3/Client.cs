@@ -15,6 +15,7 @@ namespace DustyPig.API.v3;
 public class Client
 {
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
+
     private readonly REST.Client _client;
     private readonly ILogger<Client> _logger;
 
@@ -23,6 +24,7 @@ public class Client
     /// </summary>
     public Client(HttpClient httpClient, ILogger<Client> logger = null)
     {
+        _logger = logger;
         _client = new(httpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
     }
 
