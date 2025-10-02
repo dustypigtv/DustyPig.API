@@ -20,8 +20,14 @@ public class Client
     private readonly REST.Client _client;
     private readonly ILogger<Client> _logger;
 
+
+    public Client() : this(null, null) { }
+
+    public Client(HttpClient httpClient) : this(httpClient, null) { }
+
+    public Client(ILogger<Client> logger) : this(null, logger) { }
     
-    public Client(HttpClient httpClient = null, ILogger<Client> logger = null)
+    public Client(HttpClient httpClient, ILogger<Client> logger)
     {
         _logger = logger;
         _client = new(httpClient ?? _internalHttpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
