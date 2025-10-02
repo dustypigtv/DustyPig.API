@@ -19,13 +19,11 @@ public class Client
     private readonly REST.Client _client;
     private readonly ILogger<Client> _logger;
 
-    /// <summary>
-    /// Creates a configuration that uses its own internal <see cref="HttpClient"/>. When using this constructor, <see cref="Dispose"/> should be called.
-    /// </summary>
-    public Client(HttpClient httpClient, ILogger<Client> logger = null)
+    
+    public Client(HttpClient httpClient = null, ILogger<Client> logger = null)
     {
         _logger = logger;
-        _client = new(httpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+        _client = new(httpClient ?? new(), logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
     }
 
 
