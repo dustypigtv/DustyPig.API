@@ -16,6 +16,7 @@ public class Client
 {
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 
+    private static readonly HttpClient _internalHttpClient = new();
     private readonly REST.Client _client;
     private readonly ILogger<Client> _logger;
 
@@ -23,7 +24,7 @@ public class Client
     public Client(HttpClient httpClient = null, ILogger<Client> logger = null)
     {
         _logger = logger;
-        _client = new(httpClient ?? new(), logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+        _client = new(httpClient ?? _internalHttpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
     }
 
 
