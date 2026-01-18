@@ -33,20 +33,31 @@ public static class Constants
 
 
 
-    public const string DEFAULT_PLAYLIST_PATH = "user-art/playlist";
+    public const string USER_PLAYLIST_PATH = "user-art/playlist";
+
+    public const string USER_PLAYLIST_URL_ROOT = "https://" + DEFAULT_HOST + "/" + USER_PLAYLIST_PATH + "/";
+
+
+    public const string DEFAULT_PLAYLIST_PATH = "user-art-defaults/playlist";
 
     public const string DEFAULT_PLAYLIST_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PLAYLIST_PATH + "/";
 
-    public const string DEFAULT_PLAYLIST_IMAGE = DEFAULT_PLAYLIST_URL_ROOT + "default.png";
+    public const string DEFAULT_PLAYLIST_IMAGE = USER_PLAYLIST_URL_ROOT + "default.png";
 
-    public const string DEFAULT_PLAYLIST_BACKDROP = DEFAULT_PLAYLIST_URL_ROOT + "default.backdrop.png";
-
-
+    public const string DEFAULT_PLAYLIST_BACKDROP = USER_PLAYLIST_URL_ROOT + "default.backdrop.png";
 
 
-    public const string DEFAULT_PROFILE_PATH = "user-art/profile";
+
+
+    public const string DEFAULT_PROFILE_PATH = "user-art-defaults/profile";
 
     public const string DEFAULT_PROFILE_URL_ROOT = "https://" + DEFAULT_HOST + "/" + DEFAULT_PROFILE_PATH + "/";
+
+
+    public const string USER_PROFILE_PATH = "user-art/profile";
+
+    public const string USER_PROFILE_URL_ROOT = "https://" + DEFAULT_HOST + "/" + USER_PROFILE_PATH + "/";
+
 
 
     public const string DEFAULT_PROFILE_IMAGE_BLUE = DEFAULT_PROFILE_URL_ROOT + "blue.png";
