@@ -170,11 +170,17 @@ public static class Constants
 
 
 
-    private const string UPDATE_POLLING_ROOT_URL = "https://" + Constants.DEFAULT_HOST + "/user-polling/";
+    public const string UPDATE_POLLING_ROOT_PATH = "user-polling";
+    public const string UPDATE_POLLING_ALERT_PATH = UPDATE_POLLING_ROOT_PATH + "/alerts/";
+    public const string UPDATE_POLLING_HOMESCREEN_PATH = UPDATE_POLLING_ROOT_PATH + "/homescreen/";
+    public const string UPDATE_POLLING_CONTINUE_WATCHING_PATH = UPDATE_POLLING_ROOT_PATH + "/continuewatching/";
+    public const string UPDATE_POLLING_WATCHLIST_PATH = UPDATE_POLLING_ROOT_PATH + "/watchlist/";
+    public const string UPDATE_POLLING_PLAYLISTS_PATH = UPDATE_POLLING_ROOT_PATH + "/playlists/";
 
-    public const string UPDATE_POLLING_ALERT_URL = UPDATE_POLLING_ROOT_URL + "alerts/";
-    public const string UPDATE_POLLING_HOMESCREEN_URL = UPDATE_POLLING_ROOT_URL + "homescreen/";
-    public const string UPDATE_POLLING_CONTINUE_WATCHING_URL = UPDATE_POLLING_ROOT_URL + "continuewatching/";
-    public const string UPDATE_POLLING_WATCHLIST_URL = UPDATE_POLLING_ROOT_URL + "watchlist/";
-    public const string UPDATE_POLLING_PLAYLISTS_URL = UPDATE_POLLING_ROOT_URL + "playlists/";
+    public const string UPDATE_POLLING_ROOT_URL = "https://" + Constants.DEFAULT_HOST + "/";
+    public const string UPDATE_POLLING_ALERT_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_ALERT_PATH;
+    public const string UPDATE_POLLING_HOMESCREEN_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_HOMESCREEN_PATH;
+    public const string UPDATE_POLLING_CONTINUE_WATCHING_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_CONTINUE_WATCHING_PATH;
+    public const string UPDATE_POLLING_WATCHLIST_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_WATCHLIST_PATH;
+    public const string UPDATE_POLLING_PLAYLISTS_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_PLAYLISTS_PATH;
 }
