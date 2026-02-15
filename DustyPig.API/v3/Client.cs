@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ public class Client
     public const string DEFAULT_BASE_ADDRESS = "https://service.dustypig.tv/api/v3/";
 
     private static readonly HttpClient _internalHttpClient = new();
+
     private readonly REST.Client _client;
     private readonly ILogger<Client> _logger;
 
@@ -30,7 +32,8 @@ public class Client
     public Client(HttpClient httpClient, ILogger<Client> logger)
     {
         _logger = logger;
-        _client = new(httpClient ?? _internalHttpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
+        HttpClient = httpClient ?? _internalHttpClient;
+        _client = new(HttpClient, logger) { BaseAddress = new Uri(DEFAULT_BASE_ADDRESS) };
     }
 
 
@@ -38,6 +41,10 @@ public class Client
         
 
     public static Version APIVersion => typeof(Client).Assembly.GetName().Version;
+
+
+    internal HttpClient HttpClient { get; }
+
 
     public bool IncludeRawContentInResponse
     {
@@ -84,7 +91,7 @@ public class Client
 
     public TMDBClient TMDB => new(this);
 
-
+    public PollingClient Polling => new(this);
 
 
 
@@ -186,6 +193,7 @@ public class Client
     }
 
 
+    
 
     internal async Task<Response> PostAsync(bool tokenNeeded, string url, object data, CancellationToken cancellationToken)
     {
@@ -262,5 +270,7 @@ public class Client
         var ret = await _client.GetResponseAsync<Result<T>>(request, cancellationToken).ConfigureAwait(false);
         return FlattenResult(ret);
     }
+
+
 
 }

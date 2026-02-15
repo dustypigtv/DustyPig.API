@@ -167,4 +167,14 @@ public static class Constants
     public const string FDB_KEY_CONTINUE_WATCHING = "continue_watching";
     public const string FDB_KEY_WATCHLIST = "watchlist";
     public const string FDB_KEY_PLAYLIST = "playlist";
+
+
+
+    private const string UPDATE_POLLING_ROOT_URL = "https://" + Constants.DEFAULT_HOST + "/user-polling/";
+
+    public const string UPDATE_POLLING_ALERT_URL = UPDATE_POLLING_ROOT_URL + "alerts/";
+    public const string UPDATE_POLLING_HOMESCREEN_URL = UPDATE_POLLING_ROOT_URL + "homescreen/";
+    public const string UPDATE_POLLING_CONTINUE_WATCHING_URL = UPDATE_POLLING_ROOT_URL + "continuewatching/";
+    public const string UPDATE_POLLING_WATCHLIST_URL = UPDATE_POLLING_ROOT_URL + "watchlist/";
+    public const string UPDATE_POLLING_PLAYLISTS_URL = UPDATE_POLLING_ROOT_URL + "playlists/";
 }
