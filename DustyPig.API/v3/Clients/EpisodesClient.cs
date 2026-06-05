@@ -1,5 +1,6 @@
 ﻿using DustyPig.API.v3.Models;
 using DustyPig.REST;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -62,4 +63,29 @@ public class EpisodesClient
     /// </summary>
     public Task<Response> UpdateAsync(UpdateEpisode data, CancellationToken cancellationToken = default) =>
         _client.PostAsync(true, PREFIX + "Update", data, cancellationToken);
+
+
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will return info on any episode owned by the account with the specified tvdb id
+    /// </summary>
+    public Task<Response<List<DetailedEpisode>>> AdminSearchByTvdbIdAsync(int tvdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    {
+        if (tvdbId <= 0)
+            return Task.FromResult(new Response<List<DetailedEpisode>> { Error = new ModelValidationException($"Invalid {nameof(tvdbId)}") });
+
+        return _client.GetAsync<List<DetailedEpisode>>(true, PREFIX + $"AdminSearchByTvdbId?libraryId={libraryId}&tvdbId={tvdbId}", cancellationToken);
+    }
+
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will return info on any episode owned by the account with the specified imdb id
+    /// </summary>
+    public Task<Response<List<DetailedEpisode>>> AdminSearchByImdbIdAsync(string imdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(imdbId))
+            return Task.FromResult(new Response<List<DetailedEpisode>> { Error = new ModelValidationException($"Invalid {nameof(imdbId)}") });
+
+        return _client.GetAsync<List<DetailedEpisode>>(true, PREFIX + $"AdminSearchByImdbId?libraryId={libraryId}&imdbId={imdbId}", cancellationToken);
+    }
 }

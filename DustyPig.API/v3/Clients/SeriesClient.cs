@@ -195,7 +195,7 @@ public class SeriesClient
 
 
     /// <summary>
-    /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account with the specified tmdb
+    /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account with the specified tmdb id
     /// </summary>
     public Task<Response<List<BasicMedia>>> AdminSearchByTmdbIdAsync(int tmdbId, int libraryId = 0, CancellationToken cancellationToken = default)
     {
@@ -205,4 +205,27 @@ public class SeriesClient
         return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearchByTmdbId?libraryId={libraryId}&tmdbId={tmdbId}", cancellationToken);
     }
 
+
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account with the specified tvdb series id
+    /// </summary>
+    public Task<Response<List<BasicMedia>>> AdminSearchByTvdbIdAsync(int tvdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    {
+        if (tvdbId <= 0)
+            return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(tvdbId)}") });
+
+        return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearchByTvdbId?libraryId={libraryId}&tvdbId={tvdbId}", cancellationToken);
+    }
+
+    /// <summary>
+    /// Requires main profile. Designed for admin tools, this will return info on any series owned by the account with the specified imdb series id
+    /// </summary>
+    public Task<Response<List<BasicMedia>>> AdminSearchByImdbIdAsync(string imdbId, int libraryId = 0, CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrEmpty(imdbId))
+            return Task.FromResult(new Response<List<BasicMedia>> { Error = new ModelValidationException($"Invalid {nameof(imdbId)}") });
+
+        return _client.GetAsync<List<BasicMedia>>(true, PREFIX + $"AdminSearchByImdbId?libraryId={libraryId}&imdbId={imdbId}", cancellationToken);
+    }
 }

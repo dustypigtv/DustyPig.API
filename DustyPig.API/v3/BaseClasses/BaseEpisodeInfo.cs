@@ -38,5 +38,17 @@ public abstract class BaseEpisodeInfo : IMedia
 
     public ushort EpisodeNumber { get; set; }
 
+    [JsonPropertyName("tvdbSeriesId")]
+    public int? TVDB_SeriesId { get; set; }
+
+    [JsonPropertyName("tvdbEpisodeId")]
+    public int? TVDB_EpisodeId { get; set; }
+
+    [JsonPropertyName("imdbEpisodeId")]
+    public string IMDB_SeriesId { get; set; }
+
+    [JsonPropertyName("imdbEpisodeId")]
+    public string IMDB_EpisodeId { get; set; }
+
     public override string ToString() => $"s{SeasonNumber:00}e{EpisodeNumber:00}";
 }

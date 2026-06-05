@@ -15,6 +15,12 @@ public abstract class BaseSeriesInfo : IMedia, ITopLevelMedia
     [JsonPropertyName("tmdbId")]
     public int? TMDB_Id { get; set; }
 
+    [JsonPropertyName("tvdbId")]
+    public int? TVDB_Id { get; set; }
+
+    [JsonPropertyName("imdbId")]
+    public string IMDB_Id { get; set; }
+
     public string Description { get; set; }
 
     public string ArtworkUrl { get; set; }
