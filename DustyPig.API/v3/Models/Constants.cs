@@ -21,6 +21,11 @@ public static class Constants
 
     public const int DEVICE_ACTIVATION_CODE_LENGTH = 5;
 
+    /// <summary>
+    /// Current max is 10, leave a couple of digits to grow
+    /// </summary>
+    public const int IMDB_ID_MAX_LENGTH = 12;
+
 
     public static readonly MediaTypes[] PLAYABLE_MEDIA_TYPES = [MediaTypes.Movie, MediaTypes.Episode];
 

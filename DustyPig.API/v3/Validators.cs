@@ -28,6 +28,19 @@ static class Validators
         if (media.TMDB_Id != null && media.TMDB_Id <= 0)
             ret.Add($"tmdbId must be > 0 when specified");
 
+        if (media.TVDB_Id != null && media.TVDB_Id <= 0)
+            ret.Add($"tvdbId must be > 0 when specified");
+
+        if (!string.IsNullOrWhiteSpace(media.IMDB_Id))
+        {
+            media.IMDB_Id = media.IMDB_Id.ToLower();
+            if (!media.IMDB_Id.StartsWith("tt"))
+                ret.Add($"imdbId must start with 'tt' when specified");
+
+            chk = Validate(nameof(media.IMDB_Id), media.IMDB_Id, false, Constants.IMDB_ID_MAX_LENGTH);
+            if (!chk.Valid)
+                ret.Add(chk.Error);
+        }
 
         chk = Validate(nameof(media.ArtworkUrl), media.ArtworkUrl, true, Constants.MAX_URL_LENGTH);
         if (chk.Valid)
