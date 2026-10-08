@@ -90,11 +90,12 @@ public class MediaClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<SearchResults>> SearchAsync(string query, bool searchTMDB, CancellationToken cancellationToken = default) =>
+    public Task<Response<SearchResults>> SearchAsync(string query, bool searchTMDB, bool searchPeople, CancellationToken cancellationToken = default) =>
         SearchAsync(new SearchRequest
         {
             Query = query,
-            SearchTMDB = searchTMDB
+            SearchTMDB = searchTMDB,
+            SearchPeople = searchPeople
         }, cancellationToken);
 
 
