@@ -5,6 +5,8 @@ namespace DustyPig.API.v3.Models;
 
 public class UpdateAvatarInfo : IValidate
 {
+    public int ProfileId { get; set; }
+
     /// <summary>
     /// Scale factor the cropped image
     /// </summary>
