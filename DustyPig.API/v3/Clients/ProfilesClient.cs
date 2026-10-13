@@ -124,12 +124,6 @@ public class ProfilesClient
     }
 
 
-    /// <summary>
-    /// Requires profile
-    /// </summary>
-    public Task<Response> OriginalAvatarUpdatedAsync(int profileId, CancellationToken cancellationToken = default) =>
-        _client.GetAsync(true, PREFIX + $"OriginalAvatarUpdated/{profileId}", cancellationToken);
-
 
     /// <summary>
     /// Requires the presigned url from <see cref="GetAvatarUploadUrlAsync(FileInfo, CancellationToken)"/>
