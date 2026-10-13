@@ -128,7 +128,7 @@ public class ProfilesClient
     /// Requires profile
     /// </summary>
     public Task<Response> OriginalAvatarUpdatedAsync(int profileId, CancellationToken cancellationToken = default) =>
-        _client.GetAsync(true, PREFIX + "OriginalAvatarUpdated", cancellationToken);
+        _client.GetAsync(true, PREFIX + $"OriginalAvatarUpdated/{profileId}", cancellationToken);
 
 
     /// <summary>
