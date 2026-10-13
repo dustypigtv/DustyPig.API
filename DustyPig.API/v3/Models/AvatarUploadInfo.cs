@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DustyPig.API.v3.Models;
 
-internal class AvatarUploadInfo : IValidate
+public class AvatarUploadInfo : IValidate
 {
     private const int MAX_SIZE = 1024 * 1024 * 10;
 
