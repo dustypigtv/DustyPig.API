@@ -29,5 +29,24 @@ static class Utils
 
     public static int GetGuidelineMaxJpgSize(int width, int height) =>
         Convert.ToInt32(Math.Ceiling(width * height * TWELVE_EIGHTS * TWO_THIRDS));
+
+
+    public static string GetOriginalAvatarUrl(int profileId) => $"{Constants.USER_PROFILE_URL_ROOT}{profileId}.orig";
+
+    public static string GetCroppedAvatarUrl(int profileId) => $"{Constants.USER_PROFILE_URL_ROOT}{profileId}.jpg";
+
+
+    internal static string AvatarUploadContentType(string fileExtension)
+    {
+        fileExtension = (fileExtension + string.Empty).Trim('.').ToLowerInvariant();
+        return fileExtension switch
+        {
+            "bmp" => "image/bmp",
+            "jpg" => "image/jpeg",
+            "png" => "image/png",
+            "webp" => "image/webp",
+            _ => null
+        };
+    }
 }
 

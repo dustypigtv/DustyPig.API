@@ -3,7 +3,9 @@ using DustyPig.REST;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 using System.Threading.Tasks;
@@ -97,25 +99,100 @@ public class ProfilesClient
         _client.GetAsync<List<BasicProfile>>(true, PREFIX + "List", cancellationToken);
 
 
-    /// <summary>
-    /// Requires profile
-    /// </summary>
-    public Task<Response<string>> ResetAvatarAsync(int id, CancellationToken cancellationToken = default) =>
-        _client.GetAsync<string>(true, PREFIX + $"ResetAvatar/{id}", cancellationToken);
-
-
-    /// <summary>
-    /// Requires profile. The <see cref="UpdateProfileAvatar.Base64Image"/> must be less than 5MB. This will return the profile's new AvatarUrl
-    /// </summary>
-    public Task<Response<string>> SetProfileAvatarAsync(UpdateProfileAvatar data, CancellationToken cancellationToken = default)
-        => _client.PostAsync<string>(true, PREFIX + "SetProfileAvatar", data, cancellationToken);
-
-
+   
     /// <summary>
     /// Requires profile
     /// </summary>
     public Task<Response<DetailedProfile>> GetMainProfileDetailsAsync(CancellationToken cancellationToken = default) =>
         _client.GetAsync<DetailedProfile>(true, PREFIX + "GetMainProfileDetails", cancellationToken);
+
+
+
+
+
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response<string>> GetAvatarUploadUrlAsync(FileInfo avatarFile, CancellationToken cancellationToken = default)
+    {
+        var data = new AvatarUploadInfo
+        {
+            ContentType = Utils.AvatarUploadContentType(avatarFile.Extension),
+            Size = avatarFile.Length
+        };
+        return _client.PostAsync<string>(true, PREFIX + "GetAvatarUploadUrl", data, cancellationToken);
+    }
+
+
+    /// <summary>
+    /// Requires the presigned url from <see cref="GetAvatarUploadUrlAsync(FileInfo, CancellationToken)"/>
+    /// </summary>
+    public async Task<Response> UploadAvatarAsync(FileInfo avatarFile, string uploadUrl, CancellationToken cancellationToken = default)
+    {
+        string rawContent = null;
+        string reasonPhrase = null;
+        System.Net.HttpStatusCode statusCode = System.Net.HttpStatusCode.BadRequest;
+        try
+        {
+            string contentType = Utils.AvatarUploadContentType(avatarFile.Extension);
+            using var fileStream = avatarFile.OpenRead();
+            using var content = new StreamContent(fileStream);
+            content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+            content.Headers.ContentLength = avatarFile.Length;
+            var response = await _client.HttpClient.PutAsync(uploadUrl, content, cancellationToken).ConfigureAwait(false);
+            
+            statusCode = response.StatusCode;
+            reasonPhrase = response.ReasonPhrase;
+            try
+            {
+                if (_client.IncludeRawContentInResponse)
+                    rawContent = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            }
+            catch { }
+            response.EnsureSuccessStatusCode();
+
+            return new Response
+            {
+                Success = true,
+                StatusCode = statusCode,
+                ReasonPhrase = reasonPhrase,
+                RawContent = rawContent
+            };
+        }
+        catch (Exception ex)
+        {
+            return new Response
+            {
+                Error = ex,
+                RawContent = rawContent,
+                ReasonPhrase = reasonPhrase,
+                StatusCode = statusCode,
+                Success = false
+            };
+        }
+    }
+
+
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response<AvatarInfo>> ResetAvatarAsync(int id, CancellationToken cancellationToken = default) =>
+        _client.GetAsync<AvatarInfo>(true, PREFIX + $"ResetAvatar/{id}", cancellationToken);
+
+
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response<AvatarInfo>> GetAvatarInfoAsync(CancellationToken cancellationToken = default) =>
+        _client.GetAsync<AvatarInfo>(true, PREFIX + "GetAvatarInfo", cancellationToken);
+
+
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response> UpdateAvatarInfoAsync(UpdateAvatarInfo data, CancellationToken cancellationToken = default) =>
+        _client.PostAsync(true, PREFIX + "UpdateAvatarInfo", data, cancellationToken);
+
 
 
 }

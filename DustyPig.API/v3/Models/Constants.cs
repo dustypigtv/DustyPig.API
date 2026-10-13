@@ -188,4 +188,11 @@ public static class Constants
     public const string UPDATE_POLLING_CONTINUE_WATCHING_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_CONTINUE_WATCHING_PATH;
     public const string UPDATE_POLLING_WATCHLIST_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_WATCHLIST_PATH;
     public const string UPDATE_POLLING_PLAYLISTS_URL = UPDATE_POLLING_ROOT_URL + UPDATE_POLLING_PLAYLISTS_PATH;
+
+
+
+
+
+    internal static readonly string[] VALID_AVATAR_EXTENSIONS = new string[] { "bmp", "jpg", "png", "webp" };
+
 }
