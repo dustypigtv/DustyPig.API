@@ -8,6 +8,8 @@ public class AvatarUploadInfo : IValidate
 {
     private const int MAX_SIZE = 1024 * 1024 * 10;
 
+    public int ProfileId { get; set; }
+
     public string ContentType { get; set; }
 
     public long Size { get; set; }

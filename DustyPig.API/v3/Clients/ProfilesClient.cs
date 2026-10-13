@@ -113,10 +113,11 @@ public class ProfilesClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<string>> GetAvatarUploadUrlAsync(FileInfo avatarFile, CancellationToken cancellationToken = default)
+    public Task<Response<string>> GetAvatarUploadUrlAsync(int profileId, FileInfo avatarFile, CancellationToken cancellationToken = default)
     {
         var data = new AvatarUploadInfo
         {
+            ProfileId = profileId,
             ContentType = Utils.AvatarUploadContentType(avatarFile.Extension),
             Size = avatarFile.Length
         };
@@ -184,8 +185,8 @@ public class ProfilesClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<AvatarInfo>> GetAvatarInfoAsync(CancellationToken cancellationToken = default) =>
-        _client.GetAsync<AvatarInfo>(true, PREFIX + "GetAvatarInfo", cancellationToken);
+    public Task<Response<AvatarInfo>> GetAvatarInfoAsync(int id, CancellationToken cancellationToken = default) =>
+        _client.GetAsync<AvatarInfo>(true, PREFIX + $"GetAvatarInfo/{id}", cancellationToken);
 
 
     /// <summary>
