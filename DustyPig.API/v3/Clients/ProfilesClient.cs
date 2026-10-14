@@ -133,7 +133,7 @@ public class ProfilesClient
         var data = new AvatarUploadInfo
         {
             ProfileId = profileId,
-            ContentType = Utils.AvatarUploadContentType("png"),
+            ContentType = Utils.AvatarUploadContentType("jpg"),
             Size = avatarFile.Length
         };
         return _client.PostAsync<string>(true, PREFIX + "GetCroppedAvatarUploadUrl", data, cancellationToken);
