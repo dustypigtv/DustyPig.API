@@ -84,6 +84,11 @@ public static class Constants
         DEFAULT_PROFILE_IMAGE_RED,
     };
 
+    /// <summary>
+    /// Default profile images are 640x640
+    /// </summary>
+    public static int DEFAULT_PROFILE_IMAGE_CENTER_XY = 320;
+
 
     /*
         Through lots of testing on Roku, these image sizes seem to have a good balance between loading quickly and quality.
