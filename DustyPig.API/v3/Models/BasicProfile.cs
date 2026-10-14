@@ -10,6 +10,9 @@ public class BasicProfile : IComparable
 
     public string Initials { get; set; }
 
+    /// <summary>
+    /// This field is read-only. The server ignores this when creating/updating profiles.
+    /// </summary>
     public string AvatarUrl { get; set; }
 
     public bool IsMain { get; set; }
