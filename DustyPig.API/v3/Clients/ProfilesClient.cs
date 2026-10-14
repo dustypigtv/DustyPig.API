@@ -125,9 +125,24 @@ public class ProfilesClient
     }
 
 
+    /// <summary>
+    /// Requires profile
+    /// </summary>
+    public Task<Response<string>> GetCroppedAvatarUploadUrlAsync(int profileId, FileInfo avatarFile, CancellationToken cancellationToken = default)
+    {
+        var data = new AvatarUploadInfo
+        {
+            ProfileId = profileId,
+            ContentType = Utils.AvatarUploadContentType("png"),
+            Size = avatarFile.Length
+        };
+        return _client.PostAsync<string>(true, PREFIX + "GetCroppedAvatarUploadUrl", data, cancellationToken);
+    }
+
+
 
     /// <summary>
-    /// Requires the presigned url from <see cref="GetAvatarUploadUrlAsync(FileInfo, CancellationToken)"/>
+    /// Requires the presigned url from <see cref="GetAvatarUploadUrlAsync"/> or <see cref="GetCroppedAvatarUploadUrlAsync"/>
     /// </summary>
     public async Task<Response> UploadAvatarAsync(FileInfo avatarFile, string uploadUrl, CancellationToken cancellationToken = default)
     {
@@ -178,15 +193,9 @@ public class ProfilesClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<AvatarInfo>> ResetAvatarAsync(int id, CancellationToken cancellationToken = default) =>
-        _client.GetAsync<AvatarInfo>(true, PREFIX + $"ResetAvatar/{id}", cancellationToken);
+    public Task<Response<string>> ResetAvatarAsync(int id, CancellationToken cancellationToken = default) =>
+        _client.GetAsync<string>(true, PREFIX + $"ResetAvatar/{id}", cancellationToken);
 
-
-    /// <summary>
-    /// Requires profile
-    /// </summary>
-    public Task<Response<AvatarInfo>> GetAvatarInfoAsync(int id, CancellationToken cancellationToken = default) =>
-        _client.GetAsync<AvatarInfo>(true, PREFIX + $"GetAvatarInfo/{id}", cancellationToken);
 
 
     /// <summary>
@@ -194,7 +203,5 @@ public class ProfilesClient
     /// </summary>
     public Task<Response> UpdateAvatarInfoAsync(UpdateAvatarInfo data, CancellationToken cancellationToken = default) =>
         _client.PostAsync(true, PREFIX + "UpdateAvatarInfo", data, cancellationToken);
-
-
 
 }

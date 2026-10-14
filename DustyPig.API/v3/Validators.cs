@@ -120,7 +120,25 @@ static class Validators
     }
 
 
+    public static void ValidateUrl(string name, string url, List<string> lst)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+            lst.Add($"Invalid {name}");
 
+        if (url.Length > Constants.MAX_URL_LENGTH)
+            lst.Add($"{name}: URL too long");
+
+        // Try to parse the string as an absolute URI
+        bool validUrl = false;
+        if (Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult))
+        {
+            // Ensure the scheme is HTTP or HTTPS
+            if (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)
+                validUrl = true;
+        }
+        if (!validUrl)
+            lst.Add($"{name}: Invalid URL");
+    }
 
 
     public static (bool Valid, string Fixed, string Error) Validate(string name, string val, bool required, int maxLength)

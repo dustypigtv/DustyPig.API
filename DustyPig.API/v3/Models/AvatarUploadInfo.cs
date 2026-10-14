@@ -18,6 +18,8 @@ public class AvatarUploadInfo : IValidate
     {
         var lst = new List<string>();
 
+        Validators.ValidateId(nameof(ProfileId), ProfileId, lst);
+
         if (string.IsNullOrWhiteSpace(ContentType))
             lst.Add("File must be one of: " + string.Join(", ", Constants.VALID_AVATAR_EXTENSIONS));
 
