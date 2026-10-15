@@ -113,7 +113,7 @@ public class ProfilesClient
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<string>> GetAvatarUploadUrlAsync(int profileId, FileInfo avatarFile, CancellationToken cancellationToken = default)
+    public Task<Response<PresignedUploadUrl>> GetAvatarUploadUrlAsync(int profileId, FileInfo avatarFile, CancellationToken cancellationToken = default)
     {
         var data = new AvatarUploadInfo
         {
@@ -121,14 +121,14 @@ public class ProfilesClient
             ContentType = Utils.AvatarUploadContentType(avatarFile.Extension),
             Size = avatarFile.Length
         };
-        return _client.PostAsync<string>(true, PREFIX + "GetAvatarUploadUrl", data, cancellationToken);
+        return _client.PostAsync<PresignedUploadUrl>(true, PREFIX + "GetAvatarUploadUrl", data, cancellationToken);
     }
 
 
     /// <summary>
     /// Requires profile
     /// </summary>
-    public Task<Response<string>> GetCroppedAvatarUploadUrlAsync(int profileId, FileInfo avatarFile, CancellationToken cancellationToken = default)
+    public Task<Response<PresignedUploadUrl>> GetCroppedAvatarUploadUrlAsync(int profileId, FileInfo avatarFile, CancellationToken cancellationToken = default)
     {
         var data = new AvatarUploadInfo
         {
@@ -136,7 +136,7 @@ public class ProfilesClient
             ContentType = Utils.AvatarUploadContentType("jpg"),
             Size = avatarFile.Length
         };
-        return _client.PostAsync<string>(true, PREFIX + "GetCroppedAvatarUploadUrl", data, cancellationToken);
+        return _client.PostAsync<PresignedUploadUrl>(true, PREFIX + "GetCroppedAvatarUploadUrl", data, cancellationToken);
     }
 
 
