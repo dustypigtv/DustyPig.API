@@ -200,4 +200,6 @@ public static class Constants
 
     internal static readonly string[] VALID_AVATAR_EXTENSIONS = new string[] { "bmp", "jpg", "png", "webp" };
 
+    public const string DEFAULT_IMAGE_CACHE_CONTROL = "max-age=10000000";
+
 }

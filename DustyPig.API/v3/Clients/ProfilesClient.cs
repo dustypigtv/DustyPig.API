@@ -156,6 +156,7 @@ public class ProfilesClient
             using var content = new StreamContent(fileStream);
             content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
             content.Headers.ContentLength = avatarFile.Length;
+            content.Headers.Add("Cache-Control", Constants.DEFAULT_IMAGE_CACHE_CONTROL);
             var response = await _client.HttpClient.PutAsync(uploadUrl, content, cancellationToken).ConfigureAwait(false);
             
             statusCode = response.StatusCode;
