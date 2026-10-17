@@ -180,7 +180,7 @@ public class ProfilesClient
         }
         catch (Exception ex)
         {
-            return new Response
+            var ret = new Response
             {
                 Error = ex,
                 RawContent = rawContent,
@@ -188,6 +188,9 @@ public class ProfilesClient
                 StatusCode = statusCode,
                 Success = false
             };
+            if (_client.AutoThrowIfError)
+                ret.ThrowIfError();
+            return ret;
         }
     }
 
