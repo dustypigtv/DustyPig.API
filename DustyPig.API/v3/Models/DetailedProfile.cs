@@ -17,6 +17,8 @@ public class DetailedProfile : BaseProfile
 
     public string OriginalAvatarUrl { get; set; }
 
+    public bool AllowNotifications { get; set; }
+
     public override string ToString() => base.ToString();
 
 }

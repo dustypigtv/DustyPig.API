@@ -13,6 +13,7 @@ public class UpdateProfile : CreateProfile, IValidate
     /// </summary>
     public bool ClearPin { get; set; }
 
+    public bool AllowNotifications { get; set; }
 
     #region IValidate
 
